@@ -9,14 +9,15 @@ import google
 from speech_to_text import speech_to_text
 from text_to_speech import text_to_speech
 
+sys.path.append('/home/kiro/workspace/Conversation_Scenarios/data/behavior')
 # import openpibo
-
+import behavior_list as behavior
 
 """
-STT 모듈이랑 NLP 모듈 통합하고 있는 파일
-
+STT 모듈이랑 답변 처리 모듈 통합하고 있는 파일
     * class Dictionary: 답변 성격(Pos/Neu/Neg), 숫자 후보들
-    * class SpeechToText: STT 모듈 및 답변 처리
+    * class ConversationManage: STT 모듈 -> 답변 처리 및 다음 발화+행동
+    * class Socket_tr: socket 통신 모듈
 """
 
 # transmit
@@ -183,7 +184,7 @@ class ConversationManage():
         return self.answer
 
 
-class socket_tr():
+class Socket_tr():
     
     def transmit(self, send_msg):
         # Message from Client
@@ -250,5 +251,5 @@ class WordManage():
     
 dic = Dictionary()
 cm = ConversationManage()
-soc = socket_tr()
+soc = Socket_tr()
 wm = WordManage()
