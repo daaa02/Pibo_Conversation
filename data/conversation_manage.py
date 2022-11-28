@@ -3,6 +3,7 @@ import re
 import time
 import random
 import socket
+from threading import Thread
 
 import google
 from speech_to_text import speech_to_text
@@ -32,10 +33,10 @@ client1_port = 5000
 client1_addr_port = (client1_ip, client1_port)
 buffersize = 2048
 
-# # UDP로 열고 서버의 IP/PORT 연결, Non-blocking
-# udp_client1_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-# udp_client1_socket.bind(client1_addr_port)
-# udp_client1_socket.setblocking(False)   
+# UDP로 열고 서버의 IP/PORT 연결
+udp_client1_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+udp_client1_socket.bind(client1_addr_port)
+udp_client1_socket.setblocking(False)   
 
 
 class Dictionary():
