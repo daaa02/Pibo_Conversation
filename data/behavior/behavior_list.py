@@ -16,8 +16,7 @@ from openpibo.device import Device
 from openpibo.oled import Oled
 
 # my module
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-sys.path.append('/home/pi/AI_pibo2')
+sys.path.append('/home/pi/Conversation_Scenarios/data/behavior')
 import eye_list as eye
 import display_list as oled
 from text_to_speech import TextToSpeech, text_to_speech
