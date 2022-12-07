@@ -5,13 +5,14 @@ import random
 import socket
 from threading import Thread
 
+sys.path.append('/home/kiro/workspace/Conversation_Scenarios/data')
+
 import google
 from speech_to_text import speech_to_text
 from text_to_speech import text_to_speech
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/data/behavior')
 # import openpibo
-import behavior_list as behavior
+# import behavior.behavior_list as behavior
 
 """
 STT 모듈이랑 답변 처리 모듈 통합하고 있는 파일
@@ -35,15 +36,15 @@ client1_addr_port = (client1_ip, client1_port)
 buffersize = 2048
 
 # UDP로 열고 서버의 IP/PORT 연결
-udp_client1_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-udp_client1_socket.bind(client1_addr_port)
-udp_client1_socket.setblocking(False)   
+# udp_client1_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+# udp_client1_socket.bind(client1_addr_port)
+# udp_client1_socket.setblocking(False)   
 
 
 class Dictionary():
     
     def __init__(self):
-        self.Positive = ['pos', '네', '예', '응', '어', '있어', '좋아', '좋은', '좋다', '그래', '맞아', '알았어', '알겠어', '당연', '됐어']
+        self.Positive = ['pos', '네', '예', '응', '있어', '좋아', '좋은', '좋다', '그래', '맞아', '알았어', '알겠어', '당연', '됐어']
 
         self.Negative = ['neg', '별로', '아니', '안', '싫어', '싫', '못 하', '못 하겠어', '못해', '없었어', '없어', '없네', '없는','그만']
         
@@ -65,7 +66,7 @@ class ConversationManage():
         self.count = 0
         self.user_said = ''
         self.response = ''
-        self.answer = ''
+        self.answer = []
         self.feedback = ''   
         self.from_msg = ''     
         self.ko = -1
@@ -78,8 +79,8 @@ class ConversationManage():
         * 무응답으로 timeout 발생한 경우: response = "None"
         """
         try:
-            self.response = speech_to_text(timeout=self.timeout)
-            # self.response = input("input: ")
+            # self.response = speech_to_text(timeout=self.timeout)
+            self.response = input("input: ")
         
         except google.api_core.exceptions.DeadlineExceeded:
             self.response = self.none
@@ -91,13 +92,13 @@ class ConversationManage():
         except google.api_core.exceptions.InvalidArgument as e:
             print(e)
         
-        print(self.response)
+        # print(self.response)
         return self.response
     
     
-    def tts(self, behavior='', string=''):
+    def tts(self, bhv='', string=''):
         """
-        * behavior: TTS 와 함께할 동작 ex. do_joy
+        * behavior: TTS 와 함께할 동작 ex. 'do_joy'
         * string: 발화할 TTS 내용
         """
         t = Thread(target=text_to_speech, args=([string]))
@@ -105,17 +106,23 @@ class ConversationManage():
         
         while True:
             time.sleep(1)
-            behavior()
+            # bhv()
             break    
         
         
-    def responses_proc(self, behavior='', re_q='', pos='', neu='', neg='', act=''):
+    def responses_proc(self, re_bhv='', re_q='', 
+                       pos_bhv='', pos='', 
+                       neu_bhv='', neu='', 
+                       neg_bhv='', neg='', 
+                       act_bhv='', act=''):
         """
         * re_q: 무응답인 경우, 재질문할 내용(최대 3번)
         * pos/neu/neg: 긍정/중립/부정 답변 인식 시, 발화할 내용
         * 사용자가 발화한 내용 중 Dictionary에 포함되는 단어 있으면 return answer
             => Positive/Neutral/Negative
         """                
+        self.answer = []    # 마지막 answer가 'action'일 경우 초기화 안 되는 것 같아서  
+        
         while True:
             self.response = cm.stt()
             
@@ -125,7 +132,7 @@ class ConversationManage():
             
             else:   # 무응답인 경우, 두 번 더 물어봐주고 3번째에도 무응답이면 탈출
                 self.count += 1
-                text_to_speech(re_q)           
+                cm.tts(bhv=re_bhv, string=re_q)           
                    
                 if self.count < 3:
                     continue 
@@ -138,53 +145,53 @@ class ConversationManage():
         사용자가 발화한 내용에 포함되는 단어가 있다면 return answer '_'
         ex. input: 좋은 것 같아 ==> Yes=[..'좋은'..] ==> answer: Positive
         """
+        
         for i in range(len(dic.Positive)):
             if dic.Positive[i] in self.user_said:     
-                self.answer = "positive"
+                self.answer = ["positive", self.user_said]
 
         for j in range(len(dic.Negative)):
             if dic.Negative[j] in self.user_said:
-                self.answer = "negative"
+                self.answer = ["negative", self.user_said]
                 
         for k in range(len(dic.Neutral)):
             if dic.Neutral[k] in self.user_said:
-                self.answer = "neutral"
+                self.answer = ["neutral", self.user_said]
         
-        if self.answer == "":
-            self.answer = "action"     # pos -> neg -> neu 에도 없으면 act
+        if len(self.answer) == 0:
+            self.answer = ["action", self.user_said]    # pos -> neg -> neu 에도 없으면 act
         
         print("=>", self.answer)
         """
         self.answer 결과에 맞는 feedback 답변을 TTS로 출력
         """             
-        if self.answer == "positive":     # 긍정 답변 옵션
+        if self.answer[0] == "positive":     # 긍정 답변 옵션
             feedback_list = ["정말? ", "그래? ", "오호~ "]
             self.feedback = random.choice(feedback_list)
-            cm.tts(behavior, string=self.feedback + pos)
+            cm.tts(bhv=pos_bhv, string=self.feedback + pos)
             # text_to_speech(self.feedback + pos)
             
-        elif self.answer == "negative":   # 부정 답변 옵션
+        elif self.answer[0] == "negative":   # 부정 답변 옵션
             feedback_list = ["그래? ", "음~ "]
             self.feedback = random.choice(feedback_list)
-            cm.tts(behavior, string=self.feedback + neg)
+            cm.tts(bhv=neg_bhv, string=self.feedback + neg)
             # text_to_speech(self.feedback + neg)
             
-        elif self.answer == "neutral":   # 중립 답변 옵션
+        elif self.answer[0] == "neutral":   # 중립 답변 옵션
             feedback_list = ["그래? "]
             self.feedback = random.choice(feedback_list)
-            cm.tts(behavior, string=self.feedback + neu)
+            cm.tts(bhv=neu_bhv, string=self.feedback + neu)
             # text_to_speech(self.feedback + neu)
             
-        elif self.answer == "action":
+        elif self.answer[0] == "action":
             feedback_list = ["그래? ", "정말? "]
             self.feedback = random.choice(feedback_list)
-            cm.tts(behavior, string=self.feedback + act)
+            cm.tts(bhv=act_bhv, string=self.feedback + act)
             # text_to_speech(self.feedback + act)
             
         #     # connect with chit-chat model
         #     self.from_msg = soc.transmit(send_msg=self.response)             
-          
-        # self.answer = ''    # else 에서 answer 초기화 안 되는 것 같아서          
+                
         return self.answer
 
 
