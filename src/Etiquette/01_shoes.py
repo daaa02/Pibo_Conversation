@@ -90,10 +90,9 @@ class Etiquette():
         # 3.1 마무리 대화
         cm.tts(bhv="do_joy_A", string="모두가 함께 쓰는 의자는 깨끗하게 써야 해. 잘 기억해 두자!")
                             
-        
-        
-        
-        
+                            
+                            
+                            
 if __name__ == "__main__":
     
     etq = Etiquette()
