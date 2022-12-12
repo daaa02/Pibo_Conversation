@@ -39,22 +39,25 @@ class Solution():
 
         cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 밤에도 조용히 놀 수 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 밤에도 조용히 놀 수 있니?",
-                                   pog_bhv="do_explain_C", pog="대단한 걸? 나는 조용히 못 놀아.")
+                                   pos_bhv="do_explain_C", pos="대단한 걸? 나는 조용히 못 놀아.")
 
-        cm.tts(bhv="do_question_S", string="오랫동안 안 씻으면 어떻게 될까?")
-        answer = cm.responses_proc(re_bhv="do_question_L", re_q="오랫동안 안 씻으면 어떻게 될까?",
-                                   pos_bhv="do_agree", pos="오랫동안 안 씻으면 몸이 아플수도 있겠다!",
-                                   neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
-                                   act_bhv="do_agree", act="오랫동안 안 씻으면 몸이 아플수도 있겠다!")
+        cm.tts(bhv="do_question_S", string="동화책을 보면 조용히 놀 수 있을까?")
+        answer = cm.responses_proc(re_bhv="do_question_L", re_q="동화책을 보면 조용히 놀 수 있을까?")
             
-        cm.tts(bhv="do_question_S", string="안 씻어서 냄새가 나면 친구들이 싫어할수도 있을까?")
-        answer = cm.responses_proc(re_bhv="do_question_S", re_q="안 씻어서 냄새가 나면 친구들이 싫어할수도 있을까?",
-                                   pos_bhv="do_joy_B", pos="나도 좋은 냄새가 나는 친구가 좋았던 것 같아!",
-                                   neu_bhv="do_agree", neu="괜찮아~ 모를 수 있어. 좋은 냄새가 나는 친구가 좋았던 것 같아!",
-                                   act_bhv="do_joy_B", act="나도 좋은 냄새가 나는 친구가 좋았던 것 같아!")
+        cm.tts(bhv="do_question_S", string="늦게까지 놀면 다음 날 무슨 일이 생길까?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q="늦게까지 놀면 다음 날 무슨 일이 생길까?",
+                                   pos_bhv="do_joy_B", pos="다음 날 피곤하겠지?",
+                                   neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어. 아마 다음 날 피곤하겠지?",
+                                   act_bhv="do_joy_B", act="다음 날 피곤하겠지?")
+        
+        cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 내일 무엇을 하며 놀고 싶니?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 밤에도 조용히 놀 수 있니?",
+                                   pos_bhv="do_explain_C", pos="내일 아침이 기다려 지겠다!",
+                                   neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
+                                   act_bhv="do_joy_A", act="내일 아침이 기다려 지겠다!")
         
         # 2.1 문제 해결
-        cm.tts(bhv="do_joy_A", string=f"파이보도 향기로워 지도록 잘 씻어야 겠다! {wm.word(self.user_name, 0)}도 깨끗하게 잘 씻자!")
+        cm.tts(bhv="do_joy_A", string="파이보도 이제는 늦게까지 놀지 않고 다음 날 아침을 기분 좋게 시작해야겠다~ 알려줘서 정말 고마워!")
                             
         
         
