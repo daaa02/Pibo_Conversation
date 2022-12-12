@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# 사회기술-아무 곳에나 낙서를 하지 않아요
+# 사회기술-길을 걸으면서 뛰거나 장난치지 않아요
 
 import os, sys
 import re
@@ -20,11 +20,11 @@ class Etiquette():
     
     def __init__(self): 
         self.user_name = '다영'
-        self.correct = ['낙서', '그림']
+        self.correct = ['뛰', '장난']
         self.ox = ''
                 
         
-    def Scribble(self):
+    def Street(self):
         
         # 2.1 카드 대화
         cm.tts(bhv="do_question_L", string="이 카드의 어린이는 무엇을 잘못했을까?")
@@ -63,35 +63,34 @@ class Etiquette():
                         print(self.ox)
                         cm.tts(bhv="do_suggestion_S", string="같이 다시 한번 볼까?")
         
-        cm.tts(bhv="do_explain_A", string="이 카드의 어린이는 아무 곳에나 낙서를 했어.")
+        cm.tts(bhv="do_explain_A", string="이 카드의 어린이는 길에서 뛰어 다니고 장난을 쳤어.")
      
         # 2.2 경험 질문
-        cm.tts(bhv="do_question_S", string="낙서를 하는 사람을 본 적이 있니?")
-        answer = cm.responses_proc(re_bhv="do_question_S", re_q="낙서를 하는 사람을 본 적이 있니?",
+        cm.tts(bhv="do_question_S", string="길거리에서 뛰어다니는 사람을 본 적이 있니?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q="길거리에서 뛰어다니는 사람을 본 적이 있니?",
                                    pos_bhv="do_agree", pos="본 적이 있구나!",
                                    neu_bhv="do_agree", neu="괜찮아. 기억이 안 날 수도 있어~")
 
-        cm.tts(bhv="do_question_L", string="그림을 그리고 싶을 때는 어디에 그리는게 좋을까?")
-        answer = cm.responses_proc(re_bhv="do_question_L", re_q="그림을 그리고 싶을 때는 어디에 그리는게 좋을까?",
-                                   pos_bhv="do_agree", pos="그림은 스케치북이나 종이에 그리는게 좋겠지?",
-                                   neu_bhv="do_explain_C", neu="괜찮아 모를 수도 있어~ 그림은 스케치북이나 종이에 그리는게 좋겠지?",
-                                   act_bhv="do_agree", act="그림은 스케치북이나 종이에 그리는게 좋겠지?")
+        cm.tts(bhv="do_question_L", string="길에서 뛰어 다니면 어떤 위험한 일이 일어날까?")
+        answer = cm.responses_proc(re_bhv="do_question_L", re_q="길에서 뛰어 다니면 어떤 위험한 일이 일어날까?",
+                                   pos_bhv="do_agree", pos="뛰어다니다 부딪히면 넘어질 수도 있겠지?",
+                                   neu_bhv="do_explain_C", neu="괜찮아 모를 수도 있어~뛰어다니다 부딪히면 넘어질 수도 있겠지?",
+                                   act_bhv="do_agree", act="뛰어다니다 부딪히면 넘어질 수도 있겠지?")
             
-        cm.tts(bhv="do_question_L", string="모두가 아무 곳에나 그림을 그리면 어떤 일이 일어날까?")
-        answer = cm.responses_proc(re_bhv="do_question_L", re_q="모두가 아무 곳에나 그림을 그리면 어떤 일이 일어날까?",
-                                   pos_bhv="do_sad", pos="벽이 엄청 지저분해지고 청소하는 사람이 힘들겠지?",
-                                   neu_bhv="do_agree", neu="괜찮아 상상이 안 될 수 있어. 벽이 엄청 지저분해지고 청소하는 사람이 힘들겠지?",
-                                   act_bhv="do_agree", act="벽이 엄청 지저분해지고 청소하는 사람이 힘들겠지?")
-    
+        cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}도 길에서 넘어진 적이 있니?")
+        answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}도 길에서 넘어진 적이 있니?",
+                                   pos_bhv="do_sad", pos="너무 아팠겠다.",
+                                   neu_bhv="do_agree", neu="괜찮아. 기억이 안 날 수도 있어~")
+
         # 2.3 문제 인식
-        cm.tts(bhv="do_question_L", string="아무 곳에나 그림을 그리는 사람을 보면 사람들은 어떻게 생각할까?")
-        answer = cm.responses_proc(re_bhv="do_question_L", re_q="아무 곳에나 그림을 그리는 사람을 보면 사람들은 어떻게 생각할까?",
-                                   pos_bhv="do_agree", pos="공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?",
-                                   neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?",
-                                   act_bhv="do_agree", act="공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?")
+        cm.tts(bhv="do_question_L", string="길에서 뛰어다니면 다른 사람들이 어떻게 느낄까?")
+        answer = cm.responses_proc(re_bhv="do_question_L", re_q="길에서 뛰어다니면 다른 사람들이 어떻게 느낄까?",
+                                   pos_bhv="do_agree", pos="부딪힐까봐 겁이 날 수도 있겠지?",
+                                   neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 부딪힐까봐 겁이 날 수도 있겠지?",
+                                   act_bhv="do_agree", act="부딪힐까봐 겁이 날 수도 있겠지?")
     
         # 3.1 마무리 대화
-        cm.tts(bhv="do_joy_A", string="모두가 함께 쓰는 공간은 깨끗하게 사용해야 해. 잘 기억해 두자!")
+        cm.tts(bhv="do_joy_A", string="길에서는 앞을 보고 안전하게 걷는 것이 좋아. 잘 기억해 두자!")
     
         
         
@@ -99,4 +98,4 @@ class Etiquette():
 if __name__ == "__main__":
     
     etq = Etiquette()
-    etq.Scribble()
+    etq.Street()

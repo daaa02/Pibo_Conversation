@@ -19,7 +19,8 @@ audio = TextToSpeech()
 class Etiquette():    
     
     def __init__(self): 
-        self.user_name = "다영"
+        self.user_name = '다영'
+        self.correct = ['신발']  
         self.ox = ''
         
         
@@ -31,13 +32,11 @@ class Etiquette():
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="이 카드의 어린이는 무엇을 잘못했을까?",
                                    neg_bhv="do_suggestion_S", neg="같이 다시 한번 볼까?",
                                    neu_bhv="do_suggestion_S", neu="같이 다시 한번 볼까?")
-
-        correct = ['의자', '신발']        
         
         if answer[0] == "action":            
             
-            for i in range(len(correct)):
-                if correct[i] in answer[1]:
+            for i in range(len(self.correct)):
+                if self.correct[i] in answer[1]:
                     self.ox = "right"                    
             if len(self.ox) == 0:
                 self.ox = "wrong ㅠㅠ"
@@ -52,13 +51,13 @@ class Etiquette():
                 
                 if answer[0] == "action":        
                                 
-                    for i in range(len(correct)):
-                        if correct[i] in answer[1]:
-                            self.ox = "right"                    
+                    for i in range(len(self.correct)):
+                        if self.correct[i] in answer[1]:
+                            self.ox = "(right)"                    
                     if len(self.ox) == 0:
-                        self.ox = "wrong ㅠㅠ"
+                        self.ox = "(wrong ㅠㅠ)"
                     
-                    if self.ox == "right":
+                    if self.ox == "(right)":
                         print(self.ox)
                         cm.tts(bhv="do_compliment_S", string="맞아! 아주 똑똑한 걸?")
                     else:
@@ -82,6 +81,7 @@ class Etiquette():
                                    pos_bhv="do_agree", pos="본 적이 있구나!",
                                    neu_bhv="do_agree", neu="괜찮아. 기억이 안 날 수도 있어~")
         
+        # 2.3 문제 인식
         cm.tts(bhv="do_question_L", string="신발을 신고 의자에 올라가면 다른 사람들이 어떻게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="신발을 신고 의자에 올라가면 다른 사람들이 어떻게 생각할까?",
                                    neu_bhv="do_explain_B", neu="괜찮아. 모를 수도 있어~ 아마 다른 사람들은 지저분해진 의자에 앉지 못해서 속상할거야.",
