@@ -25,6 +25,14 @@ disp = Oled()
 motion = Motion()
 audio = TextToSpeech()
 
+def do_breath1():
+    eye.e_question()
+    t = Thread(target=oled.o_joy, args=(), daemon=True)
+    t.start()
+    while True: 
+        motion.set_motion(name="breath1", cycle=1)
+        break
+    
 
 def do_question_L():
     eye.e_question()
