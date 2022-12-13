@@ -32,7 +32,6 @@ class Solution():
         answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}도 씻기 싫을 때가 있지?",
                                    pos_bhv="do_agree", pos="넘어져서 아팠겠다~")    
     
-        # 2.2 경험 질문
         cm.tts(bhv="do_question_L", string="사람이 많은 곳에서 뛰어다니면 위험할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="사람이 많은 곳에서 뛰어다니면 위험할까?",
                                    pos_bhv="do_agree", pos="부딪히면 아프겠지?",

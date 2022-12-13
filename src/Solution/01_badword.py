@@ -32,8 +32,7 @@ class Solution():
         answer = cm.responses_proc(re_bhv="do_sad", re_q=f"파이보가 {wm.word(self.user_name, 0)}에게도 나쁜 말을 쓰면 기분이 어떨 것 같니?",
                                    neg_bhv="do_agree", neg=f"{wm.word(self.user_name, 0)}의 기분이 안 좋겠지?",
                                    act_bhv="do_agree", act=f"{wm.word(self.user_name, 0)}의 기분이 안 좋겠지?")    
-     
-        # 2.2 경험 질문
+
         cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 나쁜 말을 쓰면 다른 친구들은 기분이 어떨까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 나쁜 말을 쓰면 다른 친구들은 기분이 어떨까?",
                                    neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",

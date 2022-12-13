@@ -32,7 +32,6 @@ class Solution():
         answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}도 씻기 싫을 때가 있지?",
                                    pos_bhv="do_agree", pos="나랑 비슷한 걸?")    
      
-        # 2.2 경험 질문
         cm.tts(bhv="do_question_L", string="어떻게 하면 계속 놀고 싶은 마음을 멈출 수 있을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="어떻게 하면 계속 놀고 싶은 마음을 멈출 수 있을까?",
                                    neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~")

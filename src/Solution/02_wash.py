@@ -32,7 +32,6 @@ class Solution():
         answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}도 씻기 싫을 때가 있지?",
                                    pos_bhv="do_agree", pos="나랑 똑같네!")    
      
-        # 2.2 경험 질문
         cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 씻기 싫을 때 어떻게 하니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 씻기 싫을 때 어떻게 하니?")
 
