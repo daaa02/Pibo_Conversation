@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# 사회기술-박물관의 전시물을 만지지 않아요
+# 일상-기념일 대화
 
 import os, sys
 import re
