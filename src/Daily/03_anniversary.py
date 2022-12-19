@@ -25,7 +25,6 @@ class Daily():
         self.dob_child = [1998, 10, 2]    # 나중엔 사용자 DB에서 참조하도록
         self.age_child = (self.this_year-self.dob_child[0]) + 1
         self.dob_parent = [['엄마', 1998, 10, 2], []]
-        self.alarm = ''
     
     
     def Bday(self):   
