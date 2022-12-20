@@ -132,7 +132,7 @@ class ConversationManage():
             
             else:   # 무응답인 경우, 두 번 더 물어봐주고 3번째에도 무응답이면 탈출
                 self.count += 1
-                cm.tts(bhv=re_bhv, string=re_q)           
+                cm.tts(bhv=re_bhv, string=re_q)
                    
                 if self.count < 3:
                     continue 
@@ -245,6 +245,7 @@ class WordManage():
         type2: '다영'은 / '파이보'는
         type3: '다영'을 / '파이보'를
         type4: '다영'아 / '파이보'야
+        * 주의: 띄워쓰기 없어야 함 (ex. '작은 개구리' => '작은'의 영향 받는 듯;;)
         """
         if type == 0:
             name = f"{word}이" if wm.postposition(word) else f"{word}"

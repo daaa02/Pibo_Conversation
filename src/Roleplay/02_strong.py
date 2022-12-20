@@ -39,7 +39,7 @@ class Roleplay():
                                        neu_bhv="do_explain_A", neu="사자는 이렇게 울어~",
                                        act_bhv="do_joy_A", act="사자가 나타났다!")
             # audio.audio_play(filename)                        
-            cm.tts(bhv="do_explain", string="사자는 자동차처럼 빨리 달릴 수 있다고 해. 멋지지 않니?")
+            cm.tts(bhv="do_explain_B", string="사자는 자동차처럼 빨리 달릴 수 있다고 해. 멋지지 않니?")
             
         if rand == 2:   # 늑대
             cm.tts(bhv="do_suggestion_S", string="이제 우리는 재빠른 늑대야!")
@@ -49,7 +49,7 @@ class Roleplay():
                                        neu_bhv="do_explain_A", neu="늑대는 이렇게 울어~",
                                        act_bhv="do_joy_A", act="늑대가 나타났다!")
             # audio.audio_play(filename)                        
-            cm.tts(bhv="do_explain", string="늑대는 울음 소리를 통해 멀리 떨어진 늑대랑 이야기 할 수 있다고 해. 신기하지 않니? ")
+            cm.tts(bhv="do_explain_B", string="늑대는 울음 소리를 통해 멀리 떨어진 늑대랑 이야기 할 수 있다고 해. 신기하지 않니? ")
         
         if rand == 3:   # 호랑이
             cm.tts(bhv="do_suggestion_S", string="이제 우리는 용감한 호랑이야!")
@@ -59,7 +59,7 @@ class Roleplay():
                                        neu_bhv="do_explain_A", neu="호랑이는 이렇게 울어~",
                                        act_bhv="do_joy_A", act="호랑이가 나타났다!")
             # audio.audio_play(filename)                        
-            cm.tts(bhv="do_explain", string="호랑이는 고양이중에 가장 큰 동물이라고 해! 엄청나지?")
+            cm.tts(bhv="do_explain_B", string="호랑이는 고양이중에 가장 큰 동물이라고 해! 엄청나지?")
                     
         # 3. 대화 시작 (3 of 6)
         rand = random.randrange(1,7) 
