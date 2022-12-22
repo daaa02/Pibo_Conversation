@@ -245,18 +245,21 @@ class WordManage():
         type2: '다영'은 / '파이보'는
         type3: '다영'을 / '파이보'를
         type4: '다영'아 / '파이보'야
+        type4: '다영'과 / '파이보'와
         * 주의: 띄워쓰기 없어야 함 (ex. '작은 개구리' => '작은'의 영향 받는 듯;;)
         """
         if type == 0:
             name = f"{word}이" if wm.postposition(word) else f"{word}"
-        elif type == 1:
+        if type == 1:
             name = f"{word}이" if wm.postposition(word) else f"{word}가"                    
-        elif type == 2:
+        if type == 2:
             name = f"{word}은" if wm.postposition(word) else f"{word}는"              
-        elif type == 3:
+        if type == 3:
             name = f"{word}을" if wm.postposition(word) else f"{word}를"
-        elif type == 4:
+        if type == 4:
             name = f"{word}아" if wm.postposition(word) else f"{word}야"
+        if type == 5:
+            name = f"{word}과" if wm.postposition(word) else f"{word}와"
 
         return name
     
