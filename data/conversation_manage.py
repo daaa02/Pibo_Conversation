@@ -110,7 +110,8 @@ class ConversationManage():
             break    
         
         
-    def responses_proc(self, re_bhv='', re_q='', 
+    def responses_proc(self, 
+                       re_bhv='', re_q='', 
                        pos_bhv='', pos='', 
                        neu_bhv='', neu='', 
                        neg_bhv='', neg='', 
