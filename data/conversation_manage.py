@@ -115,12 +115,14 @@ class ConversationManage():
                        pos_bhv='', pos='', 
                        neu_bhv='', neu='', 
                        neg_bhv='', neg='', 
-                       act_bhv='', act=''):
+                       act_bhv='', act='',
+                       feedback='Y'):
         """
         * re_q: 무응답인 경우, 재질문할 내용(최대 3번)
         * pos/neu/neg: 긍정/중립/부정 답변 인식 시, 발화할 내용
         * 사용자가 발화한 내용 중 Dictionary에 포함되는 단어 있으면 return answer
             => Positive/Neutral/Negative
+        * feedback: 옵션 답변 유무 결정(기본: Y)
         """                
         self.answer = []    # 마지막 answer가 'action'일 경우 초기화 안 되는 것 같아서  
         
@@ -169,26 +171,35 @@ class ConversationManage():
         if self.answer[0] == "positive":     # 긍정 답변 옵션
             feedback_list = ["정말? ", "그래? ", "오호~ "]
             self.feedback = random.choice(feedback_list)
-            cm.tts(bhv=pos_bhv, string=self.feedback + pos)
-            # text_to_speech(self.feedback + pos)
+            if feedback == "Y":
+                cm.tts(bhv=pos_bhv, string=self.feedback + pos)
+            if feedback == "N":
+                cm.tts(bhv=pos_bhv, string=pos)        
             
         elif self.answer[0] == "negative":   # 부정 답변 옵션
             feedback_list = ["그래? ", "음~ "]
             self.feedback = random.choice(feedback_list)
-            cm.tts(bhv=neg_bhv, string=self.feedback + neg)
-            # text_to_speech(self.feedback + neg)
+            if feedback == "Y":
+                cm.tts(bhv=neg_bhv, string=self.feedback + neg)
+            if feedback == "N":
+                cm.tts(bhv=neg_bhv, string=neg)
             
         elif self.answer[0] == "neutral":   # 중립 답변 옵션
             feedback_list = ["그래? "]
             self.feedback = random.choice(feedback_list)
-            cm.tts(bhv=neu_bhv, string=self.feedback + neu)
-            # text_to_speech(self.feedback + neu)
+            if feedback == "Y":
+                cm.tts(bhv=neu_bhv, string=self.feedback + neu)
+            if feedback == "N":
+                cm.tts(bhv=neu_bhv, string=neu)
             
         elif self.answer[0] == "action":
             feedback_list = ["그래? ", "정말? "]
             self.feedback = random.choice(feedback_list)
-            cm.tts(bhv=act_bhv, string=self.feedback + act)
-            # text_to_speech(self.feedback + act)
+            if feedback == "Y":
+                cm.tts(bhv=act_bhv, string=self.feedback + act)
+            if feedback == "N":
+                cm.tts(bhv=act_bhv, string=act)
+                
             
         #     # connect with chit-chat model
         #     self.from_msg = soc.transmit(send_msg=self.response)             
