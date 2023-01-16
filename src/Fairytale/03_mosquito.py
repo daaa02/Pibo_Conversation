@@ -1,147 +1,82 @@
 # -*- coding: utf-8 -*-
 
-# 모기와 사자 시나리오
+# 동화-모기와 사자
 
-import os
-import sys
+import os, sys
+import re
 import random
 
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from NLP import NLP, Dictionary
-from text_to_speech import TextToSpeech
-# from speech_to_text import speech_to_text
+sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+from data.conversation_manage import ConversationManage, WordManage
+from data.speech_to_text import speech_to_text
+from data.text_to_speech import TextToSpeech, text_to_speech
 
-nlp = NLP()
-Dic = Dictionary()
-tts = TextToSpeech()
+cm = ConversationManage()
+wm = WordManage()
+audio = TextToSpeech()
 
 
-def text_to_speech(text):
-    filename = "tts.wav"
-    print("\n" + text + "\n")
-    tts.tts_connection(text, filename)
-    tts.play(filename, 'local', '-800', False)
+class Fairytale():    
     
-    
-def fb(option):
-    if option == "pos":     # 긍정 답변 옵션
-        feedback_list = ["정말? ", "그래? ", "그렇구나. ", "그랬구나. "]
-        feedback = random.choice(feedback_list)
-        
-    elif option == "neg":   # 부정 답변 옵션
-        feedback_list = ["그래? ", "그렇구나. ", "그랬구나. "]
-        feedback = random.choice(feedback_list)
-        
-    elif option == "neu":   # 중립 답변 옵션
-        feedback_list = ["그래? ", "음~"]
-        feedback = random.choice(feedback_list)
-        
-    elif option == "act":   # 행동 답변 옵션
-        feedback_list = ["정말? ", "그래? ", "그렇구나. ", "그랬구나. "]
-        feedback = random.choice(feedback_list)
-
-    return feedback
+    def __init__(self): 
+        self.user_name = '다영'
+                
 
 class FairyTale():
+        
+    def __init__(self): 
+        self.user_name = '다영'
+        
     
-    def story(self, name):       
-        text_to_speech("\n정말 재미있는 이야기였어!")
-        text_to_speech(f"{name}이는 어떤 장면이 재미있었니?")
-        user_said = input("입력: ")
-        print("\n")
-
-        text_to_speech(fb(option="act") +f"{name}이는 모기에 물린 적이 있니?")
-        user_said = input("입력: ")
-        print("\n")
-
-        text_to_speech(fb(option="act") + "모기에 물리면 어떻게 해?")
-        user_said = input("입력: ")
-        print("\n")
-
-        text_to_speech(fb(option="act") + f"{name}이가 모기라면 누굴 물고 싶니?")
-        user_said = input("입력: ")
-        print("\n")
+    def Mosqutio(self):      
+        # 1. 동화 줄거리 대화  
+        cm.tts(bhv="do_joy_A", string=f"정말 재미있는 이야기였어! {wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?")
+        answer = cm.responses_proc(re_bhv="do_joy_A", re_q=f"{wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?",
+                                   neu_bhv="do_agree", neu=f"그럴 수 있지~")
         
-        text_to_speech(fb(option="act") +"모기한테 마구 물린 사자 얼굴은 어떻게 생겼을까?")
-        user_said = input("입력: ")
-        print("\n")
+        # 2. 등장인물 공감 대화        
+        cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 언제 모기에 물렸었니?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 언제 모기에 물렸었니?", 
+                                   neu_bhv="do_agree", neu=f"모를 수 있지~")
         
-        text_to_speech(fb(option="act") +"모기랑 사자는 친구가 될 수 없을까?")
-        user_said = input("입력: ")
-        print("\n")
+        cm.tts(bhv="do_question_S", string=f"모기한테 물린 사자 얼굴은 어떻게 변했을까?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"모기한테 물린 사자 얼굴은 어떻게 변했을까?", 
+                                   neu_bhv="do_agree", neu=f"몰라도 괜찮아~")
         
-        text_to_speech(fb(option="act") +"만약에 사자가 거미줄에 걸린 모기를 본다면 구해줄까?")
-        user_said = input("입력: ")
-        print("\n")
-        
-        text_to_speech(fb(option="act") + "사자는 그럴 수 있겠구나.")  
-        print("\n")   
-
-        return FT.sympathy(name)
-    
-    
-    def sympathy(self, name):
-        text_to_speech("거미줄에 걸린 모기는 움직일 수 없었을 때 기분이 어땠을까? 무서웠을까?")
-        user_said = input("입력: ")
-        print("\n")
-        
-        text_to_speech(fb(option="act") + f"{name}이는 최근에 무섭다고 느낀 일이 있니?")
-        user_said = input("입력: ")  
-        user_said = nlp.nlp_answer(user_said=user_said, dic=Dic)      
-        print("\n")
-        
-        if user_said == "positive":
-            text_to_speech(fb(option="pos") + "어떤 일이 있었니?")
-            user_said = input("입력: ")
-            print("\n")
+        cm.tts(bhv="do_question_S", string=f"만약 사자가 거미줄에 걸린 모기를 본다면 구해줄까?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"만약 사자가 거미줄에 걸린 모기를 본다면 구해줄까?", 
+                                   pos_bhv="do_agree", pos=f"사자는 그럴 수 있겠구나~.",
+                                   neg_bhv="do_agree", neg=f"사자는 그럴 수 있겠구나~.",
+                                   act_bhv="do_agree", act=f"사자는 그럴 수 있겠구나~.")
             
-            text_to_speech(fb(option="act") + "정말 무서웠겠다!")
-            print("\n")
+        cm.tts(bhv="do_question_L", string=f"거미줄에 걸린 모기는 움직일 수 없었을 때 무서웠을까?")
+        answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"거미줄에 걸린 모기는 움직일 수 없었을 때 무서웠을까?", 
+                                   pos_bhv="do_question_L", pos=f"최근에 무섭다고 느낀 일이 있다면 말해줄래?")
         
-        elif user_said == "negative":
-            text_to_speech(fb(option="neg"))
-            print("\n")
-        
-        else:
-            text_to_speech(fb(option="neu"))
-            print("\n")
-        
-        text_to_speech("모기가 큰 사자랑 싸워서 이겼을 때는 기분이 어땠을까? 기뻤을까?")
-        user_said = input("입력: ")
-        print("\n")
-        
-        text_to_speech(fb(option="act") + f"{name}이는 최근에 놀이에서 이겨서 기뻤던 적이 있니? 이야기해줄래?")
-        user_said = input("입력: ")
-        user_said = nlp.nlp_answer(user_said=user_said, dic=Dic)
-        print("\n")
-        
-        if user_said == "positive":
-            text_to_speech(fb(option="pos") + "정말 기분이 좋았겠다!")
-            print("\n")
-        
-        elif user_said == "negative":
-            text_to_speech(fb(option="neg"))
-            print("\n")
-        
-        else:
-            text_to_speech(fb(option="neu"))
-            print("\n")
+        if answer[0] == "positive": 
+            answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"최근에 무섭 느낀 일이 있다면 말해줄래?", 
+                                       pos_bhv="do_agree", pos=f"정말 무서웠겠는걸?", 
+                                       act_bhv="do_agree", act=f"정말 무서웠겠는걸?")
             
-        return FT.end(name)
-    
+        cm.tts(bhv="do_question_S", string=f"모기가 큰 사자랑 싸워서 이겼을 때는 기뻤을까?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"모기가 큰 사자랑 싸워서 이겼을 때는 기뻤을까?", 
+                                   pos_bhv="do_question_L", pos=f"최근에 놀이에서 이겨 기뻤던 적이 있으면 이야기해 줄래?")
         
-    def end(self, name):        
-        text_to_speech(f"동화 속 모기를 만난다면 무슨 말을 해주고 싶니?")
-        user_said = input("입력: ")    
-        print("\n")   
+        if answer[0] == "positive": 
+            answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"최근에 놀이에서 이겨 기뻤던 적이 있으면 이야기해 줄래?", 
+                                       pos_bhv="do_agree", pos=f"그런 일이 있었구나!", 
+                                       act_bhv="do_agree", act=f"그런 일이 있었구나!")
+
+        # 3. 마무리 대화
+        cm.tts(bhv="do_suggestion_L", string=f"만약 {wm.word(self.user_name, 0)}가 자신만만한 모기를 만난다면 뭐라고 해줄 수 있을까?")
+        answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q=f"{wm.word(self.user_name, 0)}가 자신만만한 모기를 만난다면 뭐라고 해줄 수 있을까?", 
+                                   pos_bhv="do_agree", pos=f"{wm.word(self.user_name, 0)}는 그렇게 말해주고 싶구나!", 
+                                   neu_bhv="do_agree", neu=f"괜찮아~ 모를 수 있지~", 
+                                   act_bhv="do_agree", act=f"{wm.word(self.user_name, 0)}는 그렇게 말해주고 싶구나!")
         
-        print(fb(option="act"))
+        cm.tts(bhv="do_explain_C", string=f"다음에 또 재미있는 동화 들려줄게~")
             
-        text_to_speech("오늘 동화 재미있었니? 다음에 또 재미있는 동화 들려줄게~\n")
-        
 
 if __name__ == "__main__":
-    FT = FairyTale()
-    
-    name = input("\nuser_name: ")
-    FT.story(name=name)
+    fat = FairyTale()
+    fat.Mosqutio()

@@ -11,10 +11,10 @@ if __name__ == "__main__":
     choice = input("번호 입력: ")
     
     if choice == "1":
-        os.system("python3 /home/pi/Pibo_Conversation/Fairytale/data/01_lions_story.py")
-        os.system("python3 /home/pi/Pibo_Conversation/Fairytale/01_lions.py")
+        os.system("python3 /home/pi/Pibo_Conversation/src/Fairytale/data/03_mosquito_story.py")
+        os.system("python3 /home/pi/Pibo_Conversation/src/Fairytale/data/03_mosquito.py")
         
     elif choice == "2":
-        os.system("python3 /home/pi/Pibo_Conversation/Fairytale/data/02_ants_story.py")
-        os.system("python3 /home/pi/Pibo_Conversation/Fairytale/02_ants.py")
+        os.system("python3 /home/pi/Pibo_Conversation/src/Fairytale/data/05_ants_story.py")
+        os.system("python3 /home/pi/Pibo_Conversation/src/Fairytale/data/05_ants.py")
     
