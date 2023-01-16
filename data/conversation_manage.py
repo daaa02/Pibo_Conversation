@@ -68,6 +68,7 @@ class ConversationManage():
         self.response = ''
         self.answer = []
         self.feedback = ''   
+        self.udp_client1_socket = socket
         self.from_msg = ''     
         self.ko = -1
         self.nb = -1
@@ -215,8 +216,8 @@ class Socket_tr():
         msg_from_client1 = msg_from_client1.encode("utf-8")
         
         # UDP 열고 서버의 IP/PORT로 메시지를 보낸다.
-        udp_client1_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
-        udp_client1_socket.sendto(msg_from_client1, server_addr_port)
+        self.udp_client1_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
+        self.udp_client1_socket.sendto(msg_from_client1, server_addr_port)
         
         soc.receive()
     
@@ -224,7 +225,7 @@ class Socket_tr():
         # Message from Server -> tts
         while True:
             try:
-                byte_addr_pair = udp_client1_socket.recvfrom(buffersize)
+                byte_addr_pair = self.udp_client1_socket.recvfrom(buffersize)
             except BlockingIOError:
                 continue
           
