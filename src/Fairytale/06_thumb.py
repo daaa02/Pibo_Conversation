@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Fairytale():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '가영'
                 
         
     def Thumb(self):
