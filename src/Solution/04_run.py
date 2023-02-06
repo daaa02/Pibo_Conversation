@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Solution():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
                 
         
     def Wash(self):
@@ -57,6 +57,7 @@ class Solution():
                                    pos_bhv="do_agree", pos="사뿐사뿐 천천히 걸어야겠지?",
                                    neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~ 사뿐사뿐 천천히 걸으면 발소리가 나지 않겠지?",
                                    act_bhv="do_agree", act="사뿐사뿐 천천히 걸어야겠지?")
+        
         # 2.1 문제 해결
         cm.tts(bhv="do_joy_A", string="파이보도 이제 조용하고 안전하게 걸으려고 노력해야겠다~ 알려줘서 정말 고마워!")
                             

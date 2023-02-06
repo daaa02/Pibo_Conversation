@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -135,7 +135,7 @@ class Roleplay():
                 break
         
         # 4. 마무리 대화
-        cm.tts(bhv="do_question_L", string=f"{wm.word(role[0], 2)} 작지만 멋진 친구들이야! 다음에 또 재미있는 역할놀이 하자~")
+        cm.tts(bhv="do_joy_A", string=f"{wm.word(role[0], 2)} 작지만 멋진 친구들이야! 다음에 또 재미있는 역할놀이 하자~")
 
 
 

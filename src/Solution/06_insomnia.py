@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,9 +20,9 @@ audio = TextToSpeech()
 class Solution():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
                 
-        
+
     def Insomnia(self):
         
         # 1.1 문제 제시
@@ -46,9 +46,7 @@ class Solution():
 
         cm.tts(bhv="do_question_S", string=f"양을 세면 잠이 온다던데, {wm.word(self.user_name, 0)}는 잠이 안 올 때 어떻게 하니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"양을 세면 잠이 온다던데, {wm.word(self.user_name, 0)}는 잠이 안 올 때 어떻게 하니?",
-                                   pos_bhv="do_compliment_S", pos="좋은 방법인 걸?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 모를 수도 있어~",
-                                   act_bhv="do_agree", act="좋은 방법인 걸?")
+                                   neu_bhv="do_agree", neu="괜찮아~ 모를 수도 있어~")
             
         cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 평소에 어떤 꿈을 꾸니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 평소에 어떤  꿈을 꾸니?",
@@ -61,6 +59,7 @@ class Solution():
                                    pos_bhv="do_agree", pos="왠지 잠이 올 것만 같아!",
                                    neu_bhv="do_agree", neu="괜찮아~ 모를 수도 있어~ 눈을 감고 상상을 하면 왠지 잠이 올 것만 같아!",
                                    act_bhv="do_agree", act="왠지 잠이 올 것만 같아!")
+        
         # 2.1 문제 해결
         cm.tts(bhv="do_joy_A", string="파이보도 이제 일찍 자도록 노력해야겠다~ 알려줘서 정말 고마워!")
                             

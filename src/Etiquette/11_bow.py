@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Etiquette():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '가영'
         self.correct = ['어른', '인사', '않']
         self.ox = ''
                 
@@ -87,8 +87,7 @@ class Etiquette():
             
             if answer[0] == "action":
                 answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name,0)}는 인사를 어떻게 하니?",
-                                           neu_bhv="do_explain_A", neu="몰라도 괜찮아~ 파이보가 알려줄게!",
-                                           act_bhv="do_agree", act="인사를 잘 하는구나!")
+                                           neu_bhv="do_explain_A", neu="몰라도 괜찮아~ 파이보가 알려줄게!")
         
         # 2.3 문제 인식
         cm.tts(bhv="do_question_L", string="어른들을 보고도 인사를 하지 않으면 어른들은 어떻게 생각할까?")

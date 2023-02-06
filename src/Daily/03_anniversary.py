@@ -7,8 +7,8 @@ import re
 import random
 from datetime import date
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -21,7 +21,7 @@ audio = TextToSpeech()
 class Daily():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
         self.this_year = date.today().year
         self.dob_child = [1998, 10, 2]    # 나중엔 사용자 DB에서 참조하도록
         self.age_child = (self.this_year-self.dob_child[0]) + 1
@@ -31,7 +31,7 @@ class Daily():
     def Bday(self):   
         
         # 1.1 기념일 알림
-        # audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/**")
+        audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/기분좋음.wav", out='local', volume=-1500, background=False)
         cm.tts(bhv="do_joy_A", string=f"3일 뒤 {wm.word(self.user_name, type=0)} 생일이지?")
         answer = cm.responses_proc(re_bhv="do_joy_A", re_q=f"3일 뒤 {wm.word(self.user_name, type=0)} 생일이지?",
                                    pos_bhv="do_joy_A", pos=f"{wm.word(self.user_name, type=0)}가 벌써 {self.age_child}살이 되는 구나!",
@@ -229,4 +229,4 @@ class Daily():
         
 if __name__ == "__main__":
     day = Daily()
-    day.Christmas()
+    day.Bday()

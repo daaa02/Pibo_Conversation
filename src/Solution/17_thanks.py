@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Solution():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
                 
         
     def Thanks(self):
@@ -66,7 +66,6 @@ class Solution():
                                    pos_bhv="do_agree", pos="나도 그렇게 생각해!",
                                    neu_bhv="do_suggestion_S", neu="괜찮아~ 모를 수 있어~ 예쁜 편지를 적어봐도 좋을 것 같아!",
                                    act_bhv="do_agree", act="나도 그렇게 생각해!")
-        
         
         # 2.1 문제 해결
         cm.tts(bhv="do_joy_A", string="파이보도 이제 다른 사람들에게 고맙다고 잘 표현할 수 있도록 노력해야겠다~ 알려줘서 정말 고마워!")

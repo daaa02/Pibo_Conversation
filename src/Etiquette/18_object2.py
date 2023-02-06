@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,8 +20,8 @@ audio = TextToSpeech()
 class Etiquette():    
     
     def __init__(self): 
-        self.user_name = '다영'
-        self.correct = ['친구', '가위', '날', '주', '줄']
+        self.user_name = '가영'
+        self.correct = ['손잡이', '날', '위험', '가위']
         self.ox = ''
                 
         
@@ -89,7 +89,7 @@ class Etiquette():
                                        act_bhv="do_explain_B", act="사람이 다치지 않도록 칼 심을 넣어서 조심스럽게 전달해 줘야겠지?")
         
         # 2.3 문제 인식
-        cm.tts(bhv="do_question_L", string="가위와 칼은 날카로운 물건이야. 날 쪽으로 건네주면 다른 사람이 다치게 될 수 있겠지?")
+        cm.tts(bhv="do_question_L", string="가위와 칼은 날카로운 물건이야. 날 쪽으로 건네주면 다른 사람이 다칠 수 있겠지?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="가위와 칼은 날카로운 물건이야. 날 쪽으로 건네주면 다른 사람이 다치게 될 수 있겠지?",
                                    pos_bhv="do_explain_C", pos="다른 사람들과 사용할 땐 조심스럽게 건네줘야 해!",
                                    neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어~ 다른 사람들과 사용할 땐 조심스럽게 건네줘야 해!",

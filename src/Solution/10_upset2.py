@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Solution():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
                 
         
     def Upset2(self):
@@ -46,8 +46,6 @@ class Solution():
         cm.tts(bhv="do_question_S", string="속상한 마음을 다른 사람에게 말하는 게 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"주변에서 누가 가장 {wm.word(self.user_name, 0)}를 많이 혼내니?",
                                    pos_bhv="do_agree", pos="그렇게 생각하는구나!",
-                                   neu_bhv="do_agree", neu="그렇게 생각하는구나!",
-                                   neg_bhv="do_agree", neg="그렇게 생각하는구나!",
                                    act_bhv="do_agree", act="그렇게 생각하는구나!")
 
         cm.tts(bhv="do_question_L", string="다른사람에게 속상한 마음을 말한다면 어떻게 말해야 할까?")
@@ -58,7 +56,7 @@ class Solution():
         
         cm.tts(bhv="do_question_L", string="속상할 땐 어떻게 해야 기분이 나아질까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="속상할 땐 어떻게 해야 기분이 나아질까?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")
+                                   neu_bhv="do_agree", neu="괜찮아~ 모를 수도 있어~")
         
         if answer[0] != "negative":
         
@@ -69,7 +67,7 @@ class Solution():
                                     act_bhv="do_joy_B", act="기분이 좋아질 것 같아!")
         
         # 2.1 문제 해결
-        cm.tts(bhv="do_joy_A", string="파이보도 혼나고 나서 기분이 좋아지도록 노력해야겠다~ 알려줘서 정말 고마워!")
+        cm.tts(bhv="do_joy_A", string="파이보도 이제 내 마음을 말과 행동으로 다른 사람들에게 오해 받지 않게 잘 말할 수 있도록 노력해야겠다~ 알려줘서 정말 고마워!")
                             
         
         

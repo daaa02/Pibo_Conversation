@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,8 +20,8 @@ audio = TextToSpeech()
 class Etiquette():    
     
     def __init__(self): 
-        self.user_name = '다영'
-        self.correct = ['친구', '장난감', '정리']
+        self.user_name = '가영'
+        self.correct = ['장난감', '정리']
         self.ox = ''
                 
         
@@ -77,15 +77,14 @@ class Etiquette():
                                        act_bhv="do_question_S", act="어떤 장난감을 가지고 놀았니?")
             
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 장난감을 가지고 놀았니?",
-                                       pos_bhv="do_joy_B", pos="정말 재밌었겠는걸?",
-                                       neu_bhv="do_agree", neu="기억이 안 날 수 있지~",
-                                       act_bhv="do_joy_B", act="정말 재밌었겠는걸?")
+                                       neu_bhv="do_agree", neu="기억이 안 날 수 있지~")
             
             cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 장난감을 가지고 논 뒤에 정리를 잘 하니?")
             answer = cm.responses_proc(re_bhv="do_question_L", re_q="친구 집에서 늦게 까지 놀면 집에서 엄마가 기다리시겠지?",
-                                       pos_bhv="do_explain_A", pos="대단한 걸? 자기가 가지고 논 장난감은 스스로 정리하는 것이 맞아~",
-                                       neu_bhv="do_explain_A", neu="자기가 가지고 논 장난감이라면 스스로 정리하는 것이 맞아~")
-        
+                                       pos_bhv="do_explain_A", pos="자기가 가지고 논 장난감은 스스로 정리하는 것이 맞아~",
+                                       neu_bhv="do_explain_A", neu="자기가 가지고 논 장난감이라면 스스로 정리하는 것이 맞아~",
+                                       act_bhv="do_explain_A", act="자기가 가지고 논 장난감은 스스로 정리하는 것이 맞아~")
+                    
         # 2.3 문제 인식
         cm.tts(bhv="do_question_L", string="놀고 난 뒤 친구 혼자서 많은 장난감을 정리하려면 힘들겠지?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="놀고 난 뒤 친구 혼자서 많은 장난감을 정리하려면 힘들겠지?",

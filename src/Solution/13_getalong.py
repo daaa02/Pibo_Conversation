@@ -2,85 +2,63 @@
 
 # 친구랑 친하게 지내고 싶어 시나리오
 
+import os, sys
+import re
 import random
-import wave
-import os
-import sys
 
-sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from NLP import NLP, Dictionary
-from text_to_speech import TextToSpeech
-# from speech_to_text import speech_to_text
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
+from data.conversation_manage import ConversationManage, WordManage
+from data.speech_to_text import speech_to_text
+from data.text_to_speech import TextToSpeech, text_to_speech
 
-nlp = NLP()
-Dic = Dictionary()
-tts = TextToSpeech()
+cm = ConversationManage()
+wm = WordManage()
+audio = TextToSpeech()
 
 
-def text_to_speech(text):
-    filename = "tts.wav"
-    print("\n" + text + "\n")
-    tts.tts_connection(text, filename)
-    tts.play(filename, 'local', '-800', False)
+class Solution():    
     
+    def __init__(self): 
+        self.user_name = '윤지'
+                
+                
+    def Getalong(self):
+        
+        # 1.1 문제 제시
+        cm.tts(bhv="do_explain_A", string=f"파이보도 친구들이랑 친하게 지내고 싶어.")
 
-def fb(option):
-    if option == "pos":     # 긍정 답변 옵션
-        feedback_list = ["정말? ", "그래? ", "그렇구나. ", "그랬구나. "]
-        feedback = random.choice(feedback_list)
+        # 1.2 경험 질문        
+        cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}의 가장 친한 친구 이름은 뭐니? 한 명만 말해봐.")
+        answer = cm.responses_proc(re_bhv="do_question_L", string=f"{wm.word(self.user, 0)}의 가장 친한 친구는 누구니?") 
         
-    elif option == "neg":   # 부정 답변 옵션
-        feedback_list = ["그래? ", "그렇구나. ", "그랬구나. "]
-        feedback = random.choice(feedback_list)
+        cm.tts(bhv="do_question_S", string=f"그 친구랑 어떻게 친해지게 됐니?")
+        answer = cm.responses_proc(re_bhv="do_question_S", string=f"그 친구랑 어떻게 친해지게 됐니?",
+                                   neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")
         
-    elif option == "neu":   # 중립 답변 옵션
-        feedback_list = ["그래? ", "음~"]
-        feedback = random.choice(feedback_list)
+        cm.tts(bhv="do_question_S", string=f"그 친구랑 뭐하고 놀 때가 제일 재밌어?")
+        answer = cm.responses_proc(re_bhv="do_question_S", string=f"그 친구랑 뭐하고 놀 때가 제일 재밌어?",
+                                   pos_bhv="do_agree", pos="그렇게 생각하는구나!",
+                                   act_bhv="do_agree", act="그렇게 생각하는구나!")
         
-    elif option == "act":   # 행동 답변 옵션
-        feedback_list = ["정말? ", "그래? ", "그렇구나. ", "그랬구나. "]
-        feedback = random.choice(feedback_list)
+        cm.tts(bhv="do_question_S", string=f"또 친해지고 싶은 친구가 있니?")
+        answer = cm.responses_proc(re_bhv="do_question_S", string=f"또 친해지고 싶은 친구가 있니?")
 
-    return feedback
-    
-class Solution():
-            
-    def getalong(self, name):
-        text_to_speech(f"친구들이랑 친하게 지내고 싶어. 어떻게 하면 좋을까?")
-        user_said = input("입력: ")
-        print("\n")
+        cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)} 주변에는 어떤 친구들이 인기가 많니?")
+        answer = cm.responses_proc(re_bhv="do_question_S", string=f"{wm.word(self.user_name, 0)} 주변에는 어떤 친구들이 인기가 많니?",
+                                   pos_bhv="do_agree", pos=f"재미있는 친구들도 인기가 많겠지?",
+                                   neu_bhv="do_explain_A", neu=f"괜찮아~ 대답하기 어려울 수 있어. 아마 재미있는 친구들도 인기가 많겠지?",
+                                   act_bhv="do_agree", act=f"재미있는 친구들도 인기가 많겠지?")
         
-        text_to_speech(fb(option="act") + f"{name}의 가장 친한 친구는 누구니? 한 명만 말해봐.")
-        user_said = input("입력: ") 
-        print("\n")
+        cm.tts(bhv="do_question_S", string=f"어떻게 하면 새로운 친구와 친해질 수 있을까?")
+        answer = cm.responses_proc(re_bhv="do_question_S", string=f"어떻게 하면 새로운 친구와 친해질 수 있을까?",
+                                   neu_bhv="do_agree", neu="괜찮아~ 말하기 어려울 수 있어~")
         
-        text_to_speech(fb(option="act") + "어떻게 친해지게 됐니?")
-        user_said = input("입력: ")
-        print("\n")
-        
-        text_to_speech(fb(option="act")+ f"그 친구랑 뭐하고 놀 때가 가장 재밌어?")
-        user_said = input("입력: ")
-        print("\n")
-        
-        text_to_speech(fb(option="act") + "그렇게 생각하는구나!")
-        print("\n")
-        
-        text_to_speech("또 친해지고 싶은 친구가 있니?")
-        user_said = input("입력: ")
-        print("\n")
-        
-        text_to_speech(fb(option="act") + "새로운 친구와 어떻게 하면 친해질 수 있을까?")
-        user_said = input("입력: ")
-        print("\n")
-        
-        text_to_speech(fb(option="act") + "친구들과 어떻게 사이좋게 지낼 수 있을까?")
-        user_said = input("입력: ")
-        print("\n")
-        
-        text_to_speech(fb(option="act") + "파이보도 친구들이랑 사이좋게 잘 지내야겠다~ 알려줘서 정말 고마워!\n")
+        # 2.1 문제 해결
+        cm.tts(bhv="do_joy_A", string=f"파이보도 친구들이랑 사이좋게 잘 지내야 겠다~ 알려줘서 정말 고마워!")
     
     
 if __name__ == "__main__":
+    
     sol = Solution()
-    name = input("\nuser_name: ")
-    sol.getalong(name)
+    sol.Getalong()

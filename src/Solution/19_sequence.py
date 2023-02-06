@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Solution():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
                 
         
     def Sequence(self):
@@ -59,7 +59,6 @@ class Solution():
                                    pos_bhv="do_agree", pos="또, 노래를 들어도 시간이 빨리가겠다!",
                                    neu_bhv="do_suggestion_S", neu="괜찮아~ 생각이 나지 않을 수 있어~ 노래를 들으면 시간이 빨리갈 것 같아!",
                                    act_bhv="do_agree", act="또, 노래를 들어도 시간이 빨리가겠다!")
-        
         
         # 2.1 문제 해결
         cm.tts(bhv="do_joy_A", string="파이보도 이제 차례를 잘 지키도록 노력해야겠다~ 알려줘서 정말 고마워!")

@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,18 +20,163 @@ audio = TextToSpeech()
 class Roleplay():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
+        self.role = []
         self.count = 0
         
     
-    def Flying(self):
+    def Weather(self):
         
         # 1. 역할 알림
         cm.tts(bhv="do_suggestion_S", string="역할 놀이를 해볼까?")
         cm.tts(bhv="do_suggestion_S", string="오늘은 날씨 역할을 해보자~ ") 
-      
-        # 4. 마무리 대화
         
+        # 2. 역할 놀이 (1 of 4)
+        weather = (['하늘에 떠 있는 뜨거운 해', '기지개를 피면서 해가 뜨는 모습을 표현해', '맑은 날씨', '하늘에 해가 떴다!', '해가 떠서 세상이 따듯해졌어~'],
+                  ['하늘에서 내리는 비', '손가락으로 비가 내리는 모습을 흉내내','비오는 날씨', '하늘에서 비가 내린다!', '비가 와서 세상이 추워졌어~'],
+                  ['하늘의 천둥이', '박수를 치면서 천둥을 흉내내', '천둥치는 날씨', '하늘에서 천둥이 친다!', '천둥이 쳐서 세상이 어두워졌어~'],
+                  ['하늘의 바람이', '입으로 바람을 불면서 바람을 흉내내', '바람부는 날씨', '하늘에서 바람이 분다!', '바람이 불어서 세상이 시원해졌어~'])
+
+        role = random.choice([weather[0], weather[1], weather[2], weather[3]])
+        
+        if role == weather[0]: self.role = ['해', '해가 뜬 맑은']
+        if role == weather[1]: self.role = ['비', '비가 오는']
+        if role == weather[2]: self.role = ['천둥', '천둥이 치는']
+        if role == weather[3]: self.role = ['바람', '바람이 부는']                
+        
+        cm.tts(bhv="do_explain_A", string=f"이제 우리는 {role[0]}야!")
+        
+        cm.tts(bhv="do_suggestion_S", string=f"{role[1]}보자! 시이작!")
+        answer = cm.responses_proc(re_bhv="do_suggestion_S", re_q=f"{role[1]}보자! 시이작!",
+                                   neu_bhv="do_explain_B", neu=f"내가 {role[2]}를 들려줄게!",
+                                   act_bhv="do_joy_A", act=f"{role[3]}")
+        
+        cm.tts(bhv="do_agree", string=f"{role[4]}")
+        
+        # 대화 시작 (3 of 7)
+        rand = random.sample(range(1,7), 3)
+        
+        while True:
+            for i in range(len(rand)):
+                
+                if rand[i] == 1:                             
+                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role[0], 1)} 된다면 어디에 가고 싶니?")
+                    answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role[0], 1)} 된다면 어디에 가고 싶니?",
+                                               pos_bhv="do_question_S", pos="또 어디에 가고 싶니?",
+                                               neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
+                                               act_bhv="do_question_S", act=f"또 어디에 가고 싶니?")                    
+                    
+                    if answer[0] == "positive" or answer[0] == "action":
+                        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"또 어디에 가고 싶니?",
+                                                   neu_bhv="do_agree", neu="괜찮아~ 바로 생각 나지 않을 수 있어~")
+                                            
+                    self.count += 1 
+
+                if rand[i] == 2:                             
+                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role[0], 1)} 된다면 누구한테 가고 싶니?")
+                    answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role[0], 1)} 된다면 누구한테 가고 싶니?",
+                                               pos_bhv="do_question_S", pos="가서 무엇을 하고 싶니?",
+                                               neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
+                                               act_bhv="do_question_S", act=f"가서 무엇을 하고 싶니?")                    
+                    
+                    if answer[0] == "positive" or answer[0] == "action":
+                        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"가서 무엇을 하고 싶니?",
+                                                   neu_bhv="do_agree", neu="괜찮아~ 바로 생각 나지 않을 수 있어~")
+                                                         
+                    self.count += 1 
+
+                if rand[i] == 3:                             
+                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.role[0], 1)}가 되어 {wm.word(self.user_name, 0)} 집으로 가보자. {wm.word(self.user_name, 0)}는 {self.role[1]} 날씨에 무엇을 하고 있을까?")
+                    answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.role[0], 1)}가 되어 {wm.word(self.user_name, 0)} 집으로 가보자. {wm.word(self.user_name, 0)}는 {self.role[1]} 날씨에 무엇을 하고 있을까?",
+                                               pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)} 기분은 어떨까?",
+                                               neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
+                                               act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)} 기분은 어떨까?")                    
+                    
+                    if answer[0] == "positive" or answer[0] == "action":
+                        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)} 기분은 어떨까?",
+                                                   neu_bhv="do_agree", neu=f"괜찮아~ 바로 생각 나지 않을 수 있어~",
+                                                   act_bhv="do_agree", act=f"그런 기분이구나!")
+                                                             
+                    self.count += 1 
+
+                if rand[i] == 4:                             
+                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.role[0], 2)} 누구에게 가장 필요할까?")
+                    answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.role[0], 2)} 누구에게 가장 필요할까?",
+                                               pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 {wm.word(self.role[0], 1)} 필요할 때가 있었니?",
+                                               neu_bhv="do_agree", neu="몰라도 괜찮아~",
+                                               act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 {wm.word(self.role[0], 1)} 필요할 때가 있었니?")                    
+                    
+                    if answer[0] == "positive" or answer[0] == "action":
+                        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 {wm.word(self.role[0], 1)} 필요할 때가 있었니?",
+                                                   neu_bhv="do_agree", neu="몰라도 괜찮아~")
+                                                           
+                    self.count += 1 
+
+                if rand[i] == 5:                             
+                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role[1], 1)} 날씨에 기분이 어때?")
+                    answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role[1], 1)} 날씨에 기분이 어때?",
+                                               pos_bhv="do_question_S", pos="그럴 때 무엇을 하고 싶니?",
+                                               neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",
+                                               act_bhv="do_question_S", act=f"그럴 때 무엇을 하고 싶니?")                    
+                    
+                    if answer[0] == "positive" or answer[0] == "action":
+                        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그럴 때 무엇을 하고 싶니?",
+                                                   neu_bhv="do_agree", neu="괜찮아~ 바로 생각 나지 않을 수 있어~")
+                                                              
+                    self.count += 1 
+
+                if rand[i] == 6:                             
+                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role[1], 1)} 날씨에 누가 생각나니?")
+                    answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role[1], 1)} 날씨에 누가 생각나니?",
+                                               pos_bhv="do_question_S", pos="함께 하고 싶은게 있니?",
+                                               neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
+                                               act_bhv="do_question_S", act=f"함께 하고 싶은게 있니?")                    
+                    
+                    if answer[0] == "positive" or answer[0] == "action":
+                        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"함께 하고 싶은게 있니?",
+                                                   neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~")
+                                                         
+                    self.count += 1 
+
+                if rand[i] == 7:                             
+                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.role[1], 1)} 날씨는 어떤 계절에 가장 많이 나타날까?")
+                    answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.role[1], 1)} 날씨는 어떤 계절에 가장 많이 나타날까?",
+                                               pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}는 어떤 계절을 좋아하니?",
+                                               neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
+                                               act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}는 어떤 계절을 좋아하니?")                    
+                    
+                    if answer[0] == "positive" or answer[0] == "action":
+                        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 어떤 계절을 좋아하니?",
+                                                   pos_bhv="do_question_S", pos=f"그 계절에는 무엇을 하면 재미있니?",
+                                                   neu_bhv="do_agree", neu="괜찮아~ 바로 생각 나지 않을 수 있어~",
+                                                   act_bhv="do_question_S", act="그 계절에는 무엇을 하면 재미있니?")
+                        
+                        if answer[0] == "positive" or answer[0] == "action":
+                            answer = cm.responses_proc(re_bhv="do_question_S", re_q="그 계절에는 무엇을 하면 재미있니?",
+                                                       pos_bhv="do_joy_B", pos="생각만 해도 좋은 걸?",
+                                                       neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",
+                                                       act_bhv="do_joy_B", act="생각만 해도 좋은 걸?")
+                                                               
+                    self.count += 1 
+
+            if self.count < 3:
+                print(self.count)
+                continue
+            
+            elif self.count == 3:
+                print(self.count)
+                break
+        
+        # 4. 마무리 대화
+        cm.tts(bhv="do_joy_A", string=f"직접 날씨가 되어보니 신기한 걸? {self.role[0]} 역할을 정말 잘 해줬어! 다음에 또 재미있는 역할놀이 하자~")
+
+
+
+
+if __name__ == "__main__":
+    
+    rop = Roleplay()
+    rop.Weather()
 
 
 if __name__ == "__main__":

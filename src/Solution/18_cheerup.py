@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Solution():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
                 
         
     def Cheerup(self):
@@ -57,7 +57,6 @@ class Solution():
                                    pos_bhv="do_agree", pos="친구에게 도움이 되겠는 걸?",
                                    neu_bhv="do_suggestion_S", neu="괜찮아~ 모를 수도 있어~ 친구랑 재미있는 놀이를 같이해도 좋겠지?",
                                    act_bhv="do_agree", act="친구에게 도움이 되겠는 걸?")
-        
         
         # 2.1 문제 해결
         cm.tts(bhv="do_joy_A", string="파이보도 기분이 안 좋은 친구를 잘 도와줘 볼게. 알려줘서 정말 고마워!")

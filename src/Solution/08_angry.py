@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Solution():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
                 
         
     def Angry(self):
@@ -30,8 +30,7 @@ class Solution():
         
         # 1.2 경험 질문
         cm.tts(bhv="do_sad", string=f"{wm.word(self.user_name, 0)}는 어떻게 화를 참니?")
-        answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}는 어떻게 화를 참니?",
-                                   pos_bhv="do_compliment_S", pos="대단한 걸?")    
+        answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}는 어떻게 화를 참니?")    
     
         cm.tts(bhv="do_question_L", string="화가 날때 화를 참으면 어떤 점이 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="화가 날때 화를 참으면 어떤 점이 좋을까?",

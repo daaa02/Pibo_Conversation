@@ -4,8 +4,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi//home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -18,7 +18,7 @@ audio = TextToSpeech()
 class Roleplay():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
         self.role = ''
         
     
@@ -33,10 +33,10 @@ class Roleplay():
         
         if rand == 1:
             self.role = "마법사"
-            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
             cm.tts(bhv="do_explain_A", string="이제 우리는 하늘에 사는 마법사야~ 파이보가 먼저 주문을 걸어볼게. 천둥아 쳐라 얍!")
-            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/04_thunder.wav")
+            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/04_thunder.wav")
             
             cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 날씨 주문을 걸어봐! 먼저 비, 바람, 천둥 등 날씨를 말하고 얍!을 외치면 돼~")
             answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="날씨 주문을 걸어봐! 먼저 비, 바람, 천둥 등 날씨를 말하고 얍!을 외치면 돼~",
@@ -50,28 +50,28 @@ class Roleplay():
                     if weather[i] in answer[1]:
                 
                         if "비" in answer[1]:   # "비바람" 도 여기 들어감
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/02_rain.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/02_rain.wav")
                             print("비")
                             
                         if "바람" in answer[1]:
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/05_wind.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/05_wind.wav")
                             print("바람")                            
                             
                         if "천둥" in answer[1]:
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/04_thunder.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/04_thunder.wav")
                             print("천둥")                            
                         
                         if "눈" in answer[1]:
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/06_snow.wav")  
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/06_snow.wav")  
                             print("눈")                                          
                         
                         if "해" or "맑" in answer[1]:
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/03_clear.wav")    
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/03_clear.wav")    
                             print("해")
                         
                 cm.tts(bhv="do_joy_A", string="우와~ 주문을 잘 거는 걸?")    
@@ -88,28 +88,28 @@ class Roleplay():
                     if weather[i] in answer[1]:
                                         
                         if "비" in answer[1]:   # "비바람" 도 여기 들어감
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/02_rain.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/02_rain.wav")
                             print("비")
                             
                         if "바람" in answer[1]:
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/05_wind.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/05_wind.wav")
                             print("바람")                            
                             
                         if "천둥" in answer[1]:
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/04_thunder.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/04_thunder.wav")
                             print("천둥")                            
                         
                         if "눈" in answer[1]:
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/06_snow.wav")  
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/06_snow.wav")  
                             print("눈")                                          
                         
                         if "해" or "맑" in answer[1]:
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/03_clear.wav")    
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/03_clear.wav")    
                             print("해")   
                         
                     cm.tts(bhv="do_joy_B", string="빨리 소풍 가고 싶다!")                
@@ -118,8 +118,8 @@ class Roleplay():
             self.role = "도깨비"
             
             cm.tts(bhv="do_explain_A", string="이제 우리는 숲 속의 도깨비야~ 파이보가 먼저 주문을 걸어볼게. 뻐꾸기야 나타나라 얍!")
-            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/07_owl.wav")
+            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/07_owl.wav")
             
             cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 마법 주문을 걸어서 동물을 불러봐! 동물 이름을 말하고 얍!을 외치면 돼~")
             
@@ -131,8 +131,8 @@ class Roleplay():
             
             if answer[0] == "action" or answer[0] == "positive":  
                 if "늑대" in answer[1]:                    
-                    # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                    # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/08_wolf.wav")
+                    audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                    audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/08_wolf.wav")
                     cm.tts(bhv="do_joy_A", string="늑대가 나타났다~")
                     
             cm.tts(bhv="do_suggestion_S", string="이번에는 코끼리를 불러보자!")
@@ -142,16 +142,16 @@ class Roleplay():
 
             if answer[0] == "action" or answer[0] == "positive":  
                 if "코끼리" in answer[1]:                    
-                    # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                    # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/09_elephant.wav")
+                    audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                    audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/09_elephant.wav")
                     cm.tts(bhv="do_joy_B", string="우와~ 주문을 잘 거는 걸?")                
                 
         if rand == 3:
             self.role = "요정"
             
             cm.tts(bhv="do_explain_A", string="이제 우리는 물에 사는 요정이야~ 파이보가 먼저 주문을 걸어볼게. 바다 갈매기야 나타나라 얍!")
-            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-            # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/11_seagull.wav")
+            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+            audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/11_seagull.wav")
             
             cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 마법 주문을 걸어서 동물을 불러봐! 동물 이름을 말하고 얍!을 외치면 돼~")
             
@@ -163,8 +163,8 @@ class Roleplay():
             
             if answer[0] == "action" or answer[0] == "positive":  
                 if "오리" in answer[1]:                    
-                    # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                    # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/12_duck.wav")
+                    audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                    audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/12_duck.wav")
                     cm.tts(bhv="do_joy_A", string="귀여운 오리가 나타났다~")
                     
             cm.tts(bhv="do_suggestion_S", string="이번에는 개구리를 불러보자!")
@@ -174,8 +174,8 @@ class Roleplay():
 
             if answer[0] == "action" or answer[0] == "positive":  
                 if "개구리" in answer[1]:                    
-                    # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-                    # audio.audio_play("Pibo_Conversation/src/Roleplay/Sound/13_frog.wav")
+                    audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
+                    audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/13_frog.wav")
                     cm.tts(bhv="do_joy_B", string="우와~ 주문을 잘 거는 걸?")   
                     
         # 대화 시작

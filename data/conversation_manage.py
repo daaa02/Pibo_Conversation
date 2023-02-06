@@ -6,13 +6,14 @@ import socket
 from threading import Thread
 
 sys.path.append('/home/kiro/workspace/Conversation_Scenarios/data')
+sys.path.append('/home/pi/Pibo_Conversation/data')
 
 import google
 from speech_to_text import speech_to_text
 from text_to_speech import text_to_speech
 
-# import openpibo
-# import behavior.behavior_list as behavior
+import openpibo
+import behavior.behavior_list as behavior
 
 """
 STT 모듈이랑 답변 처리 모듈 통합하고 있는 파일
@@ -102,12 +103,12 @@ class ConversationManage():
         * behavior: TTS 와 함께할 동작 ex. 'do_joy'
         * string: 발화할 TTS 내용
         """
-        t = Thread(target=text_to_speech, args=([string]))
+        t = Thread(target=text_to_speech, args=[string])
         t.start()
         
         while True:
             time.sleep(1)
-            # bhv()
+            behavior.execute(bhv)
             break    
         
         
@@ -170,7 +171,7 @@ class ConversationManage():
         self.answer 결과에 맞는 feedback 답변을 TTS로 출력
         """             
         if self.answer[0] == "positive":     # 긍정 답변 옵션
-            feedback_list = ["정말? ", "그래? ", "오호~ "]
+            feedback_list = ["으음!? ", "그래애? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
                 cm.tts(bhv=pos_bhv, string=self.feedback + pos)
@@ -178,7 +179,7 @@ class ConversationManage():
                 cm.tts(bhv=pos_bhv, string=pos)        
             
         elif self.answer[0] == "negative":   # 부정 답변 옵션
-            feedback_list = ["그래? ", "음~ "]
+            feedback_list = ["으음!? ", "그래애? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
                 cm.tts(bhv=neg_bhv, string=self.feedback + neg)
@@ -186,7 +187,7 @@ class ConversationManage():
                 cm.tts(bhv=neg_bhv, string=neg)
             
         elif self.answer[0] == "neutral":   # 중립 답변 옵션
-            feedback_list = ["그래? "]
+            feedback_list = ["그래애? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
                 cm.tts(bhv=neu_bhv, string=self.feedback + neu)
@@ -194,7 +195,7 @@ class ConversationManage():
                 cm.tts(bhv=neu_bhv, string=neu)
             
         elif self.answer[0] == "action":
-            feedback_list = ["그래? ", "정말? "]
+            feedback_list = ["으음?! ", "그래애? ", "오호!? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
                 cm.tts(bhv=act_bhv, string=self.feedback + act)
@@ -258,7 +259,7 @@ class WordManage():
         type2: '다영'은 / '파이보'는
         type3: '다영'을 / '파이보'를
         type4: '다영'아 / '파이보'야
-        type4: '다영'과 / '파이보'와
+        type5: '다영'과 / '파이보'와
         * 주의: 띄워쓰기 없어야 함 (ex. '작은 개구리' => '작은'의 영향 받는 듯;;)
         """
         if type == 0:

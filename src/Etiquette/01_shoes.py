@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Etiquette():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '가영'
         self.correct = ['신발']  
         self.ox = ''
         
@@ -47,8 +47,8 @@ class Etiquette():
                 cm.tts(bhv="do_compliment_S", string="맞아! 아주 똑똑한 걸?")
             else:
                 print(self.ox)
-                cm.tts(bhv="do_suggestion_S", string="또 무엇을 잘못했을까?")
-                answer = cm.responses_proc(re_bhv="do_suggestion_S", re_q="또 무엇을 잘못했을까?")
+                cm.tts(bhv="do_question_S", string="또 무엇을 잘못했을까?")
+                answer = cm.responses_proc(re_bhv="do_question_S", re_q="또 무엇을 잘못했을까?")
                 
                 if answer[0] == "action":        
                                 

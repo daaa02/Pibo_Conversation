@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,8 +20,8 @@ audio = TextToSpeech()
 class Etiquette():    
     
     def __init__(self): 
-        self.user_name = '다영'
-        self.correct = ['친구', '집', '늦', '놀']
+        self.user_name = '가영'
+        self.correct = ['밤', '늦']
         self.ox = ''
                 
         
@@ -76,9 +76,7 @@ class Etiquette():
                                        act_bhv="do_question_S", act="무엇을 하고 놀았니?")
             
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="무엇을 하고 놀았니?",
-                                       pos_bhv="do_joy_B", pos="정말 재밌었겠는걸?",
-                                       neu_bhv="do_agree", neu="기억이 안 날 수 있지~",
-                                       act_bhv="do_joy_B", act="정말 재밌었겠는걸?")
+                                       neu_bhv="do_agree", neu="기억이 안 날 수 있지~")
             
             cm.tts(bhv="do_question_L", string="친구 집에서 늦게 까지 놀면 집에서 엄마가 기다리시겠지?")
             answer = cm.responses_proc(re_bhv="do_question_L", re_q="친구 집에서 늦게 까지 놀면 집에서 엄마가 기다리시겠지?")

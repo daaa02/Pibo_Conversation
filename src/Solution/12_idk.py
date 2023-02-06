@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Solution():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
                 
         
     def Idk(self):
@@ -43,9 +43,9 @@ class Solution():
         
         cm.tts(bhv="do_question_S", string="누구에게 물어보는것이 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="누구에게 물어보는것이 좋을까?",
-                                   pos_bhv="do_agree", pos="나도 그렇게 생각해!",
+                                   pos_bhv="do_agree", pos="나한테 물어봐도 좋아!",
                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",
-                                   act_bhv="do_agree", act="나도 그렇게 생각해!")
+                                   act_bhv="do_agree", act="나한테 물어봐도 좋아!")
         
         cm.tts(bhv="do_question_L", string=f"그럼 {wm.word(self.user_name, 0)}가 다른 친구들보다 어떤 걸 잘 안다고 생각하니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"그럼 {wm.word(self.user_name, 0)}가 다른 친구들보다 어떤 걸 잘 안다고 생각하니?",

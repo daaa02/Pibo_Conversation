@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Solution():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
                 
         
     def Upset3(self):
@@ -40,15 +40,12 @@ class Solution():
             
 
         cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 친구에게 기분 나쁜 말을 들었을 때 어떻게 하니?")
-        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 친구에게 기분 나쁜 말을 들었을 때 어떻게 하니?",
-                                   neg_bhv="do_agree", neg="몰라도 괜찮아~")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 친구에게 기분 나쁜 말을 들었을 때 어떻게 하니?")
 
         cm.tts(bhv="do_question_L", string="친구에게 기분 나쁜 말을 들으면 똑같이 기분 나쁜 말을 해줘야 할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="다른사람에게 속상한 마음을 말한다면 어떻게 말해야 할까?",
-                                   pos_bhv="do_agree", pos="친구를 속상하게 만드는 건 좋지 않겠지?",
                                    neu_bhv="do_explain_C", neu="괜찮아~ 생각이 나지 않을 수 있어~ 친구를 속상하게 만드는 건 좋지 않겠지?",
-                                   neg_bhv="do_explain_C", neg="친구를 속상하게 만드는 건 좋지 않겠지?",
-                                   act_bhv="do_agree", act="친구를 속상하게 만드는 건 좋지 않겠지?")
+                                   neg_bhv="do_explain_C", neg="친구를 속상하게 만드는 건 좋지 않겠지?")
         
         cm.tts(bhv="do_question_L", string="기분 나쁜 말을 들었을 때 친구에게 뭐라고 말해주는게 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="기분 나쁜 말을 들었을 때 친구에게 뭐라고 말해주는게 좋을까?",

@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Solution():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
                 
         
     def Apology(self):
@@ -57,12 +57,11 @@ class Solution():
                                    neg_bhv="do_compliment_L", neg="정말 대단한 걸?")
         
         if answer[0] !="negative":
-            cm.tts(bhv="do_question_L", string="그런데, 미안하다고 말을 안 하면 친구들이 나의 미안한 마음을 알 수 있을까?")
+            cm.tts(bhv="do_question_L", string="그런데, 사과를 안 하면 친구들이 마음을 모르겠지?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="그런데, 미안하다고 말을 안 하면 친구들이 나의 미안한 마음을 알 수 있을까?",
-                                       pos_bhv="do_agree", pos="아마 친구들이 알기 어렵겠지?",
-                                       neu_bhv="do_agree", neu="아마 친구들이 알기 어렵겠지?",
-                                       neg_bhv="do_explain_B", neg="친구들이 알기 어렵겠지?",
-                                       act_bhv="do_agree", act="친구들이 알기 어렵겠지?")
+                                       pos_bhv="do_agree", pos="친구들이 알기 어려울거야~",
+                                       neu_bhv="do_agree", neu="아마 친구들이 알아채기 어려울거야.",
+                                       act_bhv="do_agree", act="친구들이 알기 어려울거야~")
         
         # 2.1 문제 해결
         cm.tts(bhv="do_joy_A", string="파이보도 이제 다른 친구들에게 미안하다고 잘 표현할 수 있도록 노력해야겠다~ 알려줘서 정말 고마워!")

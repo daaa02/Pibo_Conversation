@@ -17,6 +17,7 @@ from openpibo.oled import Oled
 
 # my module
 sys.path.append('/home/pi/Conversation_Scenarios/data/behavior')
+sys.path.append('/home/pi/Pibo_Conversation/data/')
 import eye_list as eye
 import display_list as oled
 from text_to_speech import TextToSpeech, text_to_speech
@@ -32,14 +33,14 @@ def do_breath1():
     while True: 
         motion.set_motion(name="breath1", cycle=1)
         break
-    
+
 
 def do_question_L():
     eye.e_question()
     t = Thread(target=oled.o_question, args=(), daemon=True)
     t.start()
     while True: 
-        audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/물음표소리1.wav", out='local', volume=-1200, background=True)
+        audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/물음표소리1.wav", out='local', volume=-1500, background=True)
         motion.set_motion(name="m_question_L", cycle=1)
         break
     
@@ -47,7 +48,7 @@ def do_question_L():
 def do_question_S():
     eye.e_question()
     while True:
-        audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/물음표소리1.wav", out='local', volume=-1200, background=True)
+        audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/물음표소리1.wav", out='local', volume=-1500, background=True)
         motion.set_motion(name="m_question_S", cycle=1)
         break
     
@@ -95,7 +96,7 @@ def do_photo():
     while True:
         motion.set_motion(name="m_photo-1", cycle=1)
         break
-    audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/사진기소리.mp3", out='local', volume=-1000, background=True)
+    audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/사진기소리.mp3", out='local', volume=-1000, background=True)
     while True:
         motion.set_motion(name="m_photo-2", cycle=1)
         break
@@ -108,7 +109,7 @@ def do_stamp():
     while True:
         motion.set_motion(name="m_stamp-1", cycle=1)        
         break
-    audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/스탬프소리2.wav", out='local', volume=-1500, background=True)
+    audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/스탬프소리2.wav", out='local', volume=-1500, background=True)
     while True:
         motion.set_motion(name="m_stamp-2", cycle=1)        
         break
@@ -146,7 +147,7 @@ def do_wakeup():
     t = Thread(target=oled.o_wakeup, args=(), daemon=True)
     t.start()
     while True:
-        audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/경쾌한음악.wav", out='local', volume=-1500, background=True)
+        audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/경쾌한음악.wav", out='local', volume=-1500, background=True)
         motion.set_motion(name="m_wakeup", cycle=1)
         break
     
@@ -155,7 +156,7 @@ def do_compliment_L():
     oled.o_compliment()
     eye.e_compliment()
     while True:
-        audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/경쾌한음악.wav", out='local', volume=-1200, background=True)
+        audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/경쾌한음악.wav", out='local', volume=-1500, background=True)
         motion.set_motion(name="m_compliment_L", cycle=1)
         break
     
@@ -164,7 +165,7 @@ def do_compliment_S():
     oled.o_compliment()
     eye.e_compliment()
     while True:
-        audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/경쾌한음악.wav", out='local', volume=-1200, background=True)
+        audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/경쾌한음악.wav", out='local', volume=-1500, background=True)
         motion.set_motion(name="m_compliment_S", cycle=1)
         break
 
@@ -174,7 +175,7 @@ def do_agree():
     t = Thread(target=oled.o_agree, args=(), daemon=True)
     t.start()
     while True:
-        audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/딩동댕3.wav", out='local', volume=-1200, background=True)
+        audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/딩동댕3.wav", out='local', volume=-1500, background=False)
         motion.set_motion(name="m_agree", cycle=1)
         break
 
@@ -183,17 +184,17 @@ def do_joy_A():
     t = Thread(target=oled.o_joy, args=(), daemon=True)
     t.start()
     while True:
-        audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/기분좋음.wav", out='local', volume=-1200, background=True)
+        # audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/기분좋음.wav", out='local', volume=-1500, background=True)
         motion.set_motion(name="m_joy_A", cycle=1)
         break
 
 
-def do_joy_A():
+def do_joy_B():
     eye.e_joy()
     t = Thread(target=oled.o_joy, args=(), daemon=True)
     t.start()
     while True:
-        audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/기분좋음.wav", out='local', volume=-1200, background=True)
+        # audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/기분좋음.wav", out='local', volume=-1500, background=True)
         motion.set_motion(name="m_joy_B", cycle=1)
         break
     
@@ -203,9 +204,54 @@ def do_sad():
     t = Thread(target=oled.o_sad, args=(), daemon=True)
     t.start()
     while True:
-        audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/슬픈소리.wav", out='local', volume=-1500, background=True)
+        audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/슬픈소리.wav", out='local', volume=-1500, background=True)
         motion.set_motion(name="m_sad", cycle=1)
         break
     
+
+
+def execute(bhv):
+    if bhv == "do_breath1":
+        do_breath1()
+    if bhv == "do_question_L":
+        do_question_L()
+    if bhv == "do_question_S":
+        do_question_S()
+    if bhv == "do_suggestion_L":
+        do_suggestion_L()
+    if bhv == "do_suggestion_S":
+        do_suggestion_S()
+    if bhv == "do_explain_A":
+        do_explain_A()
+    if bhv == "do_explain_B":
+        do_explain_B()
+    if bhv == "do_photo":
+        do_photo()
+    if bhv == "do_stamp":
+        do_stamp()
+    if bhv == "do_waiting_A":
+        do_waiting_A()
+    if bhv == "do_waiting_B":
+        do_waiting_B()
+    if bhv == "do_waiting_C":
+        do_waiting_C()
+    if bhv == "do_wakeup":
+        do_wakeup()
+    if bhv == "do_compliment_L":
+        do_compliment_L()
+    if bhv == "do_compliment_S":
+        do_compliment_S()
+    if bhv == "do_agree":
+        do_agree()
+    if bhv == "do_joy_A":
+        do_joy_A()
+    if bhv == "do_joy_B":
+        do_joy_B()
+    if bhv == "do_sad":
+        do_sad()
+    
+
+    
 if __name__ == "__main__":
-    do_explain_A()
+    execute("do_joy_A")
+    # do_explain_A()

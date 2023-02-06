@@ -6,8 +6,8 @@ import os, sys
 import re
 import random
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-# sys.path.append('/home/pi/Pibo_Conversation/')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
@@ -20,7 +20,7 @@ audio = TextToSpeech()
 class Roleplay():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '윤지'
         self.count = 0
         
     
@@ -142,7 +142,7 @@ class Roleplay():
                 break
         
         # 4. 마무리 대화
-        cm.tts(bhv="do_question_L", string=f"자유롭게 하늘을 나는 {wm.word(role[0], 2)} 정말 멋진 것 같아! \
+        cm.tts(bhv="do_joy_A", string=f"자유롭게 하늘을 나는 {wm.word(role[0], 2)} 정말 멋진 것 같아! \
                오늘은 {wm.word(self.user_name, 0)}가 하늘을 훨훨 나는 꿈을 꿨으면 좋겠다. 다음에 또 재미있는 역할놀이 하자~")
 
 
