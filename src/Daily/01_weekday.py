@@ -76,7 +76,7 @@ class Daily():
                                            neg_bhv="do_question_L", neg="마음이 힘든 이유가 있다면 말해 줄래?")
                 
                 if answer[0] == "positive":
-                    answer = cm.responses_proc(re_bhv="do_question_S", re_bhv="언제 울고 싶었는지 말해 줄래?",
+                    answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 울고 싶었는지 말해 줄래?",
                                                neu_bhv="do_agree", neu=f"{wm.word(self.user_name, type=0)}가 힘들었겠구나. 엄마한테 이야기를 해보는 건 어때?",
                                                act_bhv="do_agree", act=f"{wm.word(self.user_name, type=0)}가 힘들었겠구나. 엄마한테 속마음을 이야기 해보는 건 어때?")
 
