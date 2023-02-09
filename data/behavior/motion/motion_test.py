@@ -104,7 +104,7 @@ def motion_test():
     while True:
         motion.set_motion(name="m_photo-1", cycle=1)
         break
-    audio.play(filename="/home/pi/Pibo_Conversation/data/audio/사진기소리.mp3", out='local', volume=-1000, background=True)
+    audio.play(filename="/home/pi/Pibo_Conversation/data/audio/사진기소리.mp3", out='local', volume=-1500, background=True)
     while True:
         motion.set_motion(name="m_photo-2", cycle=1)
         break

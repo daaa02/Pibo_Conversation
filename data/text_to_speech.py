@@ -39,7 +39,7 @@ class TextToSpeech():
                 
 
     # tts, 효과음 등 모든 오디오를 플레이하는 함수
-    def audio_play(self, filename, out='local', volume='-800', background=False):
+    def audio_play(self, filename, out='local', volume='-1000', background=False):
         if not os.path.isfile(filename):
             raise Exception(f'"{filename}" does not exist')
 
@@ -65,7 +65,7 @@ def text_to_speech(text):
     filename = "tts.wav"
     print("\n" + text + "\n")
     tts.tts_connection(text, filename)
-    # tts.audio_play(filename, 'local', '-800', False)
+    tts.audio_play(filename, 'local', '-1000', False)
 
 
 if __name__ == '__main__':

@@ -191,15 +191,15 @@ class Daily():
 
 
     def Habit_weekend(self):
-        timeslot = input("\n시간대(mor/aft/eve): ")
+        timeslot = input("\n시간대(mor/aft/eve): ")     # mor
         while True:
             if timeslot in ['mor', 'aft', 'eve']:
                 break
             else:
                 timeslot = input("시간대(mor/aft/eve): ")
                 continue
-        self.start_morning = input("시작 시간(HH:MM): ") 
-        self.delay = int(input("알림 간격(MM): "))
+        self.start_morning = input("시작 시간(HH:MM): ")    # 지금 실제 시간 +1분  ex. 20:25
+        self.delay = int(input("알림 간격(MM): "))          # mm분 간격 알람이니까 1분으로 설정 ex. 01
         
         mor = []
         # aft, eve = []
