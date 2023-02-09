@@ -18,12 +18,12 @@ def isNumber(s):
 
 class TextToSpeech():
     
-    def tts_connection(self, text, filename):
+    def tts_connection(self, voice, text, filename):
         # CLOVA auth-key
         client_id = "3qz5jqx2r0"
         client_secret = "zwB0Yb4UONPKaOKCjZkhsSl8REuKvJTYK2Esvr41"
         encText = urllib.parse.quote(text)
-        data = "speaker=nhajun&volume=0&speed=0&pitch=0&format=wav&text=" + encText
+        data = f"speaker={voice}&volume=0&speed=0&pitch=0&format=wav&text=" + encText
         url = "https://naveropenapi.apigw.ntruss.com/tts-premium/v1/tts"
         request = urllib.request.Request(url)
         request.add_header("X-NCP-APIGW-API-KEY-ID",client_id)
@@ -61,10 +61,10 @@ class TextToSpeech():
         
 tts = TextToSpeech()
 
-def text_to_speech(text):
+def text_to_speech(voice, text):
     filename = "tts.wav"
     print("\n" + text + "\n")
-    tts.tts_connection(text, filename)
+    tts.tts_connection(voice, text, filename)
     tts.audio_play(filename, 'local', '-1000', False)
 
 

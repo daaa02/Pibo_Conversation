@@ -20,10 +20,25 @@ audio = TextToSpeech()
 class Fairytale():
         
     def __init__(self): 
+        self.story_name = '모기와 사자'
         self.user_name = '가영'
         
     
     def Mosqutio(self):      
+        
+        # 0. 동화 읽어주기
+        cm.tts(bhv="do_breath1", string=f"내가 재미있는 이야기를 들려 줄게. 동화 제목은 {wm.word(self.story_name, 0)}야.")
+        f = open('/home/pi/Pibo_Conversation/src/Fairytale/data/03_mosquito_story.txt', 'r')
+        lines = f.readlines()
+        # print(lines)
+        
+        for i in range(0, len(lines), 2):
+            try:
+                cm.tts(voice="nara", string=f"{lines[i]}")
+                cm.tts(voice="ndain", string=f"{lines[i+1]}")
+            except IndexError as e:
+                break
+        
         # 1. 동화 줄거리 대화  
         cm.tts(bhv="do_joy_A", string=f"정말 재미있는 이야기였어! {wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?")
         answer = cm.responses_proc(re_bhv="do_joy_A", re_q=f"{wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?",
