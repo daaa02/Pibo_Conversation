@@ -66,8 +66,8 @@ class Roleplay():
                     self.count += 1 
                     
                 if rand[i] == 2: 
-                    cm.tts(bhv="do_question_L", string=f"{wm.word(role, 1)} 되면 어디로 날아가고 싶니?")
-                    answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(role, 1)} 되면 어디로 날아가고 싶니?",
+                    cm.tts(bhv="do_question_L", string=f"{wm.word(role[0], 1)} 되면 어디로 날아가고 싶니?")
+                    answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(role[0], 1)} 되면 어디로 날아가고 싶니?",
                                                pos_bhv="do_question_S", pos="그곳에 가서 무엇을 하고 싶니?",
                                                neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수도 있어~",
                                                act_bhv="do_question_S", act="그곳에 가서 무엇을 하고 싶니?")
