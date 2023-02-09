@@ -81,8 +81,8 @@ class ConversationManage():
         * 무응답으로 timeout 발생한 경우: response = "None"
         """
         try:
-            # self.response = speech_to_text(timeout=self.timeout)
-            self.response = input("input: ")
+            self.response = speech_to_text(timeout=self.timeout)
+            # self.response = input("input: ")
         
         except google.api_core.exceptions.DeadlineExceeded:
             self.response = self.none
