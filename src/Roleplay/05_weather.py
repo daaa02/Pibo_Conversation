@@ -182,4 +182,4 @@ if __name__ == "__main__":
 if __name__ == "__main__":
     
     rop = Roleplay()
-    rop.Flying()
+    rop.Weather()
