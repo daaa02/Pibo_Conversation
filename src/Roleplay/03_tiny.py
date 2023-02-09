@@ -59,7 +59,7 @@ class Roleplay():
                     self.count += 1 
                     
                 if rand[i] == 2: 
-                    cm.tts(bhv="do_question_L", string=f"{wm.word(role, 2)} 작아서 언제 가장 힘들까?")
+                    cm.tts(bhv="do_question_L", string=f"{wm.word(role[1], 2)} 작아서 언제 가장 힘들까?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면  어떤 점이 가장 좋을까?",
                                                pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 작아서 속상했던 적이 있니?",
                                                neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~",
