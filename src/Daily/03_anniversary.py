@@ -31,7 +31,7 @@ class Daily():
     def Bday(self):   
         
         # 1.1 기념일 알림
-        audio.audio_play(filename="/home/pi/Pibo_conversation/data/behavior/audio/기분좋음.wav", out='local', volume=-1500, background=False)
+        audio.audio_play(filename="/home/pi/Pibo_Conversation/data/behavior/audio/sound_cheerfulness2.wav", out='local', volume=-1500, background=False)
         cm.tts(bhv="do_joy_A", string=f"3일 뒤 {wm.word(self.user_name, type=0)} 생일이지?")
         answer = cm.responses_proc(re_bhv="do_joy_A", re_q=f"3일 뒤 {wm.word(self.user_name, type=0)} 생일이지?",
                                    pos_bhv="do_joy_A", pos=f"{wm.word(self.user_name, type=0)}가 벌써 {self.age_child}살이 되는 구나!",
