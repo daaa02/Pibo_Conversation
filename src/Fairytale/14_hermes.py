@@ -32,12 +32,12 @@ class Fairytale():
         
         cm.tts(bhv="question_S", string=f"물건을 잃어버렸을 때는 어떻게 찾아야할까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"물건을 잃어버렸을 때는 어떻게 찾아야할까?", 
-                                   pos_bhv="do_question_S", pos=f"다영이도 물건을 물 속에 빠뜨린 적 있니?", 
+                                   pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 물건을 물 속에 빠뜨린 적 있니?", 
                                    neu_bhv="do_agree", neu=f"어려울 수 있어~", 
-                                   act_bhv="do_question_S", act=f"다영이도 물건을 물 속에 빠뜨린 적 있니?")
+                                   act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 물건을 물 속에 빠뜨린 적 있니?")
 
         if answer[0] == "positive" or answer[0] == "action":
-            answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"다영이도 물건을 물 속에 빠뜨린 적 있니?", 
+            answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 물건을 물 속에 빠뜨린 적 있니?", 
                                        pos_bhv="do_sad", pos=f"정말 속상했을 것 같아", 
                                        neu_bhv="do_agree", neu=f"괜찮아~ 생각나지 않을 수 있어~", 
                                        act_bhv="do_sad", act=f"정말 속상했을 것 같아")
@@ -53,21 +53,21 @@ class Fairytale():
         # 2. 등장인물 공감 대화
         cm.tts(bhv="question_S", string=f"욕심쟁이 친구가 황금도끼를 얻으려고 거짓말을 했을 때 헤르메스 신은 화가 났을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"욕심쟁이 친구가 황금도끼를 얻으려고 거짓말을 했을 때 헤르메스 신은화가 났을까?", 
-                                   pos_bhv="do_question_S", pos=f"다영이도 누군가 거짓말을 해서 화가 난 적이 있니?", 
+                                   pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 누군가 거짓말을 해서 화가 난 적이 있니?", 
                                    neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
-                                   act_bhv="do_question_S", act=f"다영이도 누군가 거짓말을 해서 화가 난 적이 있니?")
+                                   act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 누군가 거짓말을 해서 화가 난 적이 있니?")
         
         if answer[0] == "positive":
-            answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"다영이도 누군가 거짓말을 해서 화가 난 적이 있니?", 
+            answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 누군가 거짓말을 해서 화가 난 적이 있니?", 
                                        pos_bhv="do_agree", pos=f"헤르메스 신이랑 비슷한 기분을 느꼈겠다!")
         
         cm.tts(bhv="question_L", string=f"헤르메스 신이 나무꾼에게 세 가지 도끼를 상으로 주었을 때 나무꾼은 기뻤을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"헤르메스 신이 나무꾼에게 세 가지 도끼를 상으로 주었을 때 나무꾼은 기뻤을까?", 
-                                   pos_bhv="do_question_S", pos=f"다영이도 최근에 상을 받고 기뻤던 적이 있으면 이야기 해줄래?", 
-                                   act_bhv="do_question_S", act=f"다영이도 최근에 상을 받고 기뻤던 적이 있으면 이야기 해줄래?") 
+                                   pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 최근에 상을 받고 기뻤던 적이 있으면 이야기 해줄래?", 
+                                   act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 최근에 상을 받고 기뻤던 적이 있으면 이야기 해줄래?") 
         
         if answer[0] == "positive" or answer[0] == "action":
-            answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"다영이도 최근에 상을 받고 기뻤던 적이 있으면 이야기해줄래?", 
+            answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 최근에 상을 받고 기뻤던 적이 있으면 이야기해줄래?", 
                                        pos_bhv="do_agree", pos=f"그런 일이 있었구나! 정말 기분 좋았겠다~!", 
                                        act_bhv="do_agree", act=f"그런 일이 있었구나! 정말 기분 좋았겠다~!")
             
