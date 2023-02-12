@@ -30,7 +30,7 @@ class Fairytale():
         answer = cm.responses_proc(re_bhv="do_joy_A", re_q=f"{wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?",
                                    neu_bhv="do_agree", neu=f"그럴 수 있지~")
         
-        cm.tts(bhv="question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 소원이 있니?")
+        cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 소원이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 어떤 소원이 있니?", 
                                    pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}의 소원은 어떻게 하면 이루어질까?", 
                                    neu_bhv="do_agree", neu=f"모를 수 있어~", 
@@ -41,7 +41,7 @@ class Fairytale():
                                        pos_bhv="do_agree", pos=f"{wm.word(self.user_name, 0)}의 소원이 꼭 이루어졌으면 좋겠다~", 
                                        act_bhv="do_agree", act=f"{wm.word(self.user_name, 0)}의 소원이 꼭 이루어졌으면 좋겠다~")
             
-        cm.tts(bhv="question_S", string=f"{wm.word(self.user_name, 0)}가 좋아하는 꽃이 있다면 말해줄래?")
+        cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}가 좋아하는 꽃이 있다면 말해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}가 좋아하는 꽃이 있다면 말해줄래?", 
                                    pos_bhv="do_question_S", pos=f"그 꽃을 좋아하는 이유는 뭐니?", 
                                    act_bhv="do_question_S", act=f"그 꽃을 좋아하는 이유는 뭐니?")
@@ -50,13 +50,13 @@ class Fairytale():
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그 꽃을 좋아하는 이유는 뭐니?", 
                                        neu_bhv="do_agree", neu=f"괜찮아~ 생각 나지 않을 수 있어~")
                                        
-        cm.tts(bhv="question_S", string=f"소년과 소녀는 행복하게 살았을 것 같니?")
+        cm.tts(bhv="do_question_S", string=f"소년과 소녀는 행복하게 살았을 것 같니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"소년과 소녀는 행복하게 살았을 것 같니?", 
                                    pos_bhv="do_joy_A", pos=f"소년과 소녀가 행복했으면 좋겠다~", 
                                    act_bhv="do_joy_A", act=f"소년과 소녀가 행복했으면 좋겠다~")
 
         # 2. 등장인물 공감 대화        
-        cm.tts(bhv="question_S", string=f"요리사의 거짓말 때문에 왕비가 탑에 갇혔을 때 왕비는 속상했을까?")
+        cm.tts(bhv="do_question_S", string=f"요리사의 거짓말 때문에 왕비가 탑에 갇혔을 때 왕비는 속상했을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"요리사의 거짓말 때문에 왕비가 탑에 갇혔을 때 왕비는 속상했을까?", 
                                    pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 누군가가 거짓말을 해서 속상했던 적이 있었다면 말해줄래?", 
                                    neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
@@ -68,7 +68,7 @@ class Fairytale():
                                        neu_bhv="do_agree", neu=f"모를 수 있지~", 
                                        act_bhv="do_sad", act=f"정말 기분이 안 좋았을 것 같아!")
             
-        cm.tts(bhv="question_S", string=f"소녀가 왕자을 구해줬을 때 왕자는 고마웠을까?")
+        cm.tts(bhv="do_question_S", string=f"소녀가 왕자을 구해줬을 때 왕자는 고마웠을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"소녀가 왕자을 구해줬을 때 왕자는 고마웠을까?", 
                                    pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 최근에 도움을 받고 고마움을 느낀 적이 있니?", 
                                    neu_bhv="do_agree", neu=f"괜찮아~ 대답하기 어려울 수 있어~", 
