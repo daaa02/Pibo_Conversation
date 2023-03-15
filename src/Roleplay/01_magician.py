@@ -5,7 +5,7 @@ import re
 import random
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-sys.path.append('/home/pi//home/pi/Pibo_Conversation/')
+sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
