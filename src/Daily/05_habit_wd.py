@@ -7,7 +7,7 @@ import re
 import random
 import time
 from datetime import datetime, timedelta
-import schedule
+import schedule_run
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
 sys.path.append('/home/pi/Pibo_Conversation/')
@@ -271,7 +271,7 @@ class Daily():
         
         
         while True:
-            schedule.run_pending()
+            schedule_run.run_pending()
             time.sleep(1)
     
     

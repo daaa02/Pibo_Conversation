@@ -1,5 +1,5 @@
 import time
-import schedule
+import schedule_run
 from datetime import datetime, timedelta
 
 
@@ -27,15 +27,15 @@ for i in range(1, 2):
 #     test = datetime.strftime(later, "%H:%M")
 #     print(later)
 #     print(test)
-    schedule.every().day.at("17:51:10").do(job, i)
+    schedule_run.every().day.at("17:51:10").do(job, i)
     # schedule.every(3).seconds.do(job, i)
     print("f")
-    schedule.clear()
+    schedule_run.clear()
     
     
 # schedule.every(5).seconds.do(job, 2)
 
 
 while True:
-    schedule.run_pending()
+    schedule_run.run_pending()
     time.sleep(1)

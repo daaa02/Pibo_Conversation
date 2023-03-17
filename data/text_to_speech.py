@@ -65,7 +65,7 @@ def text_to_speech(voice, text):
     filename = "tts.wav"
     print("\n" + text + "\n")
     tts.tts_connection(voice, text, filename)
-    tts.audio_play(filename, 'local', '-1000', False)
+    tts.audio_play(filename, 'local', '-1700', False)
 
 
 if __name__ == '__main__':

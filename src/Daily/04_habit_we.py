@@ -7,7 +7,7 @@ import re
 import random
 import time
 from datetime import datetime, timedelta
-import schedule
+import schedule_run
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
 sys.path.append('/home/pi/Pibo_Conversation/')
@@ -207,14 +207,14 @@ class Daily():
         self.alarm = day.alarmtime(timeslot=timeslot)        
         print("schedule: ", timeslot)
         
-        schedule.every().day.at(self.alarm[0]).do(day.morning, 1)
-        schedule.every().day.at(self.alarm[0]).do(day.morning, 2)
-        schedule.every().day.at(self.alarm[0]).do(day.morning, 3)
-        schedule.every().day.at(self.alarm[0]).do(day.morning, 4)
+        schedule_run.every().day.at(self.alarm[0]).do(day.morning, 1)
+        schedule_run.every().day.at(self.alarm[0]).do(day.morning, 2)
+        schedule_run.every().day.at(self.alarm[0]).do(day.morning, 3)
+        schedule_run.every().day.at(self.alarm[0]).do(day.morning, 4)
         
         
         while True:
-            schedule.run_pending()
+            schedule_run.run_pending()
             time.sleep(1)
 
         
