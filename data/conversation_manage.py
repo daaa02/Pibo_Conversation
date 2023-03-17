@@ -103,7 +103,7 @@ class ConversationManage():
         * behavior: TTS 와 함께할 동작 ex. 'do_joy'
         * string: 발화할 TTS 내용
         """
-        t = Thread(target=text_to_speech, args=(voice, [string]))
+        t = Thread(target=text_to_speech, args=(voice, string))
         t.start()
         
         while True:

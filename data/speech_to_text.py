@@ -185,7 +185,7 @@ def speech_to_text(timeout=10):
         
         # Now, put the transcription responses to use.
         stt_out = listen_print_loop(responses)
-        print('답변:',stt_out)
+        print('답변:', stt_out)
     
         # print('\n')
     return stt_out

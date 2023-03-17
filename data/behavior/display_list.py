@@ -1,9 +1,10 @@
 #!/usr/bin/python3
-
+import sys
 import time
 
+sys.path.append('/home/pi/Pibo_Conversation/data/behavior/icon/')
+
 # openpibo module
-import openpibo
 from openpibo.oled import Oled
 
 o = Oled()
@@ -102,7 +103,7 @@ def o_wakeup():
 
 
 def o_agree():
-    o.draw_image("/home/pi/Pibo_conversation/data/behavior/icon/icon_o.png")
+    o.draw_image("/home/pi/Pibo_Conversation/data/behavior/icon/icon_o.png")
     o.show()
 
 
