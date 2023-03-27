@@ -33,7 +33,7 @@ class Solution():
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}도 잘 몰라서 속상했던 적이 있니?는 다른 친구 물건이 갖고 싶거나 만져보고 싶을 때가 있었니?",
                                    pos_bhv="do_question_S", pos="어떤 물건이었는지 기억이 나니?")                
 
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 물건이었는지 기억이 나니?",
                                        neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")
 

@@ -46,7 +46,7 @@ class Fairytale():
                                    pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 최근에 속아서 화가 난 적이 있다면 말해 줄 수 있니?",
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 최근에 속아서 화가 난 적이 있다면 말해 줄 수 있니?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 최근에 속아서 화가 난 적이 있다면 말해 줄 수 있니?",
                                        neu_bhv="do_agree", neu=f"괜찮아~ 생각 나지 않을 수 있어~", 
                                        act_bhv="do_sad", act=f"정말 화가 났었겠구나!")
@@ -57,7 +57,7 @@ class Fairytale():
                                    neu_bhv="do_agree", neu=f"괜찮아~ 생각 나지 않을 수 있어~", 
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 최근에 후회 한 적이 있다면 말해줄래?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 최근에 후회 한 적이 있다면 말해줄래?",
                                        pos_bhv="do_sad", pos=f"속상했겠다.",
                                        act_bhv="do_sad", act=f"속상했겠다.")        

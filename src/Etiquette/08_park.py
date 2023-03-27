@@ -31,7 +31,7 @@ class Etiquette():
                                    neg_bhv="do_suggestion_S", neg="같이 다시 한번 볼까?",
                                    neu_bhv="do_suggestion_S", neu="같이 다시 한번 볼까?")             
         
-        if answer[0] == "action":            
+        if answer[0][0] == "action":            
             
             for i in range(len(self.correct)):
                 if self.correct[i] in answer[1]:
@@ -47,7 +47,7 @@ class Etiquette():
                 cm.tts(bhv="do_suggestion_S", string="또 무엇을 잘못했을까?")
                 answer = cm.responses_proc(re_bhv="do_suggestion_S", re_q="또 무엇을 잘못했을까?")
                 
-                if answer[0] == "action":        
+                if answer[0][0] == "action":        
                                 
                     for i in range(len(self.correct)):
                         if self.correct[i] in answer[1]:

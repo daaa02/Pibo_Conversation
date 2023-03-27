@@ -41,7 +41,7 @@ class Roleplay():
                                    neu_bhv="do_agree", neu="몰라도 괜찮아~",
                                    act_bhv="do_question_S", act="친구들에게 왜 그렇게 인사해 주고 싶니?")
         
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_L", re_q="친구들에게 왜 그렇게 인사해 주고 싶니?",
                                        neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~")
         
@@ -54,7 +54,7 @@ class Roleplay():
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="최근에 물건을 뺏는 친구들을 본 적이 있었니?",
                                    pos_bhv="do_question_S", pos="어떤 상황이었는지 나에게 말해 줄 수 있니?")
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             cm.tts(bhv="do_sad", string="어떤 상황이었는지 나에게 말해줄 수 있니? ")
             answer = cm.responses_proc(re_bhv="do_sad", re_q="어떤 상황이었는지 말해줄 수 있니?")
             

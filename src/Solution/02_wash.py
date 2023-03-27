@@ -62,13 +62,13 @@ class Solution():
         cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(feedback="N")
         
-        if answer[0] == "negative":
+        if answer[0][0] == "negative":
             self.score = ['0.0', '-0.5', '0.0', '0.0']
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             self.score = ['0.0', '0.5', '0.0', '0.0']
             
-        if answer[0] == "neutral":
+        if answer[0][0] == "neutral":
             self.score = ['0.0', '-0.25', '0.0', '0.0']
             
         today = datetime.now().strftime('%Y-%m-%d %H:%M')

@@ -34,7 +34,7 @@ class Solution():
                                    pos_bhv="do_question_S", pos="속상했겠다. 어떤 일이 있었니?",
                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")    
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="속상했겠다. 어떤 일이 있었니?",
                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")
             

@@ -34,7 +34,7 @@ class Fairytale():
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 형제나 자매가 있니?",
                                    pos_bhv="do_question_L", pos=f"{wm.word(self.user_name, 0)}는 형제가 있으니까 어떤 것 같아?")
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 형제가 있으니까 어떤 것 같아?",
                                        pos_bhv="do_agree", pos=f"그렇게 생각 하는 구나!",
                                        neu_bhv="do_agree", neu=f"괜찮아~ 대답하기 어려울 수 있어~",
@@ -56,7 +56,7 @@ class Fairytale():
                                    neu_bhv="do_agree", neu=f"몰라도 괜찮아~",
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 어디 못 가서 슬펐던 적이 있니?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 어디 못 가서 슬펐던 적이 있니?",
                                        pos_bhv="do_agree", pos=f"그랬구나!")
             

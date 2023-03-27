@@ -36,7 +36,7 @@ class Fairytale():
                                    neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
                                    act_bhv="do_question_S", act=f"언제 해봤니?")
         
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"언제 해봤니?")
             
         cm.tts(bhv="do_question_S", string=f"토끼와 {wm.word(self.user_name, 0)}가 달리기 경주를 하면 누가 이길까?")
@@ -54,7 +54,7 @@ class Fairytale():
                                    neu_bhv="do_agree", neu=f"괜찮아~ 생각 나지 않을 수 있어~", 
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}는 누가 이길 것 같다고 생각했니?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 누가 이길 것 같다고 생각했니?",
                                        neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
                                        act_bhv="do_sad", act=f"그렇게 생각했구나!")
@@ -65,7 +65,7 @@ class Fairytale():
                                    neu_bhv="do_agree", neu=f"괜찮아~ 대답하기 어려울 수 있어~", 
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 최근에 기쁜 일이 있었다면 이야기 해줄래?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 최근에 기쁜 일이 있었다면 이야기 해줄래?",
                                        pos_bhv="do_sad", pos=f"정말 기분이 좋았겠다!",
                                        act_bhv="do_sad", act=f"정말 기분이 좋았겠다!")        

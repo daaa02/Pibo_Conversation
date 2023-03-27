@@ -41,10 +41,10 @@ class Roleplay():
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 어떤 {wm.word(self.genre, 3)} 제일 좋아하니?")
 
         while True:     # 다른 옵션으로 질문
-            if answer[0] == "action" or answer[0]=="positive":                
+            if answer[0][0] == "action" or answer[0]=="positive":                
                 break
             
-            if answer[0] == "neutral" or answer[0]=="negative":
+            if answer[0][0] == "neutral" or answer[0]=="negative":
                 genre_list.remove(self.genre)
                 self.genre = random.choice(genre_list)
                 
@@ -56,7 +56,7 @@ class Roleplay():
         cm.tts(bhv="do_question_L", string=f"그 {self.genre} 속에서 {wm.word(self.user_name, 0)}는 누가 제일 마음에 드니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"그 {self.genre} 속에서 {wm.word(self.user_name, 0)}는 누가 제일 마음에 드니?")
         
-        if answer[0] == "action":
+        if answer[0][0] == "action":
             self.fav = answer[1]
             # cm.tts(bhv="do_question_L", string=f"그 {self.genre} 속에서 {wm.word(self.user_name, 0)}는 누가 제일 마음에 드니?")
             # answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"그 {self.genre} 속에서 {wm.word(self.user_name, 0)}는 누가 제일 마음에 드니?") 
@@ -68,7 +68,7 @@ class Roleplay():
                                        neg_bhv="do_question_S", neg="이름을 다시 말해 줄래?")
             
             while True:
-                if answer[0] == "positive":                    
+                if answer[0][0] == "positive":                    
                     break
                 
                 if answer[0] != "positive":
@@ -91,7 +91,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",
                                                act_bhv="do_question_S", act="어떤 장면이었는지 자세히 말해줄래?")        
                     
-                    if answer[0] == "action":
+                    if answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 장면이었는지 자세히 말해줄래?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어")
                     self.count += 1 
@@ -113,7 +113,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
                                                act_bhv="do_question_S", act="언제 그걸 해보고 싶니?")
                     
-                    if answer[0] == "positive" or answer[0] =="action":
+                    if answer[0][0] == "positive" or answer[0][0] =="action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 그걸 해보고 싶니?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~")
                     self.count += 1
@@ -125,12 +125,12 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",
                                                act_bhv="do_questino_S", act="그 사람은 어떻게 생겼니?")
                     
-                    if answer[0] == "positive" or answer[0] =="action":
+                    if answer[0][0] == "positive" or answer[0][0] =="action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="그 사람은 어떻게 생겼니?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~~",
                                                    act_bhv="do_question_S", act=f"그 사람을 만나면 {wm.word(self.user_name, 0)}는 기분이 어때?")             
                         
-                        if answer[0] =="action":
+                        if answer[0][0] =="action":
                             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그 사람을 만나면 {wm.word(self.user_name, 0)}는 기분이 어때?",
                                                        pos_bhv="do_joy_B", pos="정말 신기할 것 같아!",
                                                        neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어")        

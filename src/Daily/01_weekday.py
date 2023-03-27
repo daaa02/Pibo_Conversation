@@ -51,12 +51,12 @@ class Daily():
                                        pos_bhv="do_question_S", pos="그 활동을 언제 했니?",
                                        act_bhv="do_question_S", act="그 활동을 언제 했니?")
             
-            if answer[0] == "postive" or answer[0] == "action":            
+            if answer[0][0] == "postive" or answer[0][0] == "action":            
                 answer = cm.responses_proc(re_bhv="do_question_S", re_q="그 활동을 언제 했니?", 
                                            pos_bhv="do_question_S", pos="어떤 점이 재미있었니?", 
                                            act_bhv="do_question_S", act="어떤 점이 재미있었니?") 
                 
-                if answer[0] == "postive" or answer[0] == "action":
+                if answer[0][0] == "postive" or answer[0][0] == "action":
                     answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 점이 재미있었니?",
                                                pos_bhv="do_joy_B", pos="정말 재밌겠는걸?",
                                                act_bhv="do_joy_B", act="정말 재밌겠는걸?")
@@ -75,7 +75,7 @@ class Daily():
                                            pos_bhv="do_sad", pos=f"정말 속상했겠다. 언제 울고 싶었는지 말해 줄래?",
                                            neg_bhv="do_question_L", neg="마음이 힘든 이유가 있다면 말해 줄래?")
                 
-                if answer[0] == "positive":
+                if answer[0][0] == "positive":
                     answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 울고 싶었는지 말해 줄래?",
                                                neu_bhv="do_agree", neu=f"{wm.word(self.user_name, type=0)}가 힘들었겠구나. 엄마한테 이야기를 해보는 건 어때?",
                                                act_bhv="do_agree", act=f"{wm.word(self.user_name, type=0)}가 힘들었겠구나. 엄마한테 속마음을 이야기 해보는 건 어때?")
@@ -83,7 +83,7 @@ class Daily():
                     time.sleep(1)
                     cm.tts(bhv="do_agree", string="도움이 필요할 수 있을 것 같아. 엄마가 잘 도와주실테니 너무 걱정하지마~")
                     
-                if answer[0] == "neutral" or answer[0] == "negative":
+                if answer[0][0] == "neutral" or answer[0][0] == "negative":
                     cm.tts(bhv="do_agree", string=f"속상한 일이 있으면 언제든 나에게 이야기해도 괜찮아!")
             
             cm.tts(bhv="do_joy_A", string=f"내일도 {wm.word(self.user_name, type=0)}가 유치원에서 좋은 하루를 보냈으면 좋겠어~ 내일도 이야기 하자!")

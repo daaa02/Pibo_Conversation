@@ -45,17 +45,18 @@ buffersize = 2048
 class Dictionary():
     
     def __init__(self):
-        self.Positive = ['pos', '네', '예', '응', '있어', '있었', '좋아', '좋은', '좋았', '좋다', '그래', '맞아', '알았어', '알겠어', '당연', '됐어', '재미있', '재미 있']
+        self.Positive = ['pos', '네', '예', '응', '있어', '있었', '좋아', '좋은', '좋았', '좋다', '그래', '맞아', '알았어', '알겠어', '당연', '됐어', '재미있', '재미 있', '재밌']
 
         self.Negative = ['neg', '별로', '아니', '안 해', '안해', '안 할래', '안 하', '싫어', '싫', '못 하', '못 하겠어', '못해', '없었어', '없어', '없네', '없는','그만', '재미없', '재미 없']
         
-        self.Neutral = ['neu', '글쎄', '몰라', '모르', '몰라', '몰랐']    
+        self.Neutral = ['neu', '글쎄', '몰라', '모르', '몰라', '몰랐', '보통']    
         
         self.Again = ['again', '다시', '또', '같은', '한 번 더', '한번 더', '계속'] 
         
         self.Number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
         self.Number_word = ['영', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구', '십']
+        
 
 
 
@@ -64,13 +65,13 @@ class ConversationManage():
     def __init__(self):
         self.timeout = 10
         self.none = "None"
-        self.count = 0
+        # self.count = 0
         self.user_said = ''
         self.response = ''
         self.answer = []
         self.feedback = ''   
-        self.udp_client1_socket = socket
-        self.from_msg = ''     
+        # self.udp_client1_socket = socket
+        # self.from_msg = ''     
         self.ko = -1
         self.nb = -1
         
@@ -111,6 +112,7 @@ class ConversationManage():
             behavior.execute(bhv)
             break    
         
+        return string
         
     def responses_proc(self, 
                        re_bhv='', re_q='', 
@@ -127,7 +129,7 @@ class ConversationManage():
         * feedback: 옵션 답변 유무 결정(기본: Y)
         """                
         self.answer = []    # 마지막 answer가 'action'일 경우 초기화 안 되는 것 같아서  
-        
+        count = 0
         while True:
             self.response = cm.stt()
             
@@ -136,13 +138,13 @@ class ConversationManage():
                 break
             
             else:   # 무응답인 경우, 두 번 더 물어봐주고 3번째에도 무응답이면 탈출
-                self.count += 1
+                count += 1
                 cm.tts(bhv=re_bhv, string=re_q)
                    
-                if self.count < 3:
+                if count < 3:
                     continue 
                 
-                elif self.count == 3:
+                elif count == 3:
                     print("다음에 이야기하자~")
                     break        
         
@@ -206,7 +208,8 @@ class ConversationManage():
         #     # connect with chit-chat model
         #     self.from_msg = soc.transmit(send_msg=self.response)             
                 
-        return self.answer
+        # return self.answer
+        return self.answer, count
 
 
 class Socket_tr():

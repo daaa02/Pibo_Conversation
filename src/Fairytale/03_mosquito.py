@@ -63,7 +63,7 @@ class Fairytale():
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"거미줄에 걸린 모기는 움직일 수 없었을 때 무서웠을까?", 
                                    pos_bhv="do_question_L", pos=f"최근에 무섭다고 느낀 일이 있다면 말해줄래?")
         
-        if answer[0] == "positive": 
+        if answer[0][0] == "positive": 
             answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"최근에 무섭 느낀 일이 있다면 말해줄래?", 
                                        pos_bhv="do_agree", pos=f"정말 무서웠겠는걸?", 
                                        act_bhv="do_agree", act=f"정말 무서웠겠는걸?")
@@ -72,7 +72,7 @@ class Fairytale():
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"모기가 큰 사자랑 싸워서 이겼을 때는 기뻤을까?", 
                                    pos_bhv="do_question_L", pos=f"최근에 놀이에서 이겨 기뻤던 적이 있으면 이야기해 줄래?")
         
-        if answer[0] == "positive": 
+        if answer[0][0] == "positive": 
             answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"최근에 놀이에서 이겨 기뻤던 적이 있으면 이야기해 줄래?", 
                                        pos_bhv="do_agree", pos=f"그런 일이 있었구나!", 
                                        act_bhv="do_agree", act=f"그런 일이 있었구나!")

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# 문제해결-씻기 싫어
+# 문제해결-늦게까지 놀고 싶어
 
 import os, sys
 import re

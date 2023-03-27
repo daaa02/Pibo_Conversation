@@ -38,7 +38,7 @@ class Fairytale():
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 유치원 갈 때 가방을 매고 가니? ", 
                                    pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)} 가방 안에 어떤 것들이 들어있니?")
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)} 가방 안에 어떤 것들이 들어있니?")
                 
         cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 말한 것들 말고 유치원에 가져 가고 싶은 물건이 있다면 말해줄래?")
@@ -47,7 +47,7 @@ class Fairytale():
                                    neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
                                    act_bhv="do_question_S", act=f"그거 가지고 유치원에 가서 뭐하고 싶어?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그거 가지고 유치원에 가서 뭐하고 싶어?")            
         
         # 2. 등장인물 공감 대화
@@ -56,7 +56,7 @@ class Fairytale():
                                    pos_bhv="do_question_L", pos=f"{wm.word(self.user_name, 0)}도 누가 {wm.word(self.user_name, 0)}를 속여서 짜증났던 적이 있다면 이야기해 줄래?", 
                                    act_bhv="do_question_L", act=f"{wm.word(self.user_name, 0)}도 누가 {wm.word(self.user_name, 0)}를 속여서 짜증났던 적이 있다면 이야기해 줄래?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_L ", re_q=f"{wm.word(self.user_name, 0)}도 누가 {wm.word(self.user_name, 0)}를 속여서 짜증났던 적이 있다면 이야기해 줄래?", 
                                        act_bhv="do_agree", act=f"그런 일이 있었구나! 정말 짜증났었겠다! ")
 
@@ -65,7 +65,7 @@ class Fairytale():
                                    pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 후회 했던 적이 있었다면 이야기해 줄래?", 
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 후회 했던 적이 있었다면 이야기해 줄래?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 후회 했던 적이 있었다면 이야기해 줄래?", 
                                        act_bhv="do_sad", act=f"그런 일이 있었구나! 정말 속상했겠다!")
 

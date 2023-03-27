@@ -33,7 +33,7 @@ class Solution():
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 친구에게 고마운 마음을 표현한 적 있니?",
                                    pos_bhv="do_question_S", pos=f"어떤 말로 {wm.word(self.user_name, 0)}의 마음을 표현했니?")                
     
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"어떤 말로 {wm.word(self.user_name, 0)}의 마음을 표현했니?",
                                        neu_bhv="do_agree", neu=" 괜찮아~ 바로 떠오르지 않을 수 있어~")
             

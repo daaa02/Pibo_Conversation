@@ -45,7 +45,7 @@ class Daily():
                                    neg_bhv="do_question_S", neg="받고 싶은 선물이 있다면 말해 볼래?",
                                    act_bhv="do_joy_B", act=f"{wm.word(self.user_name, type=0)} 생일이어서 행복할 것 같아! 받고 싶은 선물이 있다면 말해 볼래?")
         
-        if answer[0] == "positive" or "action":
+        if answer[0][0] == "positive" or "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="받고 싶은 선물이 있다면 말해 볼래?",
                                        pos_bhv="do_joy_A", pos="그걸 선물로 받으면 좋겠는 걸! 또 받고 싶은 선물 있어?",
                                        act_bhv="do_joy_A", act="그걸 선물로 받으면 좋겠는 걸! 또 받고 싶은 선물 있어?")
@@ -63,7 +63,7 @@ class Daily():
                                    pos_bhv="do_suggestion_L", pos="정말 맛있겠는걸! 이번 생일날 먹고 싶다고 부모님께 이야기해볼래?",
                                    act_bhv="do_suggestion_L", act="정말 맛있겠는걸! 이번 생일날 먹고 싶다고 부모님께 이야기해볼래?")
         
-        if answer[0] == "positive" or "action":
+        if answer[0][0] == "positive" or "action":
             answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="정말 맛있겠는걸! 이번 생일날 먹고 싶다고 부모님께 이야기해볼래?",
                                        pos_bhv="do_joy_A", pos="부모님이 정말 사주실지도 몰라!",
                                        act_bhv="do_joy_A", act="부모님이 정말 사주실지도 몰라!")
@@ -91,7 +91,7 @@ class Daily():
                                    neg_bhv="do_question_S", neg="어떤 선물을 좋아하실까?",
                                    act_bhv="so_compliment_S", act="정말 좋은 생각인 것 같아!")
         
-        if answer[0] == "negative":
+        if answer[0][0] == "negative":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"어떤 선물을 좋아하실까?",
                                        pos_bhv="do_suggestion_S", pos=f"엄마는 {wm.word(self.user_name, 0)}가 편지를 써 드려도 정말 기뻐하실거야!",
                                        neu_bhv="do_suggestion_S", neu=f"엄마는 {wm.word(self.user_name, 0)}가 편지를 써 드려도 정말 기뻐하실거야!",
@@ -103,7 +103,7 @@ class Daily():
                                    neu_bhv="do_explain_B", neu="그럼 다음에 찍어 드리자!",
                                    neg_bhv="do_explain_B", neg="그럼 다음에 찍어 드리자!")
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             cm.responses_proc(re_bhv="do_waiting_A", re_q="좋아! 준비가 되면 준비 됐다고 말해줘~",
                               pos_bhv="do_photo", pos="편지가 모두 끝나면 끝났다고 말해줘. 찍는다 하나, 둘, 셋!")   # 말하고 사진 동작해야할 듯. 순서 다시 봐야함
             
@@ -132,7 +132,7 @@ class Daily():
                                    pos_bhv="do_question_S", pos="어디로 가보고 싶어?",
                                    neu_bhv="do_question_S", neu="어디 가고 싶은 곳 없어?")
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어디로 가보고 싶어?")
             
             cm.tts(bhv="do_question_S", string="거기 가서 뭐 하고 싶니?")
@@ -163,7 +163,7 @@ class Daily():
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="카네이션이랑 편지를 부모님께 드려본 적 있어?",
                                    pos_bhv="do_question_S", pos="어디서 카네이션을 만들어서 부모님께 드렸니?")
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어디서 카네이션을 만들어서 부모님께 드렸니?",
                                        pos_bhv="do_joy_A", pos="정말 좋아하셨겠다!",
                                        act_bhv="do_joy_A", act="정말 좋아하셨겠다!")
@@ -180,7 +180,7 @@ class Daily():
                                    neu_bhv="do_explain_B", neu="그럼 다음에 찍어 드리자!",
                                    neg_bhv="do_explain_B", neg="그럼 다음에 찍어 드리자!")
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             cm.responses_proc(re_bhv="do_waiting_A", re_q="좋아! 준비가 되면 준비 됐다고 말해줘~",
                               pos_bhv="do_photo", pos="노래가 끝나면 노래 끝! 이라고 말해줘. 찍는다 하나, 둘, 셋!")   # 말하고 사진 동작해야할 듯. 순서 다시 봐야함
             
@@ -206,7 +206,7 @@ class Daily():
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="최근에 멋진 크리스마스 트리를 본 적이 있니?",
                                    pos_bhv="do_question_S", pos="어디서 봤니?")
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어디서 봤니?",
                                        pos_bhv="do_joy_B", pos="크리스마스 트리는 반짝반짝 너무 이쁜 것 같아~",
                                        neu_bhv="do_agree", neu="그럴 수 있지~",

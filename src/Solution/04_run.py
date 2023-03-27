@@ -4,6 +4,7 @@
 
 import os, sys
 import re
+import csv
 import time
 import random
 from datetime import datetime
@@ -20,27 +21,45 @@ wm = WordManage()
 audio = TextToSpeech()
 gss = google_spread_sheet()
 
+folder = "UserData/"
+today = datetime.now().strftime('%Y-%m-%d_%H-%M')
+csv_conversation = open(f'{folder}/{today}_04_run.csv', 'a', newline='', encoding = 'cp949')
+csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'cp949')
+cwc = csv.writer(csv_conversation)
+cwp = csv.writer(csv_preference)
+crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
 
 class Solution():    
     
     def __init__(self): 
         self.user_name = '윤지'
         self.score = []
+        self.turns = []
+        self.reject = []
         
     def Wash(self):
         
         # 1.1 문제 제시
-        cm.tts(bhv="do_sad", string="요즘 사람들이 많은 곳이든 집 안이든 신나게 뛰어다니고 싶어.")
+        pibo = cm.tts(bhv="do_sad", string="요즘 사람들이 많은 곳이든 집 안이든 신나게 뛰어다니고 싶어.")
         
         # 1.2 경험 질문
-        cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}도 뛰다가 넘어진 적이 있니?")
-        answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}도 씻기 싫을 때가 있지?",
+        pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}도 뛰다가 넘어진 적이 있니?")
+        answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}도 뛰다가 넘어진 적이 있니?",
                                    pos_bhv="do_agree", pos="넘어져서 아팠겠다~")    
-    
-        # cm.tts(bhv="do_question_L", string="사람이 많은 곳에서 뛰어다니면 위험할까?")
-        # answer = cm.responses_proc(re_bhv="do_question_L", re_q="사람이 많은 곳에서 뛰어다니면 위험할까?",
-        #                            pos_bhv="do_agree", pos="부딪히면 아프겠지?",
-        #                            neu_bhv="do_agree", neu="괜찮아~ 부딪히면 아프겠지?")
+        cwc.writerow(['pibo', pibo])
+        cwc.writerow(['user', answer[0][1], answer[1]])
+        self.reject.append(answer[1])
+        print(answer[1])
+        
+        pibo = cm.tts(bhv="do_question_L", string="사람이 많은 곳에서 뛰어다니면 위험할까?")
+        answer = cm.responses_proc(re_bhv="do_question_L", re_q="사람이 많은 곳에서 뛰어다니면 위험할까?",
+                                   pos_bhv="do_agree", pos="부딪히면 아프겠지?",
+                                   neu_bhv="do_agree", neu="괜찮아~ 부딪히면 아프겠지?")        
+        cwc.writerow(['pibo', pibo])
+        cwc.writerow(['user', answer[0][1], answer[1]])
+        self.reject.append(answer[1])
+        print(answer[1])
+        
 
         # cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 평소에 천천히 조용히 걷니?")
         # answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 평소에 천천히 조용히 걷니?",
@@ -65,22 +84,30 @@ class Solution():
         # 2.1 문제 해결
         cm.tts(bhv="do_joy_A", string="파이보도 이제 조용하고 안전하게 걸으려고 노력해야겠다~ 알려줘서 정말 고마워!")
         
+        # 3. 피드백 수집
         time.sleep(1)                   
         cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc()  
               
-        if answer[0] == "negative":
-            self.score = ['0.0', '-0.5', '0.0', '0.0']
+        if answer[0][0] == "negative":
+            self.score = [0.0, -0.5, 0.0, 0.0]
         
-        if answer[0] == "positive":
-            self.score = ['0.0', '0.5', '0.0', '0.0']
+        if answer[0][0] == "positive":
+            self.score = [0.0, 0.5, 0.0, 0.0]
             
-        if answer[0] == "neutral":
-            self.score = ['0.0', '-0.25', '0.0', '0.0']
+        else: # if answer[0][0] == "neutral":
+            self.score = [0.0, -0.25, 0.0, 0.0]
         
-        today = datetime.now().strftime('%Y-%m-%d %H:%M')
-        gss.write_sheet(today, '근육', self.score)
-        # gss.save_sheet()
+        cwp.writerow([today, 'Sol_04_wash', self.score[0], self.score[1], self.score[2],self.score[3]])
+        
+        # 4. Paradise framework 기록
+        turns = [(self.reject[i] + 1) * 2 for i in range(len(self.reject))]      
+        reject = sum(self.reject) 
+        
+        cwc.writerow(['Turns', turns])
+        cwc.writerow(['Rejections', reject])
+        cwc.writerow(['Misrecognitions', ])
+
         
         
 if __name__ == "__main__":

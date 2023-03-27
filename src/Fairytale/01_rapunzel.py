@@ -35,14 +35,14 @@ class Fairytale():
                                    pos_bhv="do_question_S", pos=f"멋진 걸! 무섭진 않았니?", 
                                    neu_bhv="do_agree", neu=f"몰라도 괜찮아~")
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(bhv="do_question_S", re_q=f"무섭진 않았니?")
             
         cm.tts(bhv="do_question_S", string=f"주인공 라푼젤이 갇혀있던 탑은 얼마나 클까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"주인공 라푼젤이 갇혀있던 탑은 얼마나 클까?", 
                                    neu_bhv="do_question_S", neu=f"백화점만큼 엄청 클까?")
 
-        if answer[0] == "neutral":
+        if answer[0][0] == "neutral":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"백화점만큼 엄청 클까?",
                                        neu_bhv="do_agree", neu=f"모를 수 있지~")        
         
@@ -55,7 +55,7 @@ class Fairytale():
                                    pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}가 최근에 속상하다고 느낀 일이 있다면 말해줄래?",
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}가 최근에 속상하다고 느낀 일이 있다면 말해줄래?")
         
-        if answer[0] == "postive" or answer[0] == "action":
+        if answer[0][0] == "postive" or answer[0][0] == "action":
             cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}가 최근에 속상하다고 느낀 일이 있다면 말해줄래?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 최근에 속상하다고 느낀 일이 있다면 말해줄래?", 
                                        act_bhv="do_sad", act=f"그랬구나! 정말 속상했겠는 걸?")
@@ -65,7 +65,7 @@ class Fairytale():
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"마법사에게 머리카락이 잘린 라푼젤의 기분은 어땠을 것 같니?",
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 비슷한 기분을 느낀적이 있다면 이야기해 줄래?")
         
-        if answer[0] == "action":
+        if answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 비슷한 기분을 느낀적이 있다면 이야기해 줄래?", 
                                        act_bhv="do_agree", act=f"그런 일이 있었구나!")
             

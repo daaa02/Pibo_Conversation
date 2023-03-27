@@ -44,7 +44,7 @@ class Roleplay():
                                        neg_bhv="do_suggestion_S", neg="다른 주문을 걸어보자~",
                                        feedback="N")
             
-            if answer[0] == "action" or answer[0] == "positive":
+            if answer[0][0] == "action" or answer[0][0] == "positive":
                 weather = ["비", "바람", "천둥", "눈", "해", "맑"]
                 for i in range(len(weather)):
                     if weather[i] in answer[1]:
@@ -82,7 +82,7 @@ class Roleplay():
                                        neu_bhv="do_suggestion_S", neu="몰라도 괜찮아~", 
                                        feedback="N")
             
-            if answer[0] == "action" or answer[0] == "positive": 
+            if answer[0][0] == "action" or answer[0][0] == "positive": 
                 weather = ["비", "바람", "천둥", "눈", "해", "맑"]
                 for i in range(len(weather)):
                     if weather[i] in answer[1]:
@@ -129,7 +129,7 @@ class Roleplay():
                                        neg_bhv="do_suggestion_S", neg="다른 주문을 걸어보자~",
                                        feedback="N")
             
-            if answer[0] == "action" or answer[0] == "positive":  
+            if answer[0][0] == "action" or answer[0][0] == "positive":  
                 if "늑대" in answer[1]:                    
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/08_wolf.wav")
@@ -140,7 +140,7 @@ class Roleplay():
                                        neu_bhv="do_suggestion_S", neu="몰라도 괜찮아~",
                                        feedback="N")
 
-            if answer[0] == "action" or answer[0] == "positive":  
+            if answer[0][0] == "action" or answer[0][0] == "positive":  
                 if "코끼리" in answer[1]:                    
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/09_elephant.wav")
@@ -161,7 +161,7 @@ class Roleplay():
                                        neg_bhv="do_suggestion_S", neg="다른 주문을 걸어보자~",
                                        feedback="N")
             
-            if answer[0] == "action" or answer[0] == "positive":  
+            if answer[0][0] == "action" or answer[0][0] == "positive":  
                 if "오리" in answer[1]:                    
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/12_duck.wav")
@@ -172,7 +172,7 @@ class Roleplay():
                                        neu_bhv="do_suggestion_S", neu="몰라도 괜찮아~",
                                        feedback="N")
 
-            if answer[0] == "action" or answer[0] == "positive":  
+            if answer[0][0] == "action" or answer[0][0] == "positive":  
                 if "개구리" in answer[1]:                    
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/13_frog.wav")
@@ -185,7 +185,7 @@ class Roleplay():
                                    neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어", 
                                    act_bhv="do_question_S", act=f"또 어떤 일을 하고 싶니?")
 
-        if answer[0] == "action" or answer[0] == "positive":
+        if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"또 어떤 일을 하고 싶니?", 
                                        pos_bhv="do_joy_A", pos=f"소원이 이루어지면 정말 좋겠다~", 
                                        neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
@@ -197,7 +197,7 @@ class Roleplay():
                                    neu_bhv="do_agree", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
                                    act_bhv="do_question_S", act=f"언제 변신하고 싶니?")
         
-        if answer[0] == "action" or answer[0] == "positive":
+        if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 변신하고 싶니?",
                                        pos_bhv="do_joy_A", pos="변신하면 멋지겠는걸?",
                                        neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
@@ -209,7 +209,7 @@ class Roleplay():
                                    neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
                                    act_bhv="do_question_S", act=f"가서 무엇을 하고 싶니?")
         
-        if answer[0] == "action" or answer[0] == "positive":
+        if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"가서 무엇을 하고 싶니?", 
                                        pos_bhv="do_joy_B", pos=f"파이보도 같이 가고 싶은 걸?", 
                                        neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
@@ -222,7 +222,7 @@ class Roleplay():
                                    neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
                                    act_bhv="do_question_S", act=f"어떤 도움을 주고 싶니?")
         
-        if answer[0] == "action" or answer[0] == "positive":
+        if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"어떤 도움을 주고 싶니? ", 
                                        pos_bhv="do_joy_B", pos=f"도움을 주면 정말 좋겠다!", 
                                        neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
@@ -234,7 +234,7 @@ class Roleplay():
                                    neu_bhv="do_agree", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
                                    act_bhv="do_question_S", act=f"어떻게 하면 즐거워질까?")
         
-        if answer[0] == "action" or answer[0] == "positive":
+        if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"어떻게 하면 즐거워질까?", 
                                        pos_bhv="do_joy_B", pos=f"정말 좋아할 것 같아!", 
                                        neu_bhv="do_agree", neu=f"괜찮아~ 답하기 어려울 수 있어~", 
@@ -246,7 +246,7 @@ class Roleplay():
                                    neu_bhv="do_agree", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
                                    act_bhv="do_question_S", act=f"가서 무엇을 하고 싶니?")
         
-        if answer[0] == "action" or answer[0] == "positive":
+        if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"가서 무엇을 하고 싶니?", 
                                        pos_bhv="do_joy_B", pos=f"파이보도 같이 가고 싶은 걸?", 
                                        neu_bhv="do_agree", neu=f"괜찮아~ 떠오르지 않을 수 있어~", 

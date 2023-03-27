@@ -43,7 +43,7 @@ class Roleplay():
         answer = cm.responses_proc(re_bhv="do_waiting_A", re_q="머리를 만져 주세요.",
                                    act_bhv="do_question_S", act="의사 선생님, 제 심장 소리는 어떤가요?")
         
-        if answer[0] == "action":
+        if answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="의사 선생님, 제 심장 소리는 어떤가요?")
       
         cm.tts(bhv="do_joy_A", string="감사합니다. 선생님께서 진찰해 주셔서 저는 몸이 다 나은 것 같아요.")
@@ -63,7 +63,7 @@ class Roleplay():
                                    neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어",
                                    act_bhv="do_question_S", act="자세히 말해줄래?")
         
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="자세히 말해줄래?",
                                        pos_bhv="do_joy_A", pos=f"{wm.word(self.user_name, 0)}가 행복했다니 파이보도 기분이 좋아!",
                                        neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수도 있어~",
@@ -75,7 +75,7 @@ class Roleplay():
                                    neg_bhv="do_question_S", neg="무슨 일이 있었니?",
                                    act_bhv="do_question_S", act="무슨 일이 있었니?")
         
-        if answer[0] == "negative" or answer[0] == "action":
+        if answer[0][0] == "negative" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="무슨 일이 있었니?",
                                        pos_bhv="do_joy_A", pos=f"{wm.word(self.user_name, 0)}가 속상했겠는걸?",
                                        neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~",
@@ -94,7 +94,7 @@ class Roleplay():
                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어",
                                    act_bhv="do_question_S", act="자세히 이야기해 줄래?")
         
-        if answer[0] == "action":
+        if answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="자세히 이야기해 줄래?",
                                        pos_bhv="do_joy_A", pos="파이보의 마음도 콩닥거리는 걸? ",
                                        neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",

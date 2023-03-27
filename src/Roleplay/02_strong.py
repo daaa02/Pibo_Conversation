@@ -74,7 +74,7 @@ class Roleplay():
                                        neu_bhv="do_agree", neu="괜찮아~ 갑자기 떠오르지 않을 수 있어~",
                                        act_bhv="do_question_S", act="언제 하고 싶니?")
 
-            if answer[0] == "positive" or "action":
+            if answer[0][0] == "positive" or "action":
                 answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 하고 싶니?",
                                            neu_bhv="do_agree", neu="괜찮아~ 떠오르지 않을 수 있어~",
                                            act_bhv="do_agree", act=f"{wm.word(self.user_name, 0)}는 그렇게 생각했구나.")
@@ -86,7 +86,7 @@ class Roleplay():
                                        neu_bhv="do_agree", neu="괜찮아~ 생각나지 않을 수 있어~",
                                        act_bhv="do_question_S", act="언제 보호해 주고 싶니?")
             
-            if answer[0] == "positive" or "action":
+            if answer[0][0] == "positive" or "action":
                 answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 보호해 주고 싶니?",
                                            neu_bhv="do_agree", neu="괜찮아~ 생각나지 않을 수 있어~",
                                            act_bhv="do_agree", act=f"{wm.word(self.user_name, 0)}가 보호해주면 정말 든든하겠다!")
@@ -98,7 +98,7 @@ class Roleplay():
                                        neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
                                        act_bhv="do_question_S", act="어떻게 도와주고 싶니?")
             
-            if answer[0] == "positive" or "action":
+            if answer[0][0] == "positive" or "action":
                 answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떻게 도와주고 싶니?",
                                            neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
                                            act_bhv="do_agree", act=f"{wm.word(self.user_name, 0)}가 도와주면 정말 좋겠다!")
@@ -111,7 +111,7 @@ class Roleplay():
                                        neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
                                        act_bhv="do_question_S", act="친구가 돼서 무엇을 하고 싶니?")
             
-            if answer[0] == "positive" or "action":
+            if answer[0][0] == "positive" or "action":
                 answer = cm.responses_proc(re_bhv="do_question_S", re_q="친구가 돼서 무엇을 하고 싶니?",
                                            neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
                                            act_bhv="do_agree", act="그래서 친구가 되고 싶구나.")
@@ -123,7 +123,7 @@ class Roleplay():
                                        neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~",
                                        act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}는 친해지기 어려운 친구가 있니?")
             
-            if answer[0] == "positive" or "action":
+            if answer[0][0] == "positive" or "action":
                 answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 친해지기 어려운 친구가 있니?",
                                            pos_bhv="do_sad", pos=f"{wm.word(self.user_name, 0)}가 속상했겠다.",
                                            neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~",
@@ -136,12 +136,12 @@ class Roleplay():
                                        pos_bhv="do_question_S", pos="그 친구의 이름이 뭐니?",
                                        neu_bhv="do_agree", neu="괜찮아~ 생각나지 않을 수 있어~")
             
-            if answer[0] == "positive":
+            if answer[0][0] == "positive":
                 answer = cm.responses_proc(re_bhv="do_question_S", re_q="그 친구의 이름이 뭐니?",
                                            pos_bhv="do_agree", pos=f"의 어떤 점이 {animal} 같니?",
                                            neg_bhv="do_question_S", neg="다시 말해 줄래?")
             
-                if answer[0] == "positive":
+                if answer[0][0] == "positive":
                     answer = cm.responses_proc(re_bhv="do_agree", re_q=f"의 어떤 점이 {animal} 같니?",
                                                pos_bhv="do_joy_B", pos="파이보도 용감하고 씩씩해지고 싶다!",
                                                neu_bhv="do_agree", neu="몰라도 괜찮아~",

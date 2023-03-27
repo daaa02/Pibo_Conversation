@@ -38,7 +38,7 @@ class Fairytale():
                                    pos_bhv="do_question_S", pos=f"작은 동물이 되면 뭐가 좋을까?", 
                                    act_bhv="do_question_S", act=f"작은 동물이 되면 뭐가 좋을까?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", string=f"작은 동물이 되면 뭐가 좋을까?", 
                                        pos_bhv="do_agree! ", pos=f"그렇게 생각하는구나!", 
                                        neu_bhv="do_agree", neu=f"괜찮아~ 대답하기 어려울 수 있어~", 
@@ -53,7 +53,7 @@ class Fairytale():
                                    pos_bhv="do_question_L", pos=f"{wm.word(self.user_name, 0)}도 최근에 비슷한 기분을 느낀 일이 있다면 말해 줄래?", 
                                    act_bhv="do_question_L", act=f"{wm.word(self.user_name, 0)}도 최근에 비슷한 기분을 느낀 일이 있다면 말해 줄래?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}도 최근에 비슷한 기분을 느낀 일이 있다면 말해 줄래?", 
                                        act_bhv="do_agree", act=f"그랬구나!")
 
@@ -63,7 +63,7 @@ class Fairytale():
                                    neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
                                    act_bhv="do_question_L", act=f"{wm.word(self.user_name, 0)}도 가족들과 함께 기뻤던 일이 있었다면 말해 줄래?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}도 가족들과 함께 기뻤던 일이 있었다면 말해 줄래?", 
                                        pos_bhv="do_agree", pos=f"그런 일이 있었구나!", 
                                        act_bhv="do_agree", act=f"그런 일이 있었구나!")

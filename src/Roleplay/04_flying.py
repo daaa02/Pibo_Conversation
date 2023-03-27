@@ -58,7 +58,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 생각나지 않을 수 있어~",
                                                act_bhv="do_question_S", act="하늘을 날면 어떤 기분일까?")        
                     
-                    if answer[0] == "action":
+                    if answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="하늘을 날면 어떤 기분일까?",
                                                    pos_bhv="do_agree", pos="하늘을 날면 정말 멋지겠다!",
                                                    neu_bhv="do_agree", neu="상상하기 어려울 수도 있어~",
@@ -72,7 +72,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수도 있어~",
                                                act_bhv="do_question_S", act="그곳에 가서 무엇을 하고 싶니?")
                     
-                    if answer[0] == "positive" or "action":
+                    if answer[0][0] == "positive" or "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="그곳에 가서 무엇을 하고 싶니?",
                                                    pos_bhv="do_agree", pos="파이보도 같이 가고 싶은 걸?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수도 있어~",
@@ -86,7 +86,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
                                                act_bhv="do_question_S", act="함께 어디로 가고 싶니?")
                     
-                    if answer[0] == "positive" or "action":
+                    if answer[0][0] == "positive" or "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="함께 어디로 가고 싶니?",
                                                    pos_bhv="do_agree", pos="파이보도 같이 가고 싶은 걸?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
@@ -100,7 +100,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",
                                                act_bhv="do_questino_S", act="가서 무엇을 하고 싶니?")
                     
-                    if answer[0] == "positive" or "action":
+                    if answer[0][0] == "positive" or "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="함께 어디로 가고 싶니?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~~",)             
                     self.count += 1
@@ -113,7 +113,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
                                                act_bhv="do_question_S", act="어떤 모양의 집을 짓고 싶니?")
                     
-                    if answer[0] == "positive" or "action":
+                    if answer[0][0] == "positive" or "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 모양의 집을 짓고 싶니?",
                                                    pos_bhv="do_agree", pos="그럼 정말 좋겟다~",
                                                    neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
@@ -127,7 +127,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
                                                act_bhv="do_question_S", act="그 곳에 가면 무엇이 있을까?")
                     
-                    if answer[0] == "positive" or "action":
+                    if answer[0][0] == "positive" or "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="그 곳에 가면 무엇이 있을까?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
                                                    act_bhv="do_agree", act="정말 멋지겠는 걸?")

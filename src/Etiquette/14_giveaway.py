@@ -33,7 +33,7 @@ class Etiquette():
                                    neg_bhv="do_suggestion_S", neg="같이 다시 한번 볼까?",
                                    neu_bhv="do_suggestion_S", neu="같이 다시 한번 볼까?")             
         
-        if answer[0] == "action":            
+        if answer[0][0] == "action":            
             
             for i in range(len(self.correct)):
                 if self.correct[i] in answer[1]:
@@ -49,7 +49,7 @@ class Etiquette():
                 cm.tts(bhv="do_suggestion_S", string="또 무엇을 잘못했을까?")
                 answer = cm.responses_proc(re_bhv="do_suggestion_S", re_q="또 무엇을 잘못했을까?")
                 
-                if answer[0] == "action":        
+                if answer[0][0] == "action":        
                                 
                     for i in range(len(self.correct)):
                         if self.correct[i] in answer[1]:
@@ -70,7 +70,7 @@ class Etiquette():
         cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 장난감을 양보하지 않는 친구를 본 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 장난감을 양보하지 않는 친구를 본 적이 있니?")
         
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             cm.tts(bhv="do_question_S", string="어떤 장난감이었니?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 장난감이었니?",
                                        act_bhv="do_explain_A", act="다 같이 함께 놀면 좋을텐데!")

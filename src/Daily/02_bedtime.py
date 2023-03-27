@@ -39,11 +39,11 @@ class Daily():
                                    neg_bhv="do_question_S", neg="오늘 무슨 일 있었다면 말해 줄래?",
                                    act_bhv="do_question_S", act="오늘 재미있는 일이 있었다면 말해줄래?")
         
-        if answer[0] == "positive": self.mood = "좋음"
-        if answer[0] == "negative": self.mood = "나쁨"
-        if answer[0] == "action": self.mood = "평범"
+        if answer[0][0] == "positive": self.mood = "좋음"
+        if answer[0][0] == "negative": self.mood = "나쁨"
+        if answer[0][0] == "action": self.mood = "평범"
         
-        if answer[0] == "neutral": sys.exit(0)        
+        if answer[0][0] == "neutral": sys.exit(0)        
     
         answer = cm.responses_proc(re_q="오늘 있었던 일 말해줄 수 있니?",
                                    pos_bhv="do_question_S", pos="어떤 일이 있었니?",
@@ -51,7 +51,7 @@ class Daily():
                                    neg_bhv="do_joy_A", neg=f"오늘 하루도 고생 많았어. 내일은 좋은 일이 가득할거야~ {wm.word(self.user_name, type=4)} 잘 자!",
                                    act_bhv="do_joy_A", act=f"시간이 벌써 이렇게 됐네! 어서 자야겠는 걸? {wm.word(self.user_name, type=4)} 잘 자!")
 
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             if self.mood == "좋음":
                 answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 일이 있었니?", 
                                            pos_bhv="do_joy_B", pos=f"기분이 좋은 일이었겠는걸?",

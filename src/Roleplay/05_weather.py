@@ -66,7 +66,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
                                                act_bhv="do_question_S", act=f"또 어디에 가고 싶니?")                    
                     
-                    if answer[0] == "positive" or answer[0] == "action":
+                    if answer[0][0] == "positive" or answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"또 어디에 가고 싶니?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 바로 생각 나지 않을 수 있어~")
                                             
@@ -79,7 +79,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
                                                act_bhv="do_question_S", act=f"가서 무엇을 하고 싶니?")                    
                     
-                    if answer[0] == "positive" or answer[0] == "action":
+                    if answer[0][0] == "positive" or answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"가서 무엇을 하고 싶니?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 바로 생각 나지 않을 수 있어~")
                                                          
@@ -92,7 +92,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~",
                                                act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)} 기분은 어떨까?")                    
                     
-                    if answer[0] == "positive" or answer[0] == "action":
+                    if answer[0][0] == "positive" or answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)} 기분은 어떨까?",
                                                    neu_bhv="do_agree", neu=f"괜찮아~ 바로 생각 나지 않을 수 있어~",
                                                    act_bhv="do_agree", act=f"그런 기분이구나!")
@@ -106,7 +106,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="몰라도 괜찮아~",
                                                act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 {wm.word(self.role[0], 1)} 필요할 때가 있었니?")                    
                     
-                    if answer[0] == "positive" or answer[0] == "action":
+                    if answer[0][0] == "positive" or answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 {wm.word(self.role[0], 1)} 필요할 때가 있었니?",
                                                    neu_bhv="do_agree", neu="몰라도 괜찮아~")
                                                            
@@ -119,7 +119,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",
                                                act_bhv="do_question_S", act=f"그럴 때 무엇을 하고 싶니?")                    
                     
-                    if answer[0] == "positive" or answer[0] == "action":
+                    if answer[0][0] == "positive" or answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그럴 때 무엇을 하고 싶니?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 바로 생각 나지 않을 수 있어~")
                                                               
@@ -132,7 +132,7 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
                                                act_bhv="do_question_S", act=f"함께 하고 싶은게 있니?")                    
                     
-                    if answer[0] == "positive" or answer[0] == "action":
+                    if answer[0][0] == "positive" or answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"함께 하고 싶은게 있니?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~")
                                                          
@@ -145,13 +145,13 @@ class Roleplay():
                                                neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
                                                act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}는 어떤 계절을 좋아하니?")                    
                     
-                    if answer[0] == "positive" or answer[0] == "action":
+                    if answer[0][0] == "positive" or answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 어떤 계절을 좋아하니?",
                                                    pos_bhv="do_question_S", pos=f"그 계절에는 무엇을 하면 재미있니?",
                                                    neu_bhv="do_agree", neu="괜찮아~ 바로 생각 나지 않을 수 있어~",
                                                    act_bhv="do_question_S", act="그 계절에는 무엇을 하면 재미있니?")
                         
-                        if answer[0] == "positive" or answer[0] == "action":
+                        if answer[0][0] == "positive" or answer[0][0] == "action":
                             answer = cm.responses_proc(re_bhv="do_question_S", re_q="그 계절에는 무엇을 하면 재미있니?",
                                                        pos_bhv="do_joy_B", pos="생각만 해도 좋은 걸?",
                                                        neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",

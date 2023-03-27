@@ -33,7 +33,7 @@ class Solution():
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}의 속마음을 다른 사람에게 말한 적 있니?",
                                    pos_bhv="do_question_S", pos="말하고 나니까 기분이 어땠니?")                
     
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="말하고 나니까 기분이 어땠니?",
                                        pos_bhv="do_agree", pos="속마음을 말하면 마음이 편해질수도 있겠지?",
                                        act_bhv="do_agree", act="속마음을 말하면 마음이 편해질수도 있겠지?")
@@ -48,7 +48,7 @@ class Solution():
                                    pos_bhv="do_agree", pos=f"나는 속마음을 말로 표현하기 어려운 것 같아. {wm.word(self.user_name, 0)}는 언제 말하기가 어렵니?",
                                    neg_bhv="do_agree", neg=f"파이보는 잘 못하는데, {wm.word(self.user_name, 0)} 정말 대단한 걸?")
         
-        if answer[0] =="positive":
+        if answer[0][0] =="positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"나는 속마음을 말로 표현하기 어려운 것 같아. {wm.word(self.user_name, 0)}는 언제 말하기가 어렵니?",
                                        neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~")
         

@@ -33,7 +33,7 @@ class Solution():
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 친구에게 사과를 한 적이 있니?",
                                    pos_bhv="do_question_S", pos="어떤 일이 있었니?")                
     
-        if answer[0] == "positive":
+        if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 일이 있었니?",
                                        neu_bhv="do_agree", neu=" 괜찮아~ 생각이 나지 않을 수 있어~")
             

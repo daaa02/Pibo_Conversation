@@ -36,7 +36,7 @@ class Fairytale():
                                    neu_bhv="do_agree", neu=f"모를 수 있어~", 
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}의 소원은 어떻게 하면 이루어질까?")
         
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}의 소원은 어떻게 하면 이루어질까?", 
                                        pos_bhv="do_agree", pos=f"{wm.word(self.user_name, 0)}의 소원이 꼭 이루어졌으면 좋겠다~", 
                                        act_bhv="do_agree", act=f"{wm.word(self.user_name, 0)}의 소원이 꼭 이루어졌으면 좋겠다~")
@@ -46,7 +46,7 @@ class Fairytale():
                                    pos_bhv="do_question_S", pos=f"그 꽃을 좋아하는 이유는 뭐니?", 
                                    act_bhv="do_question_S", act=f"그 꽃을 좋아하는 이유는 뭐니?")
         
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그 꽃을 좋아하는 이유는 뭐니?", 
                                        neu_bhv="do_agree", neu=f"괜찮아~ 생각 나지 않을 수 있어~")
                                        
@@ -62,7 +62,7 @@ class Fairytale():
                                    neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 누군가가 거짓말을 해서 속상했던 적이 있었다면 말해줄래?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 누군가가 거짓말을 해서 속상했던 적이 있었다면 말해줄래?",
                                        neg_bhv="do_agree", neg=f"정말 기분이 안 좋았을 것 같아!",
                                        neu_bhv="do_agree", neu=f"모를 수 있지~", 
@@ -74,7 +74,7 @@ class Fairytale():
                                    neu_bhv="do_agree", neu=f"괜찮아~ 대답하기 어려울 수 있어~", 
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 최근에 도움을 받고 고마움을 느낀 적이 있니?")
 
-        if answer[0] == "positive" or answer[0] == "action":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 최근에 도움을 받고 고마움을 느낀 적이 있니?",
                                        pos_bhv="do_sad", pos=f"정말 고마웠겠다!",
                                        act_bhv="do_sad", act=f"정말 고마웠겠다!")
