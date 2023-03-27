@@ -91,40 +91,39 @@ class Say():
         text_to_speech("그리고 이렇게 눈 색깔을 바꿀 수도 있어!")
         
         cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 색깔을 좋아해?")
-        answer = speech_to_text()
+        answer = speech_to_text()        
         
-        color = ''
         blue = ["파랑", "파란", "하늘", "바다"]
         green = ["초록", "연두", "녹", "풀"]
         pink = ["빨", "붉", "분홍", "핑크"]
         purple = ["보라"]
         yellow = ["노랑", "노란"]
         
-        for i in range(blue):
+        for i in range(len(blue)):
             if blue[i] in answer:
                 self.color = 'blue'
                 device.send_raw('#21:108,209,239,5')
                 text_to_speech("어때? 마음에 들어?")                
                 
-        for i in range(green):
+        for i in range(len(green)):
             if green[i] in answer:
                 self.color = 'green'
                 device.send_raw('#21:120,230,208,5')
                 text_to_speech("어때? 마음에 들어?")    
                         
-        for i in range(pink):
+        for i in range(len(pink)):
             if pink[i] in answer:
                 self.color = 'pink'
                 device.send_raw('#21:255,177,190,5')
                 text_to_speech("어때? 마음에 들어?")
                 
-        for i in range(purple):
+        for i in range(len(purple)):
             if purple[i] in answer:
                 self.color = 'purple'
                 device.send_raw('#21:186,127,223,5')
                 text_to_speech("어때? 마음에 들어?")
                 
-        for i in range(yellow):
+        for i in range(len(yellow)):
             if yellow[i] in answer:
                 self.color = 'yellow'
                 device.send_raw('#21:251,245,155,5')
