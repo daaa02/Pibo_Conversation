@@ -17,6 +17,15 @@ cm = ConversationManage()
 wm = WordManage()
 audio = TextToSpeech()
 
+folder = "home/pi/UserData"
+filename = os.path.basename(__file__).strip('.py')
+today = datetime.now().strftime('%y%m%d_%H%M')
+csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'cp949')
+csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'cp949')
+cwc = csv.writer(csv_conversation)
+cwp = csv.writer(csv_preference)
+crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
+
 
 class Roleplay():    
     
@@ -103,6 +112,33 @@ class Roleplay():
         
         # 4. 마무리 대화
         cm.tts(bhv="do_joy_B", string=f"{wm.word(self.user_name, 0)}의 마음을 들어볼 수 있어서 좋았어. 다음에도 같이 의사 선생님 놀이 하자! 파이보가 {wm.word(self.user_name, 0)}의 몸과 마음을 살펴줄게~!")
+
+
+
+
+        # 3. 피드백 수집
+        time.sleep(1)                   
+        cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
+        answer = cm.responses_proc()  
+              
+        if answer[0][0] == "negative":
+            self.score = [0.0, -0.5, 0.0, 0.0]
+        
+        if answer[0][0] == "positive":
+            self.score = [0.0, 0.5, 0.0, 0.0]
+            
+        else: # if answer[0][0] == "neutral":
+            self.score = [0.0, -0.25, 0.0, 0.0]
+        
+        cwp.writerow([today, filename, self.score[0], self.score[1], self.score[2],self.score[3]])
+        
+        # 4. Paradise framework 기록
+        turns = [(self.reject[i] + 1) * 2 for i in range(len(self.reject))]      
+        reject = sum(self.reject) 
+        
+        cwc.writerow(['Turns', turns])
+        cwc.writerow(['Rejections', reject])
+        cwc.writerow(['Misrecognitions', ])
 
 
 

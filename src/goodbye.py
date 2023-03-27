@@ -4,7 +4,10 @@
 
 import os, sys
 import re
+import csv
 import random
+from datetime import datetime
+import time
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
 sys.path.append('/home/pi/Pibo_Conversation/')
@@ -15,6 +18,15 @@ from data.text_to_speech import TextToSpeech, text_to_speech
 cm = ConversationManage()
 wm = WordManage()
 audio = TextToSpeech()
+
+folder = "home/pi/UserData"
+filename = os.path.basename(__file__).strip('.py')
+today = datetime.now().strftime('%y%m%d_%H%M')
+csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'cp949')
+csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'cp949')
+cwc = csv.writer(csv_conversation)
+cwp = csv.writer(csv_preference)
+crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
 
 class Say():
     
