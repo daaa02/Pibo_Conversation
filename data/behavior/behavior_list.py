@@ -175,7 +175,7 @@ def do_agree():
     t = Thread(target=oled.o_agree, args=(), daemon=True)
     t.start()
     while True:
-        audio.audio_play(filename="/home/pi/Pibo_Conversation/data/behavior/audio/sound_sad.wav", out='local', volume=-1500, background=False)
+        audio.audio_play(filename="/home/pi/Pibo_Conversation/data/behavior/audio/sound_correct3.wav", out='local', volume=-1500, background=False)
         motion.set_motion(name="m_agree", cycle=1)
         break
 

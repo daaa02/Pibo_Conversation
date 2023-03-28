@@ -23,7 +23,7 @@ wm = WordManage()
 num = Number()
 audio = TextToSpeech()
 
-folder = "home/pi/UserData"
+folder = "/home/pi/UserData"
 filename = os.path.basename(__file__).strip('.py')
 today = datetime.now().strftime('%y%m%d_%H%M')
 csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'cp949')
