@@ -22,8 +22,8 @@ audio = TextToSpeech()
 folder = "/home/pi/UserData"
 filename = os.path.basename(__file__).strip('.py')
 today = datetime.now().strftime('%y%m%d_%H%M')
-csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'cp949')
-csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'cp949')
+csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'utf-8')
+csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'utf-8')
 cwc = csv.writer(csv_conversation)
 cwp = csv.writer(csv_preference)
 crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
@@ -34,13 +34,16 @@ class Roleplay():
     def __init__(self): 
         self.user_name = '다영'
         self.count = 0
+        self.score = []
+        self.turns = []
+        self.reject = []
         
     
     def Tiny(self):
         
         # 1. 역할 알림
-        cm.tts(bhv="do_suggestion_S", string="역할 놀이를 해볼까?")
-        cm.tts(bhv="do_suggestion_S", string="오늘은 아주 작은 역할을 해보자~") 
+        pibo = cm.tts(bhv="do_suggestion_S", string="역할 놀이를 해볼까?")
+        pibo = cm.tts(bhv="do_suggestion_S", string="오늘은 아주 작은 역할을 해보자~") 
         
         # 2. 역할 놀이 (1 of 3)        
         
@@ -50,14 +53,14 @@ class Roleplay():
 
         role = random.choice([animal[0], animal[1], animal[2]])
         
-        cm.tts(bhv="do_suggestion_S", string=f"이제 우리는 {wm.word(role[1], 0)}야!")
+        pibo = cm.tts(bhv="do_suggestion_S", string=f"이제 우리는 {wm.word(role[1], 0)}야!")
         
-        cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 {role[0]} 소리를 흉내내 보자! 시작!")
+        pibo = cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 {role[0]} 소리를 흉내내 보자! 시작!")
         answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q=f"{wm.word(self.user_name, 0)}도 {role[0]} 울음 소리를 흉내내보자! 시작!",
                                    neu_bhv="do_explain_A", neu=f"{wm.word(role[0], 2)} 이렇게 울어~",
                                    act_bhv="do_joy_A", act=f"{wm.word(role[1], 1)} 나타났다!")
         # audio.audio_play(filename)
-        cm.tts(bhv="do_explain_B", string=role[2])
+        pibo = cm.tts(bhv="do_explain_B", string=role[2])
         
         # 3. 대화 시작 (3 of 6)
         rand = random.sample(range(1,7), 3)
@@ -65,13 +68,13 @@ class Roleplay():
         while True:
             for i in range(len(rand)):
                 if rand[i] == 1:                             
-                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면 어떤 점이 가장 좋을까?")
+                    pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면 어떤 점이 가장 좋을까?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면  어떤 점이 가장 좋을까?",
                                                neu_bhv="do_agree", neu="괜찮아~ 생각나지 않을 수 있어~")                    
                     self.count += 1 
                     
                 if rand[i] == 2: 
-                    cm.tts(bhv="do_question_L", string=f"{wm.word(role[1], 2)} 작아서 언제 가장 힘들까?")
+                    pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(role[1], 2)} 작아서 언제 가장 힘들까?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면  어떤 점이 가장 좋을까?",
                                                pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 작아서 속상했던 적이 있니?",
                                                neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~",
@@ -90,7 +93,7 @@ class Roleplay():
                     self.count += 1
                     
                 if rand[i] == 3: 
-                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 되어서 숨고 싶다고 느낀 적이 있니?")
+                    pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 되어서 숨고 싶다고 느낀 적이 있니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 되어서 숨고 싶다고 느낀 적이 있니?",
                                                pos_bhv="do_question_S", pos="언제 숨고 싶었니?",
                                                neu_bhv="do_agree", neu="괜찮아~ 말하기 어려울 수 있어~")
@@ -103,7 +106,7 @@ class Roleplay():
                     self.count += 1
                     
                 if rand[i] == 4: 
-                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면 어디에 살고 싶니?")
+                    pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면 어디에 살고 싶니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면 어디에 살고 싶니?",
                                                pos_bhv="do_question_S", pos="언제 숨고 싶었니?",
                                                neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수도 있어~")
@@ -115,7 +118,7 @@ class Roleplay():
                     self.count += 1
                     
                 if rand[i] == 5: 
-                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 {wm.word(role[0], 1)} 되어서 몰래 가보고 싶은 곳이 있니?")
+                    pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 {wm.word(role[0], 1)} 되어서 몰래 가보고 싶은 곳이 있니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면 어디에 살고 싶니?",
                                                pos_bhv="do_question_S", pos="그 곳에 가서 무엇을 하고 싶니?",
                                                neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~")
@@ -127,7 +130,7 @@ class Roleplay():
                     self.count += 1
                     
                 if rand[i] == 6: 
-                    cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 {wm.word(role[0], 1)} 되어서 몰래 도와주고 싶은 사람이 있니?")
+                    pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 {wm.word(role[0], 1)} 되어서 몰래 도와주고 싶은 사람이 있니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 {wm.word(role[0], 1)} 되어서 몰래 도와주고 싶은 사람이 있니?",
                                                pos_bhv="do_question_S", pos="어떤 도움을 주고 싶니?",
                                                neu_bhv="do_agree", neu="괜찮아~ 생각나지 않을 수도 있어~")
@@ -147,14 +150,16 @@ class Roleplay():
                 break
         
         # 4. 마무리 대화
-        cm.tts(bhv="do_joy_A", string=f"{wm.word(role[0], 2)} 작지만 멋진 친구들이야! 다음에 또 재미있는 역할놀이 하자~")
+        pibo = cm.tts(bhv="do_joy_A", string=f"{wm.word(role[0], 2)} 작지만 멋진 친구들이야! 다음에 또 재미있는 역할놀이 하자~")
 
 
 
         # 3. 피드백 수집
         time.sleep(1)                   
-        cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
-        answer = cm.responses_proc()  
+        pibo = cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
+        answer = cm.responses_proc() 
+
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]
@@ -168,12 +173,16 @@ class Roleplay():
         cwp.writerow([today, filename, self.score[0], self.score[1], self.score[2],self.score[3]])
         
         # 4. Paradise framework 기록
-        turns = [(self.reject[i] + 1) * 2 for i in range(len(self.reject))]      
+        turns = sum((self.reject[i] + 1) * 2 for i in range(len(self.reject)))  
         reject = sum(self.reject) 
         
         cwc.writerow(['Turns', turns])
         cwc.writerow(['Rejections', reject])
         cwc.writerow(['Misrecognitions', ])
+
+        cwc.writerow(['%Turns', ])
+        cwc.writerow(['%Rejections', ])
+        cwc.writerow(['%Misrecognitions', ])
 
 
 

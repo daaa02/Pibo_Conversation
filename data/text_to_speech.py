@@ -23,7 +23,7 @@ class TextToSpeech():
         client_id = "3qz5jqx2r0"
         client_secret = "zwB0Yb4UONPKaOKCjZkhsSl8REuKvJTYK2Esvr41"
         encText = urllib.parse.quote(text)
-        data = f"speaker={voice}&volume=0&speed=0&pitch=0&format=wav&text=" + encText
+        data = f"speaker={voice}&volume=0&speed=1&pitch=0&format=wav&text=" + encText
         url = "https://naveropenapi.apigw.ntruss.com/tts-premium/v1/tts"
         request = urllib.request.Request(url)
         request.add_header("X-NCP-APIGW-API-KEY-ID",client_id)
@@ -39,7 +39,7 @@ class TextToSpeech():
                 
 
     # tts, 효과음 등 모든 오디오를 플레이하는 함수
-    def audio_play(self, filename, out='local', volume='-1000', background=False):
+    def audio_play(self, filename, out='local', volume='-1500', background=False):
         if not os.path.isfile(filename):
             raise Exception(f'"{filename}" does not exist')
 
@@ -57,6 +57,9 @@ class TextToSpeech():
 
         opt = '&' if background else ''
         os.system(f'omxplayer -o {out} --vol {volume} {filename} {opt}')
+        
+    def stop(self):
+        os.system('sudo pkill play')
         
         
 tts = TextToSpeech()

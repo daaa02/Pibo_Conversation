@@ -5,7 +5,9 @@
 import os, sys
 import re
 import time
+from datetime import datetime 
 import random
+import csv
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
 sys.path.append('/home/pi/Pibo_Conversation/')
@@ -20,8 +22,8 @@ audio = TextToSpeech()
 folder = "/home/pi/UserData"
 filename = os.path.basename(__file__).strip('.py')
 today = datetime.now().strftime('%y%m%d_%H%M')
-csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'cp949')
-csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'cp949')
+csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'utf-8')
+csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'utf-8')
 cwc = csv.writer(csv_conversation)
 cwp = csv.writer(csv_preference)
 crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
@@ -32,13 +34,16 @@ class Roleplay():
     def __init__(self): 
         self.user_name = '윤지'
         self.count = 0
+        self.score = []
+        self.turns = []
+        self.reject = []
         
     
     def Animal(self):
         
         # 1. 역할 알림
-        cm.tts(bhv="do_suggestion_S", string="역할 놀이를 해볼까?")
-        cm.tts(bhv="do_suggestion_S", string="오늘은 동물 역할 놀이를 해보자~ 이제부터 동물을 흉내내 볼거야~") 
+        pibo = cm.tts(bhv="do_suggestion_S", string="역할 놀이를 해볼까?")
+        pibo = cm.tts(bhv="do_suggestion_S", string="오늘은 동물 역할 놀이를 해보자~ 이제부터 동물을 흉내내 볼거야~") 
                 
         # 2. 역할 놀이 (1 of 5)
         ## 2.1 동물 소리
@@ -46,21 +51,21 @@ class Roleplay():
                   ['수탉', '오리', '말'], ['뻐꾸기', '개구리', '개'], ['늑대', '양', '모기'])
         role = random.choice([animal[0], animal[1], animal[2], animal[3], animal[4]])
         
-        cm.tts(bhv="do_question_S", string=f"{wm.word(role[0], 2)} 어떻게 울까?")
+        pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(role[0], 2)} 어떻게 울까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(role[0], 2)}는 어떻게 울까?",
                                    neu_bhv="do_explain_A", neu=f"내가 알려줄게! {wm.word(role[0], 2)} 이렇게 운단다.",
                                    neg_bhv="do_explain_A", neg=f"내가 알려줄게! {wm.word(role[0], 2)} 이렇게 운단다.",
                                    act_bhv="do_compliment_S", act="잘하는 걸? 파이보도 한번 따라해 볼게!")
         # audio.audio_play(filename)
         
-        cm.tts(bhv="do_suggestion_S", string=f"{wm.word(role[1], 2)} 어떤 소리를 낼까?")
+        pibo = cm.tts(bhv="do_suggestion_S", string=f"{wm.word(role[1], 2)} 어떤 소리를 낼까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(role[1], 2)}는 어떻게 울까?",
                                    neu_bhv="do_explain_A", neu=f"내가 알려줄게! {wm.word(role[1], 2)} 이렇게 운단다.",
                                    neg_bhv="do_explain_A", neg=f"내가 알려줄게! {wm.word(role[1], 2)} 이렇게 운단다.",
                                    act_bhv="do_compliment_S", act="잘하는 걸? 파이보도 한번 따라해 볼게!")
         # audio.audio_play(filename)
                 
-        cm.tts(bhv="do_question_S", string=f"이건 누구일까?")
+        pibo = cm.tts(bhv="do_question_S", string=f"이건 누구일까?")
         # audio.audio_play(filename)
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="누구일까?",
                                    neu_bhv="do_explain_A", neu=f"내가 알려줄게! {wm.word(role[2], 2)} 이렇게 운단다.",
@@ -68,7 +73,7 @@ class Roleplay():
                                    act_bhv="do_compliment_S", act="잘하는 걸? 파이보도 한번 따라해 볼게!")
         # audio.audio_play(filename)              
         
-        cm.tts(bhv="do_joy_A", string="동물을 흉내내니까 정말 재미있는 걸?")
+        pibo = cm.tts(bhv="do_joy_A", string="동물을 흉내내니까 정말 재미있는 걸?")
         
         ## 2.2 동물 행동 (1 of 5)
         animal = (['펭귄', '펭귄이 걷는 모습을 따라해', '코끼리', '팔을 겹쳐서 코를 만들어', '뱀', '기어'],
@@ -80,41 +85,41 @@ class Roleplay():
         # print(len(animal))
         role = random.choice([animal[0], animal[1], animal[2], animal[3], animal[4]])
         
-        cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}가 동물을 흉내내면 내가 멋진 사진을 찍어줄게.")
+        pibo = cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}가 동물을 흉내내면 내가 멋진 사진을 찍어줄게.")
         
-        cm.tts(bhv="do_suggestion_S", string=f"첫 번째는 {wm.word(role[0], 0)}야. {role[1]}볼까?")
+        pibo = cm.tts(bhv="do_suggestion_S", string=f"첫 번째는 {wm.word(role[0], 0)}야. {role[1]}볼까?")
         time.sleep(1)        
-        cm.tts(bhv="do_photo", string="자~ 찍는다!")
+        pibo = cm.tts(bhv="do_photo", string="자~ 찍는다!")
         
-        cm.tts(bhv="do_suggestion_S", string=f"이번엔 {role[2]} 처럼 {role[3]}보자!")
+        pibo = cm.tts(bhv="do_suggestion_S", string=f"이번엔 {role[2]} 처럼 {role[3]}보자!")
         time.sleep(1)        
-        cm.tts(bhv="do_photo", string="자~ 찍는다!")       
+        pibo = cm.tts(bhv="do_photo", string="자~ 찍는다!")       
         
-        cm.tts(bhv="do_suggestion_S", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[4], 1)} 되었다고 생각하고 {role[5]}보자!")
+        pibo = cm.tts(bhv="do_suggestion_S", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[4], 1)} 되었다고 생각하고 {role[5]}보자!")
         time.sleep(1)        
-        cm.tts(bhv="do_photo", string="이번에도 멋지게 찍어 줄게!")
+        pibo = cm.tts(bhv="do_photo", string="이번에도 멋지게 찍어 줄게!")
         
-        cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, 0)}가 표현하니까 더 재미있는 걸? 따라한 동물들은 모두 사진 찍어두었어~ 나중에 확인해봐!")
+        pibo = cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, 0)}가 표현하니까 더 재미있는 걸? 따라한 동물들은 모두 사진 찍어두었어~ 나중에 확인해봐!")
         
         # 3. 대화 시작
-        cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 어떤 동물을 제일 좋아하니?")
+        pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 어떤 동물을 제일 좋아하니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 어떤 동물을 제일 좋아하니?",
                                    pos_bhv="do_agree", pos="그 동물은 어떻게 생겼니?",
                                    neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
                                    act_bhv="do_agree", act="그 동물은 어떻게 생겼니?")
         
-        if answer[0][0] == "positive" or "action":
+        if answer[0][0] == "positive" or answer[0][0] =="action":
              answer = cm.responses_proc(re_bhv="do_question_S", re_q="그 동물은 어떻게 생겼니?",
                                         neu_bhv="do_agree", neu="몰라도 괜찮아~")
         
         
-        cm.tts(bhv="do_question_L", string=f"만약 {wm.word(self.user_name, 0)}가 원하는 동물로 변신할 수 있다면 어떤 동물이 되고 싶니?")
+        pibo = cm.tts(bhv="do_question_L", string=f"만약 {wm.word(self.user_name, 0)}가 원하는 동물로 변신할 수 있다면 어떤 동물이 되고 싶니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"원하는 동물로 변신할 수 있다면 어떤 동물이 되고 싶니?",
                                     neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")        
         
         if answer[0][0] == "action":
             fav = answer[1]
-            cm.tts(bhv="do_question_S", string=f"{fav} 맞니?")
+            pibo = cm.tts(bhv="do_question_S", string=f"{fav} 맞니?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{fav}맞니?",
                                         neu_bhv="do_agree", neu="이름을 다시 말해 줄래?",
                                         neg_bhv="do_agree", neg="이름을 다시 말해 줄래?")
@@ -122,15 +127,15 @@ class Roleplay():
                 if answer[0][0] == "positive":                    
                     break
                 if answer[0] != "positive":
-                    cm.tts(bhv="do_question_S", string=f"{answer[1]}맞니?")
+                    pibo = cm.tts(bhv="do_question_S", string=f"{answer[1]}맞니?")
                     continue
                 
-        cm.tts(bhv="do_question_L", string=f"만약 {wm.word(fav, 0)}로 변신을 하면, 어떤 점이 제일 좋을 것 같아?")
+        pibo = cm.tts(bhv="do_question_L", string=f"만약 {wm.word(fav, 0)}로 변신을 하면, 어떤 점이 제일 좋을 것 같아?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"만약 {wm.word(fav, 0)}로 변신을 하면, 어떤 점이 제일 좋을 것 같아?",
                                    pos_bhv="do_agree", pos="그런 점이 좋겠구나!",
                                    neu_bhv="do_agree", neu="몰라도 괜찮아~")
         
-        cm.tts(bhv="do_question_L", string=f"만약 {wm.word(fav, 0)}로 변신을 한 뒤, {wm.word(self.user_name, 0)}가 제일 먼저 하고 싶은 것이 있니?")
+        pibo = cm.tts(bhv="do_question_L", string=f"만약 {wm.word(fav, 0)}로 변신을 한 뒤, {wm.word(self.user_name, 0)}가 제일 먼저 하고 싶은 것이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"만약 {wm.word(fav, 0)}로 변신을 한 뒤, {wm.word(self.user_name, 0)}가 제일 먼저 하고 싶은 것이 있니?",
                                    pos_bhv="do_agree", pos="언제 하고 싶니?",
                                    neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~")
@@ -139,7 +144,7 @@ class Roleplay():
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 하고 싶니?",
                                        neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")
         
-        cm.tts(bhv="do_question_L", string=f"만약 {wm.word(fav, 0)}로 변신을 한 뒤, 만나고 싶은 사람이 있니?")
+        pibo = cm.tts(bhv="do_question_L", string=f"만약 {wm.word(fav, 0)}로 변신을 한 뒤, 만나고 싶은 사람이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"만약 {wm.word(fav, 0)}로 변신을 하면, 어떤 점이 제일 좋을 것 같아?",
                                    pos_bhv="do_agree", pos="만나서 무엇을 같이 하고 싶니?",
                                    neu_bhv="do_agree", neu="대답하기 어려울 수 있어~")
@@ -150,20 +155,22 @@ class Roleplay():
                                        neu_bhv="do_agree", neu="몰라도 괜찮아~",
                                        act_bhv="do_compliment_S", act=f"{wm.word(self.user_name, 0)}는 상상력이 대단한 걸?")
             
-        cm.tts(bhv="do_question_L", string="오늘 따라한 동물 중에 어떤 게 가장 웃기고 재미있었니?")
+        pibo = cm.tts(bhv="do_question_L", string="오늘 따라한 동물 중에 어떤 게 가장 웃기고 재미있었니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="오늘 따라한 동물 중에 어떤 게 가장 웃기고 재미있었니?",
                                    pos_bhv="do_agree", pos="내 생각에도 정말 재미있었어!")
         
         # 4. 마무리 대화
-        cm.tts(bhv="do_joy_B", string="정말 재밌었어. 다음에도 다양한 동물들이 되어 상상의 나래를 펼쳐보자~")
+        pibo = cm.tts(bhv="do_joy_B", string="정말 재밌었어. 다음에도 다양한 동물들이 되어 상상의 나래를 펼쳐보자~")
 
 
 
 
         # 3. 피드백 수집
         time.sleep(1)                   
-        cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
-        answer = cm.responses_proc()  
+        pibo = cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
+        answer = cm.responses_proc() 
+
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]
@@ -177,12 +184,16 @@ class Roleplay():
         cwp.writerow([today, filename, self.score[0], self.score[1], self.score[2],self.score[3]])
         
         # 4. Paradise framework 기록
-        turns = [(self.reject[i] + 1) * 2 for i in range(len(self.reject))]      
+        turns = sum((self.reject[i] + 1) * 2 for i in range(len(self.reject)))  
         reject = sum(self.reject) 
         
         cwc.writerow(['Turns', turns])
         cwc.writerow(['Rejections', reject])
         cwc.writerow(['Misrecognitions', ])
+
+        cwc.writerow(['%Turns', ])
+        cwc.writerow(['%Rejections', ])
+        cwc.writerow(['%Misrecognitions', ])
 
 
 

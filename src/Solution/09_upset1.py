@@ -22,8 +22,8 @@ audio = TextToSpeech()
 folder = "/home/pi/UserData"
 filename = os.path.basename(__file__).strip('.py')
 today = datetime.now().strftime('%y%m%d_%H%M')
-csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'cp949')
-csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'cp949')
+csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'utf-8')
+csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'utf-8')
 cwc = csv.writer(csv_conversation)
 cwp = csv.writer(csv_preference)
 crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
@@ -33,52 +33,55 @@ class Solution():
     
     def __init__(self): 
         self.user_name = '윤지'
+        self.score = []
+        self.turns = []
+        self.reject = []
                 
         
     def Upset1(self):
         
         # 1.1 문제 제시
-        cm.tts(bhv="do_sad", string="한 번 혼나고 나면 오랫동안 기분이 안 좋아.")
+        pibo = cm.tts(bhv="do_sad", string="한 번 혼나고 나면 오랫동안 기분이 안 좋아.")
         
         # 1.2 경험 질문
-        cm.tts(bhv="do_sad", string=f"{wm.word(self.user_name, 0)}도 한번씩 혼이 나니?")
+        pibo = cm.tts(bhv="do_sad", string=f"{wm.word(self.user_name, 0)}도 한번씩 혼이 나니?")
         answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}도 한번씩 혼이 나니?",
                                    pos_bhv="do_sad", pos=f"{wm.word(self.user_name, 0)}도 속상했겠다.")    
     
-        cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 혼나면 어떻게 하니?")
+        pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 혼나면 어떻게 하니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 혼나면 어떻게 하니?",
                                    neu_bhv="do_agree", neu="괜찮아~ 말하기 어려울 수 있어~")
 
-        cm.tts(bhv="do_question_L", string=f"주변에서 누가 가장 {wm.word(self.user_name, 0)}를 많이 혼내니?")
+        pibo = cm.tts(bhv="do_question_L", string=f"주변에서 누가 가장 {wm.word(self.user_name, 0)}를 많이 혼내니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"주변에서 누가 가장 {wm.word(self.user_name, 0)}를 많이 혼내니?",
                                    neu_bhv="do_agree", neu="괜찮아~ 말하기 어려울 수 있어~")
 
-        cm.tts(bhv="do_question_S", string="혼내는 사람의 마음도 속상할까? ")
+        pibo = cm.tts(bhv="do_question_S", string="혼내는 사람의 마음도 속상할까? ")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="혼내는 사람의 마음도 속상할까? ",
                                    pos_bhv="do_agree", pos="혼내는 사람도 속상할 것 같아.",
                                    neu_bhv="do_agree", neu="몰라도 괜찮아~",
                                    act_bhv="do_agree", act="혼내는 사람도 속상할 것 같아.")
         
-        cm.tts(bhv="do_question_L", string="혼나고 나서 어떻게 하면 기분이 좋아질까?")
+        pibo = cm.tts(bhv="do_question_L", string="혼나고 나서 어떻게 하면 기분이 좋아질까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="화가 날 때 재미있는 놀이를 하면 기분이 좋아질까?",
                                    pos_bhv="do_agree", pos="기분이 좋아지겠다~",
                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")
         
-        cm.tts(bhv="do_question_L", string="혼난 친구에게 무슨 말을 해주면 좋을까?")
+        pibo = cm.tts(bhv="do_question_L", string="혼난 친구에게 무슨 말을 해주면 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="혼난 친구에게 무슨 말을 해주면 좋을까?",
                                    pos_bhv="do_agree", pos="친구에게 도움이 되겠는 걸?",
                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",
                                    act_bhv="do_agree", act="친구에게 도움이 되겠는 걸?")
         
         # 2.1 문제 해결
-        cm.tts(bhv="do_joy_A", string="파이보도 혼나고 나서 기분이 좋아지도록 노력해야겠다~ 알려줘서 정말 고마워!")
+        pibo = cm.tts(bhv="do_joy_A", string="파이보도 혼나고 나서 기분이 좋아지도록 노력해야겠다~ 알려줘서 정말 고마워!")
                             
         
         
         
         # 3. 피드백 수집
         time.sleep(1)                   
-        cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
+        pibo = cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc()  
               
         if answer[0][0] == "negative":
@@ -93,12 +96,16 @@ class Solution():
         cwp.writerow([today, filename, self.score[0], self.score[1], self.score[2],self.score[3]])
         
         # 4. Paradise framework 기록
-        turns = [(self.reject[i] + 1) * 2 for i in range(len(self.reject))]      
+        turns = sum((self.reject[i] + 1) * 2 for i in range(len(self.reject)))  
         reject = sum(self.reject) 
         
         cwc.writerow(['Turns', turns])
         cwc.writerow(['Rejections', reject])
         cwc.writerow(['Misrecognitions', ])
+
+        cwc.writerow(['%Turns', ])
+        cwc.writerow(['%Rejections', ])
+        cwc.writerow(['%Misrecognitions', ])
 
 
 

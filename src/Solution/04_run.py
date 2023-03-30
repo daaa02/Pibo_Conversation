@@ -22,8 +22,8 @@ audio = TextToSpeech()
 folder = "/home/pi/UserData"
 filename = os.path.basename(__file__).strip('.py').strip('.py')
 today = datetime.now().strftime('%y%m%d_%H%M')
-csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'cp949')
-csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'cp949')
+csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'utf-8')
+csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'utf-8')
 cwc = csv.writer(csv_conversation)
 cwp = csv.writer(csv_preference)
 crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
@@ -50,7 +50,6 @@ class Solution():
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
-        print(answer[1])
         
         pibo = cm.tts(bhv="do_question_L", string="사람이 많은 곳에서 뛰어다니면 위험할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="사람이 많은 곳에서 뛰어다니면 위험할까?",
@@ -59,36 +58,35 @@ class Solution():
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
-        print(answer[1])
         
 
-        cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 평소에 천천히 조용히 걷니?")
+        pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 평소에 천천히 조용히 걷니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 평소에 천천히 조용히 걷니?",
                                    pos_bhv="do_explain_C", pos="신사같은 걸?")
 
-        cm.tts(bhv="do_question_S", string="천천히 걸으면 어떤 점이 좋을까?")
+        pibo = cm.tts(bhv="do_question_S", string="천천히 걸으면 어떤 점이 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="천천히 걸으면 어떤 점이 좋을까?",
                                    pos_bhv="do_agree", pos="천천히 걸으면 안전하겠지?",
                                    neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~ 천천히 걸으면 안전하겠지?",
                                    act_bhv="do_agree", act="천천히 걸으면 안전하겠지?")
             
-        cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 천장에서 발소리를 들어 본 적이 있니?")
+        pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 천장에서 발소리를 들어 본 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 천장에서 발소리를 들어 본 적이 있니?",
                                    pos_bhv="do_joy_B", pos="시끄러웠겠다!")
         
-        cm.tts(bhv="do_question_L", string="어떻게 하면 발소리가 나지 않게 조용히 걸을 수 있을까?")
+        pibo = cm.tts(bhv="do_question_L", string="어떻게 하면 발소리가 나지 않게 조용히 걸을 수 있을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="어떻게 하면 발소리가 나지 않게 조용히 걸을 수 있을까?",
                                    pos_bhv="do_agree", pos="사뿐사뿐 천천히 걸어야겠지?",
                                    neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~ 사뿐사뿐 천천히 걸으면 발소리가 나지 않겠지?",
                                    act_bhv="do_agree", act="사뿐사뿐 천천히 걸어야겠지?")
         
         # 2.1 문제 해결
-        cm.tts(bhv="do_joy_A", string="파이보도 이제 조용하고 안전하게 걸으려고 노력해야겠다~ 알려줘서 정말 고마워!")
+        pibo = cm.tts(bhv="do_joy_A", string="파이보도 이제 조용하고 안전하게 걸으려고 노력해야겠다~ 알려줘서 정말 고마워!")
         
         
         # 3. 피드백 수집
         time.sleep(1)                   
-        cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
+        pibo = cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc()  
               
         if answer[0][0] == "negative":
@@ -103,12 +101,16 @@ class Solution():
         cwp.writerow([today, filename, self.score[0], self.score[1], self.score[2],self.score[3]])
         
         # 4. Paradise framework 기록
-        turns = [(self.reject[i] + 1) * 2 for i in range(len(self.reject))]      
+        turns = sum((self.reject[i] + 1) * 2 for i in range(len(self.reject)))  
         reject = sum(self.reject) 
         
         cwc.writerow(['Turns', turns])
         cwc.writerow(['Rejections', reject])
         cwc.writerow(['Misrecognitions', ])
+
+        cwc.writerow(['%Turns', ])
+        cwc.writerow(['%Rejections', ])
+        cwc.writerow(['%Misrecognitions', ])
 
 
 

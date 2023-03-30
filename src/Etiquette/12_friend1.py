@@ -14,6 +14,12 @@ sys.path.append('/home/pi/Pibo_Conversation/')
 from data.conversation_manage import ConversationManage, WordManage
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
+from openpibo.vision import Camera
+from openpibo.vision import Detect
+
+
+pibo_camera = Camera()
+pibo_detect = Detect()
 
 cm = ConversationManage()
 wm = WordManage()
@@ -22,8 +28,8 @@ audio = TextToSpeech()
 folder = "/home/pi/UserData"
 filename = os.path.basename(__file__).strip('.py')
 today = datetime.now().strftime('%y%m%d_%H%M')
-csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'cp949')
-csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'cp949')
+csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'utf-8')
+csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'utf-8')
 cwc = csv.writer(csv_conversation)
 cwp = csv.writer(csv_preference)
 crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
@@ -40,7 +46,7 @@ class Etiquette():
     def Friend1(self):
         
         # 2.1 카드 대화
-        cm.tts(bhv="do_question_L", string="이 카드의 어린이는 무엇을 잘못했을까?")
+        pibo = cm.tts(bhv="do_question_L", string="이 카드의 어린이는 무엇을 잘못했을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="이 카드의 어린이는 무엇을 잘못했을까?",
                                    neg_bhv="do_suggestion_S", neg="같이 다시 한번 볼까?",
                                    neu_bhv="do_suggestion_S", neu="같이 다시 한번 볼까?")             
@@ -55,10 +61,10 @@ class Etiquette():
               
             if self.ox == "(right)":
                 print(self.ox)
-                cm.tts(bhv="do_compliment_S", string="맞아! 아주 똑똑한 걸?")
+                pibo = cm.tts(bhv="do_compliment_S", string="맞아! 아주 똑똑한 걸?")
             else:
                 print(self.ox)
-                cm.tts(bhv="do_suggestion_S", string="또 무엇을 잘못했을까?")
+                pibo = cm.tts(bhv="do_suggestion_S", string="또 무엇을 잘못했을까?")
                 answer = cm.responses_proc(re_bhv="do_suggestion_S", re_q="또 무엇을 잘못했을까?")
                 
                 if answer[0][0] == "action":        
@@ -71,29 +77,29 @@ class Etiquette():
                     
                     if self.ox == "(right)":
                         print(self.ox)
-                        cm.tts(bhv="do_compliment_S", string="맞아! 아주 똑똑한 걸?")
+                        pibo = cm.tts(bhv="do_compliment_S", string="맞아! 아주 똑똑한 걸?")
                     else:
                         print(self.ox)
-                        cm.tts(bhv="do_suggestion_S", string="같이 다시 한번 볼까?")
+                        pibo = cm.tts(bhv="do_suggestion_S", string="같이 다시 한번 볼까?")
         
-        cm.tts(bhv="do_explain_A", string="이 카드의 어린이는 친구가 싫어하는 행동을 계속 하네.")
+        pibo = cm.tts(bhv="do_explain_A", string="이 카드의 어린이는 친구가 싫어하는 행동을 계속 하네.")
      
         # 2.2 경험 질문
-        cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 행동을 싫어하니?")
+        pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 행동을 싫어하니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 어떤 행동을 싫어하니?")
 
 
-        cm.tts(bhv="do_question_L", string=f"싫어하는 행동을 친구가 계속하면 {wm.word(self.user_name, 0)}의 기분이 어때?")
+        pibo = cm.tts(bhv="do_question_L", string=f"싫어하는 행동을 친구가 계속하면 {wm.word(self.user_name, 0)}의 기분이 어때?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 기분이 어때?",
                                    act_bhv="do_agree", act="나도 그렇게 생각해!")
             
-        cm.tts(bhv="do_question_L", string="싫어하는 행동을 계속 하는 친구와 같이 놀고 싶을까?")
+        pibo = cm.tts(bhv="do_question_L", string="싫어하는 행동을 계속 하는 친구와 같이 놀고 싶을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="싫어하는 행동을 계속 하는 친구와 같이 놀고 싶을까?",
                                    neg_bhv="do_agree", neg="같이 안 놀고 싶겠지?",
                                    act_bhv="do_agree", act="같이 안 놀고 싶겠지?")
 
         # 2.3 문제 인식
-        cm.tts(bhv="do_question_L", string="싫어하는 행동은 사람마다 다 달라. 친구가 싫어하는 행동을 계속하면 친구는 어떤 기분일까?")
+        pibo = cm.tts(bhv="do_question_L", string="싫어하는 행동은 사람마다 다 달라. 친구가 싫어하는 행동을 계속하면 친구는 어떤 기분일까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="친구가 싫어하는 행동을 계속하면 친구는 어떤 기분일까?",
                                    pos_bhv="do_agree", pos="그 친구는 화가 날 수도 있겠지?",
                                    neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 그 친구는 화가 날 수도 있겠지?",
@@ -101,15 +107,17 @@ class Etiquette():
                                    act_bhv="do_agree", act="그 친구는 화가 날 수도 있겠지?")
     
         # 3.1 마무리 대화
-        cm.tts(bhv="do_joy_A", string="다른 친구가 싫어하는 행동을 하는 건 좋지 않은 것 같아. 친구랑 사이좋게 지낼 수 있도록 노력하자~")
+        pibo = cm.tts(bhv="do_joy_A", string="다른 친구가 싫어하는 행동을 하는 건 좋지 않은 것 같아. 친구랑 사이좋게 지낼 수 있도록 노력하자~")
     
         
         
         
         # 3. 피드백 수집
         time.sleep(1)                   
-        cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
-        answer = cm.responses_proc()  
+        pibo = cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
+        answer = cm.responses_proc() 
+
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]
@@ -123,12 +131,16 @@ class Etiquette():
         cwp.writerow([today, filename, self.score[0], self.score[1], self.score[2],self.score[3]])
         
         # 4. Paradise framework 기록
-        turns = [(self.reject[i] + 1) * 2 for i in range(len(self.reject))]      
+        turns = sum((self.reject[i] + 1) * 2 for i in range(len(self.reject)))  
         reject = sum(self.reject) 
         
         cwc.writerow(['Turns', turns])
         cwc.writerow(['Rejections', reject])
         cwc.writerow(['Misrecognitions', ])
+
+        cwc.writerow(['%Turns', ])
+        cwc.writerow(['%Rejections', ])
+        cwc.writerow(['%Misrecognitions', ])
 
 
 

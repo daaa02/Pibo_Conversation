@@ -26,6 +26,14 @@ disp = Oled()
 motion = Motion()
 audio = TextToSpeech()
 
+def do_stop():
+    eye.e_question()
+    t = Thread(target=oled.o_joy, args=(), daemon=True)
+    t.start()
+    while True: 
+        motion.set_motion(name="stop", cycle=1)
+        break
+
 def do_breath1():
     eye.e_question()
     t = Thread(target=oled.o_joy, args=(), daemon=True)
@@ -211,6 +219,8 @@ def do_sad():
 
 
 def execute(bhv):
+    if bhv == "do_stop":
+        do_stop()
     if bhv == "do_breath1":
         do_breath1()
     if bhv == "do_question_L":

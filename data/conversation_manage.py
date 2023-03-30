@@ -10,11 +10,11 @@ sys.path.append('/home/pi/Pibo_Conversation/data')
 
 import google
 from speech_to_text import speech_to_text
-from text_to_speech import text_to_speech
+from text_to_speech import text_to_speech, TextToSpeech
 
-import openpibo
+
+from openpibo.oled import Oled
 import behavior.behavior_list as behavior
-
 """
 STT 모듈이랑 답변 처리 모듈 통합하고 있는 파일
     * class Dictionary: 답변 성격(Pos/Neu/Neg), 숫자 후보들
@@ -99,7 +99,7 @@ class ConversationManage():
         return self.response
     
     
-    def tts(self, bhv='do_breath1', voice='nhajun', string=''):
+    def tts(self, bhv='do_stop', voice='nhajun', string=''):
         """
         * behavior: TTS 와 함께할 동작 ex. 'do_joy'
         * string: 발화할 TTS 내용
@@ -131,6 +131,8 @@ class ConversationManage():
         self.answer = []    # 마지막 answer가 'action'일 경우 초기화 안 되는 것 같아서  
         count = 0
         while True:
+            o.draw_image("/home/pi/Pibo_Play/data/behavior/icon/icon_recognition1.png"); o.show()
+            audio.audio_play("/home/pi/trigger.wav", 'local', '-2000', False)
             self.response = cm.stt()
             
             if self.response != "None":
@@ -172,7 +174,7 @@ class ConversationManage():
         """
         self.answer 결과에 맞는 feedback 답변을 TTS로 출력
         """             
-        if self.answer[0] == "positive":     # 긍정 답변 옵션
+        if self.answer[0][0] == "positive":     # 긍정 답변 옵션
             feedback_list = ["으음!? ", "그래애? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
@@ -180,7 +182,7 @@ class ConversationManage():
             if feedback == "N":
                 cm.tts(bhv=pos_bhv, string=pos)        
             
-        elif self.answer[0] == "negative":   # 부정 답변 옵션
+        elif self.answer[0][0] == "negative":   # 부정 답변 옵션
             feedback_list = ["으음!? ", "그래애? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
@@ -188,7 +190,7 @@ class ConversationManage():
             if feedback == "N":
                 cm.tts(bhv=neg_bhv, string=neg)
             
-        elif self.answer[0] == "neutral":   # 중립 답변 옵션
+        elif self.answer[0][0] == "neutral":   # 중립 답변 옵션
             feedback_list = ["그래애? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
@@ -196,7 +198,7 @@ class ConversationManage():
             if feedback == "N":
                 cm.tts(bhv=neu_bhv, string=neu)
             
-        elif self.answer[0] == "action":
+        elif self.answer[0][0] == "action":
             feedback_list = ["으음?! ", "그래애? ", "오호!? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
@@ -285,3 +287,5 @@ dic = Dictionary()
 cm = ConversationManage()
 soc = Socket_tr()
 wm = WordManage()
+audio = TextToSpeech()
+o = Oled()

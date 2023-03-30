@@ -20,8 +20,8 @@ audio = TextToSpeech()
 folder = "/home/pi/UserData"
 filename = os.path.basename(__file__).strip('.py')
 today = datetime.now().strftime('%y%m%d_%H%M')
-csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'cp949')
-csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'cp949')
+csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'utf-8')
+csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'utf-8')
 cwc = csv.writer(csv_conversation)
 cwp = csv.writer(csv_preference)
 crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
@@ -32,13 +32,16 @@ class Roleplay():
     def __init__(self): 
         self.user_name = '윤지'
         self.role = ''
+        self.score = []
+        self.turns = []
+        self.reject = []
         
     
     def Magician(self):
         
         # 1. 역할 알림
-        cm.tts(bhv="do_suggestion_S", string="역할 놀이를 해볼까?")
-        cm.tts(bhv="do_suggestion_S", string="오늘은 마법 주문을 걸어보자~")
+        pibo = cm.tts(bhv="do_suggestion_S", string="역할 놀이를 해볼까?")
+        pibo = cm.tts(bhv="do_suggestion_S", string="오늘은 마법 주문을 걸어보자~")
         
         # 2. 역할 놀이 (1 of 3)
         rand = random.randrange(1,4)
@@ -46,11 +49,11 @@ class Roleplay():
         if rand == 1:
             self.role = "마법사"
             audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
-            cm.tts(bhv="do_explain_A", string="이제 우리는 하늘에 사는 마법사야~ 파이보가 먼저 주문을 걸어볼게. 천둥아 쳐라 얍!")
+            pibo = cm.tts(bhv="do_explain_A", string="이제 우리는 하늘에 사는 마법사야~ 파이보가 먼저 주문을 걸어볼게. 천둥아 쳐라 얍!")
             audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
             audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/04_thunder.wav")
             
-            cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 날씨 주문을 걸어봐! 먼저 비, 바람, 천둥 등 날씨를 말하고 얍!을 외치면 돼~")
+            pibo = cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 날씨 주문을 걸어봐! 먼저 비, 바람, 천둥 등 날씨를 말하고 얍!을 외치면 돼~")
             answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="날씨 주문을 걸어봐! 먼저 비, 바람, 천둥 등 날씨를 말하고 얍!을 외치면 돼~",
                                        neu_bhv="do_suggestion_S", neu="다른 주문을 걸어보자~",
                                        neg_bhv="do_suggestion_S", neg="다른 주문을 걸어보자~",
@@ -86,10 +89,10 @@ class Roleplay():
                             audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/03_clear.wav")    
                             print("해")
                         
-                cm.tts(bhv="do_joy_A", string="우와~ 주문을 잘 거는 걸?")    
+                pibo = cm.tts(bhv="do_joy_A", string="우와~ 주문을 잘 거는 걸?")    
 
             
-            cm.tts(bhv="do_suggestion_S", string="이번에는 소풍가는 날에 원하는 날씨 주문을 걸어봐~")
+            pibo = cm.tts(bhv="do_suggestion_S", string="이번에는 소풍가는 날에 원하는 날씨 주문을 걸어봐~")
             answer = cm.responses_proc(re_bhv="do_suggestion_S", re_q="소풍가는 날에 원하는 날씨 주문을 걸어봐~",
                                        neu_bhv="do_suggestion_S", neu="몰라도 괜찮아~", 
                                        feedback="N")
@@ -124,18 +127,18 @@ class Roleplay():
                             audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/03_clear.wav")    
                             print("해")   
                         
-                    cm.tts(bhv="do_joy_B", string="빨리 소풍 가고 싶다!")                
+                    pibo = cm.tts(bhv="do_joy_B", string="빨리 소풍 가고 싶다!")                
                 
         if rand == 2:
             self.role = "도깨비"
             
-            cm.tts(bhv="do_explain_A", string="이제 우리는 숲 속의 도깨비야~ 파이보가 먼저 주문을 걸어볼게. 뻐꾸기야 나타나라 얍!")
+            pibo = cm.tts(bhv="do_explain_A", string="이제 우리는 숲 속의 도깨비야~ 파이보가 먼저 주문을 걸어볼게. 뻐꾸기야 나타나라 얍!")
             audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
             audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/07_owl.wav")
             
-            cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 마법 주문을 걸어서 동물을 불러봐! 동물 이름을 말하고 얍!을 외치면 돼~")
+            pibo = cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 마법 주문을 걸어서 동물을 불러봐! 동물 이름을 말하고 얍!을 외치면 돼~")
             
-            cm.tts(bhv="do_suggestion_S", string=f"먼저 늑대를 불러보자!")
+            pibo = cm.tts(bhv="do_suggestion_S", string=f"먼저 늑대를 불러보자!")
             answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="늑대를 불러보자!",
                                        neu_bhv="do_suggestion_S", neu="다른 주문을 걸어보자~",
                                        neg_bhv="do_suggestion_S", neg="다른 주문을 걸어보자~",
@@ -145,9 +148,9 @@ class Roleplay():
                 if "늑대" in answer[1]:                    
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/08_wolf.wav")
-                    cm.tts(bhv="do_joy_A", string="늑대가 나타났다~")
+                    pibo = cm.tts(bhv="do_joy_A", string="늑대가 나타났다~")
                     
-            cm.tts(bhv="do_suggestion_S", string="이번에는 코끼리를 불러보자!")
+            pibo = cm.tts(bhv="do_suggestion_S", string="이번에는 코끼리를 불러보자!")
             answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="코끼리를 불러보자!",
                                        neu_bhv="do_suggestion_S", neu="몰라도 괜찮아~",
                                        feedback="N")
@@ -156,18 +159,18 @@ class Roleplay():
                 if "코끼리" in answer[1]:                    
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/09_elephant.wav")
-                    cm.tts(bhv="do_joy_B", string="우와~ 주문을 잘 거는 걸?")                
+                    pibo = cm.tts(bhv="do_joy_B", string="우와~ 주문을 잘 거는 걸?")                
                 
         if rand == 3:
             self.role = "요정"
             
-            cm.tts(bhv="do_explain_A", string="이제 우리는 물에 사는 요정이야~ 파이보가 먼저 주문을 걸어볼게. 바다 갈매기야 나타나라 얍!")
+            pibo = cm.tts(bhv="do_explain_A", string="이제 우리는 물에 사는 요정이야~ 파이보가 먼저 주문을 걸어볼게. 바다 갈매기야 나타나라 얍!")
             audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
             audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/11_seagull.wav")
             
-            cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 마법 주문을 걸어서 동물을 불러봐! 동물 이름을 말하고 얍!을 외치면 돼~")
+            pibo = cm.tts(bhv="do_suggestion_L", string=f"{wm.word(self.user_name, 0)}도 마법 주문을 걸어서 동물을 불러봐! 동물 이름을 말하고 얍!을 외치면 돼~")
             
-            cm.tts(bhv="do_suggestion_S", string=f"물가에 사는 오리를 불러보자!")
+            pibo = cm.tts(bhv="do_suggestion_S", string=f"물가에 사는 오리를 불러보자!")
             answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="오리를 불러보자!",
                                        neu_bhv="do_suggestion_S", neu="다른 주문을 걸어보자~",
                                        neg_bhv="do_suggestion_S", neg="다른 주문을 걸어보자~",
@@ -177,9 +180,9 @@ class Roleplay():
                 if "오리" in answer[1]:                    
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/12_duck.wav")
-                    cm.tts(bhv="do_joy_A", string="귀여운 오리가 나타났다~")
+                    pibo = cm.tts(bhv="do_joy_A", string="귀여운 오리가 나타났다~")
                     
-            cm.tts(bhv="do_suggestion_S", string="이번에는 개구리를 불러보자!")
+            pibo = cm.tts(bhv="do_suggestion_S", string="이번에는 개구리를 불러보자!")
             answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="코끼리를 불러보자!",
                                        neu_bhv="do_suggestion_S", neu="몰라도 괜찮아~",
                                        feedback="N")
@@ -188,10 +191,10 @@ class Roleplay():
                 if "개구리" in answer[1]:                    
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/01_magic.wav")
                     audio.audio_play("/home/pi/Pibo_Conversation/src/Roleplay/Sound/13_frog.wav")
-                    cm.tts(bhv="do_joy_B", string="우와~ 주문을 잘 거는 걸?")   
+                    pibo = cm.tts(bhv="do_joy_B", string="우와~ 주문을 잘 거는 걸?")   
                     
         # 대화 시작
-        cm.tts(bhv="do_explain_A", string=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 어떤 일을 하고 싶니?")
+        pibo = cm.tts(bhv="do_explain_A", string=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 어떤 일을 하고 싶니?")
         answer = cm.responses_proc(re_bhv="do_explain_A", re_q=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 어떤 일을 하고 싶니?", 
                                    pos_bhv="do_question_S", pos=f"또 어떤 일을 하고 싶니?", 
                                    neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어", 
@@ -203,7 +206,7 @@ class Roleplay():
                                        neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
                                        act_bhv="do_joy_A", act=f"소원이 이루어지면 정말 좋겠다~")
 
-        cm.tts(bhv="do_explain_B", string=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 변신해보고 싶은 모습이 있니?")
+        pibo = cm.tts(bhv="do_explain_B", string=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 변신해보고 싶은 모습이 있니?")
         answer = cm.responses_proc(re_bhv="do_explain_B", re_q=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 변신해보고 싶은 모습이 있니?", 
                                    pos_bhv="do_question_S", pos=f"언제 변신하고 싶니?", 
                                    neu_bhv="do_agree", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
@@ -215,7 +218,7 @@ class Roleplay():
                                        neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
                                        act_bhv="do_joy_A", act="변신하면 멋지겠는걸?")
 
-        cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 시간 마법 써서 가장 기뻤던 시간으로 갈 수 있어. {wm.word(self.user_name, 0)}는 다시 돌아가고 싶은 시간이 있니?")
+        pibo = cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 시간 마법 써서 가장 기뻤던 시간으로 갈 수 있어. {wm.word(self.user_name, 0)}는 다시 돌아가고 싶은 시간이 있니?")
         answer = cm.responses_proc(re_bhv="do_explain_C", re_q=f"{wm.word(self.user_name, 0)}는 다시 돌아가고 싶은 시간이 있니?", 
                                    pos_bhv="do_question_S", pos=f"가서 무엇을 하고 싶니?", 
                                    neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
@@ -228,7 +231,7 @@ class Roleplay():
                                        act_bhv="do_joy_B", act=f"파이보도 같이 가고 싶은 걸?")
     
 
-        cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 어렵고 힘든 사람들을 도와줄 수 있는 능력이 있어. {wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 누구를 도와주고 싶니?")
+        pibo = cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 어렵고 힘든 사람들을 도와줄 수 있는 능력이 있어. {wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 누구를 도와주고 싶니?")
         answer = cm.responses_proc(re_bhv="do_explain_C", re_q=f"{wm.word(self.role, 1)} 되면 누구를 도와주고 싶니?", 
                                    pos_bhv="do_question_S", pos=f"어떤 도움을 주고 싶니?",     # 이름 확인/언급 일단 패스
                                    neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
@@ -240,7 +243,7 @@ class Roleplay():
                                        neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
                                        act_bhv="do_joy_B", act=f"도움을 주면 정말 좋겠다!")
             
-        cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 사람들의 기분을 즐겁게 만들어 줄 수 있어. {wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 누구를 즐겁게 만들어 주고 싶니?")
+        pibo = cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 사람들의 기분을 즐겁게 만들어 줄 수 있어. {wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 누구를 즐겁게 만들어 주고 싶니?")
         answer = cm.responses_proc(re_bhv="do_explain_C", re_q=f"{wm.word(self.role, 1)} 되면 누구를 즐겁게 만들어 주고 싶니?", 
                                    pos_bhv="do_question_S", pos=f"어떻게 하면 즐거워질까?",     # 이름 확인/언급 일단 패스
                                    neu_bhv="do_agree", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
@@ -252,7 +255,7 @@ class Roleplay():
                                        neu_bhv="do_agree", neu=f"괜찮아~ 답하기 어려울 수 있어~", 
                                        act_bhv="do_joy_B", act=f"정말 좋아할 것 같아!")
             
-        cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 원하는 곳 어느 장소든 갈 수 있어. {wm.word(self.user_name, 0)}는 어디에 가보고 싶니?")
+        pibo = cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 원하는 곳 어느 장소든 갈 수 있어. {wm.word(self.user_name, 0)}는 어디에 가보고 싶니?")
         answer = cm.responses_proc(re_bhv="do_explain_C", re_q=f"{wm.word(self.user_name, 0)}는 어디에 가보고 싶니?", 
                                    pos_bhv="do_question_S", pos=f"가서 무엇을 하고 싶니?",     # 이름 확인/언급 일단 패스
                                    neu_bhv="do_agree", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
@@ -265,15 +268,17 @@ class Roleplay():
                                        act_bhv="do_joy_B", act=f"파이보도 같이 가고 싶은 걸?")
 
         # 4. 마무리 대화
-        cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, 0)}가 원하는 행복한 일들이 모두 이루어졌으면 좋겠다! 다음에 또 재미있는 역할놀이 하자~")    
+        pibo = cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, 0)}가 원하는 행복한 일들이 모두 이루어졌으면 좋겠다! 다음에 또 재미있는 역할놀이 하자~")    
 
         
 
   
         # 3. 피드백 수집
         time.sleep(1)                   
-        cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
-        answer = cm.responses_proc()  
+        pibo = cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
+        answer = cm.responses_proc() 
+
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]
@@ -287,12 +292,16 @@ class Roleplay():
         cwp.writerow([today, filename, self.score[0], self.score[1], self.score[2],self.score[3]])
         
         # 4. Paradise framework 기록
-        turns = [(self.reject[i] + 1) * 2 for i in range(len(self.reject))]      
+        turns = sum((self.reject[i] + 1) * 2 for i in range(len(self.reject)))  
         reject = sum(self.reject) 
         
         cwc.writerow(['Turns', turns])
         cwc.writerow(['Rejections', reject])
         cwc.writerow(['Misrecognitions', ])
+
+        cwc.writerow(['%Turns', ])
+        cwc.writerow(['%Rejections', ])
+        cwc.writerow(['%Misrecognitions', ])
 
 
 
