@@ -216,6 +216,13 @@ def do_sad():
         motion.set_motion(name="m_sad", cycle=1)
         break
     
+def do_dance():
+    eye.e_joy()
+    t = Thread(target=oled.o_joy, args=(), daemon=True)
+    t.start()    
+    while True:
+        motion.set_motion(name="dance1", cycle=1)
+        break    
 
 
 def execute(bhv):
@@ -259,9 +266,11 @@ def execute(bhv):
         do_joy_B()
     if bhv == "do_sad":
         do_sad()
+    if bhv == "do_dance":
+        do_dance()
     
 
     
 if __name__ == "__main__":
-    execute("do_sad")
+    execute("do_stamp")
     # do_explain_A()

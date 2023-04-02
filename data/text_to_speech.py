@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-import io
+import time
 import os
+import io
 import requests
 import json
 import wave
@@ -18,7 +19,7 @@ def isNumber(s):
 
 class TextToSpeech():
     
-    def tts_connection(self, voice, text, filename):
+    def tts_connection(self, voice='nhajun', text='%20', filename="tts.wav"):
         # CLOVA auth-key
         client_id = "3qz5jqx2r0"
         client_secret = "zwB0Yb4UONPKaOKCjZkhsSl8REuKvJTYK2Esvr41"
@@ -64,13 +65,14 @@ class TextToSpeech():
         
 tts = TextToSpeech()
 
-def text_to_speech(voice, text):
+def text_to_speech(voice='nhajun', text=''):
     filename = "tts.wav"
     print("\n" + text + "\n")
     tts.tts_connection(voice, text, filename)
-    tts.audio_play(filename, 'local', '-1700', False)
+    tts.audio_play(filename, 'local', '-1000', False)
+    time.sleep(1)
 
 
 if __name__ == '__main__':
-    text = "Hello World"
-    text_to_speech(text)
+    text = ""
+    text_to_speech(text=text)

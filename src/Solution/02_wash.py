@@ -11,13 +11,14 @@ import time
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
 sys.path.append('/home/pi/Pibo_Conversation/')
-from data.conversation_manage import ConversationManage, WordManage
+from data.conversation_manage import ConversationManage, WordManage, NLP
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
 
 
 cm = ConversationManage()
 wm = WordManage()
+nlp = NLP()
 audio = TextToSpeech()
 
 folder = "/home/pi/UserData"

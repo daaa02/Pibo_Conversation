@@ -45,7 +45,7 @@ buffersize = 2048
 class Dictionary():
     
     def __init__(self):
-        self.Positive = ['pos', '네', '예', '응', '있어', '있었', '좋아', '좋은', '좋았', '좋다', '그래', '맞아', '알았어', '알겠어', '당연', '됐어', '재미있', '재미 있', '재밌']
+        self.Positive = ['pos', '네', '예', '응', '있어', '있었', '좋아', '좋은', '좋았', '좋다', '그래', '맞아', '알았어', '알겠어', '당연', '됐어', '재미있', '재미 있', '재밌', '시작', '하자', '할래']
 
         self.Negative = ['neg', '별로', '아니', '안 해', '안해', '안 할래', '안 하', '싫어', '싫', '못 하', '못 하겠어', '못해', '없었어', '없어', '없네', '없는','그만', '재미없', '재미 없']
         
@@ -53,10 +53,15 @@ class Dictionary():
         
         self.Again = ['again', '다시', '또', '같은', '한 번 더', '한번 더', '계속'] 
         
-        self.Number = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+        self.Number = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
-        self.Number_word = ['영', '일', '이', '삼', '사', '오', '육', '칠', '팔', '구', '십']
+        self.Number_word = ['한', '두', '세', '네', '다섯', '여섯', '일곱', '여덟', '아홉', '열']
         
+        self.Animal = ['치타', '타조', '돌고래', '사슴', '호랑이', '고양이', '강아지', '수달', '코끼리', '토끼', '사자', '표범', 
+                       '기린', '앵무새', '새', '공룡', '곰', '원숭이', '달팽이', '개미', '닭', '돼지', '소', '고슴도치', '개', '물고기', '다람쥐']
+        
+        self.Fruit = ['사과', '딸기', '복숭아', '포도', '귤', '오렌지', '감', '파인애플', '자두', '청포도', '바나나', '망고', '수박',
+                        '배','참외', '앵두']        
 
 
 
@@ -84,16 +89,24 @@ class ConversationManage():
         try:
             self.response = speech_to_text(timeout=self.timeout)
             # self.response = input("input: ")
-        
-        except google.api_core.exceptions.DeadlineExceeded:
+            
+        except google.api_core.exceptions.DeadlineExceeded as e:
+            print(e)
             self.response = self.none
         
         # 가끔 발생하는 Google API ERROR --> ignore
         except google.api_core.exceptions.Unknown as e:
             print(e)
+            self.response = self.none
         
         except google.api_core.exceptions.InvalidArgument as e:
             print(e)
+            self.response = self.none
+        
+        # 지쳤다. 나오는 에러 싹 다 무시
+        except Exception as e:
+            print(e)
+            self.response = self.none
         
         # print(self.response)
         return self.response
@@ -104,13 +117,20 @@ class ConversationManage():
         * behavior: TTS 와 함께할 동작 ex. 'do_joy'
         * string: 발화할 TTS 내용
         """
-        t = Thread(target=text_to_speech, args=(voice, string))
+        t = Thread(target=behavior.execute, args=([bhv]))
         t.start()
         
         while True:
-            time.sleep(1)
-            behavior.execute(bhv)
-            break    
+            text_to_speech(voice=voice, text=string)
+            break
+        
+        # t = Thread(target=text_to_speech, args=(voice, string))
+        # t.start()
+        
+        # while True:
+        #     time.sleep(1)
+        #     behavior.execute(bhv)
+        #     break    
         
         return string
         
@@ -123,16 +143,17 @@ class ConversationManage():
                        feedback='Y'):
         """
         * re_q: 무응답인 경우, 재질문할 내용(최대 3번)
-        * pos/neu/neg: 긍정/중립/부정 답변 인식 시, 발화할 내용
+        * pos/neu/neg: 긍정/중립/부정/기타 답변 인식 시, 발화할 내용
         * 사용자가 발화한 내용 중 Dictionary에 포함되는 단어 있으면 return answer
-            => Positive/Neutral/Negative
-        * feedback: 옵션 답변 유무 결정(기본: Y)
+            => Positive/Neutral/Negative/Action
+        * feedback: 옵션 답변 유무 결정(기본: Y, 하고 싶은 말 넣어도 됨)
         """                
         self.answer = []    # 마지막 answer가 'action'일 경우 초기화 안 되는 것 같아서  
         count = 0
         while True:
-            o.draw_image("/home/pi/Pibo_Play/data/behavior/icon/icon_recognition1.png"); o.show()
             audio.audio_play("/home/pi/trigger.wav", 'local', '-2000', False)
+            o.draw_image("/home/pi/Pibo_Play/data/behavior/icon/icon_recognition1.png"); o.show()
+            print("\n")
             self.response = cm.stt()
             
             if self.response != "None":
@@ -174,7 +195,7 @@ class ConversationManage():
         """
         self.answer 결과에 맞는 feedback 답변을 TTS로 출력
         """             
-        if self.answer[0][0] == "positive":     # 긍정 답변 옵션
+        if self.answer[0] == "positive":     # 긍정 답변 옵션
             feedback_list = ["으음!? ", "그래애? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
@@ -182,7 +203,7 @@ class ConversationManage():
             if feedback == "N":
                 cm.tts(bhv=pos_bhv, string=pos)        
             
-        elif self.answer[0][0] == "negative":   # 부정 답변 옵션
+        elif self.answer[0] == "negative":   # 부정 답변 옵션
             feedback_list = ["으음!? ", "그래애? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
@@ -190,7 +211,7 @@ class ConversationManage():
             if feedback == "N":
                 cm.tts(bhv=neg_bhv, string=neg)
             
-        elif self.answer[0][0] == "neutral":   # 중립 답변 옵션
+        elif self.answer[0] == "neutral":   # 중립 답변 옵션
             feedback_list = ["그래애? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
@@ -198,19 +219,16 @@ class ConversationManage():
             if feedback == "N":
                 cm.tts(bhv=neu_bhv, string=neu)
             
-        elif self.answer[0][0] == "action":
+        elif self.answer[0] == "action":
             feedback_list = ["으음?! ", "그래애? ", "오호!? "]
             self.feedback = random.choice(feedback_list)
             if feedback == "Y":
                 cm.tts(bhv=act_bhv, string=self.feedback + act)
             if feedback == "N":
                 cm.tts(bhv=act_bhv, string=act)
+            if feedback != "Y" and feedback != "N":
+                cm.tts(bhv=act_bhv, string=feedback)
                 
-            
-        #     # connect with chit-chat model
-        #     self.from_msg = soc.transmit(send_msg=self.response)             
-                
-        # return self.answer
         return self.answer, count
 
 
@@ -283,9 +301,60 @@ class WordManage():
         return name
     
     
+class NLP():
+    
+    def number(self, user_said):
+        number = -1
+        ko = -1
+        nb = -1
+        for i, j in enumerate(dic.Number_word):
+            x = user_said.find(j)
+            if x != -1:
+                ko = i
+        for i, j in enumerate(dic.Number):
+            x = user_said.find(j)
+            if x != -1:
+                nb = i
+        number = max(ko, nb)
+        self.answer = number
+        
+        return self.answer
+    
+    def animal(self, user_said):
+        """
+        공백, 가, 을, 를 split 해서 리스트화
+        ex. input: 나는 호랑이가 좋아! ==> animal: 호랑이   ... 나중에 수정하기
+        => 이 부분에 komoran noun 적용하면 될 거 같음 (추후 수정!)
+        """
+        a_list = re.split('[ 가을를]', user_said)  
+
+        animal = [i for i in a_list if i in dic.Animal]
+        
+        if len(animal) == 0:
+            self.answer = user_said
+        if len(animal) != 0:
+            self.answer = animal[0]
+            
+        return self.answer
+    
+    def fruit(self, user_said):
+        a_list = re.split('[ 가을를]', user_said)
+        fruit = [i for i in a_list if i in dic.Fruit]
+        
+        if len(fruit) == 0:
+            self.answer = user_said
+        if len(fruit) != 0:
+            self.answer = fruit[0]
+            
+        return self.answer
+    
+    
+    
+    
 dic = Dictionary()
 cm = ConversationManage()
 soc = Socket_tr()
 wm = WordManage()
+nlp = NLP()
 audio = TextToSpeech()
 o = Oled()
