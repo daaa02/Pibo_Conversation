@@ -33,8 +33,8 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Fairytale():    
     
     def __init__(self): 
-        self.user_name = '가영'
-        self.story_name = '농부와 독수리'
+        self.user_name = '다영'
+        self.story_name = '농부와독수리'
         
     def Farmer(self):
         
@@ -131,8 +131,8 @@ class Fairytale():
 
         # 3. 피드백 수집
         time.sleep(1)                   
-        pibo = cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
-        answer = cm.responses_proc()  
+        pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?") 
 
         pibo = cm.tts(bhv="do_explain_C", string=f"다음에 또 재미있는 동화 들려줄게~")
         
@@ -143,7 +143,7 @@ class Fairytale():
         if answer[0][0] == "positive":
             self.score = [0.0, 0.5, 0.0, 0.0]
             
-        else: # if answer[0][0] == "neutral":
+        if answer[0][0] != "negative" and answer[0][0] != "positive": # if answer[0][0] == "neutral":
             self.score = [0.0, -0.25, 0.0, 0.0]
         
         cwp.writerow([today, filename, self.score[0], self.score[1], self.score[2],self.score[3]])

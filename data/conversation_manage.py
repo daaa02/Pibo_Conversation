@@ -5,7 +5,7 @@ import random
 import socket
 from threading import Thread
 
-sys.path.append('/home/kiro/workspace/Conversation_Scenarios/data')
+# sys.path.append('/home/kiro/workspace/Conversation_Scenarios/data')
 sys.path.append('/home/pi/Pibo_Conversation/data')
 
 import google
@@ -57,8 +57,8 @@ class Dictionary():
 
         self.Number_word = ['한', '두', '세', '네', '다섯', '여섯', '일곱', '여덟', '아홉', '열']
         
-        self.Animal = ['치타', '타조', '돌고래', '사슴', '호랑이', '고양이', '강아지', '수달', '코끼리', '토끼', '사자', '표범', 
-                       '기린', '앵무새', '새', '공룡', '곰', '원숭이', '달팽이', '개미', '닭', '돼지', '소', '고슴도치', '개', '물고기', '다람쥐']
+        self.Animal = ['치타', '타조', '돌고래', '사슴', '호랑이', '고양이', '강아지', '수달', '코끼리', '토끼', '사자', '표범', '코뿔소', '말', '벌',
+                       '기린', '앵무새', '새', '공룡', '곰', '원숭이', '달팽이', '개미', '닭', '돼지', '소', '고슴도치', '개', '물고기', '다람쥐', '쥐', '개미']
         
         self.Fruit = ['사과', '딸기', '복숭아', '포도', '귤', '오렌지', '감', '파인애플', '자두', '청포도', '바나나', '망고', '수박',
                         '배','참외', '앵두']        
@@ -156,7 +156,7 @@ class ConversationManage():
             print("\n")
             self.response = cm.stt()
             
-            if self.response != "None":
+            if self.response != self.none:
                 self.user_said = self.response
                 break
             
@@ -358,3 +358,7 @@ wm = WordManage()
 nlp = NLP()
 audio = TextToSpeech()
 o = Oled()
+
+
+if __name__ == "__main__":
+    cm.responses_proc(re_bhv="do_question_S", re_q="아악")

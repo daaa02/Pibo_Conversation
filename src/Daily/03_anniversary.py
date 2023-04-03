@@ -34,7 +34,7 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Daily():    
     
     def __init__(self): 
-        self.user_name = '윤지'
+        self.user_name = '다영'
         self.this_year = date.today().year
         self.dob_child = [1998, 10, 2]    # 나중엔 사용자 DB에서 참조하도록
         self.age_child = (self.this_year-self.dob_child[0]) + 1

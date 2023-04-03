@@ -272,5 +272,5 @@ def execute(bhv):
 
     
 if __name__ == "__main__":
-    execute("do_stamp")
+    execute("do_waiting_A")
     # do_explain_A()

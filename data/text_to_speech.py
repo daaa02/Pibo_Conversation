@@ -19,12 +19,13 @@ def isNumber(s):
 
 class TextToSpeech():
     
-    def tts_connection(self, voice='nhajun', text='%20', filename="tts.wav"):
+    def tts_connection(self, voice, text, filename):
         # CLOVA auth-key
         client_id = "3qz5jqx2r0"
         client_secret = "zwB0Yb4UONPKaOKCjZkhsSl8REuKvJTYK2Esvr41"
         encText = urllib.parse.quote(text)
-        data = f"speaker={voice}&volume=0&speed=1&pitch=0&format=wav&text=" + encText
+        # data = f"speaker={voice}&volume=0&speed=1&pitch=0&format=wav&text=" + encText
+        data = f"speaker={voice}&volume=0&speed=1&pitch=0&format=wav&text={encText}"
         url = "https://naveropenapi.apigw.ntruss.com/tts-premium/v1/tts"
         request = urllib.request.Request(url)
         request.add_header("X-NCP-APIGW-API-KEY-ID",client_id)
@@ -65,8 +66,8 @@ class TextToSpeech():
         
 tts = TextToSpeech()
 
-def text_to_speech(voice='nhajun', text=''):
-    filename = "tts.wav"
+def text_to_speech(voice, text):
+    filename = "/home/pi/tts.wav"
     print("\n" + text + "\n")
     tts.tts_connection(voice, text, filename)
     tts.audio_play(filename, 'local', '-1000', False)
@@ -74,5 +75,6 @@ def text_to_speech(voice='nhajun', text=''):
 
 
 if __name__ == '__main__':
-    text = ""
-    text_to_speech(text=text)
+    text = "죽은척을 한 남자가 말했어요."
+    text_to_speech(voice='nara', text=text)
+    

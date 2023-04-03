@@ -38,72 +38,72 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Say():
     
     def __init__(self):
-        self.user_name = '가영'
+        self.user_name = '다영'
         self.color = ''
         
     
     def Hello(self):
         
-        # # 1.1 인사
-        # cm.tts(bhv="do_joy_A", string=f"안녕! 우리가 드디어 만나게 되었구나! 나는 파이보야. 너는 이름이 뭐니?")
-        # answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?",
-        #                            act_bhv="do_joy_B", act=f"{wm.word(self.user_name, 4)}, 만나서 반가워~!")
+        # 1.1 인사
+        cm.tts(bhv="do_joy_A", string=f"안녕! 우리가 드디어 만나게 되었구나! 나는 파이보야. 너는 이름이 뭐니?")
+        answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?",
+                                   act_bhv="do_joy_B", act=f"{wm.word(self.user_name, 4)}, 만나서 반가워~!")
         
-        # cm.tts(bhv="do_suggestion_L", string=f"나를 잠시 쳐다 봐줄래? {wm.word(self.user_name, 0)} 얼굴을 인식중이야.")
-        # behavior.do_photo()
-        # text_to_speech(text=f"{wm.word(self.user_name, 0)} 얼굴을 기억할게!")
+        cm.tts(bhv="do_suggestion_L", string=f"나를 잠시 쳐다 봐줄래? {wm.word(self.user_name, 0)} 얼굴을 인식중이야.")
+        behavior.do_photo()
+        text_to_speech(text=f"{wm.word(self.user_name, 0)} 얼굴을 기억할게!")
         
-        # cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 지금 몇 살이야?")
-        # answer = cm.responses_proc(re_bhv="do_question_S", re_q="지금 몇 살이야?")
-        # answer_num = nlp.number(answer[0][1])
+        cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 지금 몇 살이야?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q="지금 몇 살이야?")
+        answer_num = nlp.number(answer[0][1])
         
-        # if answer_num < 5:
-        #     cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어린이집에 다니고 있니?")
-        #     answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?")
+        if answer_num < 5:
+            cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어린이집에 다니고 있니?")
+            answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?")
             
-        #     if answer[0][0] == "negative":
-        #         cm.tts(bhv="do_question_S", string=f"그럼 어디 다니고 있어?")
-        #         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그럼 어디 다니고 있어?")
+            if answer[0][0] == "negative":
+                cm.tts(bhv="do_question_S", string=f"그럼 어디 다니고 있어?")
+                answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그럼 어디 다니고 있어?")
         
-        # if 5 <= answer_num < 8:
-        #     cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 유치원에 다니고 있니?")
-        #     answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?")
+        if 5 <= answer_num < 8:
+            cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 유치원에 다니고 있니?")
+            answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?")
             
-        #     if answer[0][0] == "negative":
-        #         cm.tts(bhv="do_question_S", string=f"그럼 어디 다니고 있어?")
-        #         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그럼 어디 다니고 있어?")
+            if answer[0][0] == "negative":
+                cm.tts(bhv="do_question_S", string=f"그럼 어디 다니고 있어?")
+                answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그럼 어디 다니고 있어?")
                         
-        # if answer_num >=8:
-        #     cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 학교에 다니고 있니?")
-        #     answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?")
+        if answer_num >=8:
+            cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 학교에 다니고 있니?")
+            answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?")
             
-        #     if answer[0][0] == "negative":
-        #         cm.tts(bhv="do_question_S", string=f"그럼 어디 다니고 있어?")
-        #         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그럼 어디 다니고 있어?")        
+            if answer[0][0] == "negative":
+                cm.tts(bhv="do_question_S", string=f"그럼 어디 다니고 있어?")
+                answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그럼 어디 다니고 있어?")        
         
-        # cm.tts(bhv="do_question_L", string=f"나를 처음 본 느낌이 어떠니?")
-        # answer = cm.responses_proc(re_bhv="do_question_L", re_q="나를 처음 본 소감이 어떠니?",
-        #                            pos_bhv="do_joy_A", pos=f"앞으로 좋은 친구가 되도록 하자!")
+        cm.tts(bhv="do_question_L", string=f"나를 처음 본 느낌이 어떠니?")
+        answer = cm.responses_proc(re_bhv="do_question_L", re_q="나를 처음 본 소감이 어떠니?",
+                                   pos_bhv="do_joy_A", pos=f"앞으로 좋은 친구가 되도록 하자!")
         
-        # cm.tts(bhv="do_suggestion_L", string=f"나는 머리를 쓰다듬어 주는 걸 좋아해. 한번 쓰다듬어 볼래?")
+        cm.tts(bhv="do_suggestion_L", string=f"나는 머리를 쓰다듬어 주는 걸 좋아해. 한번 쓰다듬어 볼래?")
         
-        # time.sleep(5)
+        time.sleep(5)
         
-        # # 터치 인식
-        # data = device.send_cmd(device.code_list['SYSTEM']).split(':')[1].split('-')
-        # result = data[1] if data[1] else "No signal"
+        # 터치 인식
+        data = device.send_cmd(device.code_list['SYSTEM']).split(':')[1].split('-')
+        result = data[1] if data[1] else "No signal"
         
-        # if result == "touch":
-        #     print(result)
-        #     cm.tts(bhv="do_wakeup", string=f"{wm.word(self.user_name, 0)}가 쓰다듬어 주니까 정말 좋다~!")
+        if result == "touch":
+            print(result)
+            cm.tts(bhv="do_wakeup", string=f"{wm.word(self.user_name, 0)}가 쓰다듬어 주니까 정말 좋다~!")
             
             
-        # # 1.2 관심 유도
-        # cm.tts(bhv="do_dance", string="나는 이렇게 멋진 춤을 출 수 있어!")
-        # time.sleep(8)
+        # 1.2 관심 유도
+        cm.tts(bhv="do_dance", string="나는 이렇게 멋진 춤을 출 수 있어!")
+        time.sleep(8)
         
-        # text_to_speech(text="그리고 이렇게 눈 색깔을 바꿀 수도 있어!")
-        # device.send_raw('#25:10')  
+        text_to_speech(text="그리고 이렇게 눈 색깔을 바꿀 수도 있어!")
+        device.send_raw('#25:10')  
         
         time.sleep(2)
         cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 색깔을 좋아해?")

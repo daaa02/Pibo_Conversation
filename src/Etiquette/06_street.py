@@ -39,7 +39,7 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Etiquette():    
     
     def __init__(self): 
-        self.user_name = '가영'
+        self.user_name = '다영'
         self.correct = ['뛰', '장난']
         self.ox = ''
         self.score = []
@@ -147,8 +147,8 @@ class Etiquette():
         
         # 3. 피드백 수집
         time.sleep(1)                   
-        pibo = cm.tts(bhv='do_question_S', string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
-        answer = cm.responses_proc() 
+        pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
         pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
               
@@ -158,7 +158,7 @@ class Etiquette():
         if answer[0][0] == "positive":
             self.score = [0.0, 0.5, 0.0, 0.0]
             
-        else: # if answer[0][0] == "neutral":
+        if answer[0][0] != "negative" and answer[0][0] != "positive": # if answer[0][0] == "neutral":
             self.score = [0.0, -0.25, 0.0, 0.0]
         
         cwp.writerow([today, filename, self.score[0], self.score[1], self.score[2],self.score[3]])

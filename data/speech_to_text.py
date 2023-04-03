@@ -34,6 +34,7 @@ import time
 
 from multiprocessing import Process
 
+from google.oauth2 import service_account
 from google.cloud import speech
 import google
 
@@ -44,6 +45,7 @@ from six.moves import queue
 from ctypes import *
 
 ERROR_HANDLER_FUNC = CFUNCTYPE(None, c_char_p, c_int, c_char_p, c_int, c_char_p)
+
 
 
 def py_error_handler(filename, line, function, err, fmt):
@@ -165,6 +167,7 @@ def speech_to_text(timeout=10):
     # for a list of supported languages.
     language_code = 'ko-KR'  # a BCP-47 language tag
 
+    service_account.Credentials.from_service_account_file("/home/pi/dayoung-123-1e6969392f38.json")
     client = speech.SpeechClient()
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
