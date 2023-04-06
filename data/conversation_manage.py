@@ -6,40 +6,43 @@ import socket
 from threading import Thread
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/data')
-sys.path.append('/home/pi/Pibo_Conversation/data')
-
+# sys.path.append('/home/pi/Pibo_Conversation')
+print("111")
 import google
-from speech_to_text import speech_to_text
-from text_to_speech import text_to_speech, TextToSpeech
+from data.speech_to_text import speech_to_text
+from data.text_to_speech import text_to_speech, TextToSpeech
 
 
 from openpibo.oled import Oled
-import behavior.behavior_list as behavior
+from openpibo.device import Device
+import data.behavior.behavior_list as behavior
 """
 STT 모듈이랑 답변 처리 모듈 통합하고 있는 파일
     * class Dictionary: 답변 성격(Pos/Neu/Neg), 숫자 후보들
     * class ConversationManage: STT 모듈 -> 답변 처리 및 다음 발화+행동
     * class Socket_tr: socket 통신 모듈
 """
+print("222")
 
-# transmit
-# 클라이언트가 보내고자 하는 서버의 IP와 PORT
-server_ip = "192.168.13.215"
-server_port = 3000
-server_addr_port = (server_ip, server_port)
-buffersize = 2048
+# # transmit
+# # 클라이언트가 보내고자 하는 서버의 IP와 PORT
+# server_ip = "192.168.13.215"
+# server_port = 3000
+# server_addr_port = (server_ip, server_port)
+# buffersize = 2048
 
-# receive
-# 서버가 보내고자 하는 클라이언트의 IP와 PORT
-client1_ip = "192.168.14.20"
-client1_port = 5000
-client1_addr_port = (client1_ip, client1_port)
-buffersize = 2048
+# # receive
+# # 서버가 보내고자 하는 클라이언트의 IP와 PORT
+# client1_ip = "192.168.14.20"
+# client1_port = 5000
+# client1_addr_port = (client1_ip, client1_port)
+# buffersize = 2048
 
 # UDP로 열고 서버의 IP/PORT 연결
 # udp_client1_socket = socket.socket(family=socket.AF_INET, type=socket.SOCK_DGRAM)
 # udp_client1_socket.bind(client1_addr_port)
 # udp_client1_socket.setblocking(False)   
+
 
 
 class Dictionary():
@@ -64,7 +67,7 @@ class Dictionary():
                         '배','참외', '앵두']        
 
 
-
+print("333")
 class ConversationManage():
 
     def __init__(self):
@@ -79,7 +82,12 @@ class ConversationManage():
         # self.from_msg = ''     
         self.ko = -1
         self.nb = -1
-        
+    
+    
+    def aa(self):
+        for i in range(0, 2):
+            device.eye_off(); time.sleep(0.5); 
+            device.eye_on(0,0,255); time.sleep(0.5) 
     
     def stt(self):
         """         
@@ -230,8 +238,7 @@ class ConversationManage():
                 cm.tts(bhv=act_bhv, string=feedback)
                 
         return self.answer, count
-
-
+"""
 class Socket_tr():
     
     def transmit(self, send_msg):
@@ -259,7 +266,7 @@ class Socket_tr():
         text_to_speech(msg_from_server)
         
         return msg_from_server
-    
+"""
     
 class WordManage():
         
@@ -300,6 +307,7 @@ class WordManage():
 
         return name
     
+print("555")    
     
 class NLP():
     
@@ -349,16 +357,18 @@ class NLP():
         return self.answer
     
     
+print("777")    
     
     
 dic = Dictionary()
 cm = ConversationManage()
-soc = Socket_tr()
+# soc = Socket_tr()
 wm = WordManage()
 nlp = NLP()
 audio = TextToSpeech()
+device = Device()
 o = Oled()
 
 
 if __name__ == "__main__":
-    cm.responses_proc(re_bhv="do_question_S", re_q="아악")
+    cm.aa() 

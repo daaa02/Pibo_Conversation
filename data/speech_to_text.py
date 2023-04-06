@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#!/usr/bin python3
 
 # Copyright 2017 Google Inc. All Rights Reserved.
 #
