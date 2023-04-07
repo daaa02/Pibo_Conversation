@@ -5,9 +5,10 @@ import random
 import socket
 from threading import Thread
 
+from konlpy.tag import Komoran
+
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/data')
-# sys.path.append('/home/pi/Pibo_Conversation')
-print("111")
+sys.path.append('/home/pi/Pibo_Conversation')
 import google
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import text_to_speech, TextToSpeech
@@ -22,7 +23,7 @@ STT 모듈이랑 답변 처리 모듈 통합하고 있는 파일
     * class ConversationManage: STT 모듈 -> 답변 처리 및 다음 발화+행동
     * class Socket_tr: socket 통신 모듈
 """
-print("222")
+
 
 # # transmit
 # # 클라이언트가 보내고자 하는 서버의 IP와 PORT
@@ -67,7 +68,6 @@ class Dictionary():
                         '배','참외', '앵두']        
 
 
-print("333")
 class ConversationManage():
 
     def __init__(self):
@@ -238,6 +238,23 @@ class ConversationManage():
                 cm.tts(bhv=act_bhv, string=feedback)
                 
         return self.answer, count
+
+    def button(self):
+        """
+        비상탈출
+        """
+        while True:
+            data = device.send_cmd(device.code_list['SYSTEM']).split(':')[1].split('-')
+            result = data[3] if data[3] else "No signal"
+
+            if result == "on":
+                print(result)
+                # os.system('python3 /home/pi/button_test.py')
+                time.sleep(1)
+            else:
+                continue
+        
+    
 """
 class Socket_tr():
     
@@ -307,7 +324,6 @@ class WordManage():
 
         return name
     
-print("555")    
     
 class NLP():
     
@@ -341,7 +357,7 @@ class NLP():
         if len(animal) == 0:
             self.answer = user_said
         if len(animal) != 0:
-            self.answer = animal[0]
+            self.answer = kom.nouns(user_said)
             
         return self.answer
     
@@ -352,14 +368,17 @@ class NLP():
         if len(fruit) == 0:
             self.answer = user_said
         if len(fruit) != 0:
-            self.answer = fruit[0]
+            self.answer = kom.nouns(user_said)
             
         return self.answer
     
+    def nlp_nouns(self, user_said):
+        self.answer = kom.nouns(user_said)
+        
+        return self.answer[0]
     
-print("777")    
-    
-    
+
+kom = Komoran()
 dic = Dictionary()
 cm = ConversationManage()
 # soc = Socket_tr()
@@ -371,4 +390,4 @@ o = Oled()
 
 
 if __name__ == "__main__":
-    cm.aa() 
+    cm.responses_proc()
