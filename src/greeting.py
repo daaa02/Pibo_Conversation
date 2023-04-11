@@ -45,7 +45,7 @@ class Say():
     def Hello(self):
         
         # 1.1 인사
-        cm.tts(bhv="do_joy_A", string=f"안녕! 우리가 드디어 만나게 되었구나! 나는 파이보야. 너는 이름이 뭐니?")
+        cm.tts(bhv="do_joy_A", string=f"반가워! 우리가 드디어 만나게 되었구나! 나는 파이보야. 너는 이름이 뭐니?")
         answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?",
                                    act_bhv="do_joy_B", act=f"{wm.word(self.user_name, 4)}, 만나서 반가워~!")
         
@@ -100,12 +100,12 @@ class Say():
             
         # 1.2 관심 유도
         cm.tts(bhv="do_dance", string="나는 이렇게 멋진 춤을 출 수 있어!")
-        time.sleep(8)
+        time.sleep(4)
         
         text_to_speech(text="그리고 이렇게 눈 색깔을 바꿀 수도 있어!")
         device.send_raw('#25:10')  
         
-        time.sleep(2)
+        time.sleep(1)
         cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 색깔을 좋아해?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"어떤 색깔을 좋아해?")
         answer = answer[0][1]     

@@ -51,13 +51,6 @@ class Etiquette():
         
         # 2.1 카드 대화        
         time.sleep(2)
-        pibo = cm.tts(bhv="do_question_L", string=f"예절 카드를 인식시켜줘!")
-        
-        img = pibo_camera.read()
-        qr = pibo_detect.detect_qr(img)
-        
-        if len(qr) != 0:
-            print("qr")
             
         pibo = cm.tts(bhv="do_question_L", string="이 카드의 어린이는 무엇을 잘못했을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="이 카드의 어린이는 무엇을 잘못했을까?",

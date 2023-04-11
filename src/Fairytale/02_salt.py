@@ -35,6 +35,9 @@ class Fairytale():
     def __init__(self): 
         self.user_name = '다영'
         self.story_name = '소금장수와당나귀'
+        self.score = []
+        self.turns = []
+        self.reject = []
         
         
     def Salt(self):
