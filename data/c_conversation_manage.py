@@ -172,12 +172,13 @@ class ConversationManage():
                 count += 1
                 cm.tts(bhv=re_bhv, string=re_q)
                    
-                if count < 3:
+                if count < 2:
                     continue 
                 
-                elif count == 3:
-                    print("다음에 이야기하자~")
-                    break        
+                elif count == 2:
+                    cm.tts(bhv="re_bhv", string="다음에 이야기하자~")
+                    self.answer = self.next
+                    break       
         
         """
         사용자가 발화한 내용에 포함되는 단어가 있다면 return answer '_'
@@ -195,6 +196,9 @@ class ConversationManage():
         for k in range(len(dic.Neutral)):
             if dic.Neutral[k] in self.user_said:
                 self.answer = ["neutral", self.user_said]
+        
+        if self.answer == self.next:
+            self.answer = ["next", self.answer]
         
         if len(self.answer) == 0:
             self.answer = ["action", self.user_said]    # pos -> neg -> neu 에도 없으면 act
