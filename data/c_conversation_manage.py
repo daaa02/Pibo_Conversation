@@ -111,7 +111,7 @@ class ConversationManage():
             print(e)
             self.response = self.none
         
-        # 지쳤다. 나오는 에러 싹 다 무시
+        # 나오는 에러 싹 다 무시
         except Exception as e:
             print(e)
             self.response = self.none

@@ -6,7 +6,7 @@ import os, sys
 import time
 
 sys.path.append('/home/pi/Pibo_Conversation/')
-from data.conversation_manage import ConversationManage, WordManage, NLP
+from data.c_conversation_manage import ConversationManage, WordManage, NLP
 
 from openpibo.vision import Camera
 from openpibo.vision import Detect

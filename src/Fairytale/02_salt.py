@@ -11,7 +11,7 @@ import time
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
 sys.path.append('/home/pi/Pibo_Conversation/')
-from data.conversation_manage import ConversationManage, WordManage, NLP
+from data.c_conversation_manage import ConversationManage, WordManage, NLP
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
 
@@ -33,7 +33,7 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Fairytale():    
     
     def __init__(self): 
-        self.user_name = '다영'
+        self.user_name = '찬익'
         self.story_name = '소금장수와당나귀'
         self.score = []
         self.turns = []

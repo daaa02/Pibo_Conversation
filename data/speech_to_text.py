@@ -165,7 +165,7 @@ def listen_print_loop(responses):
     return text
 
 
-def speech_to_text(timeout=10):
+def speech_to_text(timeout=15):
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
     language_code = 'ko-KR'  # a BCP-47 language tag
@@ -197,6 +197,7 @@ def speech_to_text(timeout=10):
     return stt_out
 
 if __name__ == '__main__':
+    
     speech_to_text()
         
 # [END speech_transcribe_streaming_mic]
