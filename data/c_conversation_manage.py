@@ -73,6 +73,7 @@ class ConversationManage():
     def __init__(self):
         self.timeout = 10
         self.none = "None"
+        self.next = "next"
         # self.count = 0
         self.user_said = ''
         self.response = ''
@@ -111,10 +112,14 @@ class ConversationManage():
             print(e)
             self.response = self.none
         
-        # 나오는 에러 싹 다 무시
-        except Exception as e:
-            print(e)
+        except ValueError as e:     # timeout 시간 넘으면 그냥 retry call 안 하고 중단시킴 (google/api_core/retry.py)
+            print(e)                # Sleep generator stopped yielding sleep values.
             self.response = self.none
+                
+        # # 나오는 에러 싹 다 무시
+        # except Exception as e:
+        #     print(e)
+        #     self.response = self.none
         
         # print(self.response)
         return self.response
@@ -195,13 +200,14 @@ class ConversationManage():
                 
         for k in range(len(dic.Neutral)):
             if dic.Neutral[k] in self.user_said:
-                self.answer = ["neutral", self.user_said]
-        
-        if self.answer == self.next:
-            self.answer = ["next", self.answer]
+                self.answer = ["neutral", self.user_said]        
         
         if len(self.answer) == 0:
             self.answer = ["action", self.user_said]    # pos -> neg -> neu 에도 없으면 act
+            
+        if self.answer == self.next:
+            self.answer = ['next', 'Move on..']
+         
         
         print("=>", self.answer)
         """
