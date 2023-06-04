@@ -30,16 +30,16 @@ folder = "/home/pi/UserData"
 filename = os.path.basename(__file__).strip('.py')
 today = datetime.now().strftime('%y%m%d_%H%M')
 csv_conversation = open(f'{folder}/{today}_{filename}.csv', 'a', newline='', encoding = 'utf-8')
-csv_preference = open(f'{folder}/aa.csv', 'a', newline='', encoding = 'utf-8')
 cwc = csv.writer(csv_conversation)
-cwp = csv.writer(csv_preference)
 crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
 
 class Say():
     
     def __init__(self):
-        self.user_name = '찬익'
+        self.user_name = '호수'
         self.color = ''
+        self.turns = []
+        self.reject = []
         
     
     def Hello(self):
@@ -48,6 +48,7 @@ class Say():
         pibo = cm.tts(bhv="do_joy_A", string=f"반가워! 우리가 드디어 만나게 되었구나! 나는 파이보야. 너는 이름이 뭐니?")
         answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?",
                                    act_bhv="do_joy_B", act=f"{wm.word(self.user_name, 4)}, 만나서 반가워~!")
+        print(answer)
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -134,8 +135,8 @@ class Say():
         
         time.sleep(1)
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 색깔을 좋아해?")
-        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"어떤 색깔을 좋아해?")
-        answer = answer[0][1]     
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"어떤 색깔을 좋아해?")   
+        print(answer)
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -147,32 +148,32 @@ class Say():
         yellow = ["노랑", "노란"]
         
         for i in range(len(blue)):
-            if blue[i] in answer:
+            if blue[i] in answer[0][1]:
                 self.color = 'blue'
                 device.send_raw('#21:108,209,239,5')
                 text_to_speech(text="어때? 마음에 들어?")                
                 
         for i in range(len(green)):
-            if green[i] in answer:
+            if green[i] in answer[0][1]:
                 self.color = 'green'
                 # device.eye_on(120,230,208)
                 device.send_raw('#21:50,205,50,5')
                 text_to_speech(text="어때? 마음에 들어?")    
                         
         for i in range(len(pink)):
-            if pink[i] in answer:
+            if pink[i] in answer[0][1]:
                 self.color = 'pink'
                 device.send_raw('#21:255,177,190,5')
                 text_to_speech(text="어때? 마음에 들어?")
                 
         for i in range(len(purple)):
-            if purple[i] in answer:
+            if purple[i] in answer[0][1]:
                 self.color = 'purple'
                 device.send_raw('#21:186,127,223,5')
                 text_to_speech(text="어때? 마음에 들어?")
                 
         for i in range(len(yellow)):
-            if yellow[i] in answer:
+            if yellow[i] in answer[0][1]:
                 self.color = 'yellow'
                 device.send_raw('#21:251,245,155,5')
                 text_to_speech(text="어때? 마음에 들어?")
@@ -184,6 +185,20 @@ class Say():
         
         # 1.5 사용법 설명
         pibo = cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, 0)}랑 보내게 될 시간들이 정말 기대돼~ 심심하거나 놀고 싶으면 언제든 파이보 머리를 쓰다듬어 줘!")
+        
+        
+        
+        # 4. Paradise framework 기록
+        turns = sum((self.reject[i] + 1) * 2 for i in range(len(self.reject)))  
+        reject = sum(self.reject) 
+        
+        cwc.writerow(['Turns', turns])
+        cwc.writerow(['Rejections', reject])
+        cwc.writerow(['Misrecognitions', ])
+
+        cwc.writerow(['%Turns', ])
+        cwc.writerow(['%Rejections', ])
+        cwc.writerow(['%Misrecognitions', ])
         
 
 if __name__ == "__main__":
