@@ -160,7 +160,7 @@ class Say():
                 device.send_raw('#21:50,205,50,5')
                 text_to_speech(text="어때? 마음에 들어?")    
                         
-        for i in range(len(pink)):
+        for i in range(len(pink)): 
             if pink[i] in answer[0][1]:
                 self.color = 'pink'
                 device.send_raw('#21:255,177,190,5')
