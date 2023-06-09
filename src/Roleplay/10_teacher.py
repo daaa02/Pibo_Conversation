@@ -53,17 +53,17 @@ class Roleplay():
         
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 유치원 선생님이 된다면 어린이들에게 어떻게 인사를 해주고 싶니?",
                                    pos_bhv="do_question_S", pos="친구들에게 왜 그렇게 인사해 주고 싶니?",
-                                   neu_bhv="do_agree", neu="몰라도 괜찮아~",
+                                   neu_bhv="do_compliment_S", neu="몰라도 괜찮아~",
                                    act_bhv="do_question_S", act="친구들에게 왜 그렇게 인사해 주고 싶니?")
         
         if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_L", re_q="친구들에게 왜 그렇게 인사해 주고 싶니?",
-                                       neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~")
+                                       neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어~")
         
         # 3. 대화 시작
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 유치원 선생님이라면 물건을 뺏는 친구들에게 뭐라고 말해주고 싶니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 유치원 선생님이라면 물건을 뺏는 친구들에게 뭐라고 말해주고 싶니?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~")
         
         pibo = cm.tts(bhv="do_question_L", string="최근에 물건을 뺏는 친구들을 본 적이 있었니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="최근에 물건을 뺏는 친구들을 본 적이 있었니?",

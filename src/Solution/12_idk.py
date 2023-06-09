@@ -48,7 +48,7 @@ class Solution():
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}도 잘 몰라서 속상했던 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 잘 몰라서 속상했던 적이 있니?",
                                    pos_bhv="do_sad", pos=f"{wm.word(self.user_name, 0)}도 속상했겠다.",
-                                   neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")                
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~")                
 
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 다른 친구들보다 어떤 걸 잘 모른다고 생각하니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 다른 친구들보다 어떤 걸 잘 모른다고 생각하니?")
@@ -59,15 +59,15 @@ class Solution():
         
         pibo = cm.tts(bhv="do_question_S", string="누구에게 물어보는것이 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="누구에게 물어보는것이 좋을까?",
-                                   pos_bhv="do_agree", pos="나한테 물어봐도 좋아!",
-                                   neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",
-                                   act_bhv="do_agree", act="나한테 물어봐도 좋아!")
+                                   pos_bhv="do_compliment_S", pos="나한테 물어봐도 좋아!",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~",
+                                   act_bhv="do_compliment_S", act="나한테 물어봐도 좋아!")
         
         pibo = cm.tts(bhv="do_question_L", string=f"그럼 {wm.word(self.user_name, 0)}가 다른 친구들보다 어떤 걸 잘 안다고 생각하니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"그럼 {wm.word(self.user_name, 0)}가 다른 친구들보다 어떤 걸 잘 안다고 생각하니?",
-                                   pos_bhv="do_agree", pos="그렇게 생각하는구나!",
-                                   neu_bhv="do_agree", neu="괜찮아~ 모를 수도 있어~",
-                                   act_bhv="do_agree", act="그렇게 생각하는구나!")
+                                   pos_bhv="do_compliment_S", pos="그렇게 생각하는구나!",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 모를 수도 있어~",
+                                   act_bhv="do_compliment_S", act="그렇게 생각하는구나!")
         
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 잘 아는 부분은 친구들이 물어볼 때 가르쳐주면 좋겠지?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 잘 아는 부분은 친구들이 물어볼 때 가르쳐주면 좋겠지?",

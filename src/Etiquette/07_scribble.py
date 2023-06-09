@@ -99,8 +99,8 @@ class Etiquette():
         # 2.2 경험 질문
         pibo = cm.tts(bhv="do_question_S", string="낙서를 하는 사람을 본 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="낙서를 하는 사람을 본 적이 있니?",
-                                   pos_bhv="do_agree", pos="본 적이 있구나!",
-                                   neu_bhv="do_agree", neu="괜찮아. 기억이 안 날 수도 있어~")
+                                   pos_bhv="do_compliment_S", pos="본 적이 있구나!",
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 기억이 안 날 수도 있어~")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -108,9 +108,9 @@ class Etiquette():
 
         pibo = cm.tts(bhv="do_question_L", string="그림을 그리고 싶을 때는 어디에 그리는게 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="그림을 그리고 싶을 때는 어디에 그리는게 좋을까?",
-                                   pos_bhv="do_agree", pos="그림은 스케치북이나 종이에 그리는게 좋겠지?",
+                                   pos_bhv="do_compliment_S", pos="그림은 스케치북이나 종이에 그리는게 좋겠지?",
                                    neu_bhv="do_explain_C", neu="괜찮아 모를 수도 있어~ 그림은 스케치북이나 종이에 그리는게 좋겠지?",
-                                   act_bhv="do_agree", act="그림은 스케치북이나 종이에 그리는게 좋겠지?")
+                                   act_bhv="do_compliment_S", act="그림은 스케치북이나 종이에 그리는게 좋겠지?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -119,8 +119,8 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_L", string="모두가 아무 곳에나 그림을 그리면 어떤 일이 일어날까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="모두가 아무 곳에나 그림을 그리면 어떤 일이 일어날까?",
                                    pos_bhv="do_sad", pos="벽이 엄청 지저분해지고 청소하는 사람이 힘들겠지?",
-                                   neu_bhv="do_agree", neu="괜찮아 상상이 안 될 수 있어. 벽이 엄청 지저분해지고 청소하는 사람이 힘들겠지?",
-                                   act_bhv="do_agree", act="벽이 엄청 지저분해지고 청소하는 사람이 힘들겠지?")
+                                   neu_bhv="do_compliment_S", neu="괜찮아 상상이 안 될 수 있어. 벽이 엄청 지저분해지고 청소하는 사람이 힘들겠지?",
+                                   act_bhv="do_compliment_S", act="벽이 엄청 지저분해지고 청소하는 사람이 힘들겠지?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -129,9 +129,9 @@ class Etiquette():
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="아무 곳에나 그림을 그리는 사람을 보면 사람들은 어떻게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="아무 곳에나 그림을 그리는 사람을 보면 사람들은 어떻게 생각할까?",
-                                   pos_bhv="do_agree", pos="공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?",
+                                   pos_bhv="do_compliment_S", pos="공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?",
                                    neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?",
-                                   act_bhv="do_agree", act="공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?")
+                                   act_bhv="do_compliment_S", act="공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])

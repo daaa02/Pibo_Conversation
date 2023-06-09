@@ -80,7 +80,7 @@ class Daily():
             
             pibo = cm.tts(bhv="do_question_S", string=f"친구들이나 선생님께 말하기 힘든 일이 있니?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"친구들이나 선생님께 말하기 힘든 일이 있니?",
-                                       neg_bhv="do_agree", neg=f"정말 {wm.word(self.user_name, type=0)}는 {self.place}에 가는 것을 좋아하는 것 같아!")
+                                       neg_bhv="do_compliment_S", neg=f"정말 {wm.word(self.user_name, type=0)}는 {self.place}에 가는 것을 좋아하는 것 같아!")
             
             if answer[0] != "negative":
                 pibo = cm.tts(bhv="do_sad", string=f"요즘 {wm.word(self.user_name, type=0)}가 마음이 힘들구나. 최근에 울고 싶었던 적이 있었니?")
@@ -90,14 +90,14 @@ class Daily():
                 
                 if answer[0][0] == "positive":
                     answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 울고 싶었는지 말해 줄래?",
-                                               neu_bhv="do_agree", neu=f"{wm.word(self.user_name, type=0)}가 힘들었겠구나. 엄마한테 이야기를 해보는 건 어때?",
-                                               act_bhv="do_agree", act=f"{wm.word(self.user_name, type=0)}가 힘들었겠구나. 엄마한테 속마음을 이야기 해보는 건 어때?")
+                                               neu_bhv="do_compliment_S", neu=f"{wm.word(self.user_name, type=0)}가 힘들었겠구나. 엄마한테 이야기를 해보는 건 어때?",
+                                               act_bhv="do_compliment_S", act=f"{wm.word(self.user_name, type=0)}가 힘들었겠구나. 엄마한테 속마음을 이야기 해보는 건 어때?")
 
                     time.sleep(1)
-                    pibo = cm.tts(bhv="do_agree", string="도움이 필요할 수 있을 것 같아. 엄마가 잘 도와주실테니 너무 걱정하지마~")
+                    pibo = cm.tts(bhv="do_compliment_S", string="도움이 필요할 수 있을 것 같아. 엄마가 잘 도와주실테니 너무 걱정하지마~")
                     
                 if answer[0][0] == "neutral" or answer[0][0] == "negative":
-                    pibo = cm.tts(bhv="do_agree", string=f"속상한 일이 있으면 언제든 나에게 이야기해도 괜찮아!")
+                    pibo = cm.tts(bhv="do_compliment_S", string=f"속상한 일이 있으면 언제든 나에게 이야기해도 괜찮아!")
             
             pibo = cm.tts(bhv="do_joy_A", string=f"내일도 {wm.word(self.user_name, type=0)}가 유치원에서 좋은 하루를 보냈으면 좋겠어~ 내일도 이야기 하자!")
                 

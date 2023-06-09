@@ -92,22 +92,22 @@ class Etiquette():
 
         pibo = cm.tts(bhv="do_question_L", string="음식을 조용히 먹으려면 어떻게 해야 할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="음식을 조용히 먹으려면 어떻게 해야 할까?",
-                                   pos_bhv="do_agree", pos="입을 다물고 천천히 먹으면 되겠지?",
+                                   pos_bhv="do_compliment_S", pos="입을 다물고 천천히 먹으면 되겠지?",
                                    neu_bhv="do_explain_C", neu="괜찮아 생각이 안 날 수도 있어~ 입을 다물고 천천히 먹으면 되겠지?",
-                                   act_bhv="do_agree", act="입을 다물고 천천히 먹으면 되겠지?")
+                                   act_bhv="do_compliment_S", act="입을 다물고 천천히 먹으면 되겠지?")
             
         pibo = cm.tts(bhv="do_question_L", string="공공장소에서 시끄럽게 음식을 먹으면 어떤 피해를 줄까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="공공장소에서 시끄럽게 음식을 먹으면 어떤 피해를 줄까?",
-                                   pos_bhv="do_agree", pos="주변 사람들이 쉬거나 대화하는 것에 방해가 되겠지?",
+                                   pos_bhv="do_compliment_S", pos="주변 사람들이 쉬거나 대화하는 것에 방해가 되겠지?",
                                    neu_bhv="do_explain_B", neu="괜찮아 모를 수도 있어~ 주변 사람들이 쉬거나 대화하는 것에 방해가 되겠지?",
-                                   act_bhv="do_agree", act="주변 사람들이 쉬거나 대화하는 것에 방해가 되겠지?")
+                                   act_bhv="do_compliment_S", act="주변 사람들이 쉬거나 대화하는 것에 방해가 되겠지?")
     
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="음식을 시끄럽게 먹으면 다른 사람들이 어떻게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="음식을 시끄럽게 먹으면 다른 사람들이 어떻게 생각할까?",
-                                   pos_bhv="do_agree", pos="다른 사람들은 지저분하다고 생각할 수도 있겠지?",
+                                   pos_bhv="do_compliment_S", pos="다른 사람들은 지저분하다고 생각할 수도 있겠지?",
                                    neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 다른 사람들은 지저분하다고 생각할 수도 있겠지?",
-                                   act_bhv="do_agree", act="다른 사람들은 지저분하다고 생각할 수도 있겠지?")
+                                   act_bhv="do_compliment_S", act="다른 사람들은 지저분하다고 생각할 수도 있겠지?")
     
         # 3.1 마무리 대화
         pibo = cm.tts(bhv="do_joy_A", string="함께 사용하는 공간에서는 다른 사람을 배려하기 위해 음식을 조용히 먹는 것이 좋겠어. 잘 기억해 두자!")

@@ -92,7 +92,7 @@ class Etiquette():
         if answer[0] != "negative":
             pibo = cm.tts(bhv="do_question_S", string="친구 집에 가서 뭐하고 놀았니?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="친구 집에 가서 뭐하고 놀았니?",
-                                       neu_bhv="do_agree", neu="기억이 안 날 수도 있어~")
+                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수도 있어~")
 
             if answer[0] != "neutral":      # 위 질문의 심화 질문 같아서 옵션 답변으로 변경함 (22/12/09)
                 pibo = cm.tts(bhv="do_question_S", string="어떤 장난감을 가지고 놀았니?")

@@ -86,24 +86,24 @@ class Etiquette():
         # 2.2 경험 질문
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, type=0)}는 공원에 가면 무엇을 하니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, type=0)}는 공원에 가면 무엇을 하니?",
-                                   neu_bhv="do_agree", neu="괜찮아, 기억이 안 날 수 있어.")
+                                   neu_bhv="do_compliment_S", neu="괜찮아, 기억이 안 날 수 있어.")
         
         pibo = cm.tts(bhv="do_question_S", string="공원에 가면 사람들이 무엇을 하고 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="공원에 가면 사람들이 무엇을 하고 있니?",
-                                   neu_bhv="do_agree", neu="괜찮아 모를 수도 있어~ 사람들은 앉아서 쉬기도 하고 가족과 친구와 놀기도 하겠지?",
-                                   act_bhv="do_agree", act="사람들은 앉아서 쉬기도 하고 가족과 친구와 놀기도 하겠지?")
+                                   neu_bhv="do_compliment_S", neu="괜찮아 모를 수도 있어~ 사람들은 앉아서 쉬기도 하고 가족과 친구와 놀기도 하겠지?",
+                                   act_bhv="do_compliment_S", act="사람들은 앉아서 쉬기도 하고 가족과 친구와 놀기도 하겠지?")
         
         pibo = cm.tts(bhv="do_question_S", string="공원의 잔디와 꽃을 망가뜨리면 어떤 일이 일어날까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="공원의 잔디와 꽃을 망가뜨리면 어떤 일이 일어날까?",
-                                   pos_bhv="do_agree", pos="예쁜 공원이 망가지고 사람들은 쉴 수 없겠지?",
-                                   act_bhv="do_agree", act="예쁜 공원이 망가지고 사람들은 쉴 수 없겠지?",
-                                   neu_bhv="do_agree", neu="괜찮아 모를 수도 있어~ 예쁜 공원이 망가지고 사람들은 쉴 수 없겠지?")
+                                   pos_bhv="do_compliment_S", pos="예쁜 공원이 망가지고 사람들은 쉴 수 없겠지?",
+                                   act_bhv="do_compliment_S", act="예쁜 공원이 망가지고 사람들은 쉴 수 없겠지?",
+                                   neu_bhv="do_compliment_S", neu="괜찮아 모를 수도 있어~ 예쁜 공원이 망가지고 사람들은 쉴 수 없겠지?")
         
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_S", string="누군가 공원의 잔디와 꽃을 망가뜨리면 다른 사람들은 어떻게 느낄까?") 
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="누군가 공원의 잔디와 꽃을 망가뜨리면 다른 사람들은 어떻게 느낄까?",
-                                   neu_bhv="do_agree", neu="괜찮아 모를 수도 있어~  공원이 망가져서 속상하기도 하고, 잔디랑 꽃이 불쌍하다고 생각하겠지?",
-                                   act_bhv="do_agree", act="공원이 망가져서 속상하기도 하고, 잔디랑 꽃이 불쌍하다고 생각하겠지?")
+                                   neu_bhv="do_compliment_S", neu="괜찮아 모를 수도 있어~  공원이 망가져서 속상하기도 하고, 잔디랑 꽃이 불쌍하다고 생각하겠지?",
+                                   act_bhv="do_compliment_S", act="공원이 망가져서 속상하기도 하고, 잔디랑 꽃이 불쌍하다고 생각하겠지?")
         
         # 3.1 마무리 대화
         pibo = cm.tts(bhv="do_joy_A", string="모두가 함께 이용하는 공원을 망가뜨리는 것은 잘못된 행동이야. 식물도 생명이니까 소중히 다뤄야 해. 잘 기억해 두자!")

@@ -93,12 +93,12 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}도 도움이 필요한 적이 있었니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}도 도움이 필요한 적이 있었니?",
                                    pos_bhv="do_question_S", pos="언제였니?",
-                                   neu_bhv="do_agree", neu="기억이 안 날 수도 있지~")
+                                   neu_bhv="do_compliment_S", neu="기억이 안 날 수도 있지~")
         
         if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제였니?",
-                                       pos_bhv="do_agree", pos="그 때 도움이 필요했구나!",
-                                       neu_bhv="do_agree", neu="기억이 안 날 수도 있어~")            
+                                       pos_bhv="do_compliment_S", pos="그 때 도움이 필요했구나!",
+                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수도 있어~")            
         
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="도움이 필요한 친구를 보면 어떻게 해야 할까?")

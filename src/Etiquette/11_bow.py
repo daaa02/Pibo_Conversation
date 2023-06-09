@@ -93,7 +93,7 @@ class Etiquette():
         
         if answer[0] != "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=" 인사를 자주 하다 보면 익숙해 질거야!",     # 이거만 3번 반복할 것 같은데 일단 패스,,
-                                       act_bhv="do_agree", act="그럴 수 있지~ 인사를 자주 하다 보면 익숙해질 거야!")
+                                       act_bhv="do_compliment_S", act="그럴 수 있지~ 인사를 자주 하다 보면 익숙해질 거야!")
 
         pibo = cm.tts(bhv="do_question_L", string="최근에 어른들을 만나서 인사를 한 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="최근에 어른들을 만나서 인사를 한 적이 있니?",
@@ -101,7 +101,7 @@ class Etiquette():
         
         if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="누구를 만났니?",
-                                       neu_bhv="do_agree", neu="괜찮아. 기억이 안 날 수도 있지~",
+                                       neu_bhv="do_compliment_S", neu="괜찮아. 기억이 안 날 수도 있지~",
                                        act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}는 인사를 어떻게 하니?")
             
             if answer[0][0] == "action":
@@ -111,9 +111,9 @@ class Etiquette():
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="어른들을 보고도 인사를 하지 않으면 어른들은 어떻게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="어른들을 보고도 인사를 하지 않으면 어른들은 어떻게 생각할까?",
-                                   pos_bhv="do_agree", pos="예의가 없다고 생각할 수 있겠지? ",
+                                   pos_bhv="do_compliment_S", pos="예의가 없다고 생각할 수 있겠지? ",
                                    neu_bhv="do_explain_B", neu="괜찮아. 모를 수도~ 예의가 없다고 생각할 수 있겠지? ",
-                                   act_bhv="do_agree", act="예의가 없다고 생각할 수 있겠지? ")
+                                   act_bhv="do_compliment_S", act="예의가 없다고 생각할 수 있겠지? ")
     
         # 3.1 마무리 대화
         pibo = cm.tts(bhv="do_joy_A", string="어른들을 만났을 땐 안녕하세요~ 하고 존댓말로 예의를 갖춰 인사를 하는 거야~ 잘 기억해 두자!")

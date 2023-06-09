@@ -198,74 +198,74 @@ class Roleplay():
         pibo = cm.tts(bhv="do_explain_A", string=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 어떤 일을 하고 싶니?")
         answer = cm.responses_proc(re_bhv="do_explain_A", re_q=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 어떤 일을 하고 싶니?", 
                                    pos_bhv="do_question_S", pos=f"또 어떤 일을 하고 싶니?", 
-                                   neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어", 
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 생각이 나지 않을 수 있어", 
                                    act_bhv="do_question_S", act=f"또 어떤 일을 하고 싶니?")
 
         if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"또 어떤 일을 하고 싶니?", 
                                        pos_bhv="do_joy_A", pos=f"소원이 이루어지면 정말 좋겠다~", 
-                                       neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
+                                       neu_bhv="do_compliment_S", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
                                        act_bhv="do_joy_A", act=f"소원이 이루어지면 정말 좋겠다~")
 
         pibo = cm.tts(bhv="do_explain_B", string=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 변신해보고 싶은 모습이 있니?")
         answer = cm.responses_proc(re_bhv="do_explain_B", re_q=f"{wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 변신해보고 싶은 모습이 있니?", 
                                    pos_bhv="do_question_S", pos=f"언제 변신하고 싶니?", 
-                                   neu_bhv="do_agree", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
                                    act_bhv="do_question_S", act=f"언제 변신하고 싶니?")
         
         if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 변신하고 싶니?",
                                        pos_bhv="do_joy_A", pos="변신하면 멋지겠는걸?",
-                                       neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
+                                       neu_bhv="do_compliment_S", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
                                        act_bhv="do_joy_A", act="변신하면 멋지겠는걸?")
 
         pibo = cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 시간 마법 써서 가장 기뻤던 시간으로 갈 수 있어. {wm.word(self.user_name, 0)}는 다시 돌아가고 싶은 시간이 있니?")
         answer = cm.responses_proc(re_bhv="do_explain_C", re_q=f"{wm.word(self.user_name, 0)}는 다시 돌아가고 싶은 시간이 있니?", 
                                    pos_bhv="do_question_S", pos=f"가서 무엇을 하고 싶니?", 
-                                   neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
                                    act_bhv="do_question_S", act=f"가서 무엇을 하고 싶니?")
         
         if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"가서 무엇을 하고 싶니?", 
                                        pos_bhv="do_joy_B", pos=f"파이보도 같이 가고 싶은 걸?", 
-                                       neu_bhv="do_agree", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
+                                       neu_bhv="do_compliment_S", neu=f"괜찮아~ 생각이 나지 않을 수 있어~", 
                                        act_bhv="do_joy_B", act=f"파이보도 같이 가고 싶은 걸?")
     
 
         pibo = cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 어렵고 힘든 사람들을 도와줄 수 있는 능력이 있어. {wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 누구를 도와주고 싶니?")
         answer = cm.responses_proc(re_bhv="do_explain_C", re_q=f"{wm.word(self.role, 1)} 되면 누구를 도와주고 싶니?", 
                                    pos_bhv="do_question_S", pos=f"어떤 도움을 주고 싶니?",     # 이름 확인/언급 일단 패스
-                                   neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
+                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아~", 
                                    act_bhv="do_question_S", act=f"어떤 도움을 주고 싶니?")
         
         if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"어떤 도움을 주고 싶니? ", 
                                        pos_bhv="do_joy_B", pos=f"도움을 주면 정말 좋겠다!", 
-                                       neu_bhv="do_agree", neu=f"몰라도 괜찮아~", 
+                                       neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아~", 
                                        act_bhv="do_joy_B", act=f"도움을 주면 정말 좋겠다!")
             
         pibo = cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 사람들의 기분을 즐겁게 만들어 줄 수 있어. {wm.word(self.user_name, 0)}는 {wm.word(self.role, 1)} 되면 누구를 즐겁게 만들어 주고 싶니?")
         answer = cm.responses_proc(re_bhv="do_explain_C", re_q=f"{wm.word(self.role, 1)} 되면 누구를 즐겁게 만들어 주고 싶니?", 
                                    pos_bhv="do_question_S", pos=f"어떻게 하면 즐거워질까?",     # 이름 확인/언급 일단 패스
-                                   neu_bhv="do_agree", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
                                    act_bhv="do_question_S", act=f"어떻게 하면 즐거워질까?")
         
         if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"어떻게 하면 즐거워질까?", 
                                        pos_bhv="do_joy_B", pos=f"정말 좋아할 것 같아!", 
-                                       neu_bhv="do_agree", neu=f"괜찮아~ 답하기 어려울 수 있어~", 
+                                       neu_bhv="do_compliment_S", neu=f"괜찮아~ 답하기 어려울 수 있어~", 
                                        act_bhv="do_joy_B", act=f"정말 좋아할 것 같아!")
             
         pibo = cm.tts(bhv="do_explain_C", string=f"{wm.word(self.role, 2)} 원하는 곳 어느 장소든 갈 수 있어. {wm.word(self.user_name, 0)}는 어디에 가보고 싶니?")
         answer = cm.responses_proc(re_bhv="do_explain_C", re_q=f"{wm.word(self.user_name, 0)}는 어디에 가보고 싶니?", 
                                    pos_bhv="do_question_S", pos=f"가서 무엇을 하고 싶니?",     # 이름 확인/언급 일단 패스
-                                   neu_bhv="do_agree", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 바로 떠오르지 않을 수 있어~", 
                                    act_bhv="do_question_S", act=f"가서 무엇을 하고 싶니?")
         
         if answer[0][0] == "action" or answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"가서 무엇을 하고 싶니?", 
                                        pos_bhv="do_joy_B", pos=f"파이보도 같이 가고 싶은 걸?", 
-                                       neu_bhv="do_agree", neu=f"괜찮아~ 떠오르지 않을 수 있어~", 
+                                       neu_bhv="do_compliment_S", neu=f"괜찮아~ 떠오르지 않을 수 있어~", 
                                        act_bhv="do_joy_B", act=f"파이보도 같이 가고 싶은 걸?")
 
         # 4. 마무리 대화

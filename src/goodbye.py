@@ -60,7 +60,7 @@ class Say():
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
 
-        pibo = cm.tts(bhv="do_agree", string=f"이야기 해줘서 고마워!")
+        pibo = cm.tts(bhv="do_compliment_S", string=f"이야기 해줘서 고마워!")
 
         pibo = cm.tts(bhv="do_joy_A", string=f"우리 모두 다음에 만나는 날까지 쑥쑥 자라도록 하자. 안녕~!")
 

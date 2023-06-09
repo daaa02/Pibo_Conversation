@@ -71,25 +71,25 @@ class Roleplay():
                 if rand[i] == 1:                             
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면 어떤 점이 가장 좋을까?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면  어떤 점이 가장 좋을까?",
-                                               neu_bhv="do_agree", neu="괜찮아~ 생각나지 않을 수 있어~")                    
+                                               neu_bhv="do_compliment_S", neu="괜찮아~ 생각나지 않을 수 있어~")                    
                     self.count += 1 
                     
                 if rand[i] == 2: 
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(role[1], 2)} 작아서 언제 가장 힘들까?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면  어떤 점이 가장 좋을까?",
                                                pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 작아서 속상했던 적이 있니?",
-                                               neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~",
+                                               neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어~",
                                                act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 작아서 속상했던 적이 있니?")
                     
                     if answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 작아서 속상했던 적이 있니?",
                                                    pos_bhv="do_question_S", pos="자세히 이야기해 줄래?",
-                                                   neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~")
+                                                   neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어~")
                         
                         if answer[0][0] == "positive":
                             answer = cm.responses_proc(re_bhv="do_question_S", re_q="자세히 이야기해 줄 수 있니?",
                                                        pos_bhv="do_sad", pos=f"{wm.word(self.user_name, 0)}가 속상했겠다.",
-                                                       neu_bhv="do_agree", neu="괜찮아~말하기 어려울 수 있어~",
+                                                       neu_bhv="do_compliment_S", neu="괜찮아~말하기 어려울 수 있어~",
                                                        act_bhv="do_sad", act=f"{wm.word(self.user_name, 0)}가 속상했겠다.")                            
                     self.count += 1
                     
@@ -97,12 +97,12 @@ class Roleplay():
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 되어서 숨고 싶다고 느낀 적이 있니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 되어서 숨고 싶다고 느낀 적이 있니?",
                                                pos_bhv="do_question_S", pos="언제 숨고 싶었니?",
-                                               neu_bhv="do_agree", neu="괜찮아~ 말하기 어려울 수 있어~")
+                                               neu_bhv="do_compliment_S", neu="괜찮아~ 말하기 어려울 수 있어~")
                     
                     if answer[0][0] == "positive":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 숨고 싶었니?",
-                                                   neu_bhv="do_agree", neu="괜찮아~ 말하기 어려울 수 있어~",
-                                                   act_bhv="do_agree", act="그래서 숨고 싶었구나~")                   
+                                                   neu_bhv="do_compliment_S", neu="괜찮아~ 말하기 어려울 수 있어~",
+                                                   act_bhv="do_compliment_S", act="그래서 숨고 싶었구나~")                   
 
                     self.count += 1
                     
@@ -110,11 +110,11 @@ class Roleplay():
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면 어디에 살고 싶니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면 어디에 살고 싶니?",
                                                pos_bhv="do_question_S", pos="언제 숨고 싶었니?",
-                                               neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수도 있어~")
+                                               neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수도 있어~")
                     
                     if answer[0][0] == "positive":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="누구랑 그곳에 살고 싶니?",
-                                                   neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수도 있어~",
+                                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수도 있어~",
                                                    act_bhv="do_joy_B", act="같이 살면 정말 좋겠다!")               
                     self.count += 1
                     
@@ -122,11 +122,11 @@ class Roleplay():
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 {wm.word(role[0], 1)} 되어서 몰래 가보고 싶은 곳이 있니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 {wm.word(role[0], 1)} 된다면 어디에 살고 싶니?",
                                                pos_bhv="do_question_S", pos="그 곳에 가서 무엇을 하고 싶니?",
-                                               neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~")
+                                               neu_bhv="do_compliment_S", neu="괜찮아~ 바로 떠오르지 않을 수 있어~")
                     
                     if answer[0][0] == "positive":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="그 곳에 가서 무엇을 하고 싶니?",
-                                                   neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
+                                                   neu_bhv="do_compliment_S", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
                                                    act_bhv="do_joy_B", act="파이보도 함께 가고 싶다~")      
                     self.count += 1
                     
@@ -134,11 +134,11 @@ class Roleplay():
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 {wm.word(role[0], 1)} 되어서 몰래 도와주고 싶은 사람이 있니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 {wm.word(role[0], 1)} 되어서 몰래 도와주고 싶은 사람이 있니?",
                                                pos_bhv="do_question_S", pos="어떤 도움을 주고 싶니?",
-                                               neu_bhv="do_agree", neu="괜찮아~ 생각나지 않을 수도 있어~")
+                                               neu_bhv="do_compliment_S", neu="괜찮아~ 생각나지 않을 수도 있어~")
                     
                     if answer[0][0] == "positive":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 도움을 주고 싶니?",
-                                                   neu_bhv="do_agree", neu="몰라도 괜찮아~",
+                                                   neu_bhv="do_compliment_S", neu="몰라도 괜찮아~",
                                                    act_bhv="do_joy_B", act=f"{wm.word(self.user_name, 0)}가 도와주면 정말 좋겠다~")      
                     self.count += 1
             

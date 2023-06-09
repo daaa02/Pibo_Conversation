@@ -100,7 +100,7 @@ class RolePlay():
         
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, type=0)}는 가장 유명한 {wm.word(self.rolemodel, type=3)} 아니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, type=0)}는 가장 유명한 {wm.word(self.rolemodel, type=3)} 아니?",
-                                   neu_bhv="do_agree", neu="몰라도 괜찮아~")
+                                   neu_bhv="do_compliment_S", neu="몰라도 괜찮아~")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -114,7 +114,7 @@ class RolePlay():
             
             pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, type=0)}의 주변에 {wm.word(self.rolemodel, type=1)} 있니?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="주변에 있니?",
-                                    neu_bhv="do_agree", neu="괜찮아~ 생각 나지 않을 수 있어")
+                                    neu_bhv="do_compliment_S", neu="괜찮아~ 생각 나지 않을 수 있어")
             cwc.writerow(['pibo', pibo])
             cwc.writerow(['user', answer[0][1], answer[1]])
             self.reject.append(answer[1])
@@ -128,7 +128,7 @@ class RolePlay():
             
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.rolemodel, type=3)} 생각하면 무슨 색이 떠올라?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, type=3)} 생각하면 무슨 색이 떠올라?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수도 있어")
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 바로 떠오르지 않을 수도 있어")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -143,7 +143,7 @@ class RolePlay():
             
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, type=0)}가 {wm.word(self.rolemodel, type=1)} 된다면 뭘 하고 싶니?")
         answer = cm.responses_proc(re_q=f"{wm.word(self.rolemodel, type=1)} 된다면 뭘 하고 싶니?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어")
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])

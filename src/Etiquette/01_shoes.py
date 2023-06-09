@@ -94,18 +94,18 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_L", string="의자에 신발을 신고 올라가면 어떻게 될까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="의자에 신발을 신고 올라가면 어떻게 될까?",
                                    neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어~ 의자가 더러워지겠지?",
-                                   act_bhv="do_agree", act="의자가 더러워지겠지?")
+                                   act_bhv="do_compliment_S", act="의자가 더러워지겠지?")
 
         pibo = cm.tts(bhv="do_question_L", string="신발을 신고 의자에 올라간 사람을 본 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="신발을 신고 의자에 올라간 사람을 본 적이 있니?",
-                                   pos_bhv="do_agree", pos="본 적이 있구나!",
-                                   neu_bhv="do_agree", neu="괜찮아. 기억이 안 날 수도 있어~")
+                                   pos_bhv="do_compliment_S", pos="본 적이 있구나!",
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 기억이 안 날 수도 있어~")
         
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="신발을 신고 의자에 올라가면 다른 사람들이 어떻게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="신발을 신고 의자에 올라가면 다른 사람들이 어떻게 생각할까?",
                                    neu_bhv="do_explain_B", neu="괜찮아. 모를 수도 있어~ 아마 다른 사람들은 지저분해진 의자에 앉지 못해서 속상할거야.",
-                                   act_bhv="do_agree", act="다른 사람들은 지저분해진 의자에 앉지 못해서 속상할거야.")
+                                   act_bhv="do_compliment_S", act="다른 사람들은 지저분해진 의자에 앉지 못해서 속상할거야.")
         
         # 3.1 마무리 대화
         pibo = cm.tts(bhv="do_joy_A", string="모두가 함께 쓰는 의자는 깨끗하게 써야 해. 잘 기억해 두자!")

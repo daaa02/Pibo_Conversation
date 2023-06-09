@@ -92,20 +92,20 @@ class Etiquette():
 
         pibo = cm.tts(bhv="do_question_L", string=f"싫어하는 행동을 친구가 계속하면 {wm.word(self.user_name, 0)}의 기분이 어때?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 기분이 어때?",
-                                   act_bhv="do_agree", act="나도 그렇게 생각해!")
+                                   act_bhv="do_compliment_S", act="나도 그렇게 생각해!")
             
         pibo = cm.tts(bhv="do_question_L", string="싫어하는 행동을 계속 하는 친구와 같이 놀고 싶을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="싫어하는 행동을 계속 하는 친구와 같이 놀고 싶을까?",
-                                   neg_bhv="do_agree", neg="같이 안 놀고 싶겠지?",
-                                   act_bhv="do_agree", act="같이 안 놀고 싶겠지?")
+                                   neg_bhv="do_compliment_S", neg="같이 안 놀고 싶겠지?",
+                                   act_bhv="do_compliment_S", act="같이 안 놀고 싶겠지?")
 
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="싫어하는 행동은 사람마다 다 달라. 친구가 싫어하는 행동을 계속하면 친구는 어떤 기분일까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="친구가 싫어하는 행동을 계속하면 친구는 어떤 기분일까?",
-                                   pos_bhv="do_agree", pos="그 친구는 화가 날 수도 있겠지?",
+                                   pos_bhv="do_compliment_S", pos="그 친구는 화가 날 수도 있겠지?",
                                    neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 그 친구는 화가 날 수도 있겠지?",
-                                   neg_bhv="do_agree", neg="그 친구는 화가 날 수도 있겠지?",
-                                   act_bhv="do_agree", act="그 친구는 화가 날 수도 있겠지?")
+                                   neg_bhv="do_compliment_S", neg="그 친구는 화가 날 수도 있겠지?",
+                                   act_bhv="do_compliment_S", act="그 친구는 화가 날 수도 있겠지?")
     
         # 3.1 마무리 대화
         pibo = cm.tts(bhv="do_joy_A", string="다른 친구가 싫어하는 행동을 하는 건 좋지 않은 것 같아. 친구랑 사이좋게 지낼 수 있도록 노력하자~")

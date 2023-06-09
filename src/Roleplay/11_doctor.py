@@ -50,7 +50,7 @@ class Roleplay():
         # 2. 역할 놀이
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 언제 병원에 가니?")        
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 언제 병원에 가니?",
-                                   neu_bhv="do_agree", neu="몰라도 괜찮아~")
+                                   neu_bhv="do_compliment_S", neu="몰라도 괜찮아~")
         
         pibo = cm.tts(bhv="do_explain_A", string=f"병원은 아픈 사람들을 치료해 주는 곳이야. {wm.word(self.user_name, 0)}가 의사 선생님이 되어서 나를 치료해 줘~")
         
@@ -75,44 +75,44 @@ class Roleplay():
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}의 마음이 가장 행복했던 때는 언제였니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}의 마음이 가장 행복했던 때는 언제였니?",
                                    pos_bhv="do_question_S", pos="자세히 말해줄래?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 바로 떠오르지 않을 수 있어",
                                    act_bhv="do_question_S", act="자세히 말해줄래?")
         
         if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="자세히 말해줄래?",
                                        pos_bhv="do_joy_A", pos=f"{wm.word(self.user_name, 0)}가 행복했다니 파이보도 기분이 좋아!",
-                                       neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수도 있어~",
+                                       neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수도 있어~",
                                        act_bhv="do_joy_A", act=f"{wm.word(self.user_name, 0)}가 행복했다니 파이보도 기분이 좋아!")
             
         pibo = cm.tts(bhv="do_question_S", string=f"그럼 {wm.word(self.user_name, 0)}의 마음이 제일 슬플 때는 언제였니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}의 마음이 가장 행복했던 때는 언제였니?",                                   
-                                   neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어~",
                                    neg_bhv="do_question_S", neg="무슨 일이 있었니?",
                                    act_bhv="do_question_S", act="무슨 일이 있었니?")
         
         if answer[0][0] == "negative" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="무슨 일이 있었니?",
                                        pos_bhv="do_joy_A", pos=f"{wm.word(self.user_name, 0)}가 속상했겠는걸?",
-                                       neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~",
+                                       neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어~",
                                        act_bhv="do_joy_A", act=f"{wm.word(self.user_name, 0)}가 속상했겠는걸?")
             
         pibo = cm.tts(bhv="do_explain_C", string="나는 친구들이 내 말을 들어주지 않을 때 제일 화가 났어.")
         
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}의 마음이 제일 화가 날 때는 언제였니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}의 마음이 제일 화가 날 때는 언제였니?",                                   
-                                   neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어~",
                                    neg_bhv="do_question_S", neg="무슨 일이 있었니?",
                                    act_bhv="do_question_S", act="무슨 일이 있었니?")
         
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}의 마음이 제일 콩닥콩닥 거렸을 때는 언제였니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}의 마음이 제일 콩닥콩닥 거렸을 때는 언제였니?",                                   
-                                   neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어",
                                    act_bhv="do_question_S", act="자세히 이야기해 줄래?")
         
         if answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="자세히 이야기해 줄래?",
                                        pos_bhv="do_joy_A", pos="파이보의 마음도 콩닥거리는 걸? ",
-                                       neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~",
+                                       neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~",
                                        act_bhv="do_joy_A", act="파이보의 마음도 콩닥거리는 걸? ")
         
         

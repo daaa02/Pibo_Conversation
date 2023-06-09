@@ -95,7 +95,7 @@ class Etiquette():
                                        act_bhv="do_question_S", act="무엇을 하고 놀았니?")
             
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="무엇을 하고 놀았니?",
-                                       neu_bhv="do_agree", neu="기억이 안 날 수 있지~")
+                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수 있지~")
             
             pibo = cm.tts(bhv="do_question_L", string="친구 집에서 늦게 까지 놀면 집에서 엄마가 기다리시겠지?")
             answer = cm.responses_proc(re_bhv="do_question_L", re_q="친구 집에서 늦게 까지 놀면 집에서 엄마가 기다리시겠지?")

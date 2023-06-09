@@ -50,9 +50,9 @@ class Solution():
     
         pibo = cm.tts(bhv="do_question_L", string="화가 날때 화를 참으면 어떤 점이 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="화가 날때 화를 참으면 어떤 점이 좋을까?",
-                                   pos_bhv="do_agree", pos="친구들이랑 덜 싸울 수 있겠지?",
+                                   pos_bhv="do_compliment_S", pos="친구들이랑 덜 싸울 수 있겠지?",
                                    neu_bhv="do_explain_A", neu="괜찮아~ 모를 수도 있어~ 화를 참으면 친구들이랑 덜 싸울 수 있겠지?",
-                                   act_bhv="do_agree", act="친구들이랑 덜 싸울 수 있겠지?")
+                                   act_bhv="do_compliment_S", act="친구들이랑 덜 싸울 수 있겠지?")
 
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 친구가 화를 내면 어떻게 행동하니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 친구가 화를 내면 어떻게 행동하니?",
@@ -62,18 +62,18 @@ class Solution():
 
         pibo = cm.tts(bhv="do_question_S", string="파이보가 계속 화를내면 친구들이 무섭게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="파이보가 계속 화를내면 친구들이 무섭게 생각할까?",
-                                   pos_bhv="do_agree", pos="친구들도 무서워하겠지?",
+                                   pos_bhv="do_compliment_S", pos="친구들도 무서워하겠지?",
                                    neu_bhv="do_explain_C", neu="괜찮아~ 상상하기 어려울 수 있어~ 아마 친구들도 무서워하겠지?",
-                                   act_bhv="do_agree", act="친구들도 무서워하겠지?")
+                                   act_bhv="do_compliment_S", act="친구들도 무서워하겠지?")
             
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 놀이를 하면 기분 좋아지니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 어떤 놀이를 하면 기분 좋아지니?")
         
         pibo = cm.tts(bhv="do_question_L", string="화가 날 때 재미있는 놀이를 하면 기분이 좋아질까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="화가 날 때 재미있는 놀이를 하면 기분이 좋아질까?",
-                                   pos_bhv="do_agree", pos="기분이 좋아질수도 있겠다~",
-                                   neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어~ 재미있는 놀이를 하면 기분이 좋아질수도 있겠다~",
-                                   act_bhv="do_agree", act="기분이 좋아질수도 있겠다~")
+                                   pos_bhv="do_compliment_S", pos="기분이 좋아질수도 있겠다~",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 상상하기 어려울 수 있어~ 재미있는 놀이를 하면 기분이 좋아질수도 있겠다~",
+                                   act_bhv="do_compliment_S", act="기분이 좋아질수도 있겠다~")
         # 2.1 문제 해결
         pibo = cm.tts(bhv="do_joy_A", string="파이보도 이제 화를 잘 참을 수 있도록 노력해야겠다~ 알려줘서 정말 고마워!")
                             

@@ -47,15 +47,15 @@ class Solution():
         # 1.2 경험 질문
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}도 뛰다가 넘어진 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}도 뛰다가 넘어진 적이 있니?",
-                                   pos_bhv="do_agree", pos="넘어져서 아팠겠다~")    
+                                   pos_bhv="do_compliment_S", pos="넘어져서 아팠겠다~")    
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
         
         pibo = cm.tts(bhv="do_question_L", string="사람이 많은 곳에서 뛰어다니면 위험할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="사람이 많은 곳에서 뛰어다니면 위험할까?",
-                                   pos_bhv="do_agree", pos="부딪히면 아프겠지?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 부딪히면 아프겠지?")        
+                                   pos_bhv="do_compliment_S", pos="부딪히면 아프겠지?",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 부딪히면 아프겠지?")        
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -67,9 +67,9 @@ class Solution():
 
         pibo = cm.tts(bhv="do_question_S", string="천천히 걸으면 어떤 점이 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="천천히 걸으면 어떤 점이 좋을까?",
-                                   pos_bhv="do_agree", pos="천천히 걸으면 안전하겠지?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~ 천천히 걸으면 안전하겠지?",
-                                   act_bhv="do_agree", act="천천히 걸으면 안전하겠지?")
+                                   pos_bhv="do_compliment_S", pos="천천히 걸으면 안전하겠지?",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~ 천천히 걸으면 안전하겠지?",
+                                   act_bhv="do_compliment_S", act="천천히 걸으면 안전하겠지?")
             
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 천장에서 발소리를 들어 본 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 천장에서 발소리를 들어 본 적이 있니?",
@@ -77,9 +77,9 @@ class Solution():
         
         pibo = cm.tts(bhv="do_question_L", string="어떻게 하면 발소리가 나지 않게 조용히 걸을 수 있을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="어떻게 하면 발소리가 나지 않게 조용히 걸을 수 있을까?",
-                                   pos_bhv="do_agree", pos="사뿐사뿐 천천히 걸어야겠지?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~ 사뿐사뿐 천천히 걸으면 발소리가 나지 않겠지?",
-                                   act_bhv="do_agree", act="사뿐사뿐 천천히 걸어야겠지?")
+                                   pos_bhv="do_compliment_S", pos="사뿐사뿐 천천히 걸어야겠지?",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어~ 사뿐사뿐 천천히 걸으면 발소리가 나지 않겠지?",
+                                   act_bhv="do_compliment_S", act="사뿐사뿐 천천히 걸어야겠지?")
         
         # 2.1 문제 해결
         pibo = cm.tts(bhv="do_joy_A", string="파이보도 이제 조용하고 안전하게 걸으려고 노력해야겠다~ 알려줘서 정말 고마워!")

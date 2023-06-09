@@ -99,9 +99,9 @@ class Etiquette():
         # 2.2 경험 질문
         pibo = cm.tts(bhv="do_question_L", string="우리는 보통 언제 기침을 할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="우리는 보통 언제 기침을 할까?",
-                                   pos_bhv="do_agree", pos="감기에 걸리면 기침을 하지?",
+                                   pos_bhv="do_compliment_S", pos="감기에 걸리면 기침을 하지?",
                                    neu_bhv="do_explain_B", neu="괜찮아 생각이 안 날 수도 있어~ 감기에 걸리면 기침을 하지? ",
-                                   act_bhv="do_agree", act="감기에 걸리면 기침을 하지?")
+                                   act_bhv="do_compliment_S", act="감기에 걸리면 기침을 하지?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -116,9 +116,9 @@ class Etiquette():
         
         pibo = cm.tts(bhv="do_question_L", string="입을 가리지 않고 기침을 하면 어떤 일이 일어날까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="입을 가리지 않고 기침을 하면 어떤 일이 일어날까?",
-                                   pos_bhv="do_agree", pos="다른 사람도 감기에 걸릴 수 있겠지?",
+                                   pos_bhv="do_compliment_S", pos="다른 사람도 감기에 걸릴 수 있겠지?",
                                    neu_bhv="do_explain_B", neu="괜찮아 모를 수도 있어~ 다른 사람도 감기에 걸릴 수 있을거야.",
-                                   act_bhv="do_agree", act="다른 사람도 감기에 걸릴 수 있겠지?")
+                                   act_bhv="do_compliment_S", act="다른 사람도 감기에 걸릴 수 있겠지?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -126,9 +126,9 @@ class Etiquette():
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="입을 가리지 않고 기침을 하면 다른 사람들이 어떻게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="입을 가리지 않고 기침을 하면 다른 사람들이 어떻게 생각할까?",
-                                   pos_bhv="do_agree", pos="다른 사람들은 침이 튀어서 깨끗하지 못하다고 생각하겠지?",
+                                   pos_bhv="do_compliment_S", pos="다른 사람들은 침이 튀어서 깨끗하지 못하다고 생각하겠지?",
                                    neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 아마 다른 사람들은 침이 튀어서 깨끗하지 않다고 생각할거야.",
-                                   act_bhv="do_agree", act="다른 사람들은 침이 튀어서 깨끗하지 못하다고 생각하겠지?")
+                                   act_bhv="do_compliment_S", act="다른 사람들은 침이 튀어서 깨끗하지 못하다고 생각하겠지?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])

@@ -48,11 +48,11 @@ class Solution():
         pibo = cm.tts(bhv="do_sad", string=f"{wm.word(self.user_name, 0)}도 기분 나쁜 말을 들어서 속상했던 적이 있었니?")
         answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}도 기분 나쁜 말을 들어서 속상했던 적이 있었니?",
                                    pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 속상했겠다. 어떤 일이 있었니?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 생각이 나지 않을 수 있어~")    
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~")    
         
         if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 속상했겠다. 어떤 일이 있었니?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 대답하기 어려울 수 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어~")
             
 
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 친구에게 기분 나쁜 말을 들었을 때 어떻게 하니?")
@@ -65,16 +65,16 @@ class Solution():
         
         pibo = cm.tts(bhv="do_question_L", string="기분 나쁜 말을 들었을 때 친구에게 뭐라고 말해주는게 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="기분 나쁜 말을 들었을 때 친구에게 뭐라고 말해주는게 좋을까?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 모를 수도 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 모를 수도 있어~")
         
         pibo = cm.tts(bhv="do_question_L", string="어떻게 하면 친구와 같이 기분이 좋아질 수 있을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="어떻게 하면 친구와 같이 기분이 좋아질 수 있을까?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 모를 수도 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 모를 수도 있어~")
         
         pibo = cm.tts(bhv="do_question_S", string="어떤 놀이를 하면 즐겁게 같이 놀 수 있을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="또 다른 방법은 뭐가 있을까?",
                                 pos_bhv="do_joy_B", pos="그럼 정말 기분이 좋아지겠다~",
-                                neu_bhv="do_agree", neu="몰라도 괜찮아~",
+                                neu_bhv="do_compliment_S", neu="몰라도 괜찮아~",
                                 act_bhv="do_joy_B", act="그럼 정말 기분이 좋아지겠다~")
         
         # 2.1 문제 해결

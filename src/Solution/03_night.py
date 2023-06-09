@@ -48,11 +48,11 @@ class Solution():
         # 1.2 경험 질문
         pibo = cm.tts(bhv="do_sad", string=f"{wm.word(self.user_name, 0)}도 밤 늦게까지 놀고 싶니?")
         answer = cm.responses_proc(re_bhv="do_sad", re_q=f"{wm.word(self.user_name, 0)}도 씻기 싫을 때가 있지?",
-                                   pos_bhv="do_agree", pos="나랑 비슷한 걸?")    
+                                   pos_bhv="do_compliment_S", pos="나랑 비슷한 걸?")    
      
         pibo = cm.tts(bhv="do_question_L", string="어떻게 하면 계속 놀고 싶은 마음을 멈출 수 있을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="어떻게 하면 계속 놀고 싶은 마음을 멈출 수 있을까?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 바로 떠오르지 않을 수 있어~")
 
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 밤에도 조용히 놀 수 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 밤에도 조용히 놀 수 있니?",
@@ -64,13 +64,13 @@ class Solution():
         pibo = cm.tts(bhv="do_question_S", string="늦게까지 놀면 다음 날 무슨 일이 생길까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="늦게까지 놀면 다음 날 무슨 일이 생길까?",
                                    pos_bhv="do_joy_B", pos="다음 날 피곤하겠지?",
-                                   neu_bhv="do_agree", neu="괜찮아~ 상상하기 어려울 수 있어. 아마 다음 날 피곤하겠지?",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 상상하기 어려울 수 있어. 아마 다음 날 피곤하겠지?",
                                    act_bhv="do_joy_B", act="다음 날 피곤하겠지?")
         
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 내일 무엇을 하며 놀고 싶니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 밤에도 조용히 놀 수 있니?",
                                    pos_bhv="do_explain_C", pos="내일 아침이 기다려 지겠다!",
-                                   neu_bhv="do_agree", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
+                                   neu_bhv="do_compliment_S", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
                                    act_bhv="do_joy_A", act="내일 아침이 기다려 지겠다!")
         
         # 2.1 문제 해결

@@ -92,22 +92,22 @@ class Etiquette():
 
         pibo = cm.tts(bhv="do_question_L", string="박물관에 가면 어떤 주의사항이 적혀 있니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="박물관에 가면 어떤 주의사항이 적혀 있니?",
-                                   pos_bhv="do_agree", pos="박물관에는 ‘만지지 마시오’ 라는 주의사항이 붙어 있지?",
+                                   pos_bhv="do_compliment_S", pos="박물관에는 ‘만지지 마시오’ 라는 주의사항이 붙어 있지?",
                                    neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어~ 박물관에는 ‘만지지 마시오’ 라는 주의사항이 붙어 있어.",
-                                   act_bhv="do_agree", act="박물관에는 ‘만지지 마시오’ 라는 주의사항이 붙어 있지?")
+                                   act_bhv="do_compliment_S", act="박물관에는 ‘만지지 마시오’ 라는 주의사항이 붙어 있지?")
             
         pibo = cm.tts(bhv="do_question_L", string="박물관의 전시물을 만지면 어떤 일이 일어날까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="박물관의 전시물을 만지면 어떤 일이 일어날까?",
-                                   pos_bhv="do_agree", pos="전시물을 마음대로 만지면 전시물이 망가질 수도 있겠지?",
+                                   pos_bhv="do_compliment_S", pos="전시물을 마음대로 만지면 전시물이 망가질 수도 있겠지?",
                                    neu_bhv="do_explain_B", neu="괜찮아. 기억이 안 날 수도 있어~ 전시물을 마음대로 만지면 전시물이 망가질 수도 있겠지?",
-                                   act_bhv="do_agree", act="전시물을 마음대로 만지면 전시물이 망가질 수도 있겠지?")
+                                   act_bhv="do_compliment_S", act="전시물을 마음대로 만지면 전시물이 망가질 수도 있겠지?")
 
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="전시물을 만져서 망가지면 어떤 일이 일어날까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="전시물을 만져서 망가지면 어떤 일이 일어날까?",
-                                   pos_bhv="do_agree", pos="망가뜨린 사람이 돈을 지불해야 할 수도 있고, 전시물을 보지 못한 다른 사람들은 화가 날 수도 있겠지?",
+                                   pos_bhv="do_compliment_S", pos="망가뜨린 사람이 돈을 지불해야 할 수도 있고, 전시물을 보지 못한 다른 사람들은 화가 날 수도 있겠지?",
                                    neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 망가뜨린 사람이 돈을 지불해야 할 수도 있고, 전시물을 보지 못한 다른 사람들은 화가 날 수도 있겠지?",
-                                   act_bhv="do_agree", act="망가뜨린 사람이 돈을 지불해야 할 수도 있고, 전시물을 보지 못한 다른 사람들은 화가 날 수도 있겠지?")
+                                   act_bhv="do_compliment_S", act="망가뜨린 사람이 돈을 지불해야 할 수도 있고, 전시물을 보지 못한 다른 사람들은 화가 날 수도 있겠지?")
     
         # 3.1 마무리 대화
         pibo = cm.tts(bhv="do_joy_A", string="멋진 전시물은 모든 사람들이 오래오래 볼 수 있도록 눈으로만 봐야 해. 잘 기억해 두자!")

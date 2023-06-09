@@ -92,11 +92,11 @@ class Etiquette():
         
         if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="누구와 함께 가서 놀았니?",
-                                       neu_bhv="do_agree", neu="기억이 안 날 수 있지~ 어떤 장난감을 가지고 놀았니?",
+                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수 있지~ 어떤 장난감을 가지고 놀았니?",
                                        act_bhv="do_question_S", act="어떤 장난감을 가지고 놀았니?")
             
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 장난감을 가지고 놀았니?",
-                                       neu_bhv="do_agree", neu="기억이 안 날 수 있지~")
+                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수 있지~")
             
             pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 장난감을 가지고 논 뒤에 정리를 잘 하니?")
             answer = cm.responses_proc(re_bhv="do_question_L", re_q="친구 집에서 늦게 까지 놀면 집에서 엄마가 기다리시겠지?",
