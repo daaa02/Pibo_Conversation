@@ -63,7 +63,7 @@ class Etiquette():
         if answer[0][0] == "action":            
             
             for i in range(len(self.correct)):
-                if self.correct[i] in answer[1]:
+                if self.correct[i] in answer[0][1]:
                     self.ox = "right"                    
             if len(self.ox) == 0:
                 self.ox = "wrong ㅠㅠ"
@@ -82,7 +82,7 @@ class Etiquette():
                 if answer[0][0] == "action":        
                                 
                     for i in range(len(self.correct)):
-                        if self.correct[i] in answer[1]:
+                        if self.correct[i] in answer[0][1]:
                             self.ox = "(right)"                    
                     if len(self.ox) == 0:
                         self.ox = "(wrong ㅠㅠ)"
