@@ -39,7 +39,7 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Etiquette():    
     
     def __init__(self): 
-        self.user_name = '찬익'
+        self.user_name = '호수'
         self.correct = ['음식', '소리', '김밥', '밥']
         self.ox = ''
                 

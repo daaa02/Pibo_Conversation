@@ -33,7 +33,7 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Daily():    
     
     def __init__(self): 
-        self.user_name = "다영"
+        self.user_name = '호수'
         self.mood = str
 
     

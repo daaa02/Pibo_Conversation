@@ -34,7 +34,7 @@ class Fairytale():
         
     def __init__(self): 
         self.story_name = '모기와 사자'
-        self.user_name = '찬익'
+        self.user_name = '호수'
         
     
     def Mosqutio(self):      

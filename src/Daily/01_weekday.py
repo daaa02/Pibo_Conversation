@@ -38,7 +38,7 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Daily():    
     
     def __init__(self): 
-        self.user_name = "윤지"
+        self.user_name = '호수'
         self.today = 2 # datetime.now().weekday()
         self.place = '유치원'
     

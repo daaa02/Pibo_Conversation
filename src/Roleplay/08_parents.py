@@ -33,7 +33,7 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Roleplay():    
     
     def __init__(self): 
-        self.user_name = '찬익'
+        self.user_name = '호수'
         self.time = 5  # 테스트를 위해 5까지만 셈
         self.role=''
         self.count = 0
