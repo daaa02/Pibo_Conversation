@@ -6,6 +6,7 @@ import csv
 import random
 from datetime import datetime
 import time
+import json
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
 sys.path.append('/home/pi/Pibo_Conversation/')
@@ -31,7 +32,9 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Roleplay():    
     
     def __init__(self): 
-        self.user_name = '호수'
+        with open('/home/pi/name_config.json', 'r') as f:
+            config = json.load(f)        
+            self.user_name = config['user_name'] 
         self.role = ''
         self.score = []
         self.turns = []

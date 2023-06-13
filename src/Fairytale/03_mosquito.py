@@ -8,6 +8,7 @@ import csv
 import random
 from datetime import datetime
 import time
+import json
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
 sys.path.append('/home/pi/Pibo_Conversation/')
@@ -34,7 +35,9 @@ class Fairytale():
         
     def __init__(self): 
         self.story_name = '모기와 사자'
-        self.user_name = '호수'
+        with open('/home/pi/name_config.json', 'r') as f:
+            config = json.load(f)        
+            self.user_name = config['user_name'] 
         
     
     def Mosqutio(self):      

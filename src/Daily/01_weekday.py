@@ -11,7 +11,9 @@ import csv
 import random
 from datetime import datetime
 import time
+import json
 import time
+import json
 import datetime
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
@@ -38,7 +40,9 @@ crc = csv.reader(csv_conversation, delimiter=',', doublequote=True, lineterminat
 class Daily():    
     
     def __init__(self): 
-        self.user_name = '호수'
+        with open('/home/pi/name_config.json', 'r') as f:
+            config = json.load(f)        
+            self.user_name = config['user_name'] 
         self.today = 2 # datetime.now().weekday()
         self.place = '유치원'
     

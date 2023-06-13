@@ -4,6 +4,7 @@
 
 import os, sys
 import time
+import json
 
 sys.path.append('/home/pi/Pibo_Conversation/')
 from data.c_conversation_manage import ConversationManage, WordManage, NLP
