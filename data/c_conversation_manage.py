@@ -395,7 +395,6 @@ cm = ConversationManage()
 wm = WordManage()
 nlp = NLP()
 audio = TextToSpeech()
-gss = google_spread_sheet()
 device = Device()
 o = Oled()
 
