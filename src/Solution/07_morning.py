@@ -15,11 +15,13 @@ sys.path.append('/home/pi/Pibo_Conversation/')
 from data.c_conversation_manage import ConversationManage, WordManage, NLP
 from data.speech_to_text import speech_to_text
 from data.text_to_speech import TextToSpeech, text_to_speech
+from data.spread import google_spread_sheet
 
 cm = ConversationManage()
 wm = WordManage()
 nlp = NLP()
 audio = TextToSpeech()
+gss = google_spread_sheet()
 
 folder = "/home/pi/UserData"
 filename = os.path.basename(__file__).strip('.py')
@@ -107,6 +109,9 @@ class Solution():
         cwc.writerow(['%Turns', ])
         cwc.writerow(['%Rejections', ])
         cwc.writerow(['%Misrecognitions', ])
+
+        # 5. 활동 완료 기록
+        gss.write_sheet(name=self.user_name, today=today, activities=filename)
 
 
 

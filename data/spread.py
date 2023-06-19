@@ -1,4 +1,5 @@
 from datetime import datetime
+import json
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -10,21 +11,24 @@ scope = {
 json_file='/home/pi/dayoung-123-1e6969392f38.json'
 credentials = ServiceAccountCredentials.from_json_keyfile_name(json_file, scope)
 gc = gspread.authorize(credentials)
-url = "https://docs.google.com/spreadsheets/d/1JPMgIQ7QdIDO6KdecXQAOQhSjGguXZOXufXkkpXorwQ/edit?usp=sharing"
+url = "https://docs.google.com/spreadsheets/d/1z_-_YYSvvlC2SEpLDRFKpz-zym9AZGBj65A_sOExgSo/edit?usp=sharing"
 
 today = datetime.now().strftime('%Y-%m-%d %H:%M')
-user_name = "이름"
+with open('/home/pi/name_config.json', 'r') as f:
+    config = json.load(f)        
+    user_name = config['user_name'] 
+
 
 class google_spread_sheet():
     
     def make_sheet(self):
         ms = gc.create(f'{user_name}')    # file name
         worksheet = ms.get_worksheet(0)     # 첫 번째 시트
-        worksheet.append_row(['활동일', '활동명', '의사소통', '사회성', '인지', '근육'])
-        # worksheet.resize(50, 50)
+        worksheet.append_row(['이름', '날짜', '활동'])
+        worksheet.resize(500, 10)
         ms.share('dyk98498@gmail.com', perm_type='user', role='writer')     
     
-    def write_sheet(self, today, activities, score):
+    def write_sheet(self, name, today, activities):
         # # 새로 만든 시트에 쓰기
         # ws = gc.open(f'{user_name}')
         # worksheet = ws.get_worksheet(0)
@@ -35,9 +39,10 @@ class google_spread_sheet():
         
         str_list = list(filter(None, worksheet.col_values(1)))
         next = len(str_list)+1
-        worksheet.update(f'A{next}', today)
-        worksheet.update(f'B{next}', activities)
-        worksheet.append_row(score, table_range=f'C{next}')
+        worksheet.update(f'A{next}', name)
+        worksheet.update(f'B{next}', today)
+        worksheet.update(f'C{next}', activities)        
+        # worksheet.append_row(activities, table_range=f'C{next}')
 
     def save_sheet(self):
         ss = gc.open(f'{user_name}')

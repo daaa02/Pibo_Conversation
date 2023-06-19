@@ -24,6 +24,7 @@ from text_to_speech import TextToSpeech, text_to_speech
 disp = Oled()
 motion = Motion()
 audio = TextToSpeech()
+gss = google_spread_sheet()
 
 def do_stop():
     eye.e_question()
