@@ -11,6 +11,7 @@ from datetime import datetime
 
 from openpibo.device import Device
 from openpibo.oled import Oled
+from openpibo.audio import Audio # 혹시 mute 걸려있을까봐
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
 sys.path.append('/home/pi/Pibo_Conversation/')
@@ -22,6 +23,7 @@ import data.behavior.behavior_list as behavior
 
 device = Device()
 oled = Oled()
+pibo_audio = Audio()
 
 cm = ConversationManage()
 wm = WordManage()
@@ -210,6 +212,6 @@ class Say():
         
 
 if __name__ == "__main__":
-    
+    pibo_audio.mute(False)
     say = Say()
     say.Hello()
