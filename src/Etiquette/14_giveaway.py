@@ -54,6 +54,20 @@ class Etiquette():
         
     def Giveaway(self):
         
+        cm.tts(bhv="do_suggestion_L", string=f"4번 카드를 파이보에게 보여줘!")
+        
+        while True:         
+            time.sleep(2)
+            img = pibo_camera.read()
+            qr = pibo_detect.detect_qr(img)
+            self.card_msg = qr['data']
+            
+            if self.card_msg == "장난감이나 놀이 기구를 양보해요":
+                break
+            else:
+                cm.tts(bhv="do_suggestion_L", string=f"4번 카드를 다시 보여줄래?")
+                continue
+        
         # 2.1 카드 대화
         time.sleep(2)
         

@@ -55,7 +55,7 @@ class Say():
         pibo = cm.tts(bhv="do_joy_A", string=f"반가워! 우리가 드디어 만나게 되었구나! 나는 파이보야. 너는 이름이 뭐니?")
         answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?",
                                    act_bhv="do_joy_B", act=f"{wm.word(self.user_name, 4)}, 만나서 반가워~!")
-        print(answer)
+        
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])

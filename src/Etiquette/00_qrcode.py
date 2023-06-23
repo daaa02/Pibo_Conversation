@@ -50,6 +50,7 @@ class Etiquette():
                 if self.card_msg == "길을 걸으면서 뛰거나 장난치지 않아요":
                     self.act = '06_street'
                     break                    
+                
                 if self.card_msg == "아무 곳에나 낙서를 하지 않아요":
                     self.act = '07_scribble'
                     break                
