@@ -119,7 +119,7 @@ class RolePlay():
             
             pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, type=0)}의 주변에 {wm.word(self.rolemodel, type=1)} 있니?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="주변에 있니?",
-                                    neu_bhv="do_compliment_S", neu="괜찮아~ 생각 나지 않을 수 있어")
+                                       neu_bhv="do_compliment_S", neu="괜찮아~ 생각 나지 않을 수 있어")
             cwc.writerow(['pibo', pibo])
             cwc.writerow(['user', answer[0][1], answer[1]])
             self.reject.append(answer[1])
