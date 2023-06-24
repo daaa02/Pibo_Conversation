@@ -110,7 +110,7 @@ class RolePlay():
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
         
-        if answer[0][0] == "positive":
+        if answer[0][0] == "positive" or answer[0][0] == "action":
             pibo = cm.tts(bhv="do_question_S", string=f"그 사람은 왜 유명할까?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="그 사람은 왜 유명할까?")
             cwc.writerow(['pibo', pibo])
