@@ -97,8 +97,8 @@ class RolePlay():
                     pibo = cm.tts(bhv="do_question_S", string=f"다시 크게 말해줄래?")
                     continue
                 
-                else:
-                    break
+                # else:
+                #     break
         
         # 3.1 역할 대화
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.rolemodel, type=2)} 정말 중요한 일을 한다고 생각해.")
