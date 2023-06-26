@@ -84,18 +84,19 @@ class RolePlay():
                         pibo = cm.tts(bhv="do_question_S", string=f"다시 크게 말해줄래?")
                         continue
                 
-                    else:
-                        break                
+                    # else:
+                    #     break  
+                                
             
-            if answer[0][0] == "positive" or answer[0][0] == "action":
-                self.rolemodel = nlp.nlp_nouns(answer[0][1])   # NER
+            # if answer[0][0] == "positive" or answer[0][0] == "action":
+            #     self.rolemodel = nlp.nlp_nouns(answer[0][1])   # NER
                 
-                pibo = cm.tts(bhv="do_question_S", string=f"{self.rolemodel} 맞아?")
-                answer = cm.responses_proc(re_q=f"{self.rolemodel} 맞아?")
+            #     pibo = cm.tts(bhv="do_question_S", string=f"{self.rolemodel} 맞아?")
+            #     answer = cm.responses_proc(re_q=f"{self.rolemodel} 맞아?")
                 
-                if answer[0][0] == "negative":
-                    pibo = cm.tts(bhv="do_question_S", string=f"다시 크게 말해줄래?")
-                    continue
+            #     if answer[0][0] == "negative":
+            #         pibo = cm.tts(bhv="do_question_S", string=f"다시 크게 말해줄래?")
+            #         continue
                 
                 # else:
                 #     break
