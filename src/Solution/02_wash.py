@@ -41,6 +41,8 @@ class Solution():
             config = json.load(f)        
             self.user_name = config['user_name'] 
         self.score = []
+        self.turns = []
+        self.reject = []
                 
         
     def Wash(self):
