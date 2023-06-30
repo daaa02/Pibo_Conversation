@@ -61,7 +61,7 @@ class Fairytale():
         # 1. 동화 줄거리 대화        
         pibo = cm.tts(bhv="do_joy_A", string=f"정말 재미있는 이야기였어! {wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?")
         answer = cm.responses_proc(re_bhv="do_joy_A", re_q=f"{wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?",
-                                   neu_bhv="do_compliment_S", neu=f"그럴 수 있지~")
+                                   neu_bhv="do_compliment_S", neu=f"그럴 수 있지.")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])  
@@ -69,7 +69,7 @@ class Fairytale():
         pibo = cm.tts(bhv="do_question_S", string=f"OO이는 독수리를 본 적이 있다면 말해 줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 독수리를 본 적이 있다면 말해 줄래?", 
                                    pos_bhv="do_question_S", pos=f"멋지다! 얼마나 큰 독수리 였어?", 
-                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 생각나지 않을 수 있어~", 
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아. 생각나지 않을 수 있어.", 
                                    act_bhv="do_question_S", act=f"멋지다! 얼마나 큰 독수리 였어?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
@@ -77,11 +77,11 @@ class Fairytale():
 
         if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"얼마나 큰 독수리 였어?", 
-                                       neu_bhv="do_compliment_S", neu=f"모를 수 있지~")
+                                       neu_bhv="do_compliment_S", neu=f"모를 수 있지.")
 
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 독수리가 되어 날 수 있다면 어디로 가보고 싶니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 독수리가 되어 날 수 있다면 어디로 가보고 싶니?", 
-                                   neu=f"괜찮아~ 대답하기 어려울 수 있어~")
+                                   neu=f"괜찮아. 대답하기 어려울 수 있어.")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])  
@@ -96,7 +96,7 @@ class Fairytale():
         pibo = cm.tts(bhv="do_question_L", string=f"독수리가 갑자기 모자를 가져갔을 때 농부는 당황했을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", string=f"독수리가 갑자기 모자를 가져갔을 때 농부는 당황했을까?",
                                    pos_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}도 누군가 갑자기 {wm.word(self.user_name, 0)}의 물건을 가져가서 당황한 적이 있니?",
-                                   neu_bhv="do_compliment_S", neu="몰라도 괜찮아~",
+                                   neu_bhv="do_compliment_S", neu="몰라도 괜찮아.",
                                    act_bhv="do_question_L", act=f"{wm.word(self.user_name, 0)}도 누군가 갑자기 {wm.word(self.user_name, 0)}의 물건을 가져가서 당황한 적이 있니?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
@@ -129,7 +129,7 @@ class Fairytale():
         pibo = cm.tts(bhv="do_question_L", string=f"만약 {wm.word(self.user_name, 0)}가 동화 속 독수리를 만난다면 어떤 선물을 주고 싶니?")
         answer = cm.responses_proc(re_bhv="do_question_L", string=f"만약 {wm.word(self.user_name, 0)}가 동화 속 독수리를 만난다면 어떤 선물을 주고 싶니?",  
                                    pos_bhv="do_compliment_S", pos=f"그렇구나!",
-                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 대답하기 어려울 수 있어~ ",
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아. 대답하기 어려울 수 있어. ",
                                    neg_bhv="do_compliment_S", neg=f"그렇구나!",
                                    act_bhv="do_compliment_S", act=f"그렇구나!")
         cwc.writerow(['pibo', pibo])
@@ -142,7 +142,7 @@ class Fairytale():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?") 
 
-        pibo = cm.tts(bhv="do_explain_C", string=f"다음에 또 재미있는 동화 들려줄게~")
+        pibo = cm.tts(bhv="do_explain_C", string=f"다음에 또 재미있는 동화 들려줄게.")
         
         
         if answer[0][0] == "negative":

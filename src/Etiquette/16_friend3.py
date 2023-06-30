@@ -98,22 +98,22 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}도 도움이 필요한 적이 있었니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}도 도움이 필요한 적이 있었니?",
                                    pos_bhv="do_question_S", pos="언제였니?",
-                                   neu_bhv="do_compliment_S", neu="기억이 안 날 수도 있지~")
+                                   neu_bhv="do_compliment_S", neu="기억이 안 날 수도 있지.")
         
         if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제였니?",
                                        pos_bhv="do_compliment_S", pos="그 때 도움이 필요했구나!",
-                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수도 있어~")            
+                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수도 있어.")            
         
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="도움이 필요한 친구를 보면 어떻게 해야 할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="도움이 필요한 친구를 보면 어떻게 해야 할까?",
-                                   pos_bhv="do_explain_B", pos="친구에게 어떻게 도와주면 좋을지 물어보면 좋을 것 같아~",
-                                   neu_bhv="do_explain_B", neu="몰라도 괜찮아~ 친구에게 어떻게 도와주면 좋을지 물어보면 좋을 것 같아~",
-                                   act_bhv="do_explain_B", act="친구에게 어떻게 도와주면 좋을지 물어보면 좋을 것 같아~")
+                                   pos_bhv="do_explain_B", pos="친구에게 어떻게 도와주면 좋을지 물어보면 좋을 것 같아.",
+                                   neu_bhv="do_explain_B", neu="몰라도 괜찮아. 친구에게 어떻게 도와주면 좋을지 물어보면 좋을 것 같아.",
+                                   act_bhv="do_explain_B", act="친구에게 어떻게 도와주면 좋을지 물어보면 좋을 것 같아.")
     
         # 3.1 마무리 대화
-        pibo = cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, 0)}에게 친구들이 도와 달라고 하면 도와주자~ 할 수 없거나 위험한 일이라면 어른들께 도움을 구해 보는 것도 좋을 거야!")
+        pibo = cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, 0)}에게 친구들이 도와 달라고 하면 도와주자. 할 수 없거나 위험한 일이라면 어른들께 도움을 구해 보는 것도 좋을 거야!")
     
         
         
@@ -123,7 +123,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

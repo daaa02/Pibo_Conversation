@@ -140,14 +140,14 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_L", string="혼자서만 장난감을 가지고 놀면 다른 친구들은 어떻게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="혼자서만 장난감을 가지고 놀면 다른 친구들은 어떻게 생각할까?",
                                    pos_bhv="do_explain_B", pos="다른 친구들은 그 친구와 같이 안 놀고 싶다고 생각할 수 있겠지?",
-                                   neu_bhv="do_explain_B", neu="괜찮아. 모를 수도 있어~ 다른 친구들은 그 친구와 같이 안 놀고 싶다고 생각할 수 있겠지?",
+                                   neu_bhv="do_explain_B", neu="괜찮아. 모를 수도 있어. 다른 친구들은 그 친구와 같이 안 놀고 싶다고 생각할 수 있겠지?",
                                    act_bhv="do_explain_B", act="다른 친구들은 그 친구와 같이 안 놀고 싶다고 생각할 수 있겠지?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
     
         # 3.1 마무리 대화
-        pibo = cm.tts(bhv="do_joy_A", string=f"혼자서만 장난감을 다 가지고 놀면 안 돼~ 다른 친구들에게도 장난감을 양보할 수 있는 {wm.word(self.user_name, 0)}가 되자~")
+        pibo = cm.tts(bhv="do_joy_A", string=f"혼자서만 장난감을 다 가지고 놀면 안 돼. 다른 친구들에게도 장난감을 양보할 수 있는 {wm.word(self.user_name, 0)}가 되자.")
     
         
         
@@ -157,7 +157,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

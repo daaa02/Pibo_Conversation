@@ -93,25 +93,25 @@ class Etiquette():
         # 2.2 경험 질문
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}도 박물관이나 미술관에 가 본 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="어디에 가면 가지런히 정리된 물건들을 볼 수 있니?",
-                                   neu_bhv="do_explain_B", neu="괜찮아 생각이 안 날 수도 있어~ 마트나 문방구에 가면 물건들이 정리되어 있지?")
+                                   neu_bhv="do_explain_B", neu="괜찮아 생각이 안 날 수도 있어. 마트나 문방구에 가면 물건들이 정리되어 있지?")
 
         pibo = cm.tts(bhv="do_question_L", string="박물관에 가면 어떤 주의사항이 적혀 있니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="박물관에 가면 어떤 주의사항이 적혀 있니?",
                                    pos_bhv="do_compliment_S", pos="박물관에는 ‘만지지 마시오’ 라는 주의사항이 붙어 있지?",
-                                   neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어~ 박물관에는 ‘만지지 마시오’ 라는 주의사항이 붙어 있어.",
+                                   neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어. 박물관에는 ‘만지지 마시오’ 라는 주의사항이 붙어 있어.",
                                    act_bhv="do_compliment_S", act="박물관에는 ‘만지지 마시오’ 라는 주의사항이 붙어 있지?")
             
         pibo = cm.tts(bhv="do_question_L", string="박물관의 전시물을 만지면 어떤 일이 일어날까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="박물관의 전시물을 만지면 어떤 일이 일어날까?",
                                    pos_bhv="do_compliment_S", pos="전시물을 마음대로 만지면 전시물이 망가질 수도 있겠지?",
-                                   neu_bhv="do_explain_B", neu="괜찮아. 기억이 안 날 수도 있어~ 전시물을 마음대로 만지면 전시물이 망가질 수도 있겠지?",
+                                   neu_bhv="do_explain_B", neu="괜찮아. 기억이 안 날 수도 있어. 전시물을 마음대로 만지면 전시물이 망가질 수도 있겠지?",
                                    act_bhv="do_compliment_S", act="전시물을 마음대로 만지면 전시물이 망가질 수도 있겠지?")
 
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="전시물을 만져서 망가지면 어떤 일이 일어날까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="전시물을 만져서 망가지면 어떤 일이 일어날까?",
                                    pos_bhv="do_compliment_S", pos="망가뜨린 사람이 돈을 지불해야 할 수도 있고, 전시물을 보지 못한 다른 사람들은 화가 날 수도 있겠지?",
-                                   neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 망가뜨린 사람이 돈을 지불해야 할 수도 있고, 전시물을 보지 못한 다른 사람들은 화가 날 수도 있겠지?",
+                                   neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어. 망가뜨린 사람이 돈을 지불해야 할 수도 있고, 전시물을 보지 못한 다른 사람들은 화가 날 수도 있겠지?",
                                    act_bhv="do_compliment_S", act="망가뜨린 사람이 돈을 지불해야 할 수도 있고, 전시물을 보지 못한 다른 사람들은 화가 날 수도 있겠지?")
     
         # 3.1 마무리 대화
@@ -125,7 +125,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

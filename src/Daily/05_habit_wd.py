@@ -57,7 +57,7 @@ class Daily():
                 pibo = cm.tts(bhv="do_wakeup", string="3밤만 자면 크리스마스야!")
             elif rand == 2:
                 # audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/**")
-                pibo = cm.tts(bhv="do_wakeup", string="해가 환하게 떴어! 일어나~")                
+                pibo = cm.tts(bhv="do_wakeup", string="해가 환하게 떴어! 일어나.")                
             elif rand == 3:
                 # audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/**")
                 pibo = cm.tts(bhv="do_wakeup", string="벌써 아침이야! 일어나!")
@@ -68,11 +68,11 @@ class Daily():
             
             if rand == 1:
                 # audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/**")
-                pibo = cm.tts(bhv="do_suggestion_L", string="좋은 아침이야! 부모님께 가서 인사하자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="좋은 아침이야! 부모님께 가서 인사하자.")
             elif rand == 2:
                 pibo = cm.tts(bhv="do_suggestion_L", string="잘잤니? 부모님께 인사하는 거 잊지 않았지?")                
             elif rand == 3:
-                pibo = cm.tts(bhv="do_suggestion_L", string="굿모닝~ 우리 같이 부모님께 아침 인사 하자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="굿모닝. 우리 같이 부모님께 아침 인사 하자.")
                 
         if type == 3:
             
@@ -80,11 +80,11 @@ class Daily():
             
             if rand == 1:
                 # audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/**")
-                pibo = cm.tts(bhv="do_suggestion_L", string="식사 시간이야! 꼭꼭 씹어서 맛있게 먹자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="식사 시간이야! 꼭꼭 씹어서 맛있게 먹자.")
             elif rand == 2:
-                pibo = cm.tts(bhv="do_suggestion_L", string="밥 먹자~ 딴 짓 하지 말고 맛있게 밥 먹자! ")                
+                pibo = cm.tts(bhv="do_suggestion_L", string="밥 먹자. 딴 짓 하지 말고 맛있게 밥 먹자! ")                
             elif rand == 3:
-                pibo = cm.tts(bhv="do_suggestion_L", string="아침 안 먹니? 우리 같이 맛있게 밥 먹자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="아침 안 먹니? 우리 같이 맛있게 밥 먹자.")
                 
         if type == 4:
                         
@@ -117,11 +117,11 @@ class Daily():
             
             if rand == 1:
                 # audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/**")
-                pibo = cm.tts(bhv="do_joy_A", string="오늘도 선생님께 인사 잘하고 친구들과 사이좋게 지내~")
+                pibo = cm.tts(bhv="do_joy_A", string="오늘도 선생님께 인사 잘하고 친구들과 사이좋게 지내.")
             elif rand == 2:
-                pibo = cm.tts(bhv="do_joy_A", string="유치원 갈 시간이야! 친구들과 사이좋게 지내고 집에서 만나자~")                
+                pibo = cm.tts(bhv="do_joy_A", string="유치원 갈 시간이야! 친구들과 사이좋게 지내고 집에서 만나자.")                
             elif rand == 3:
-                pibo = cm.tts(bhv="do_joy_A", string="오늘도 재밌고 활기찬 유치원 생활을 보내고 나중에 만나서 얘기해 줘~")
+                pibo = cm.tts(bhv="do_joy_A", string="오늘도 재밌고 활기찬 유치원 생활을 보내고 나중에 만나서 얘기해 줘.")
                 
     def afternoon(self, type):
         
@@ -131,11 +131,11 @@ class Daily():
             
             if rand == 1:
                 # audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/**")
-                pibo = cm.tts(bhv="do_suggestion_L", string="점심시간이야! 부모님께 감사 인사 드리고 맛있게 밥 먹자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="점심시간이야! 부모님께 감사 인사 드리고 맛있게 밥 먹자.")
             elif rand == 2:
-                pibo = cm.tts(bhv="do_suggestion_L", string="밥먹자~ 밥 먹기 전에 부모님께 감사 인사 잊지 않았지?")                
+                pibo = cm.tts(bhv="do_suggestion_L", string="밥먹자. 밥 먹기 전에 부모님께 감사 인사 잊지 않았지?")                
             elif rand == 3:
-                pibo = cm.tts(bhv="do_suggestion_L", string="점심 안 먹니? 우리 같이 부모님께 감사 인사 드리고 밥 먹자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="점심 안 먹니? 우리 같이 부모님께 감사 인사 드리고 밥 먹자.")
                 
         if type == 2:
                         
@@ -171,11 +171,11 @@ class Daily():
             
             if rand == 1:
                 # audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/**")
-                pibo = cm.tts(bhv="do_suggestion_L", string="저녁시간이야! 부모님께 감사 인사 드리고 맛있게 밥 먹자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="저녁시간이야! 부모님께 감사 인사 드리고 맛있게 밥 먹자.")
             elif rand == 2:
-                pibo = cm.tts(bhv="do_suggestion_L", string="저녁시간이야! 부모님께 감사 인사 드리고 맛있게 밥 먹자~")                
+                pibo = cm.tts(bhv="do_suggestion_L", string="저녁시간이야! 부모님께 감사 인사 드리고 맛있게 밥 먹자.")                
             elif rand == 3:
-                pibo = cm.tts(bhv="do_suggestion_L", string="저녁 안 먹니? 우리 같이 부모님께 감사 인사 드리고 밥 먹자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="저녁 안 먹니? 우리 같이 부모님께 감사 인사 드리고 밥 먹자.")
                  
         if type == 2:
             
@@ -200,7 +200,7 @@ class Daily():
             elif rand == 2:
                 pibo = cm.tts(bhv="do_question_L", string="다 놀았니? 정리하는 거 잊지 않았지?")                
             elif rand == 3:
-                pibo = cm.tts(bhv="do_suggestion_L", string="우리 같이 어질러진 물건을 정리하자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="우리 같이 어질러진 물건을 정리하자.")
                                 
         if type == 4:
             
@@ -220,11 +220,11 @@ class Daily():
             
             if rand == 1:
                 # audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/**")
-                pibo = cm.tts(bhv="do_suggestion_L", string="큰 소리가 난 것 같아! 조용히 움직이자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="큰 소리가 난 것 같아! 조용히 움직이자.")
             elif rand == 2:
                 pibo = cm.tts(bhv="do_question_L", string="무슨 소리지? 늦은 시간에는 이웃에 방해가 되지 않도록 조용히 움직여야 해!")                
             elif rand == 3:
-                pibo = cm.tts(bhv="do_suggestion_L", string="밤이 되었어~ 우리 이제 조용히 움직이자!")
+                pibo = cm.tts(bhv="do_suggestion_L", string="밤이 되었어. 우리 이제 조용히 움직이자!")
             
         if type == 6:
                         
@@ -236,7 +236,7 @@ class Daily():
             elif rand == 2:
                 pibo = cm.tts(bhv="do_question_L", string="일기쓰는 거 잊지 않았지?")                
             elif rand == 3:
-                pibo = cm.tts(bhv="do_suggestion_L", string="나랑 같이 일기쓸까? 오늘 있었던 이야기를 알려줘~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="나랑 같이 일기쓸까? 오늘 있었던 이야기를 알려줘.")
             
         if type == 7:         
                     
@@ -244,11 +244,11 @@ class Daily():
             
             if rand == 1:
                 # audio.audio_play(filename="/home/pi/AI_pibo2/src/data/audio/**")
-                pibo = cm.tts(bhv="do_question_S", string="벌써 어두운 밤이네! 부모님께 인사 드리고 자자~")
+                pibo = cm.tts(bhv="do_question_S", string="벌써 어두운 밤이네! 부모님께 인사 드리고 자자.")
             elif rand == 2:
                 pibo = cm.tts(bhv="do_question_L", string="이제 잘까? 자기 전에 부모님께 인사 드리는 거 잊지 않았지?")                
             elif rand == 3:
-                pibo = cm.tts(bhv="do_suggestion_L", string="피곤하지? 나랑 같이 부모님께 인사 드리고 자자~")
+                pibo = cm.tts(bhv="do_suggestion_L", string="피곤하지? 나랑 같이 부모님께 인사 드리고 자자.")
                 
                 
     def alarmtime(self, timeslot):      

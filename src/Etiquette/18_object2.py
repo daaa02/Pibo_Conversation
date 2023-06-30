@@ -101,14 +101,14 @@ class Etiquette():
             
             pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 다른 친구들에게 가위를 어떻게 건네 주니?")
             answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 다른 친구들에게 가위를 어떻게 건네 주니?",
-                                       neu_bhv="do_explain_A", neu="몰라도 괜찮아~ 가위의 손잡이 부분이 친구를 향하도록 건네줘야 겠지?",
+                                       neu_bhv="do_explain_A", neu="몰라도 괜찮아. 가위의 손잡이 부분이 친구를 향하도록 건네줘야 겠지?",
                                        neg_bhv="do_explain_A", neg="가위의 손잡이 부분이 친구를 향하도록 건네줘야 겠지?",
                                        act_bhv="do_explain_A", act="가위의 손잡이 부분이 친구를 향하도록 건네줘야 겠지?")
         
             pibo = cm.tts(bhv="do_question_S", string="칼은 어떻게 건네 주니?")
             answer = cm.responses_proc(re_bhv="do_question_L", re_q="어른들께 물건을 드릴 땐, 어떻게 드리는게 좋을까?",
                                        pos_bhv="do_explain_B", pos="사람이 다치지 않도록 칼 심을 넣어서 조심스럽게 전달해 줘야겠지?",
-                                       neu_bhv="do_explain_B", neu="몰라도 괜찮아~ 사람이 다치지 않도록 칼 심을 넣어서 조심스럽게 전달해 줘야겠지?",
+                                       neu_bhv="do_explain_B", neu="몰라도 괜찮아. 사람이 다치지 않도록 칼 심을 넣어서 조심스럽게 전달해 줘야겠지?",
                                        neg_bhv="do_explain_B", neg="사람이 다치지 않도록 칼 심을 넣어서 조심스럽게 전달해 줘야겠지?",
                                        act_bhv="do_explain_B", act="사람이 다치지 않도록 칼 심을 넣어서 조심스럽게 전달해 줘야겠지?")
         
@@ -116,11 +116,11 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_L", string="가위와 칼은 날카로운 물건이야. 날 쪽으로 건네주면 다른 사람이 다칠 수 있겠지?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="가위와 칼은 날카로운 물건이야. 날 쪽으로 건네주면 다른 사람이 다치게 될 수 있겠지?",
                                    pos_bhv="do_explain_C", pos="다른 사람들과 사용할 땐 조심스럽게 건네줘야 해!",
-                                   neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어~ 다른 사람들과 사용할 땐 조심스럽게 건네줘야 해!",
+                                   neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어. 다른 사람들과 사용할 땐 조심스럽게 건네줘야 해!",
                                    act_bhv="do_explain_C", act="다른 사람들과 사용할 땐 조심스럽게 건네줘야 해!")
     
         # 3.1 마무리 대화
-        pibo = cm.tts(bhv="do_joy_A", string=f"다른 사람들에게 가위나 칼을 전달해 줄 땐 친구가 손잡이를 잡을 수 있도록 잘 건네줘야 해~ 다칠 수 있으니 항상 조심하도록 하자!")
+        pibo = cm.tts(bhv="do_joy_A", string=f"다른 사람들에게 가위나 칼을 전달해 줄 땐 친구가 손잡이를 잡을 수 있도록 잘 건네줘야 해. 다칠 수 있으니 항상 조심하도록 하자!")
     
         
         
@@ -130,7 +130,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

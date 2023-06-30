@@ -63,13 +63,13 @@ class Solution():
         pibo = cm.tts(bhv="do_question_S", string="오랫동안 안 씻으면 어떻게 될까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="오랫동안 안 씻으면 어떻게 될까?",
                                    pos_bhv="do_compliment_S", pos="오랫동안 안 씻으면 몸이 아플수도 있겠다!",
-                                   neu_bhv="do_compliment_S", neu="괜찮아~ 바로 떠오르지 않을 수 있어~",
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 바로 떠오르지 않을 수 있어.",
                                    act_bhv="do_compliment_S", act="오랫동안 안 씻으면 몸이 아플수도 있겠다!")
             
         pibo = cm.tts(bhv="do_question_S", string="안 씻어서 냄새가 나면 친구들이 싫어할수도 있을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="안 씻어서 냄새가 나면 친구들이 싫어할수도 있을까?",
                                    pos_bhv="do_joy_B", pos="나도 좋은 냄새가 나는 친구가 좋았던 것 같아!",
-                                   neu_bhv="do_compliment_S", neu="괜찮아~ 모를 수 있어. 좋은 냄새가 나는 친구가 좋았던 것 같아!",
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 모를 수 있어. 좋은 냄새가 나는 친구가 좋았던 것 같아!",
                                    act_bhv="do_joy_B", act="나도 좋은 냄새가 나는 친구가 좋았던 것 같아!")
         
         # 2.1 문제 해결

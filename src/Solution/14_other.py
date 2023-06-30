@@ -56,12 +56,12 @@ class Solution():
 
         if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 물건이었는지 기억이 나니?",
-                                       neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~")
+                                       neu_bhv="do_compliment_S", neu="괜찮아. 생각이 나지 않을 수 있어.")
 
         pibo = cm.tts(bhv="do_question_S", string="다른 친구 물건이 예뻐 보여서 갖고 싶을 땐 어떻게 하는 게 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="다른 친구 물건이 예뻐 보여서 갖고 싶을 땐 어떻게 하는 게 좋을까?",
                                    pos_bhv="do_compliment_S", pos="그렇게 생각하는구나!",
-                                   neu_bhv="do_explain_C", neu="괜찮아~ 모를 수도 있어~",
+                                   neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어.",
                                    act_bhv="do_compliment_S", act="그렇게 생각하는구나!")
         
         pibo = cm.tts(bhv="do_question_S", string=f"다른 친구가 {wm.word(self.user_name, 0)} 물건을 함부로 만지면 {wm.word(self.user_name, 0)}는 기분이 어떨까?")
@@ -74,7 +74,7 @@ class Solution():
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 친구의 물건을 마음대로 만지면 친구의 기분을 어떨까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 친구의 물건을 마음대로 만지면 친구의 기분을 어떨까?",
                                    pos_bhv="do_compliment_S", pos="친구의 기분도 안 좋을 것 같아",
-                                   neu_bhv="do_explain_B", neu="괜찮아~ 상상하기 어려울 수 있어~ 아마 친구의 기분도 안 좋을 것 같아.",
+                                   neu_bhv="do_explain_B", neu="괜찮아. 상상하기 어려울 수 있어. 아마 친구의 기분도 안 좋을 것 같아.",
                                    neg_bhv="do_compliment_S", neg="친구의 기분도 안 좋을 것 같아",
                                    act_bhv="do_compliment_S", act="친구의 기분도 안 좋을 것 같아")
         
@@ -83,7 +83,7 @@ class Solution():
                                    neu_bhv="do_suggestion_S", neu="만져봐도 될까? 라고 말하면 어떨까?")
         
         # 2.1 문제 해결
-        pibo = cm.tts(bhv="do_joy_A", string="파이보도 친구들의 물건을 함부로 만지면 안되는 것을 알았어~ 알려줘서 정말 고마워!")
+        pibo = cm.tts(bhv="do_joy_A", string="파이보도 친구들의 물건을 함부로 만지면 안되는 것을 알았어. 알려줘서 정말 고마워!")
                             
         
         

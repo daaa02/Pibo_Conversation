@@ -51,7 +51,7 @@ class Roleplay():
         
         # 1. 역할 알림
         pibo = cm.tts(bhv="do_suggestion_S", string="역할 놀이를 해볼까?")
-        pibo = cm.tts(bhv="do_suggestion_S", string=f"오늘은 {wm.word(self.user_name, 0)}가 좋아하는 캐릭터 역할 놀이를 해볼거야~") 
+        pibo = cm.tts(bhv="do_suggestion_S", string=f"오늘은 {wm.word(self.user_name, 0)}가 좋아하는 캐릭터 역할 놀이를 해볼거야.") 
                 
         # 2. 역할 놀이 (1 of 3)
         genre_list = ['만화', '영화', '동화']        
@@ -97,7 +97,7 @@ class Roleplay():
                     continue
         
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{self.fav}의 특징을 한번 흉내내볼래?",
-                                   neu_bhv="do_compliment_S", neu="몰라도 괜찮아~",
+                                   neu_bhv="do_compliment_S", neu="몰라도 괜찮아.",
                                    act_bhv="do_joy_A", act="정말 멋진 캐릭터구나!")
         
         # 3. 대화 시작 (3 of 6)     
@@ -108,52 +108,52 @@ class Roleplay():
                 if rand[i] == 1:
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.fav, 1)} 제일 멋있다고 생각할 때가 언제니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.fav, 1)} 제일 멋있다고 생각할 때가 언제니?",
-                                               neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~",
+                                               neu_bhv="do_compliment_S", neu="괜찮아. 생각이 나지 않을 수 있어.",
                                                act_bhv="do_question_S", act="어떤 장면이었는지 자세히 말해줄래?")        
                     
                     if answer[0][0] == "action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 장면이었는지 자세히 말해줄래?",
-                                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어")
+                                                   neu_bhv="do_compliment_S", neu="괜찮아. 생각이 나지 않을 수 있어")
                     self.count += 1 
                     
                 if rand[i] == 2: 
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.fav, 2)} {self.genre} 에서 누구와 제일 친하니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.fav, 2)} {self.genre} 에서 누구와 제일 친하니?",
-                                               neu_bhv="do_compliment_S", neu="몰라도 괜찮아~")
+                                               neu_bhv="do_compliment_S", neu="몰라도 괜찮아.")
                     
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 누구랑 제일 친해?")
                     answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 누구랑 제일 친해?",
-                                               neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~")
+                                               neu_bhv="do_compliment_S", neu="괜찮아. 생각이 나지 않을 수 있어.")
                     self.count += 1
                     
                 if rand[i] == 3: 
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.fav, 1)} 된다면 {wm.word(self.user_name, 0)}는 어떤 것을 해보고 싶니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.fav, 1)} 된다면 {wm.word(self.user_name, 0)}는 어떤 것을 해보고 싶니?",
                                                pos_bhv="do_question_S", pos="언제 그걸 해보고 싶니?",
-                                               neu_bhv="do_compliment_S", neu="괜찮아~ 상상하기 어려울 수 있어~",
+                                               neu_bhv="do_compliment_S", neu="괜찮아. 상상하기 어려울 수 있어.",
                                                act_bhv="do_question_S", act="언제 그걸 해보고 싶니?")
                     
                     if answer[0][0] == "positive" or answer[0][0] =="action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="언제 그걸 해보고 싶니?",
-                                                   neu_bhv="do_compliment_S", neu="괜찮아~ 상상하기 어려울 수 있어~")
+                                                   neu_bhv="do_compliment_S", neu="괜찮아. 상상하기 어려울 수 있어.")
                     self.count += 1
                     
                 if rand[i] == 4: 
                     pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.fav, 5)} 비슷하게 생긴 사람이 주변에 있니?")
                     answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.fav, 5)} 비슷하게 생긴 사람이 주변에 있니?",
                                                pos_bhv="do_question_S", pos="그 사람은 어떻게 생겼니?",
-                                               neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~",
+                                               neu_bhv="do_compliment_S", neu="괜찮아. 생각이 나지 않을 수 있어.",
                                                act_bhv="do_questino_S", act="그 사람은 어떻게 생겼니?")
                     
                     if answer[0][0] == "positive" or answer[0][0] =="action":
                         answer = cm.responses_proc(re_bhv="do_question_S", re_q="그 사람은 어떻게 생겼니?",
-                                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~~",
+                                                   neu_bhv="do_compliment_S", neu="괜찮아. 생각이 나지 않을 수 있어..",
                                                    act_bhv="do_question_S", act=f"그 사람을 만나면 {wm.word(self.user_name, 0)}는 기분이 어때?")             
                         
                         if answer[0][0] =="action":
                             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그 사람을 만나면 {wm.word(self.user_name, 0)}는 기분이 어때?",
                                                        pos_bhv="do_joy_B", pos="정말 신기할 것 같아!",
-                                                       neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어")        
+                                                       neu_bhv="do_compliment_S", neu="괜찮아. 대답하기 어려울 수 있어")        
                     self.count += 1
                             
             if self.count < 3:
@@ -165,7 +165,7 @@ class Roleplay():
                 break
         
         # 4. 마무리 대화
-        pibo = cm.tts(bhv="do_joy_B", string=f"{wm.word(self.user_name, 0)}와 캐릭터 이야기를 해서 너무 재미있었어~ 다음에 또 재미있는 역할놀이 하자~")
+        pibo = cm.tts(bhv="do_joy_B", string=f"{wm.word(self.user_name, 0)}와 캐릭터 이야기를 해서 너무 재미있었어. 다음에 또 재미있는 역할놀이 하자.")
 
 
 
@@ -175,7 +175,7 @@ class Roleplay():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

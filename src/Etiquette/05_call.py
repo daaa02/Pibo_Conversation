@@ -94,25 +94,25 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="시끄럽게 이야기를 하는 사람을 본 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="시끄럽게 이야기를 하는 사람을 본 적이 있니?",
                                    pos_bhv="do_compliment_S", pos="본 적이 있구나!",
-                                   neu_bhv="do_compliment_S", neu="괜찮아 기억이 안 날 수도 있어~ ")
+                                   neu_bhv="do_compliment_S", neu="괜찮아 기억이 안 날 수도 있어. ")
 
         pibo = cm.tts(bhv="do_question_L", string="우리는 어떤 상황에서 조용히 이야기해야 할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="우리는 어떤 상황에서 조용히 이야기해야 할까?",
                                    pos_bhv="do_compliment_S", pos="모두가 함께 있는 공간에서는 조용히 이야기하는 것이 좋겠지?",
-                                   neu_bhv="do_explain_C", neu="괜찮아 생각이 안날 수도 있어~ 모두가 함께 있는 공간에서는 조용히 이야기하는 것이 좋겠지?",
+                                   neu_bhv="do_explain_C", neu="괜찮아 생각이 안날 수도 있어. 모두가 함께 있는 공간에서는 조용히 이야기하는 것이 좋겠지?",
                                    act_bhv="do_compliment_S", act="모두가 함께 있는 공간에서는 조용히 이야기하는 것이 좋겠지?")
             
         pibo = cm.tts(bhv="do_question_L", string="모두가 시끄럽게 이야기를 하거나 통화를 하면 어떤 일이 일어날까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="모두가 시끄럽게 이야기를 하거나 통화를 하면 어떤 일이 일어날까?",
                                    pos_bhv="do_compliment_S", pos="공간이 시끄러워서 모두 다 더 큰 소리로 이야기해야 겠지?",
-                                   neu_bhv="do_explain_B", neu="괜찮아 모를 수도 있어~ 공간이 시끄러워서 모두 다 더 큰 소리로 이야기해야 겠지?",
+                                   neu_bhv="do_explain_B", neu="괜찮아 모를 수도 있어. 공간이 시끄러워서 모두 다 더 큰 소리로 이야기해야 겠지?",
                                    act_bhv="do_compliment_S", act="공간이 시끄러워서 모두 다 더 큰 소리로 이야기해야 겠지?")
     
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="시끄럽게 이야기를 하거나 전화 통화를 하면 다른 사람들이 어떻게 느낄까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="시끄럽게 이야기를 하거나 전화 통화를 하면 다른 사람들이 어떻게 느낄까?",
                                    pos_bhv="do_compliment_S", pos="다른 사람들은 시끄러워서 화가 날 수도 있겠지?",
-                                   neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 다른 사람들은 시끄러워서 화가 날 수도 있겠지?",
+                                   neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어. 다른 사람들은 시끄러워서 화가 날 수도 있겠지?",
                                    act_bhv="do_compliment_S", act="다른 사람들은 시끄러워서 화가 날 수도 있겠지?")
     
         # 3.1 마무리 대화
@@ -126,7 +126,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

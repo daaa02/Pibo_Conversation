@@ -62,7 +62,7 @@ class Solution():
 
         pibo = cm.tts(bhv="do_question_L", string=f"나는 속마음이 10개정도 있는 것 같아. {wm.word(self.user_name, 0)}는 속마음이 얼마나 많니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"나는 속마음이 10개정도 있는 것 같아. {wm.word(self.user_name, 0)}는 속마음이 얼마나 많니?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아~ 바로 떠오르지 않을 수 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 바로 떠오르지 않을 수 있어.")
         
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}도 속마음을 말하기 어려울 때가 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 속마음을 말하기 어려울 때가 있니?",
@@ -71,7 +71,7 @@ class Solution():
         
         if answer[0][0] =="positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"나는 속마음을 말로 표현하기 어려운 것 같아. {wm.word(self.user_name, 0)}는 언제 말하기가 어렵니?",
-                                       neu_bhv="do_compliment_S", neu="괜찮아~ 대답하기 어려울 수 있어~")
+                                       neu_bhv="do_compliment_S", neu="괜찮아. 대답하기 어려울 수 있어.")
         
         pibo = cm.tts(bhv="do_question_L", string="속마음을 계속 말하지 않으면 어떻게 될까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 친구의 물건을 마음대로 만지면 친구의 기분을 어떨까?",
@@ -82,12 +82,12 @@ class Solution():
         pibo = cm.tts(bhv="do_question_S", string="나의 속마음을 언제 이야기하는 것이 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="나의 속마음을 언제 이야기하는 것이 좋을까?",
                                    pos_bhv="do_compliment_S", pos="그렇게 생각하는구나!",                                   
-                                   neu_bhv="do_suggestion_S", neu="괜찮아~ 모를 수도 있어~  속상한 날에는 나에게 꼭 말해줘~",
+                                   neu_bhv="do_suggestion_S", neu="괜찮아. 모를 수도 있어.  속상한 날에는 나에게 꼭 말해줘.",
                                    neg_bhv="do_compliment_S", neg="그렇게 생각하는구나!",
                                    act_bhv="do_compliment_S", act="그렇게 생각하는구나!")
         
         # 2.1 문제 해결
-        pibo = cm.tts(bhv="do_joy_A", string="파이보도 이제 속마음을 잘 표현할 수 있도록 노력해야겠다~ 알려줘서 정말 고마워!")
+        pibo = cm.tts(bhv="do_joy_A", string="파이보도 이제 속마음을 잘 표현할 수 있도록 노력해야겠다. 알려줘서 정말 고마워!")
                             
         
         

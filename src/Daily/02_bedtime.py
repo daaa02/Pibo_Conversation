@@ -45,15 +45,15 @@ class Daily():
     def Bedtime(self):
         
         # 1.1 시간 알림
-        rand_list = ["벌써 어두운 밤이 되었어~", "하루가 빨리 지나갔지?", "좋은 하루 보냈니?"]
+        rand_list = ["벌써 어두운 밤이 되었어.", "하루가 빨리 지나갔지?", "좋은 하루 보냈니?"]
         pibo = cm.tts(bhv="do_explain_A", string=random.choice(rand_list))
         
-        # 1.2 점수 파악 ~ 1.3 대화 시작
+        # 1.2 점수 파악 . 1.3 대화 시작
         pibo = cm.tts(bhv="do_question_S", string="오늘의 기분을 감정 단어로 말해볼까?")
         pibo = cm.tts(bhv="do_explain_B", string="기분이 좋다면 좋아. 보통이면 평범해. 안 좋았다면 안 좋았어 라고 말할 수 있어!")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="오늘의 기분을 감정 단어로 말해볼까?", 
                                    pos_bhv="do_question_S", pos="오늘 좋은 일이 있다면 말해줄래?",
-                                   neu_bhv="do_joy_A", neu=f"오늘 하루도 고생 많았어. 내일은 좋은 일이 가득할거야~ {wm.word(self.user_name, type=4)} 잘 자!",
+                                   neu_bhv="do_joy_A", neu=f"오늘 하루도 고생 많았어. 내일은 좋은 일이 가득할거야. {wm.word(self.user_name, type=4)} 잘 자!",
                                    neg_bhv="do_question_S", neg="오늘 무슨 일 있었다면 말해 줄래?",
                                    act_bhv="do_question_S", act="오늘 재미있는 일이 있었다면 말해줄래?")
         
@@ -66,7 +66,7 @@ class Daily():
         answer = cm.responses_proc(re_q="오늘 있었던 일 말해줄 수 있니?",
                                    pos_bhv="do_question_S", pos="어떤 일이 있었니?",
                                    neu_bhv="do_joy_A", neu=f"시간이 벌써 이렇게 됐네! 어서 자야겠는 걸? {wm.word(self.user_name, type=4)} 잘 자!",
-                                   neg_bhv="do_joy_A", neg=f"오늘 하루도 고생 많았어. 내일은 좋은 일이 가득할거야~ {wm.word(self.user_name, type=4)} 잘 자!",
+                                   neg_bhv="do_joy_A", neg=f"오늘 하루도 고생 많았어. 내일은 좋은 일이 가득할거야. {wm.word(self.user_name, type=4)} 잘 자!",
                                    act_bhv="do_joy_A", act=f"시간이 벌써 이렇게 됐네! 어서 자야겠는 걸? {wm.word(self.user_name, type=4)} 잘 자!")
 
         if answer[0][0] == "positive":
@@ -86,7 +86,7 @@ class Daily():
                                            act_bhv="do_joy_B", act="재밌었겠다!")
             
                 
-            pibo = cm.tts(bhv="do_joy_A", string=f"활기찬 내일을 위해 오늘은 이만 자자~ {wm.word(self.user_name, type=4)} 잘 자!")
+            pibo = cm.tts(bhv="do_joy_A", string=f"활기찬 내일을 위해 오늘은 이만 자자. {wm.word(self.user_name, type=4)} 잘 자!")
 
         
 if __name__ == "__main__":

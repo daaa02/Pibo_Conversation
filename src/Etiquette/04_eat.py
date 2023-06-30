@@ -93,25 +93,25 @@ class Etiquette():
         # 2.2 경험 질문
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 음식을 먹을 때 어떻게 먹니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 음식을 먹을 때 어떻게 먹니?",
-                                   neu_bhv="do_explain_B", neu="괜찮아 생각이 안 날 수도 있어~ ")
+                                   neu_bhv="do_explain_B", neu="괜찮아 생각이 안 날 수도 있어. ")
 
         pibo = cm.tts(bhv="do_question_L", string="음식을 조용히 먹으려면 어떻게 해야 할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="음식을 조용히 먹으려면 어떻게 해야 할까?",
                                    pos_bhv="do_compliment_S", pos="입을 다물고 천천히 먹으면 되겠지?",
-                                   neu_bhv="do_explain_C", neu="괜찮아 생각이 안 날 수도 있어~ 입을 다물고 천천히 먹으면 되겠지?",
+                                   neu_bhv="do_explain_C", neu="괜찮아 생각이 안 날 수도 있어. 입을 다물고 천천히 먹으면 되겠지?",
                                    act_bhv="do_compliment_S", act="입을 다물고 천천히 먹으면 되겠지?")
             
         pibo = cm.tts(bhv="do_question_L", string="공공장소에서 시끄럽게 음식을 먹으면 어떤 피해를 줄까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="공공장소에서 시끄럽게 음식을 먹으면 어떤 피해를 줄까?",
                                    pos_bhv="do_compliment_S", pos="주변 사람들이 쉬거나 대화하는 것에 방해가 되겠지?",
-                                   neu_bhv="do_explain_B", neu="괜찮아 모를 수도 있어~ 주변 사람들이 쉬거나 대화하는 것에 방해가 되겠지?",
+                                   neu_bhv="do_explain_B", neu="괜찮아 모를 수도 있어. 주변 사람들이 쉬거나 대화하는 것에 방해가 되겠지?",
                                    act_bhv="do_compliment_S", act="주변 사람들이 쉬거나 대화하는 것에 방해가 되겠지?")
     
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="음식을 시끄럽게 먹으면 다른 사람들이 어떻게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="음식을 시끄럽게 먹으면 다른 사람들이 어떻게 생각할까?",
                                    pos_bhv="do_compliment_S", pos="다른 사람들은 지저분하다고 생각할 수도 있겠지?",
-                                   neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 다른 사람들은 지저분하다고 생각할 수도 있겠지?",
+                                   neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어. 다른 사람들은 지저분하다고 생각할 수도 있겠지?",
                                    act_bhv="do_compliment_S", act="다른 사람들은 지저분하다고 생각할 수도 있겠지?")
     
         # 3.1 마무리 대화
@@ -125,7 +125,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

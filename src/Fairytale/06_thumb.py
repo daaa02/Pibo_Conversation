@@ -46,7 +46,7 @@ class Fairytale():
         # 1. 동화 줄거리 대화
         pibo = cm.tts(bhv="do_joy_A", string=f"정말 다양한 모험을 하는 이야기였어! {wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?")
         answer = cm.responses_proc(re_bhv="do_joy_A", string=f"{wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?",
-                                   neu_bhv="do_compliment_S", neu=f"그럴 수 있지~")
+                                   neu_bhv="do_compliment_S", neu=f"그럴 수 있지.")
 
         pibo = cm.tts(bhv="do_question_S", string=f"동화 속 엄지 둥이는 생쥐보다 작을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", string=f"동화 속 엄지 둥이는 생쥐보다 작을까?")
@@ -59,7 +59,7 @@ class Fairytale():
         if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", string=f"작은 동물이 되면 뭐가 좋을까?", 
                                        pos_bhv="do_compliment_S! ", pos=f"그렇게 생각하는구나!", 
-                                       neu_bhv="do_compliment_S", neu=f"괜찮아~ 대답하기 어려울 수 있어~", 
+                                       neu_bhv="do_compliment_S", neu=f"괜찮아. 대답하기 어려울 수 있어.", 
                                        act_bhv="do_compliment_S", act=f"그렇게 생각하는구나!")
 
         pibo = cm.tts(bhv="do_question_S", string=f"만약에 {wm.word(self.user_name, 0)}가 엄지 둥이 처럼 작아질 수 있다면 어디를 가보고 싶니?")
@@ -78,7 +78,7 @@ class Fairytale():
         pibo = cm.tts(bhv="do_question_S", string=f"다시 엄지 둥이와 가족들이 만나게 되었을 때 기뻤을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", string=f"다시 엄지 둥이와 가족들이 만나게 되었을 때 기뻤을까?", 
                                    pos_bhv="do_question_L", pos=f"{wm.word(self.user_name, 0)}도 가족들과 함께 기뻤던 일이 있었다면 말해 줄래?", 
-                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아~", 
+                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아.", 
                                    act_bhv="do_question_L", act=f"{wm.word(self.user_name, 0)}도 가족들과 함께 기뻤던 일이 있었다면 말해 줄래?")
 
         if answer[0][0] == "positive" or answer[0][0] == "action":
@@ -89,9 +89,9 @@ class Fairytale():
         # 3. 마무리 대화
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 다양한 모험을 하고 집으로 돌아온 엄지 둥이 에게 위로를 해줘볼까?")
         answer = cm.responses_proc(re_bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 다양한 모험을 하고 집으로 돌아온 엄지 둥이 에게 위로를 해줘볼까?",  
-                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 모를 수 있지~")
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아. 모를 수 있지.")
         
-        pibo = cm.tts(bhv="do_explain_C", string=f"오늘 동화 재미있었지? 다음에 또 재미있는 동화 들려줄게~")
+        pibo = cm.tts(bhv="do_explain_C", string=f"오늘 동화 재미있었지? 다음에 또 재미있는 동화 들려줄게.")
             
         
 

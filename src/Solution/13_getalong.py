@@ -55,7 +55,7 @@ class Solution():
         
         pibo = cm.tts(bhv="do_question_S", string=f"그 친구랑 어떻게 친해지게 됐니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그 친구랑 어떻게 친해지게 됐니?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 생각이 나지 않을 수 있어.")
         
         pibo = cm.tts(bhv="do_question_S", string=f"그 친구랑 뭐하고 놀 때가 제일 재밌어?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"그 친구랑 뭐하고 놀 때가 제일 재밌어?",
@@ -68,15 +68,15 @@ class Solution():
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)} 주변에는 어떤 친구들이 인기가 많니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)} 주변에는 어떤 친구들이 인기가 많니?",
                                    pos_bhv="do_compliment_S", pos=f"재미있는 친구들도 인기가 많겠지?",
-                                   neu_bhv="do_explain_A", neu=f"괜찮아~ 대답하기 어려울 수 있어. 아마 재미있는 친구들도 인기가 많겠지?",
+                                   neu_bhv="do_explain_A", neu=f"괜찮아. 대답하기 어려울 수 있어. 아마 재미있는 친구들도 인기가 많겠지?",
                                    act_bhv="do_compliment_S", act=f"재미있는 친구들도 인기가 많겠지?")
         
         pibo = cm.tts(bhv="do_question_S", string=f"어떻게 하면 새로운 친구와 친해질 수 있을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"어떻게 하면 새로운 친구와 친해질 수 있을까?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아~ 말하기 어려울 수 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 말하기 어려울 수 있어.")
         
         # 2.1 문제 해결
-        pibo = cm.tts(bhv="do_joy_A", string=f"파이보도 친구들이랑 사이좋게 잘 지내야 겠다~ 알려줘서 정말 고마워!")
+        pibo = cm.tts(bhv="do_joy_A", string=f"파이보도 친구들이랑 사이좋게 잘 지내야 겠다. 알려줘서 정말 고마워!")
     
     
         # 3. 피드백 수집

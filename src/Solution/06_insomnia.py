@@ -56,33 +56,33 @@ class Solution():
         pibo = cm.tts(bhv="do_question_L", string="키가 크려면 몇시에 자야 할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="키가 크려면 몇시에 자야 할까?",
                                    pos_bhv="do_explain_A", pos="일찍자면 키가 커지겠지?",
-                                   neu_bhv="do_explain_A", neu="몰라도 괜찮아~ 아마 일찍자면 키가 커지겠지?",
+                                   neu_bhv="do_explain_A", neu="몰라도 괜찮아. 아마 일찍자면 키가 커지겠지?",
                                    act_bhv="do_explain_A", act="일찍자면 키가 커지겠지?",)
 
         pibo = cm.tts(bhv="do_question_L", string="잠을 많이 못자면 다음날 기분이 어떠니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="잠을 많이 못자면 다음날 기분이 어떠니?",
                                    pos_bhv="do_compliment_S", pos="많이 못자면 피곤하겠지?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~ 많이 못자면 피곤하겠지?",
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 생각이 나지 않을 수 있어. 많이 못자면 피곤하겠지?",
                                    act_bhv="do_compliment_S", act="많이 못자면 피곤하겠지?")
 
         pibo = cm.tts(bhv="do_question_S", string=f"양을 세면 잠이 온다던데, {wm.word(self.user_name, 0)}는 잠이 안 올 때 어떻게 하니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"양을 세면 잠이 온다던데, {wm.word(self.user_name, 0)}는 잠이 안 올 때 어떻게 하니?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아~ 모를 수도 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 모를 수도 있어.")
             
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 평소에 어떤 꿈을 꾸니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 평소에 어떤  꿈을 꾸니?",
                                    pos_bhv="do_compliment_S", pos="신기한 걸?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아~ 생각이 나지 않을 수 있어~",
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 생각이 나지 않을 수 있어.",
                                    act_bhv="do_compliment_S", act="신기한 걸")
         
         pibo = cm.tts(bhv="do_question_L", string="눈을 계속 감고 상상을 하면 잠이 올까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="눈을 계속 감고 상상을 하면 잠이 올까?",
                                    pos_bhv="do_compliment_S", pos="왠지 잠이 올 것만 같아!",
-                                   neu_bhv="do_compliment_S", neu="괜찮아~ 모를 수도 있어~ 눈을 감고 상상을 하면 왠지 잠이 올 것만 같아!",
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 모를 수도 있어. 눈을 감고 상상을 하면 왠지 잠이 올 것만 같아!",
                                    act_bhv="do_compliment_S", act="왠지 잠이 올 것만 같아!")
         
         # 2.1 문제 해결
-        pibo = cm.tts(bhv="do_joy_A", string="파이보도 이제 일찍 자도록 노력해야겠다~ 알려줘서 정말 고마워!")
+        pibo = cm.tts(bhv="do_joy_A", string="파이보도 이제 일찍 자도록 노력해야겠다. 알려줘서 정말 고마워!")
                             
         
         

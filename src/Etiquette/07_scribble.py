@@ -118,7 +118,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="낙서를 하는 사람을 본 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="낙서를 하는 사람을 본 적이 있니?",
                                    pos_bhv="do_compliment_S", pos="본 적이 있구나!",
-                                   neu_bhv="do_compliment_S", neu="괜찮아. 기억이 안 날 수도 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 기억이 안 날 수도 있어.")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
         self.reject.append(answer[1])
@@ -127,7 +127,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_L", string="그림을 그리고 싶을 때는 어디에 그리는게 좋을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="그림을 그리고 싶을 때는 어디에 그리는게 좋을까?",
                                    pos_bhv="do_compliment_S", pos="그림은 스케치북이나 종이에 그리는게 좋겠지?",
-                                   neu_bhv="do_explain_C", neu="괜찮아 모를 수도 있어~ 그림은 스케치북이나 종이에 그리는게 좋겠지?",
+                                   neu_bhv="do_explain_C", neu="괜찮아 모를 수도 있어. 그림은 스케치북이나 종이에 그리는게 좋겠지?",
                                    act_bhv="do_compliment_S", act="그림은 스케치북이나 종이에 그리는게 좋겠지?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
@@ -148,7 +148,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_L", string="아무 곳에나 그림을 그리는 사람을 보면 사람들은 어떻게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="아무 곳에나 그림을 그리는 사람을 보면 사람들은 어떻게 생각할까?",
                                    pos_bhv="do_compliment_S", pos="공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?",
-                                   neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어~ 공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?",
+                                   neu_bhv="do_explain_A", neu="괜찮아 모를 수도 있어. 공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?",
                                    act_bhv="do_compliment_S", act="공공시설물을 망가뜨리는 것을 보고 올바르지 않다고 생각하겠지?")
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
@@ -165,7 +165,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

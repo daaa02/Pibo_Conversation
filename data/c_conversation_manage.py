@@ -183,7 +183,7 @@ class ConversationManage():
                     continue 
                 
                 elif count == 2:
-                    cm.tts(bhv="re_bhv", string="다음에 이야기하자~")
+                    cm.tts(bhv="re_bhv", string="다음에 이야기하자.")
                     self.answer = self.next
                     break       
         

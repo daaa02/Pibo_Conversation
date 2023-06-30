@@ -49,12 +49,12 @@ class Fairytale():
         pibo = cm.tts(bhv="do_question_L", string=f"{self.story} 동화를 들려줄게.")
         pibo = cm.tts(bhv="do_joy_A", string=f"정말 재미있는 이야기였어! {wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?")
         answer = cm.responses_proc(re_bhv="do_joy_A", re_q=f"정말 재미있는 이야기였어! {wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?",
-                                   neu_bhv="do_compliment_S", neu=f"그럴 수 있지~")
+                                   neu_bhv="do_compliment_S", neu=f"그럴 수 있지.")
         
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 아래가 내려다 보이는 높은 곳에 가본 적이 있으면 말해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}는 아래가 내려다 보이는 높은 곳에 가본 적이 있으면 말해줄래?", 
                                    pos_bhv="do_question_S", pos=f"멋진 걸! 무섭진 않았니?", 
-                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아~")
+                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아.")
         
         if answer[0][0] == "positive":
             answer = cm.responses_proc(bhv="do_question_S", re_q=f"무섭진 않았니?")
@@ -65,7 +65,7 @@ class Fairytale():
 
         if answer[0][0] == "neutral":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"백화점만큼 엄청 클까?",
-                                       neu_bhv="do_compliment_S", neu=f"모를 수 있지~")        
+                                       neu_bhv="do_compliment_S", neu=f"모를 수 있지.")        
         
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}가 라푼젤 이라면 성에서 어떤 놀이를 했을 것 같니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)}가 라푼젤 이라면 성에서 어떤 놀이를 했을 것 같니?")
@@ -94,10 +94,10 @@ class Fairytale():
         pibo = cm.tts(bhv="do_suggestion_L", string=f"성에 갇혀 있던 라푼젤에게  {wm.word(self.user_name, 0)}가 위로를 해줘 볼까?")
         answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q=f"성에 갇혀 있던 라푼젤에게  {wm.word(self.user_name, 0)}가 위로를 해줘 볼까?", 
                                    pos_bhv="do_compliment_S", pos=f"{wm.word(self.user_name, 0)}는 그렇게 말해주고 싶구나!", 
-                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 위로를 하기 힘들 수 있어~", 
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아. 위로를 하기 힘들 수 있어.", 
                                    act_bhv="do_compliment_S", act=f"{wm.word(self.user_name, 0)}는 그렇게 말해주고 싶구나!")
         
-        pibo = cm.tts(bhv="do_explain_C", string=f"다음에 또 재미있는 동화 들려줄게~")
+        pibo = cm.tts(bhv="do_explain_C", string=f"다음에 또 재미있는 동화 들려줄게.")
             
         
 

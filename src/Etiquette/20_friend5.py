@@ -97,27 +97,27 @@ class Etiquette():
         
         if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="누구와 함께 가서 놀았니?",
-                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수 있지~ 어떤 장난감을 가지고 놀았니?",
+                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수 있지. 어떤 장난감을 가지고 놀았니?",
                                        act_bhv="do_question_S", act="어떤 장난감을 가지고 놀았니?")
             
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어떤 장난감을 가지고 놀았니?",
-                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수 있지~")
+                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수 있지.")
             
             pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)}는 장난감을 가지고 논 뒤에 정리를 잘 하니?")
             answer = cm.responses_proc(re_bhv="do_question_L", re_q="친구 집에서 늦게 까지 놀면 집에서 엄마가 기다리시겠지?",
-                                       pos_bhv="do_explain_A", pos="자기가 가지고 논 장난감은 스스로 정리하는 것이 맞아~",
-                                       neu_bhv="do_explain_A", neu="자기가 가지고 논 장난감이라면 스스로 정리하는 것이 맞아~",
-                                       act_bhv="do_explain_A", act="자기가 가지고 논 장난감은 스스로 정리하는 것이 맞아~")
+                                       pos_bhv="do_explain_A", pos="자기가 가지고 논 장난감은 스스로 정리하는 것이 맞아.",
+                                       neu_bhv="do_explain_A", neu="자기가 가지고 논 장난감이라면 스스로 정리하는 것이 맞아.",
+                                       act_bhv="do_explain_A", act="자기가 가지고 논 장난감은 스스로 정리하는 것이 맞아.")
                     
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="놀고 난 뒤 친구 혼자서 많은 장난감을 정리하려면 힘들겠지?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="놀고 난 뒤 친구 혼자서 많은 장난감을 정리하려면 힘들겠지?",
-                                   pos_bhv="do_explain_C", pos="너무 힘들어서 다음에는 초대하지 않을지도 몰라~",
-                                   neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어~ 잠을 자야 하는데 너무 힘들어서 다음에는 초대하지 않을지도 몰라~",
-                                   act_bhv="do_explain_C", act="너무 힘들어서 다음에는 초대하지 않을지도 몰라~")
+                                   pos_bhv="do_explain_C", pos="너무 힘들어서 다음에는 초대하지 않을지도 몰라.",
+                                   neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어. 잠을 자야 하는데 너무 힘들어서 다음에는 초대하지 않을지도 몰라.",
+                                   act_bhv="do_explain_C", act="너무 힘들어서 다음에는 초대하지 않을지도 몰라.")
     
         # 3.1 마무리 대화
-        pibo = cm.tts(bhv="do_joy_A", string="친구네 집에 가서 재밌게 놀고 난 뒤에는 정리하는 것을 도와줘야 해~ 꼭 기억해!")
+        pibo = cm.tts(bhv="do_joy_A", string="친구네 집에 가서 재밌게 놀고 난 뒤에는 정리하는 것을 도와줘야 해. 꼭 기억해!")
     
         
         
@@ -127,7 +127,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

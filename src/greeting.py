@@ -54,7 +54,7 @@ class Say():
         # 1.1 인사
         pibo = cm.tts(bhv="do_joy_A", string=f"반가워! 우리가 드디어 만나게 되었구나! 나는 파이보야. 너는 이름이 뭐니?")
         answer = cm.responses_proc(re_bhv="do_suggestion_L", re_q="다시 한번 크게 이야기해 줄래?",
-                                   act_bhv="do_joy_B", act=f"{wm.word(self.user_name, 4)}, 만나서 반가워~!")
+                                   act_bhv="do_joy_B", act=f"{wm.word(self.user_name, 4)}, 만나서 반가워.!")
         
         cwc.writerow(['pibo', pibo])
         cwc.writerow(['user', answer[0][1], answer[1]])
@@ -130,7 +130,7 @@ class Say():
         
         if result == "touch":
             print(result)
-            pibo = cm.tts(bhv="do_wakeup", string=f"{wm.word(self.user_name, 0)}가 쓰다듬어 주니까 정말 좋다~!")
+            pibo = cm.tts(bhv="do_wakeup", string=f"{wm.word(self.user_name, 0)}가 쓰다듬어 주니까 정말 좋다.!")
             
             
         # 1.2 관심 유도
@@ -191,7 +191,7 @@ class Say():
             
         
         # 1.5 사용법 설명
-        pibo = cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, 0)}랑 보내게 될 시간들이 정말 기대돼~ 심심하거나 놀고 싶으면 언제든 파이보 머리를 쓰다듬어 줘!")
+        pibo = cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, 0)}랑 보내게 될 시간들이 정말 기대돼. 심심하거나 놀고 싶으면 언제든 파이보 머리를 쓰다듬어 줘!")
         
         
         

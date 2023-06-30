@@ -46,12 +46,12 @@ class Fairytale():
         # 1. 동화 줄거리 대화
         pibo = cm.tts(bhv="do_joy_A", string=f"정말 재미있는 이야기였어! {wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?")
         answer = cm.responses_proc(re_bhv="do_joy_A", re_q=f"{wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?",
-                                   neu_bhv="do_compliment_S", neu=f"그럴 수 있지~")
+                                   neu_bhv="do_compliment_S", neu=f"그럴 수 있지.")
 
         pibo = cm.tts(bhv="do_question_L", string=f"백설 공주를 도와준 일곱 난쟁이 들은 숲 속에서 어떤 일을 할 것 같니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"백설 공주를 도와준 일곱 난쟁이 들은 숲 속에서 어떤 일을 할 것 같니?", 
                                    pos_bhv="do_question_S", pos=f" 사이좋게 일했을까?", 
-                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아~", 
+                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아.", 
                                    act_bhv="do_question_S", act=f" 사이좋게 일했을까?")
         # 사이좋게 일 했을까? 가 대답을 바라고 하는 말인지? 시나리오상 바로 음식 얘기하는데
 
@@ -62,7 +62,7 @@ class Fairytale():
 
         pibo = cm.tts(bhv="do_question_S", string=f"새 왕비가 건넨 독 사과는 무슨 맛이었을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"새 왕비가 건넨 독 사과는 무슨 맛이었을까?", 
-                                   neu_bhv="do_compliment_S", neu=f"모를 수 있지~")
+                                   neu_bhv="do_compliment_S", neu=f"모를 수 있지.")
 
         pibo = cm.tts(bhv="do_question_L", string=f"솔직한 대답을 하는 마법 거울에게 {wm.word(self.user_name, 0)}는 어떤 걸 물어보고 싶니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"솔직한 대답을 하는 마법 거울에게 {wm.word(self.user_name, 0)}는 어떤 걸 물어보고 싶니?")
@@ -93,11 +93,11 @@ class Fairytale():
         pibo = cm.tts(bhv="do_question_L", string=f"백설 공주를 잘 돌봐준 난쟁이들을 칭찬해볼까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"백설 공주를 잘 돌봐준 난쟁이들을 칭찬해볼까?",  
                                    pos_bhv="do_compliment_S", pos=f"그렇구나!",
-                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 모를 수 있지~",
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아. 모를 수 있지.",
                                    neg_bhv="do_compliment_S", neg=f"그렇구나!",
                                    act_bhv="do_compliment_S", act=f"그렇구나!")
         
-        pibo = cm.tts(bhv="do_explain_C", string=f"다음에 또 재미있는 동화를 들려줄게~")
+        pibo = cm.tts(bhv="do_explain_C", string=f"다음에 또 재미있는 동화를 들려줄게.")
             
         
 

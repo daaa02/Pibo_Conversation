@@ -86,9 +86,9 @@ class Daily():
         
         pibo = cm.tts(bhv="do_suggestion_S", string=f"파이보도 {wm.word(self.user_name, 0)} 생일 파티에 초대해줄 수 있어?")
         answer = cm.responses_proc(re_bhv="do_suggestion_S", re_q=f"파이보도 {wm.word(self.user_name, 0)} 생일 파티에 초대해줄 수 있어?",
-                                   pos_bhv="do_joy_B", pos=f"고마워~ 파이보가 행복한 {wm.word(self.user_name, 0)} 모습을 사진 찍어줄게!")
+                                   pos_bhv="do_joy_B", pos=f"고마워. 파이보가 행복한 {wm.word(self.user_name, 0)} 모습을 사진 찍어줄게!")
         
-        pibo = cm.tts(bhv="do_joy_A", string=f"행복하고 기분 좋은 생일을 보냈으면 좋겠어! {wm.word(self.user_name, 0)} 생일에 나도 특별히 생일 노래를 불러줄게! 기대해도 좋아~")     
+        pibo = cm.tts(bhv="do_joy_A", string=f"행복하고 기분 좋은 생일을 보냈으면 좋겠어! {wm.word(self.user_name, 0)} 생일에 나도 특별히 생일 노래를 불러줄게! 기대해도 좋아.")     
                                    
                                    
     def Bday_Parent(self):   # 나중엔 엄마/아빠 생일 중 하나만 있어도 되게끔
@@ -98,7 +98,7 @@ class Daily():
         pibo = cm.tts(bhv="do_joy_A", string=f"3일 뒤 {self.dob_parent[0][0]} 생일이지?")
         answer = cm.responses_proc(re_bhv="do_joy_A", re_q=f"",
                                    pos_bhv="do_question_S", pos=f"이번 {self.dob_parent[0][0]}생일에는 어떻게 축하드리면 좋을까?",
-                                   neu_bhv="do_question_S", neu=f"괜찮아. 파이보가 알려주면 되지~ 이번 {self.dob_parent[0][0]}생일에는 어떻게 축하드리면 좋을까?",
+                                   neu_bhv="do_question_S", neu=f"괜찮아. 파이보가 알려주면 되지. 이번 {self.dob_parent[0][0]}생일에는 어떻게 축하드리면 좋을까?",
                                    neg_bhv="do_question_S", neg=f"괜찮아. 이번 {self.dob_parent[0][0]}생일에는 어떻게 축하드리면 좋을까?")
         
         # positive 아닌 경우에 바로 대화 끝나는 게 맞나 싶어서 그냥 이어서 함
@@ -115,12 +115,12 @@ class Daily():
 
         pibo = cm.tts(bhv="do_suggestion_L", string="영상 편지를 찍어보면 어때? 엄마 생일 축하 영상으로 말이야. 내가 동영상 찍어줄 수 있는데 지금 해볼래?")                                    
         answer = cm.responses_proc(re_bhv="do_suggestion_S", re_q="내가 동영상 찍어줄 수 있는데 지금 해볼래?",
-                                   pos_bhv="do_waiting_A", pos="좋아! 준비가 되면 준비 됐다고 말해줘~",
+                                   pos_bhv="do_waiting_A", pos="좋아! 준비가 되면 준비 됐다고 말해줘.",
                                    neu_bhv="do_explain_B", neu="그럼 다음에 찍어 드리자!",
                                    neg_bhv="do_explain_B", neg="그럼 다음에 찍어 드리자!")
         
         if answer[0][0] == "positive":
-            cm.responses_proc(re_bhv="do_waiting_A", re_q="좋아! 준비가 되면 준비 됐다고 말해줘~",
+            cm.responses_proc(re_bhv="do_waiting_A", re_q="좋아! 준비가 되면 준비 됐다고 말해줘.",
                               pos_bhv="do_photo", pos="편지가 모두 끝나면 끝났다고 말해줘. 찍는다 하나, 둘, 셋!")   # 말하고 사진 동작해야할 듯. 순서 다시 봐야함
             
             # 영상 촬영 중단하는 신호 추가 필요
@@ -154,14 +154,14 @@ class Daily():
             pibo = cm.tts(bhv="do_question_S", string="거기 가서 뭐 하고 싶니?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="거기 가서 뭐 하고 싶니?",
                                        pos_bhv="do_joy_A", pos="그 곳에 가면 정말 재밌겠는걸!",
-                                       neu_bhv="do_compliment_S", neu="그럴 수 있지~ 나도 집에서 쉬고 싶을 때도 있어!",
+                                       neu_bhv="do_compliment_S", neu="그럴 수 있지. 나도 집에서 쉬고 싶을 때도 있어!",
                                        act_bhv="do_joy_A", act="그 곳에 가면 정말 재밌겠는걸!")
         
         pibo = cm.tts(bhv="do_explain_A", string="어린이날은 어린이들이 씩씩하고 올바르게 자라도록 나라에서 정한 날이야! 알고 있었니?")
         answer = cm.responses_proc(re_bhv="do_explain_A", re_q="어린이날은 어린이들이 씩씩하고 올바르게 자라도록 나라에서 정한 날이야! 알고 있었니?",
                                    pos_bhv="do_compliment_S", pos="정말 대단한 걸?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아. 파이보가 알려줬잖아~",
-                                   act_bhv="do_compliment_S", act="괜찮아. 파이보가 알려줬잖아~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 파이보가 알려줬잖아.",
+                                   act_bhv="do_compliment_S", act="괜찮아. 파이보가 알려줬잖아.")
         
         pibo = cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, type=0)}가 정말 행복한 어린이날을 보냈으면 좋겠어!")
         
@@ -187,23 +187,23 @@ class Daily():
         pibo = cm.tts(bhv="do_explain_A", string="어버이날은 나를 낳아주신 부모님과 할머니, 할아버지께 감사하는 날이야. 알고 있었니?")
         answer = cm.responses_proc(re_bhv="do_explain_A", re_q="어버이날은 나를 낳아주신 부모님과 할머니, 할아버지께 감사하는 날이야. 알고 있었니?",
                                    pos_bhv="do_compliment_S", pos="정말 대단한 걸?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아. 파이보가 알려줬잖아~",
-                                   act_bhv="do_compliment_S", act="괜찮아. 파이보가 알려줬잖아~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 파이보가 알려줬잖아.",
+                                   act_bhv="do_compliment_S", act="괜찮아. 파이보가 알려줬잖아.")
                                    
         pibo = cm.tts(bhv="do_suggestion_L", string="이번 어버이날에는 부모님께 어버이날 노래도 불러드리면 어떨까? 내가 동영상 찍어 줄 수 있어!")                                    
         answer = cm.responses_proc(re_bhv="do_suggestion_S", re_q="내가 동영상 찍어줄 수 있는데 지금 해볼래?",
-                                   pos_bhv="do_waiting_A", pos="좋아! 준비가 되면 준비 됐다고 말해줘~",
+                                   pos_bhv="do_waiting_A", pos="좋아! 준비가 되면 준비 됐다고 말해줘.",
                                    neu_bhv="do_explain_B", neu="그럼 다음에 찍어 드리자!",
                                    neg_bhv="do_explain_B", neg="그럼 다음에 찍어 드리자!")
         
         if answer[0][0] == "positive":
-            cm.responses_proc(re_bhv="do_waiting_A", re_q="좋아! 준비가 되면 준비 됐다고 말해줘~",
+            cm.responses_proc(re_bhv="do_waiting_A", re_q="좋아! 준비가 되면 준비 됐다고 말해줘.",
                               pos_bhv="do_photo", pos="노래가 끝나면 노래 끝! 이라고 말해줘. 찍는다 하나, 둘, 셋!")   # 말하고 사진 동작해야할 듯. 순서 다시 봐야함
             
             # 영상 촬영 중단하는 신호 추가 필요
             cm.responses_proc(act_bhv="do_joy_A", act=f"정말 잘하는 걸? 부모님께서 너무 좋아하실 것 같아!")
         
-        pibo = cm.tts(bhv="do_joy_B", string="어버이날에 내가 가족사진도 멋지게 찍어줄게! 기대해~")
+        pibo = cm.tts(bhv="do_joy_B", string="어버이날에 내가 가족사진도 멋지게 찍어줄게! 기대해.")
     
     
     def Christmas(self):
@@ -214,9 +214,9 @@ class Daily():
         
         pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, type=0)}가 좋아하는 크리스마스 캐롤이 뭔지 말해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, type=0)}가 좋아하는 크리스마스 캐롤이 뭔지 말해줄래?",
-                                   pos_bhv="do_joy_A", pos="캐롤은 기분을 좋게 만들어주는 마법 같아~",
-                                   neu_bhv="do_compliment_S", neu="그럴 수 있지~",
-                                   act_bhv="do_joy_A", act="캐롤은 기분을 좋게 만들어주는 마법 같아~")
+                                   pos_bhv="do_joy_A", pos="캐롤은 기분을 좋게 만들어주는 마법 같아.",
+                                   neu_bhv="do_compliment_S", neu="그럴 수 있지.",
+                                   act_bhv="do_joy_A", act="캐롤은 기분을 좋게 만들어주는 마법 같아.")
         
         pibo = cm.tts(bhv="do_question_S", string="최근에 멋진 크리스마스 트리를 본 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="최근에 멋진 크리스마스 트리를 본 적이 있니?",
@@ -224,21 +224,21 @@ class Daily():
         
         if answer[0][0] == "positive":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="어디서 봤니?",
-                                       pos_bhv="do_joy_B", pos="크리스마스 트리는 반짝반짝 너무 이쁜 것 같아~",
-                                       neu_bhv="do_compliment_S", neu="그럴 수 있지~",
+                                       pos_bhv="do_joy_B", pos="크리스마스 트리는 반짝반짝 너무 이쁜 것 같아.",
+                                       neu_bhv="do_compliment_S", neu="그럴 수 있지.",
                                        act_bhv="do_joy_B", act="크리스마스 트리는 반짝반짝 너무 이쁜 것 같아!")
     
         pibo = cm.tts(bhv="do_question_S", string="이번 크리스마스에 멋진 계획이 있다면 말해 줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="이번 크리스마스에 멋진 계획이 있다면 말해 줄래?",
-                                   pos_bhv="do_joy_B", pos="와~ 멋진 크리스마스가 될 수 있겠는 걸?",
-                                   act_bhv="do_joy_B", act="와~ 멋진 크리스마스가 될 수 있겠는 걸?")
+                                   pos_bhv="do_joy_B", pos="와. 멋진 크리스마스가 될 수 있겠는 걸?",
+                                   act_bhv="do_joy_B", act="와. 멋진 크리스마스가 될 수 있겠는 걸?")
         
         pibo = cm.tts(bhv="do_question_S", string="크리스마스에 받고 싶은 선물이 있다면 알려줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="크리스마스에 받고 싶은 선물이 있다면 알려줄래?")
         
         pibo = cm.tts(bhv="do_joy_A", string=f"{wm.word(self.user_name, type=0)}가 행복하고 멋진 크리스마스를 보냈으면 좋겠어!")
 
-        pibo = cm.tts(bhv="do_joy_B", string="크리스마스에 내가 멋진 캐롤을 들려줄게~ 기대해!")
+        pibo = cm.tts(bhv="do_joy_B", string="크리스마스에 내가 멋진 캐롤을 들려줄게. 기대해!")
         
         
         

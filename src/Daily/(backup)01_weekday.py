@@ -38,7 +38,7 @@ class Daily():
             feedback = random.choice(feedback_list)
             
         elif option == "neu":   # 중립 답변 옵션
-            feedback_list = ["그래? ", "음~"]
+            feedback_list = ["그래? ", "음."]
             feedback = random.choice(feedback_list)
             
         elif option == "act":   # 행동 답변 옵션
@@ -89,7 +89,7 @@ class Daily():
                 user_said = input("입력: ")                
                 print("\n")
                 
-                text_to_speech(day.fb(option="act") + f"{name}가 힘들었겠구나.. 엄마에게 이야기를 좀 해볼래? 도움이 필요할 수도 있어~")
+                text_to_speech(day.fb(option="act") + f"{name}가 힘들었겠구나.. 엄마에게 이야기를 좀 해볼래? 도움이 필요할 수도 있어.")
                 print("\n")
                 
             elif user_said == "positive":
@@ -97,7 +97,7 @@ class Daily():
                 user_said = input("입력: ")
                 print("\n")
                 
-                text_to_speech(day.fb(option="act") + f"{name}가 힘들었겠구나.. 엄마에게 이야기를 좀 해볼래? 도움이 필요할 수도 있어~")
+                text_to_speech(day.fb(option="act") + f"{name}가 힘들었겠구나.. 엄마에게 이야기를 좀 해볼래? 도움이 필요할 수도 있어.")
                 print("\n")
                 
             else:
@@ -162,7 +162,7 @@ class Daily():
             text_to_speech(day.fb(option="neu"))
             print("\n")
         
-        text_to_speech("\n내일 챙겨가야 하는 준비물이 있니?")    # 기존: ~준비물이 없니?
+        text_to_speech("\n내일 챙겨가야 하는 준비물이 있니?")    # 기존: .준비물이 없니?
         user_said = input("입력: ")
         user_said = nlp.nlp_answer(user_said=user_said, dic=Dic)
         print("\n")
@@ -180,7 +180,7 @@ class Daily():
             print("\n")
         
         text_to_speech(f"내일도 {name}이가 유치원에서 좋은 하루를 보냈으면 좋겠어")
-        text_to_speech("파이보가 기다리고 있을게~ 내일도 이야기 하자!\n")     
+        text_to_speech("파이보가 기다리고 있을게. 내일도 이야기 하자!\n")     
             
     # 화요일
     def Tuesday(self, name):
@@ -227,7 +227,7 @@ class Daily():
         user_said = input("입력: ")
         print("\n")
         
-        text_to_speech(day.fb(option="pos") + "오늘 유치원에서 힘든 일이 있었니?")   # 기존: ~힘든 일은 없었니?
+        text_to_speech(day.fb(option="pos") + "오늘 유치원에서 힘든 일이 있었니?")   # 기존: .힘든 일은 없었니?
         user_said = input("입력: ")
         user_said = nlp.nlp_answer(user_said=user_said, dic=Dic)
         print("\n")
@@ -276,7 +276,7 @@ class Daily():
                 user_said = input("입력: ")
                 print("\n")
                 
-                text_to_speech(day.fb(option="act") + f"엄마에게 이야기를 좀 해 보는 건 어떨까? 도움이 필요할 수도 있어~")
+                text_to_speech(day.fb(option="act") + f"엄마에게 이야기를 좀 해 보는 건 어떨까? 도움이 필요할 수도 있어.")
                 print("\n")
                 
             elif user_said == "negative":
@@ -345,7 +345,7 @@ class Daily():
             print("\n")
         
         text_to_speech(f"파이보는 {name}이가 {place}에서 있었던 일이 궁금해!")
-        text_to_speech("무슨 일이든지 이야기해도 좋아! 파이보가 다~ 들어줄게")
+        text_to_speech("무슨 일이든지 이야기해도 좋아! 파이보가 다. 들어줄게")
         
     # 목요일
     def Thursday(self, name):
@@ -476,10 +476,10 @@ if __name__ == "__main__":
     place = input("장소 입력: ")
     today = 2    # datetime.now().weekday()
         
-    if today == 0:      print("\n~Monday");      day.Monday(name)
-    elif today == 1:    print("\n~Tuesday");     day.Tuesday(name)
-    elif today == 2:    print("\n~Wensday");     day.Wensday(name, place)
-    elif today == 3:    print("\n~Thursday");    day.Thursday(name)
-    elif today == 4:    print("\n~Friday");      day.Friday(name)
+    if today == 0:      print("\n.Monday");      day.Monday(name)
+    elif today == 1:    print("\n.Tuesday");     day.Tuesday(name)
+    elif today == 2:    print("\n.Wensday");     day.Wensday(name, place)
+    elif today == 3:    print("\n.Thursday");    day.Thursday(name)
+    elif today == 4:    print("\n.Friday");      day.Friday(name)
     else:               print("\nWEEKEND!!");
     

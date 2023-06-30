@@ -116,7 +116,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_L", string="다른 친구의 몸을 함부로 만지면 그 친구의 기분이 어떨까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="다른 친구의 몸을 함부로 만지면 그 친구의 기분이 어떨까?",
                                    pos_bhv="do_explain_B", pos="정말 기분이 안 좋겠지?",
-                                   neu_bhv="do_explain_B", neu="괜찮아. 모를 수도 있어~ 그 친구는 정말 기분이 안 좋을 것 같아!",
+                                   neu_bhv="do_explain_B", neu="괜찮아. 모를 수도 있어. 그 친구는 정말 기분이 안 좋을 것 같아!",
                                    act_bhv="do_explain_B", act="정말 기분이 안 좋겠지?")
     
         # 3.1 마무리 대화
@@ -130,7 +130,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

@@ -97,7 +97,7 @@ class Etiquette():
         if answer[0] != "negative":
             pibo = cm.tts(bhv="do_question_S", string="친구 집에 가서 뭐하고 놀았니?")
             answer = cm.responses_proc(re_bhv="do_question_S", re_q="친구 집에 가서 뭐하고 놀았니?",
-                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수도 있어~")
+                                       neu_bhv="do_compliment_S", neu="기억이 안 날 수도 있어.")
 
             if answer[0] != "neutral":      # 위 질문의 심화 질문 같아서 옵션 답변으로 변경함 (22/12/09)
                 pibo = cm.tts(bhv="do_question_S", string="어떤 장난감을 가지고 놀았니?")
@@ -107,11 +107,11 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_L", string="친구 집에 있는 장난감을 함부로 만지면 그 친구는 기분이 어떨까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="어른들을 보고도 인사를 하지 않으면 어른들은 어떻게 생각할까?",
                                    pos_bhv="do_explain_B", pos="그 친구는 화가 날 수도 있겠지?",
-                                   neu_bhv="do_explain_B", neu="괜찮아. 모를 수도 있어~ 그 친구는 화가 날 수도 있겠지?",
+                                   neu_bhv="do_explain_B", neu="괜찮아. 모를 수도 있어. 그 친구는 화가 날 수도 있겠지?",
                                    act_bhv="do_explain_B", act="그 친구는 화가 날 수도 있겠지?")
     
         # 3.1 마무리 대화
-        pibo = cm.tts(bhv="do_joy_A", string="다른 친구의 장난감은 함부로 만지지 않아야 해~! 친구들과 사이좋게 지낼 수 있도록 노력하자~")
+        pibo = cm.tts(bhv="do_joy_A", string="다른 친구의 장난감은 함부로 만지지 않아야 해.! 친구들과 사이좋게 지낼 수 있도록 노력하자.")
     
         
         
@@ -121,7 +121,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

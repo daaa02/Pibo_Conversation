@@ -102,15 +102,15 @@ class Etiquette():
         
         pibo = cm.tts(bhv="do_question_S", string="어른들께서 주는 물건을 받을 땐, 어떻게 받는 것이 맞을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="어른들께 물건을 드릴 땐, 어떻게 드리는게 좋을까?",
-                                   pos_bhv="do_explain_B", pos="두 손으로 감사합니다~ 인사하며 받아야 해!",
-                                   neu_bhv="do_explain_B", neu="두 손으로 감사합니다~ 인사하며 받아야 해!",
-                                   act_bhv="do_explain_B", act="두 손으로 감사합니다~ 인사하며 받아야 해!")
+                                   pos_bhv="do_explain_B", pos="두 손으로 감사합니다. 인사하며 받아야 해!",
+                                   neu_bhv="do_explain_B", neu="두 손으로 감사합니다. 인사하며 받아야 해!",
+                                   act_bhv="do_explain_B", act="두 손으로 감사합니다. 인사하며 받아야 해!")
         
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="어른들께 물건을 드릴 때 한 손으로 물건을 받거나 드리게 되면 어른들은 기분이 어떠실까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="어른들께 물건을 드릴 때 한 손으로 물건을 받거나 드리게 되면 어른들은 기분이 어떠실까?",
                                    pos_bhv="do_explain_C", pos=f"{wm.word(self.user_name, 0)}는 버릇이 없다고 생각하실 거야!",
-                                   neu_bhv="do_explain_C", neu=f"괜찮아. 모를 수도 있어~ {wm.word(self.user_name, 0)}는 버릇이 없다고 생각하실 거야!",
+                                   neu_bhv="do_explain_C", neu=f"괜찮아. 모를 수도 있어. {wm.word(self.user_name, 0)}는 버릇이 없다고 생각하실 거야!",
                                    act_bhv="do_explain_C", act=f"{wm.word(self.user_name, 0)}는 버릇이 없다고 생각하실 거야!")
     
         # 3.1 마무리 대화
@@ -124,7 +124,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

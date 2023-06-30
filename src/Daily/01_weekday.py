@@ -100,12 +100,12 @@ class Daily():
                                                act_bhv="do_compliment_S", act=f"{wm.word(self.user_name, type=0)}가 힘들었겠구나. 엄마한테 속마음을 이야기 해보는 건 어때?")
 
                     time.sleep(1)
-                    pibo = cm.tts(bhv="do_compliment_S", string="도움이 필요할 수 있을 것 같아. 엄마가 잘 도와주실테니 너무 걱정하지마~")
+                    pibo = cm.tts(bhv="do_compliment_S", string="도움이 필요할 수 있을 것 같아. 엄마가 잘 도와주실테니 너무 걱정하지마.")
                     
                 if answer[0][0] == "neutral" or answer[0][0] == "negative":
                     pibo = cm.tts(bhv="do_compliment_S", string=f"속상한 일이 있으면 언제든 나에게 이야기해도 괜찮아!")
             
-            pibo = cm.tts(bhv="do_joy_A", string=f"내일도 {wm.word(self.user_name, type=0)}가 유치원에서 좋은 하루를 보냈으면 좋겠어~ 내일도 이야기 하자!")
+            pibo = cm.tts(bhv="do_joy_A", string=f"내일도 {wm.word(self.user_name, type=0)}가 유치원에서 좋은 하루를 보냈으면 좋겠어. 내일도 이야기 하자!")
                 
                 
             

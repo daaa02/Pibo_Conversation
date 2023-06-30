@@ -95,19 +95,19 @@ class Etiquette():
         
         pibo = cm.tts(bhv="do_question_S", string="공원에 가면 사람들이 무엇을 하고 있니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="공원에 가면 사람들이 무엇을 하고 있니?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아 모를 수도 있어~ 사람들은 앉아서 쉬기도 하고 가족과 친구와 놀기도 하겠지?",
+                                   neu_bhv="do_compliment_S", neu="괜찮아 모를 수도 있어. 사람들은 앉아서 쉬기도 하고 가족과 친구와 놀기도 하겠지?",
                                    act_bhv="do_compliment_S", act="사람들은 앉아서 쉬기도 하고 가족과 친구와 놀기도 하겠지?")
         
         pibo = cm.tts(bhv="do_question_S", string="공원의 잔디와 꽃을 망가뜨리면 어떤 일이 일어날까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="공원의 잔디와 꽃을 망가뜨리면 어떤 일이 일어날까?",
                                    pos_bhv="do_compliment_S", pos="예쁜 공원이 망가지고 사람들은 쉴 수 없겠지?",
                                    act_bhv="do_compliment_S", act="예쁜 공원이 망가지고 사람들은 쉴 수 없겠지?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아 모를 수도 있어~ 예쁜 공원이 망가지고 사람들은 쉴 수 없겠지?")
+                                   neu_bhv="do_compliment_S", neu="괜찮아 모를 수도 있어. 예쁜 공원이 망가지고 사람들은 쉴 수 없겠지?")
         
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_S", string="누군가 공원의 잔디와 꽃을 망가뜨리면 다른 사람들은 어떻게 느낄까?") 
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="누군가 공원의 잔디와 꽃을 망가뜨리면 다른 사람들은 어떻게 느낄까?",
-                                   neu_bhv="do_compliment_S", neu="괜찮아 모를 수도 있어~  공원이 망가져서 속상하기도 하고, 잔디랑 꽃이 불쌍하다고 생각하겠지?",
+                                   neu_bhv="do_compliment_S", neu="괜찮아 모를 수도 있어.  공원이 망가져서 속상하기도 하고, 잔디랑 꽃이 불쌍하다고 생각하겠지?",
                                    act_bhv="do_compliment_S", act="공원이 망가져서 속상하기도 하고, 잔디랑 꽃이 불쌍하다고 생각하겠지?")
         
         # 3.1 마무리 대화
@@ -121,7 +121,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]

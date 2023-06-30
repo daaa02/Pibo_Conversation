@@ -46,12 +46,12 @@ class Fairytale():
         # 1. 동화 줄거리 대화        
         pibo = cm.tts(bhv="do_joy_A", string=f"정말 재미있는 이야기였어! {wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?")
         answer = cm.responses_proc(re_bhv="do_joy_A", re_q=f"{wm.word(self.user_name, 0)}는 어떤 장면이 재미있었니?",
-                                   neu_bhv="do_compliment_S", neu=f"그럴 수 있지~")
+                                   neu_bhv="do_compliment_S", neu=f"그럴 수 있지.")
         
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 동물이 가장 무섭다고 생각하니?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}는 어떤 동물이 가장 무섭다고 생각하니?", 
                                    pos_bhv="do_question_S", pos=f"그 동물이 무섭다고 생각하는 이유가 뭐니?", 
-                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아~", 
+                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아.", 
                                    act_bhv="do_question_S", act=f"그 동물이 무섭다고 생각하는 이유가 뭐니?")
         
         if answer[0][0] == "positive" or answer[0][0] == "action":
@@ -63,24 +63,24 @@ class Fairytale():
         
         pibo = cm.tts(bhv="do_question_S", string=f"동화 속에는 또 어떤 예쁜 요정들이 있을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"동화 속에는 또 어떤 예쁜 요정들이 있을까",
-                                   neu_bhv="do_question_S", neu=f"몰라도 괜찮아~")
+                                   neu_bhv="do_question_S", neu=f"몰라도 괜찮아.")
 
         # 2. 등장인물 공감 대화        
         pibo = cm.tts(bhv="question_S", string=f"형제들이 막내 왕자를 속였을 때 막내 왕자는 슬펐을까?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"형제들이 막내 왕자를 속였을 때 막내 왕자는 슬펐을까?", 
                                    pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 누군가가 거짓말을 해서 슬펐던 적이 있었다면 말해줄래?", 
-                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아~", 
+                                   neu_bhv="do_compliment_S", neu=f"몰라도 괜찮아.", 
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 누군가가 거짓말을 해서 슬펐던 적이 있었다면 말해줄래?")
 
         if answer[0][0] == "positive" or answer[0][0] == "action":
             answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"{wm.word(self.user_name, 0)}도 누군가가 거짓말을 해서 슬펐던 적이 있었다면 말해줄래?",
-                                       neu_bhv="do_compliment_S", neu=f"괜찮아~ 대답하기 어려울 수 있어~", 
+                                       neu_bhv="do_compliment_S", neu=f"괜찮아. 대답하기 어려울 수 있어.", 
                                        act_bhv="do_sad", act=f"정말 슬펐을 것 같아.")
             
         pibo = cm.tts(bhv="question_S", string=f"요정들이 막내 왕자를 도와줬을 때 막내 왕자는 고마웠겠지?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"요정들이 막내 왕자를 도와줬을 때 막내 왕자는 고마웠겠지?", 
                                    pos_bhv="do_question_S", pos=f"{wm.word(self.user_name, 0)}도 최근에 도움을 받고 고마웠던 적이 있다면 말해 줄래?", 
-                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 대답하기 어려울 수 있어~", 
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아. 대답하기 어려울 수 있어.", 
                                    act_bhv="do_question_S", act=f"{wm.word(self.user_name, 0)}도 최근에 도움을 받고 고마웠던 적이 있다면 말해 줄래?")
 
         if answer[0][0] == "positive" or answer[0][0] == "action":
@@ -92,11 +92,11 @@ class Fairytale():
         pibo = cm.tts(bhv="do_question_L", string=f"만약 {wm.word(self.user_name, 0)}가 동화 속 소년을 만난다면 어떤 소원을 들어 주고 싶니?")
         answer = cm.responses_proc(re_bhv="do_question_L", string=f"동화 속 소년을 만난다면 어떤 소원을 들어 주고 싶니?",  
                                    pos_bhv="do_compliment_S", pos=f"그렇구나!",
-                                   neu_bhv="do_compliment_S", neu=f"괜찮아~ 모를 수 있지~ ",
+                                   neu_bhv="do_compliment_S", neu=f"괜찮아. 모를 수 있지. ",
                                    neg_bhv="do_compliment_S", neg=f"그렇구나!",
                                    act_bhv="do_compliment_S", act=f"그렇구나!")
         
-        pibo = cm.tts(bhv="do_explain_C", string=f"오늘 동화 재미있었지? 다음에 또 재미있는 동화를 들려줄게~")
+        pibo = cm.tts(bhv="do_explain_C", string=f"오늘 동화 재미있었지? 다음에 또 재미있는 동화를 들려줄게.")
         
         
         

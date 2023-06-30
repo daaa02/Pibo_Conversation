@@ -94,22 +94,22 @@ class Etiquette():
         # 2.2 경험 질문
         pibo = cm.tts(bhv="do_question_L", string="모두가 함께 사용하는 의자에는 어떤 것이 있을까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="모두가 함께 사용하는 의자에는 어떤 것이 있을까?",
-                                   neu_bhv="do_explain_B", neu="괜찮아. 생각이 안 날 수도 있어~ 버스나 지하철 의자도 모두가 함께 쓰는 의자야!")
+                                   neu_bhv="do_explain_B", neu="괜찮아. 생각이 안 날 수도 있어. 버스나 지하철 의자도 모두가 함께 쓰는 의자야!")
 
         pibo = cm.tts(bhv="do_question_L", string="의자에 신발을 신고 올라가면 어떻게 될까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="의자에 신발을 신고 올라가면 어떻게 될까?",
-                                   neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어~ 의자가 더러워지겠지?",
+                                   neu_bhv="do_explain_C", neu="괜찮아. 모를 수도 있어. 의자가 더러워지겠지?",
                                    act_bhv="do_compliment_S", act="의자가 더러워지겠지?")
 
         pibo = cm.tts(bhv="do_question_L", string="신발을 신고 의자에 올라간 사람을 본 적이 있니?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="신발을 신고 의자에 올라간 사람을 본 적이 있니?",
                                    pos_bhv="do_compliment_S", pos="본 적이 있구나!",
-                                   neu_bhv="do_compliment_S", neu="괜찮아. 기억이 안 날 수도 있어~")
+                                   neu_bhv="do_compliment_S", neu="괜찮아. 기억이 안 날 수도 있어.")
         
         # 2.3 문제 인식
         pibo = cm.tts(bhv="do_question_L", string="신발을 신고 의자에 올라가면 다른 사람들이 어떻게 생각할까?")
         answer = cm.responses_proc(re_bhv="do_question_L", re_q="신발을 신고 의자에 올라가면 다른 사람들이 어떻게 생각할까?",
-                                   neu_bhv="do_explain_B", neu="괜찮아. 모를 수도 있어~ 아마 다른 사람들은 지저분해진 의자에 앉지 못해서 속상할거야.",
+                                   neu_bhv="do_explain_B", neu="괜찮아. 모를 수도 있어. 아마 다른 사람들은 지저분해진 의자에 앉지 못해서 속상할거야.",
                                    act_bhv="do_compliment_S", act="다른 사람들은 지저분해진 의자에 앉지 못해서 속상할거야.")
         
         # 3.1 마무리 대화
@@ -123,7 +123,7 @@ class Etiquette():
         pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
         answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워~ 그럼 우리 나중에 또 놀자!") 
+        pibo = cm.tts(bhv="do_joy_A", string=f"나랑 놀아줘서 고마워. 그럼 우리 나중에 또 놀자!") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]
