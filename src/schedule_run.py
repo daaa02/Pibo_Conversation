@@ -120,8 +120,10 @@ class RunSchedule():
             
             # 완료한 활동 개수가 짝수면 종료, 홀수면 계속
             if self.completion % 2 == 0:
-                text_to_speech(text="오늘 활동이 끝났어! 내일 또 만나자 안녕~!")
+                text_to_speech(text="다음에 또 놀자!")
+                # text_to_speech(text="오늘 활동이 끝났어! 내일 또 만나자 안녕~!")
                 motion.set_motion("m_wakeup", 1)
+                subprocess.run(['python3 /home/pi/Pibo_Conversation/src/start_touch.py'], shell=True)
                 
             if self.completion % 2 != 0:
                 text_to_speech(text="다음 활동을 하고 싶으면 또 머리를 쓰다듬어줘!")

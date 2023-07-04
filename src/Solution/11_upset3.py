@@ -90,8 +90,8 @@ class Solution():
         
         # 3. 피드백 수집
         time.sleep(1)                   
-        pibo = cm.tts(bhv="do_question_S", string="활동 어땠어? 재밌었는지, 별로였는지 얘기해줄래?")
-        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"활동 어땠어?") 
+        pibo = cm.tts(bhv="do_question_S", string="파이보랑 노는 거 재미있었어? 재밌었는지, 별로였는지 얘기해줄래?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"파이보랑 노는 거 재미있었어?") 
               
         if answer[0][0] == "negative":
             self.score = [0.0, -0.5, 0.0, 0.0]
