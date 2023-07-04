@@ -17,10 +17,10 @@ pibo_audio = Audio()
 # pibo_audio.mute(True)
 
 # sys.path.append('/home/kiro/workspace/Conversation_Scenarios/')
-sys.path.append('/home/pi/Pibo_Conversation/')   
-from Pibo_Conversation.data.c_conversation_manage import ConversationManage, WordManage
-from Pibo_Conversation.data.text_to_speech import TextToSpeech, text_to_speech
-import Pibo_Conversation.data.behavior.behavior_list as behavior
+sys.path.append('/home/pi/Pibo_Conversation/')
+from data.c_conversation_manage import ConversationManage, WordManage
+from data.text_to_speech import TextToSpeech, text_to_speech
+import data.behavior.behavior_list as behavior
 
 cm = ConversationManage()
 wm = WordManage()
