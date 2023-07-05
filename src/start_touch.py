@@ -103,7 +103,7 @@ while True:
                     cm.tts(bhv="do_stop", string=f"잠시만 기다려줘. 재미있는 활동을 생각해볼게!")
                     os.system('python3 /home/pi/Pibo_Conversation/src/schedule_run.py')
             
-                if answer[0][0] != 'positive':
+                else:
                     oled.clear()
                     oled.set_font(size=17)
                     oled.draw_text((20,15), "다시 2번 터치")
