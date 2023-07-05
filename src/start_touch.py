@@ -92,7 +92,7 @@ while True:
                 
             print(state)
             if len(state) == 0:
-                cm.tts(bhv="do_question_L", string=f"오늘의 활동을 시작해볼까?")
+                cm.tts(bhv="do_question_L", string=f"새로운 활동을 시작해볼까?")
                 answer = cm.responses_proc(re_bhv="do_question_L", re_q="오늘의 활동을 시작해볼까?",
                                            pos_bhv="do_stop", pos=f"그래! 시작하자~", feedback="N") 
                 
@@ -104,6 +104,7 @@ while True:
                     os.system('python3 /home/pi/Pibo_Conversation/src/schedule_run.py')
             
                 if answer[0][0] != 'positive':
+                    oled.clear()
                     oled.set_font(size=17)
                     oled.draw_text((20,15), "다시 2번 터치")
                     oled.show()

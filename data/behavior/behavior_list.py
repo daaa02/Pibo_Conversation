@@ -215,6 +215,7 @@ def do_sad():
         motion.set_motion(name="m_sad", cycle=1)
         break
     
+    
 def do_dance():
     eye.e_joy()
     t = Thread(target=oled.o_joy, args=(), daemon=True)
