@@ -104,7 +104,9 @@ while True:
                     os.system('python3 /home/pi/Pibo_Conversation/src/schedule_run.py')
             
                 if answer[0][0] != 'positive':
-                    print("다시 2번 터치")
+                    oled.set_font(size=17)
+                    oled.draw_text((20,15), "다시 2번 터치")
+                    oled.show()
                     continue
 
     

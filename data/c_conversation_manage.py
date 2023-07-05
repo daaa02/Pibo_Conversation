@@ -176,8 +176,9 @@ class ConversationManage():
             t.start()
             while True:
                 self.stt_input = cm.stt()
+                t.join()
                 break
-            t.join()
+            
             
             if self.response != self.none:
                 self.user_said = self.response
