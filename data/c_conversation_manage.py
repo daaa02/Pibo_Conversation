@@ -175,7 +175,7 @@ class ConversationManage():
             t = Thread(target=eye.e_listen, args=(), daemon=True)
             t.start()
             while True:
-                self.stt_input = cm.stt()
+                self.response = cm.stt()
                 t.join()
                 break
             
