@@ -85,12 +85,6 @@ def e_listen():
     time.sleep(0.1)
     device.send_raw('#21:255,255,255,2')
     time.sleep(0.1)
-    device.send_raw('#21:255,255,255,2')
-    time.sleep(0.1)
-    device.send_raw('#21:255,255,255,2')
-    time.sleep(0.1)
-    device.send_raw('#21:255,255,255,2')
-    time.sleep(0.1)
 
 
 if __name__ == "__main__":
