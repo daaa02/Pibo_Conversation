@@ -93,7 +93,8 @@ while True:
             print(state)
             if len(state) == 0:
                 cm.tts(bhv="do_question_L", string=f"오늘의 활동을 시작해볼까?")
-                answer = cm.responses_proc(pos_bhv="do_stop", pos=f"그래! 시작하자~", feedback="N") 
+                answer = cm.responses_proc(re_bhv="do_question_L", re_q="오늘의 활동을 시작해볼까?",
+                                           pos_bhv="do_stop", pos=f"그래! 시작하자~", feedback="N") 
                 
                 time.sleep(1)
                 if answer[0][0] == 'positive':
