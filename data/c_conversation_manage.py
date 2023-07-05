@@ -17,6 +17,8 @@ from data.text_to_speech import text_to_speech, TextToSpeech
 from openpibo.oled import Oled
 from openpibo.device import Device
 import data.behavior.behavior_list as behavior
+import behavior.eye_list as eye
+
 """
 STT 모듈이랑 답변 처리 모듈 통합하고 있는 파일
     * class Dictionary: 답변 성격(Pos/Neu/Neg), 숫자 후보들
@@ -165,11 +167,16 @@ class ConversationManage():
         count = 0
         while True:
             audio.audio_play("/home/pi/trigger.wav", 'local', '-1800', False)
-            o.set_font(size=25)
-            o.draw_text((15,20), "듣는 중..."); o.show()
-            # o.draw_image("/home/pi/Pibo_Play/data/behavior/icon/icon_recognition1.png"); o.show()
+            # o.set_font(size=25)
+            # o.draw_text((15,20), "듣는 중..."); o.show()
+            o.draw_image("/home/pi/Pibo_Play/data/behavior/icon/icon_recognition1.png"); o.show()
             print("\n")
-            self.response = cm.stt()
+            
+            t = Thread(target=eye.e_listen, args=(), daemon=True)
+            t.start()
+            while True:
+                self.stt_input = cm.stt()
+                break
             
             if self.response != self.none:
                 self.user_said = self.response
