@@ -53,7 +53,7 @@ class Fairytale():
         lines = f.readlines()
         # print(lines)
         
-        for i in range(0, len(lines), 2):
+        for i in range(0, len(lines), 1):
             try:
                 text_to_speech(voice="nara", text=f"{lines[i]}")
             except IndexError as e:
@@ -145,8 +145,8 @@ class Fairytale():
             
         # 3. 피드백 수집
         time.sleep(1)                   
-        pibo = cm.tts(bhv="do_question_S", string="파이보랑 노는 거 재미있었어? 재밌었는지, 별로였는지 얘기해줄래?")
-        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"파이보랑 노는 거 재미있었어?") 
+        pibo = cm.tts(bhv="do_question_S", string="파이보랑 얘기한 거 재미있었어? 재밌었는지, 별로였는지 얘기해줄래?")
+        answer = cm.responses_proc(re_bhv="do_question_S", re_q=f"파이보랑 얘기한 거 재미있었어?") 
         
         pibo = cm.tts(bhv="do_explain_C", string=f"다음에 또 재미있는 동화 들려줄게.")
               
