@@ -94,7 +94,9 @@ while True:
             if len(state) == 0:
                 cm.tts(bhv="do_question_L", string=f"새로운 활동을 시작해볼까?")
                 answer = cm.responses_proc(re_bhv="do_question_L", re_q="오늘의 활동을 시작해볼까?",
-                                           pos_bhv="do_stop", pos=f"그래! 시작하자~", feedback="N") 
+                                           pos_bhv="do_stop", pos=f"그래! 시작하자~", 
+                                           neg_bhv="do_stop", neg=f"알겠어. 나랑 놀고 싶다면 다시 쓰다듬어줘") 
+                print(answer)
                 
                 time.sleep(1)
                 if answer[0][0] == 'positive':
@@ -105,9 +107,6 @@ while True:
             
                 else:
                     oled.clear()
-                    oled.set_font(size=17)
-                    oled.draw_text((20,15), "다시 2번 터치")
-                    oled.show()
                     continue
 
     
