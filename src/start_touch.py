@@ -63,7 +63,7 @@ while True:
         #     # oled.show()
             
             hello = ["처음", "첫", "반가워", "인사", "만나서", "소개"]
-            bye = ["마지막", "헤어", "헤어질", "다음", "잘 가", "잘가"]
+            bye = ["마지막", "헤어", "헤어질", "잘 가", "잘가"]
             
             # pibo_audio.mute(False)
             for i in range(0, 3):
