@@ -111,7 +111,10 @@ class RunSchedule():
                 if self.completion % 2 != 0:
                     rand = random.choice(['03_tiny', '04_flying'])
                     self.act = f'Pibo_Conversation/src/Roleplay/{rand}.py'
-                        
+        
+        # 마지막 활동은 헤어짐 시나리오: 얘 끝나고 밑에 다음에 ~ 안나오게 해야함
+        if self.completion == 10:
+            self.act = f'Pibo_Conversation/src/goodbye.py'           
         
         folder = "/home/pi/UserData"
         today = datetime.now().strftime('%y%m%d_%H%M')
