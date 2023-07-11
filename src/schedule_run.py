@@ -51,7 +51,7 @@ class RunSchedule():
             #        2:'Pibo_Play/src/Cog/cog_1.py', 3:'Pibo_Conversation/src/Fairytale/04_wolf.py', 
             #        4:'Pibo_Play/src/Soc/soc_6.py', 5:'Pibo_Conversation/src/Etiquette/03_cough.py', 
             #        6:'Pibo_Play/src/Com/com_4.py', 7:'Pibo_Conversation/src/Solution/01_badword.py'}            
-            fix = {0:'Pibo_Conversation/src/Fairytale/04_wolf.py', 1:'Pibo_Conversation/src/Roleplay/02_strong.py',
+            fix = {0:'Pibo_Conversation/src/Fairytale/19_shepherd.py', 1:'Pibo_Conversation/src/Roleplay/02_strong.py',
                    2:'Pibo_Conversation/src/Solution/01_badword.py', 3:'Pibo_Play/src/Soc/soc_6.py',
                    4: 'Pibo_Play/src/Cog/cog_1.py', 5:'Pibo_Conversation/src/Etiquette/03_cough.py', 
                    6:'Pibo_Play/src/Com/com_4.py', 7:'Pibo_Play/src/Mus/mus_11.py'}   
@@ -89,7 +89,7 @@ class RunSchedule():
                     self.act = f'Pibo_Play/src/Com/com_{rand}.py'
                 
                 if self.completion % 2 != 0:
-                    rand = random.choice(['02_salt', '18_rabbit', '19_shepherd'])
+                    rand = random.choice(['02_salt', '18_rabbit'])
                     self.act = f'Pibo_Conversation/src/Fairytale/{rand}.py'
                 
             if result == '인지':
