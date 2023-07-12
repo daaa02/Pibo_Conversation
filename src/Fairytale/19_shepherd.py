@@ -123,7 +123,7 @@ class Fairytale():
             
         # 3. 마무리 대화    
         pibo = cm.tts(bhv="do_question_L", string=f"자꾸 거짓말을 하는 양치기 소년에게 뭐라고 해주고 싶니?")
-        answer = cm.responses_proc(re_bhv="do_question_L", string=f"자꾸 거짓말을 하는 양치기 소년에게 뭐라고 해주고 싶니?",  
+        answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"자꾸 거짓말을 하는 양치기 소년에게 뭐라고 해주고 싶니?",  
                                    pos_bhv="do_compliment_S", pos=f"그렇구나!",
                                    neu_bhv="do_compliment_S", neu=f"괜찮아. 모를 수 있지. ",
                                    neg_bhv="do_compliment_S", neg=f"그렇구나!",
