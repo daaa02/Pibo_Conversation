@@ -154,7 +154,7 @@ class Say():
         purple = ["보라"]
         yellow = ["노랑", "노란"]
         
-        for i in range(len(blue)):
+        for i in range(len(blue)):                                                                   
             if blue[i] in answer[0][1]:
                 self.color = 'blue'
                 device.send_raw('#21:108,209,239,5')

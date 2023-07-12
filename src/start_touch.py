@@ -78,11 +78,11 @@ while True:
             # 키워드 단순화
             if "소개" in answer[0][1]:
                 os.system('python3 /home/pi/Pibo_Conversation/src/greeting.py')
-                break
+                # break
             
             if "헤어" in answer[0][1]:
                 os.system('python3 /home/pi/Pibo_Conversation/src/goodbye.py') 
-                break
+                # break
             
             else:     
                 pass
@@ -97,6 +97,9 @@ while True:
                 print("활동 시작")
                 
                 cm.tts(bhv="do_stop", string=f"잠시만 기다려줘. 재미있는 활동을 생각해볼게!")
+                oled.clear()
+                oled.set_font(size=17)
+                oled.draw_text((20,15), "11111")
                 os.system('python3 /home/pi/Pibo_Conversation/src/schedule_run.py')
                 
             else:
