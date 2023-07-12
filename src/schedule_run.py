@@ -124,9 +124,6 @@ class RunSchedule():
         # out = subprocess.check_output([f'python3 /home/pi/Pibo_Conversation/src/greeting.py'], shell=True, stderr=subprocess.STDOUT, encoding="utf-8")  
         
         try:
-            oled.clear()
-            oled.set_font(size=17)
-            oled.draw_text((20,15), "222222")
             out = subprocess.run([f'python3 {self.path}/{self.act}'], shell=True)
             
             # 완료한 활동 개수가 짝수면 종료, 홀수면 계속
