@@ -95,6 +95,9 @@ while True:
             time.sleep(1)
             if answer[0][0] == 'positive':
                 print("활동 시작")
+                oled.clear()
+                oled.set_font(size=17)
+                oled.draw_text((20,15), "0000000")
                 
                 cm.tts(bhv="do_stop", string=f"잠시만 기다려줘. 재미있는 활동을 생각해볼게!")
                 oled.clear()
@@ -102,7 +105,7 @@ while True:
                 oled.draw_text((20,15), "11111")
                 os.system('python3 /home/pi/Pibo_Conversation/src/schedule_run.py')
                 
-            else:
+            if answer[0][0] != 'positive':
                 oled.clear()
                 continue
                 
