@@ -39,10 +39,10 @@ class google_spread_sheet():
         worksheet = os.worksheet('활동상황')
         
         str_list = list(filter(None, worksheet.col_values(1)))
-        next = len(str_list)+1
-        worksheet.update(f'A{next}', name)
-        worksheet.update(f'B{next}', today)
-        worksheet.update(f'C{next}', activities)        
+        next = len(str_list)+1        
+        worksheet.update(name, f'A{next}')
+        worksheet.update(today, f'B{next}')
+        worksheet.update(activities, f'C{next}')
         # worksheet.append_row(activities, table_range=f'C{next}')
 
     def save_sheet(self):
