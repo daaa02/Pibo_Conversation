@@ -18,7 +18,7 @@ oled.draw_text((5,25), "업데이트 중입니다."); oled.show()
 
 while True:
     os.system("sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get autoremove")
-    os.system("pip3 install --upgrade numpy")
+    # os.system("pip3 install --upgrade numpy") # 한 번 했으니까 안 해도 될 듯
     break
 
 oled.clear()
