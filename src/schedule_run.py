@@ -135,6 +135,7 @@ class RunSchedule():
                 
             if self.completion % 2 != 0:
                 text_to_speech(text="다음 활동을 하고 싶으면 또 머리를 쓰다듬어줘!")
+                motion.set_motion("m_wakeup", 1)                
                 subprocess.run(['python3 /home/pi/Pibo_Conversation/src/start_touch.py'], shell=True)
         
         except Exception as ex:
