@@ -30,8 +30,10 @@ class RunSchedule():
 
     def day(self):
         UDfolder = "/home/pi/UserData"
-        file = open(f"{UDfolder}/aa.csv", 'r', newline='', encoding='UTF8')
-        cr = csv.reader(file, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
+        file = open(f"{UDfolder}/aa.csv", 'rt', newline='', encoding='utf-8')
+        cr = csv.reader((row.replace('\0', '').replace('\x00', '') for row in file),
+                        delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
+        # cr = csv.reader(file, delimiter=',', doublequote=True, lineterminator='\r\n', quotechar='"')
         
         data1 = []
         data2 = []
