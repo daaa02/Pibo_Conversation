@@ -95,12 +95,15 @@ while True:
             time.sleep(1)
             if answer[0][0] == 'positive':
                 cm.tts(bhv="do_stop", string=f"잠시만 기다려줘. 재미있는 활동을 생각해볼게!")
-                os.system('python3 /home/pi/Pibo_Conversation/src/schedule_run.py')
+                break
+            # os.system('python3 /home/pi/Pibo_Conversation/src/schedule_run.py')
                 
             if answer[0][0] != 'positive':
                 oled.clear()
                 continue
-                
+            
+            
+os.system('python3 /home/pi/Pibo_Conversation/src/schedule_run.py')
             # for i in range(len(hello)):
             #     if hello[i] in answer[0][1]:
             #         state = "첫만남"
