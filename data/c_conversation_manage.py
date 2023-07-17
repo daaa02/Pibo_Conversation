@@ -86,12 +86,7 @@ class ConversationManage():
         self.ko = -1
         self.nb = -1
     
-    
-    def aa(self):
-        for i in range(0, 2):
-            device.eye_off(); time.sleep(0.5); 
-            device.eye_on(0,0,255); time.sleep(0.5) 
-    
+
     def stt(self):
         """         
         * 정상적인 응답이 들어왔을 경우: response = speech_to_text()
