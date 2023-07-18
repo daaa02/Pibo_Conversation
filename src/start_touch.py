@@ -66,7 +66,7 @@ while True:
             # bye = ["마지막", "헤어", "헤어질", "잘 가", "잘가"]
             
             # pibo_audio.mute(False)
-            for i in range(0, 3):
+            for i in range(0, 2):
                 device.eye_off(); time.sleep(0.5); 
                 device.eye_on(255,255,255); time.sleep(0.5) 
             
@@ -93,12 +93,12 @@ while True:
                                        neg_bhv="do_stop", neg=f"알겠어. 나랑 놀고 싶다면 다시 쓰다듬어줘")
             
             time.sleep(1)
-            if answer[0][0] == 'positive':
+            if answer[0][0] == 'positive' or answer[0][0] == 'action':
                 cm.tts(bhv="do_stop", string=f"잠시만 기다려줘. 재미있는 활동을 생각해볼께!")
                 break
             # os.system('python3 /home/pi/Pibo_Conversation/src/schedule_run.py')
                 
-            if answer[0][0] != 'positive':
+            else:
                 oled.clear()
                 continue
             
