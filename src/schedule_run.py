@@ -48,7 +48,7 @@ class RunSchedule():
         self.completion = len(data2)
         print('완료한 활동 개수:', self.completion)
 
-        # 고정된 스케줄로 진행(~4일차)
+        # 고정된 스케줄로 진행(~3일차)
         if self.completion < 8:
             # 완료한 활동 개수가 짝수면 놀이, 홀수면 대화
             # fix = {0:'Pibo_Play/src/Mus/mus_11.py', 1:'Pibo_Conversation/src/Roleplay/02_strong.py',#'Pibo_Conversation/src/Roleplay/09_rolemodel.py', 
@@ -56,12 +56,11 @@ class RunSchedule():
             #        4:'Pibo_Play/src/Soc/soc_6.py', 5:'Pibo_Conversation/src/Etiquette/03_cough.py', 
             #        6:'Pibo_Play/src/Com/com_4.py', 7:'Pibo_Conversation/src/Solution/01_badword.py'}            
             fix = {0:'Pibo_Conversation/src/Fairytale/19_shepherd.py', 1:'Pibo_Conversation/src/Roleplay/02_strong.py',
-                   2:'Pibo_Conversation/src/Solution/01_badword.py', 3:'Pibo_Play/src/Soc/soc_6.py',
-                   4:'Pibo_Play/src/Cog/cog_1.py', 5:'Pibo_Conversation/src/Etiquette/03_cough.py', 
-                   6:'Pibo_Play/src/Com/com_4.py', 7:'Pibo_Play/src/Mus/mus_11.py'}   
+                   2:'Pibo_Conversation/src/Solution/01_badword.py', 3:'Pibo_Play/src/Com/com_4.py', 4:'Pibo_Play/src/Soc/soc_6.py',
+                   5:'Pibo_Conversation/src/Etiquette/03_cough.py', 6:'Pibo_Play/src/Cog/cog_1.py', 7:'Pibo_Play/src/Mus/mus_11.py'}   
             self.act = fix.get(self.completion)
         
-        # 선호도 계산해서 활동 스케줄 결정(5일차~)
+        # 선호도 계산해서 활동 스케줄 결정(4일차~)
         if self.completion >= 8:
             for i in range(0, len(data2)):              # 점수 값이 string 형태로 들어있어서 flaot로 변환
                 for j in range(0, 4):
@@ -130,17 +129,22 @@ class RunSchedule():
             # subprocess.run([f'python3 {self.path}/{self.act}'], shell=True)
             os.system(f'python3 {self.path}/{self.act}')
             
-            # 완료한 활동 개수가 짝수면 종료, 홀수면 계속
-            if self.completion % 2 == 0:
-                text_to_speech(text="다음에 또 놀자!")
-                # text_to_speech(text="오늘 활동이 끝났어! 내일 또 만나자 안녕~!")
-                motion.set_motion("m_wakeup", 1)
-                subprocess.run(['python3 /home/pi/Pibo_Conversation/src/start_touch.py'], shell=True)
+            text_to_speech(text="다음 활동을 하고 싶으면 또 머리를 쓰다듬어줘!")            
+            motion.set_motion("m_wakeup", 1)
+            subprocess.run(['python3 /home/pi/Pibo_Conversation/src/start_touch.py'], shell=True)
+            
+            
+            # # 완료한 활동 개수가 짝수면 종료, 홀수면 계속
+            # if self.completion % 2 == 0:
+            #     text_to_speech(text="다음에 또 놀자!")
+            #     # text_to_speech(text="오늘 활동이 끝났어! 내일 또 만나자 안녕~!")
+            #     motion.set_motion("m_wakeup", 1)
+            #     subprocess.run(['python3 /home/pi/Pibo_Conversation/src/start_touch.py'], shell=True)
                 
-            if self.completion % 2 != 0:
-                text_to_speech(text="다음 활동을 하고 싶으면 또 머리를 쓰다듬어줘!")
-                motion.set_motion("m_wakeup", 1)                
-                subprocess.run(['python3 /home/pi/Pibo_Conversation/src/start_touch.py'], shell=True)
+            # if self.completion % 2 != 0:
+            #     text_to_speech(text="다음 활동을 하고 싶으면 또 머리를 쓰다듬어줘!")
+            #     motion.set_motion("m_wakeup", 1)                
+            #     subprocess.run(['python3 /home/pi/Pibo_Conversation/src/start_touch.py'], shell=True)
         
         except Exception as ex:
             with open('/home/pi/pibo_errmsg', 'w') as f:

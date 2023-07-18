@@ -164,7 +164,7 @@ class ConversationManage():
             audio.audio_play("/home/pi/trigger.wav", 'local', '-1800', False)
             # o.set_font(size=25)
             # o.draw_text((15,20), "듣는 중..."); o.show()
-            o.draw_image("/home/pi/Pibo_Play/data/behavior/icon/icon_recognition1.png"); o.show()
+            o.draw_image("/home/pi/Pibo_Conversation/data/behavior/icon/icon_recognition1.png"); o.show()
             print("\n")
             
             t = Thread(target=eye.e_listen, args=(), daemon=True)
