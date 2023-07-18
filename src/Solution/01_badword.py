@@ -66,8 +66,8 @@ class Solution():
         answer = cm.responses_proc(re_bhv="do_question_S", re_q="친구에게 나쁜 말을 하고 싶을 때는 참는게 좋겠지?",
                                    neu_bhv="do_explain_C", neu="나쁜 말을 쓰면 기분이 안 좋아지니까 참는게 좋을 것 같아.")
 
-        pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)} 주변에는 기분 좋을 말을 누가 가장 많이 하니?")
-        answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)} 주변에는 기분 좋을 말을 누가 가장 많이 하니?",
+        pibo = cm.tts(bhv="do_question_L", string=f"{wm.word(self.user_name, 0)} 주변에는 기분 좋은 말을 누가 가장 많이 하니?")
+        answer = cm.responses_proc(re_bhv="do_question_L", re_q=f"{wm.word(self.user_name, 0)} 주변에는 기분 좋은 말을 누가 가장 많이 하니?",
                                    pos_bhv="do_compliment_S", pos="나도 배우고 싶은 걸?")
         
         pibo = cm.tts(bhv="do_question_S", string=f"{wm.word(self.user_name, 0)}는 어떤 말을 들으면 가장 기분이 좋니?")
