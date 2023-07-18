@@ -127,7 +127,8 @@ class RunSchedule():
         
         try:
             # out = subprocess.run([f'python3 {self.path}/{self.act}'], shell=True)
-            subprocess.run([f'python3 {self.path}/{self.act}'], shell=True)
+            # subprocess.run([f'python3 {self.path}/{self.act}'], shell=True)
+            os.system(f'python3 {self.path}/{self.act}')
             
             # 완료한 활동 개수가 짝수면 종료, 홀수면 계속
             if self.completion % 2 == 0:
