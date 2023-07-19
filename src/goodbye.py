@@ -67,7 +67,7 @@ class Say():
 
         pibo = cm.tts(bhv="do_compliment_S", string=f"이야기 해줘서 고마워!")
 
-        pibo = cm.tts(bhv="do_joy_A", string=f"우리 모두 다음에 만나는 날까지 쑥쑥 자라도록 하자. 안녕.!")
+        pibo = cm.tts(bhv="do_joy_A", string=f"우리 모두 다음에 만나는 날까지 쑥쑥 자라도록 하자. 안녕!")
 
         
         # 4. Paradise framework 기록

@@ -249,7 +249,8 @@ class ConversationManage():
             if feedback == "Y":
                 cm.tts(bhv=act_bhv, string=self.feedback + act)
             if feedback == "N":
-                cm.tts(bhv=act_bhv, string=act)
+                # cm.tts(bhv=act_bhv, string=act)
+                pass
             if feedback != "Y" and feedback != "N":
                 cm.tts(bhv=act_bhv, string=feedback)
                 
